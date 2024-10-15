@@ -1,4 +1,4 @@
-package ItsJoever2002;
+package items;
 import java.util.Scanner;
 
 public class Treatment {

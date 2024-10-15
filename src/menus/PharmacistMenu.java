@@ -1,4 +1,4 @@
-package ItsJoever2002;
+package menus;
 
 public class PharmacistMenu {
     

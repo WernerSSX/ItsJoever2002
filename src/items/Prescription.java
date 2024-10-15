@@ -1,10 +1,10 @@
-package ItsJoever2002;
+package items;
 
 public class Prescription {
-    private final int medicineID;
-    private final String medicineName;
-    private final int medicineQuantity;
-    private final String medicineInstructions;
+    private  int medicineID;
+    private  String medicineName;
+    private  int medicineQuantity;
+    private  String medicineInstructions;
 
     public Prescription(int medicine_id, int medicine_quantity) {
         medicineID = medicine_id;
