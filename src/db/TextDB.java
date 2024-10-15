@@ -7,12 +7,11 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import user_classes.*;
+import java.util.Collections;
 import items.*;
-import java.util.Collections; // Import Collections
 
 public class TextDB {
     public static final String SEPARATOR = "|";
@@ -25,6 +24,21 @@ public class TextDB {
 
     public void addUser(User user) {
         users.add(user);
+    }
+
+    // Method to remove a user
+    public void removeUser(User user) {
+        users.remove(user);
+    }
+
+    // Method to retrieve a user by Hospital ID
+    public User getUserByHospitalID(String hospitalID) {
+        for (User user : users) {
+            if (user.getHospitalID().equalsIgnoreCase(hospitalID)) {
+                return user;
+            }
+        }
+        return null;
     }
 
     public List<User> getUsers() {
@@ -51,16 +65,22 @@ public class TextDB {
 
     private String serializeUser(User user) {
         // Updated to use SEPARATOR and include role as the last field
-        return String.join(SEPARATOR,
-                user.getHospitalID(),
-                user.getPassword(),
-                user.getName(),
-                user.getDateOfBirth().format(DATE_FORMATTER),
-                user.getGender(),
-                user.getContactInformation().getEmailAddress(),
-                user.getContactInformation().getPhoneNumber(),
-                user.getClass().getSimpleName()
-        );
+        StringBuilder sb = new StringBuilder();
+        sb.append(user.getHospitalID()).append(SEPARATOR);
+        sb.append(user.getPassword()).append(SEPARATOR);
+        sb.append(user.getName()).append(SEPARATOR);
+        sb.append(user.getDateOfBirth().format(DATE_FORMATTER)).append(SEPARATOR);
+        sb.append(user.getGender()).append(SEPARATOR);
+        sb.append(user.getContactInformation().getEmailAddress()).append(SEPARATOR);
+        sb.append(user.getContactInformation().getPhoneNumber()).append(SEPARATOR);
+        sb.append(user.getClass().getSimpleName());
+
+        // Append role-specific fields
+        if (user instanceof Doctor) {
+            //sb.append(SEPARATOR).append(((Doctor) user).getSpecialization());
+        }
+
+        return sb.toString();
     }
 
     private User deserializeUser(String userData) {
@@ -76,16 +96,20 @@ public class TextDB {
         String gender = fields[4];
         String email = fields[5];
         String phone = fields[6];
-        String role = fields[7];
+        String role = fields[7].toLowerCase();
 
         ContactInformation contactInformation = new ContactInformation(email, phone);
 
         // Create user based on role
-        switch (role.toLowerCase()) {
+        switch (role) {
             case "administrator":
                 return new Administrator(hospitalID, password, name, dateOfBirth, gender, contactInformation);
             case "doctor":
-                return new Doctor(hospitalID, password, name, dateOfBirth, gender, contactInformation, null); // Add additional parameters as needed
+                //if (fields.length < 9) {
+                //    throw new IllegalArgumentException("Missing specialization for Doctor: " + userData);
+                //}
+                //String specialization = fields[8];
+                return new Doctor(hospitalID, password, name, dateOfBirth, gender, contactInformation, new Schedule(null, null));
             case "patient":
                 return new Patient(hospitalID, password, name, dateOfBirth, gender, contactInformation);
             case "pharmacist":

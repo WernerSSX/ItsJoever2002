@@ -12,6 +12,13 @@ public class Doctor extends User {
         this.role = "Doctor";
     }
 
+    @Override
+    public String toString() {
+        return "Doctor [ID=" + getHospitalID() + ", Name=" + getName() + ", Email=" + 
+        getContactInformation().getEmailAddress() + ", Phone=" + 
+        getContactInformation().getPhoneNumber() + "]";
+    }
+
     public Schedule getAvailability() {
         return availability;
     }

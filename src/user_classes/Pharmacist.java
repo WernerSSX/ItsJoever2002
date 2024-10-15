@@ -23,6 +23,13 @@ public class Pharmacist extends User {
         // Implementation for pharmacist logout
     }
 
+    @Override
+    public String toString() {
+        return "Pharmacist [ID=" + getHospitalID() + ", Name=" + getName() + ", Email=" + 
+        getContactInformation().getEmailAddress() + ", Phone=" + 
+        getContactInformation().getPhoneNumber() + "]";
+    }
+
     public void viewAppointmentOutcomeRecords() {
         // Implementation for viewing appointment outcome records
     }

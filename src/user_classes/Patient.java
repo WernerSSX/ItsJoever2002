@@ -14,6 +14,13 @@ public class Patient extends User {
     }
 
     @Override
+    public String toString() {
+        return "Patient [ID=" + getHospitalID() + ", Name=" + getName() + ", Email=" + 
+        getContactInformation().getEmailAddress() + ", Phone=" + 
+        getContactInformation().getPhoneNumber() + "]";
+    }
+
+    @Override
     public void changePassword() {
         // Implementation for changing patient password
     }

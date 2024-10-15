@@ -1,4 +1,5 @@
-A123|adminPass|Alice Smith|1980-05-15|Female|alice@example.com|123-456-7890|Administrator
-D456|docPass|Dr. Bob Jones|1975-08-22|Male|bob@example.com|098-765-4321|Doctor
-P789|pharmaPass|Charlie Brown|1990-12-05|Male|charlie@example.com|555-555-5555|Pharmacist
-PT012|patientPass|Daisy Miller|2000-07-30|Female|daisy@example.com|444-444-4444|Patient
+A123|adminPass|Alice Smith|1980-05-15|Female|123-456-7890|alice@example.com|Administrator
+D456|docPass|Dr. Bob Jones|1975-08-22|Male|098-765-4321|bob@example.com|Doctor
+P789|pharmaPass|Charlie Brown|1990-12-05|Male|555-555-5555|charlie@example.com|Pharmacist
+PT012|patientPass|Daisy Miller|2000-07-30|Female|444-444-4444|daisy@example.com|Patient
+P788|password|Werner Tan|2002-11-20|Male|999|wtan@ntu.edu.sg|Patient

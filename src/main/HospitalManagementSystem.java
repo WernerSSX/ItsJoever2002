@@ -1,16 +1,11 @@
 package main;
+
 import java.io.IOException;
 import java.util.Scanner;
 import user_classes.*;
 import java.util.List;
-import db.*;
-import menus.AdministratorMenu;
-import menus.DoctorMenu;
-import menus.PatientMenu;
-import menus.PharmacistMenu;
-
-
-// Inside HospitalManagementSystem.java
+import db.TextDB;
+import menus.*;
 
 public class HospitalManagementSystem {
     public static void main(String[] args) {
@@ -38,8 +33,9 @@ public class HospitalManagementSystem {
             System.out.println("2. Doctor Login");
             System.out.println("3. Pharmacist Login");
             System.out.println("4. Patient Login");
-            System.out.println("5. Exit");
-            System.out.print("Please select your role (1-5): ");
+            System.out.println("5. Save Changes");
+            System.out.println("6. Exit");
+            System.out.print("Please select your role (1-6): ");
 
             String input = scanner.nextLine();
             int choice;
@@ -47,7 +43,7 @@ public class HospitalManagementSystem {
             try {
                 choice = Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input! Please enter a number between 1 and 5.");
+                System.out.println("Invalid input! Please enter a number between 1 and 6.");
                 continue;
             }
 
@@ -69,26 +65,27 @@ public class HospitalManagementSystem {
                     handleLogin(scanner, textDB, "Patient");
                     break;
                 case 5:
+                    // Save Changes
+                    try {
+                        textDB.saveToFile(userFile);
+                        System.out.println("Changes saved successfully!");
+                    } catch (IOException e) {
+                        System.out.println("Error saving user file: " + e.getMessage());
+                    }
+                    break;
+                case 6:
                     // Exit
                     System.out.println("Exiting system...");
                     systemRunning = false;
                     break;
                 default:
-                    System.out.println("Invalid choice! Please select a number between 1 and 5.");
+                    System.out.println("Invalid choice! Please select a number between 1 and 6.");
                     break;
             }
         }
 
-        // Save updated user list to file
-        try {
-            textDB.saveToFile(userFile);
-        } catch (IOException e) {
-            System.out.println("Error saving user file: " + e.getMessage());
-        }
-
         scanner.close();
     }
-
 
     private static void handleLogin(Scanner scanner, TextDB textDB, String role) {
         System.out.print("Enter Hospital ID: ");
@@ -100,7 +97,7 @@ public class HospitalManagementSystem {
 
         if (user != null && user.getPassword().equals(inputPass)) {
             System.out.println(role + " logged in successfully!");
-            navigateToMenu(scanner, user);
+            navigateToMenu(scanner, user, textDB);
         } else {
             System.out.println("Invalid Hospital ID or Password!");
         }
@@ -116,33 +113,22 @@ public class HospitalManagementSystem {
         return null; // No matching user found
     }
 
-    private static void navigateToMenu(Scanner scanner, User user) {
+    private static void navigateToMenu(Scanner scanner, User user, TextDB textDB) {
+        // Implement role-specific menus
         if (user instanceof Administrator) {
-            AdministratorMenu adminMenu = new AdministratorMenu();
+            AdministratorMenu adminMenu = new AdministratorMenu(textDB);
             adminMenu.showMenu(scanner, (Administrator) user);
         } else if (user instanceof Doctor) {
-            DoctorMenu doctorMenu = new DoctorMenu();
-            //doctorMenu.showMenu(scanner, (Doctor) user);
+            // DoctorMenu doctorMenu = new DoctorMenu(textDB);
+            // doctorMenu.showMenu(scanner, (Doctor) user);
         } else if (user instanceof Pharmacist) {
-            PharmacistMenu pharmacistMenu = new PharmacistMenu();
-            //pharmacistMenu.showMenu(scanner, (Pharmacist) user);
+            // PharmacistMenu pharmacistMenu = new PharmacistMenu(textDB);
+            // pharmacistMenu.showMenu(scanner, (Pharmacist) user);
         } else if (user instanceof Patient) {
-            PatientMenu patientMenu = new PatientMenu();
-            //patientMenu.showMenu(scanner, (Patient) user);
+            // PatientMenu patientMenu = new PatientMenu(textDB);
+            // patientMenu.showMenu(scanner, (Patient) user);
         } else {
             System.out.println("Unknown role. Access denied.");
         }
     }
-
-
-
-    private static User getUserByRole(List<User> userList, String role) {
-        for (User user : userList) {
-            if (user.getClass().getSimpleName().equalsIgnoreCase(role)) {
-                return user; // Return the first matching user
-            }
-        }
-        return null; // No matching user found
-    }
-    
 }
