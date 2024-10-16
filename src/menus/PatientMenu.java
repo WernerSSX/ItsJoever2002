@@ -2,6 +2,7 @@ package menus;
 import services.*;
 
 import db.TextDB;
+import user_classes.Doctor;
 import user_classes.Patient;
 import items.Appointment;
 import items.MedicalRecord;
@@ -46,7 +47,7 @@ public class PatientMenu {
                     updateContactInformation(scanner, patient);
                     break;
                 case 3:
-                    viewAvailableAppointmentSlots(scanner);
+                    viewAvailableAppointmentSlotsWithDoctor(scanner);
                     break;
                 case 4:
                     scheduleAppointment(scanner, patient);
@@ -97,7 +98,6 @@ public class PatientMenu {
         System.out.println("Contact information updated.");
     }
 
-
     private void viewAppointmentStatus(Patient patient) {
         List<Appointment> appointments = textDB.getAppointments().stream()
             .filter(appt -> appt.getPatientId().equals(patient.getHospitalID()))
@@ -116,10 +116,35 @@ public class PatientMenu {
         }
     }
 
-    
+    private void viewAvailableAppointmentSlotsWithDoctor(Scanner scanner) {
+        // Step 1: Display list of available doctors
+        List<Doctor> doctors = textDB.getAllDoctors();
+        if (doctors.isEmpty()) {
+            System.out.println("No doctors are currently available.");
+            return;
+        }
 
+        System.out.println("\nAvailable Doctors:");
+        for (int i = 0; i < doctors.size(); i++) {
+            System.out.println((i + 1) + ". Dr. " + doctors.get(i).getName() + " (ID: " + doctors.get(i).getHospitalID() + ")");
+        }
 
-    private void viewAvailableAppointmentSlots(Scanner scanner) {
+        System.out.print("Enter the number corresponding to the doctor you want to view available slots for: ");
+        int doctorIndex = getIntInput(scanner) - 1;
+
+        if (doctorIndex < 0 || doctorIndex >= doctors.size()) {
+            System.out.println("Invalid selection. Please try again.");
+            return;
+        }
+
+        Doctor selectedDoctor = doctors.get(doctorIndex);
+        System.out.println("You have selected Dr. " + selectedDoctor.getName());
+
+        // Step 2: Call the updated viewAvailableAppointmentSlots method
+        viewAvailableAppointmentSlots(scanner, selectedDoctor);
+    }
+
+    private void viewAvailableAppointmentSlots(Scanner scanner, Doctor doctor) {
         System.out.print("Enter the date (yyyy-MM-dd) for which you want to see available slots: ");
         String dateInput = scanner.nextLine();
         LocalDate date;
@@ -131,12 +156,12 @@ public class PatientMenu {
             return;
         }
         
-        List<TimeSlot> availableSlots = textDB.getAvailableAppointmentSlots(date);
+        List<TimeSlot> availableSlots = textDB.getAvailableAppointmentSlots(date, doctor);
         
         if (availableSlots.isEmpty()) {
-            System.out.println("No available slots on " + date);
+            System.out.println("No available slots for Dr. " + doctor.getName() + " on " + date);
         } else {
-            System.out.println("\nAvailable Appointment Slots on " + date + ":");
+            System.out.println("\nAvailable Appointment Slots with Dr. " + doctor.getName() + " on " + date + ":");
             for (TimeSlot slot : availableSlots) {
                 System.out.println(slot);
             }
@@ -156,20 +181,43 @@ public class PatientMenu {
             return;
         }
     
-        // Step 2: Display available time slots for the given date
-        List<TimeSlot> availableSlots = textDB.getAvailableAppointmentSlots(date);
-        
-        if (availableSlots.isEmpty()) {
-            System.out.println("No available slots on " + date + ". Please choose a different date.");
+        // Step 2: Display list of available doctors
+        List<Doctor> doctors = textDB.getAllDoctors();
+        if (doctors.isEmpty()) {
+            System.out.println("No doctors are currently available.");
             return;
         }
     
-        System.out.println("\nAvailable Appointment Slots on " + date + ":");
+        System.out.println("\nAvailable Doctors:");
+        for (int i = 0; i < doctors.size(); i++) {
+            System.out.println((i + 1) + ". Dr. " + doctors.get(i).getName() + " (ID: " + doctors.get(i).getHospitalID() + ")");
+        }
+    
+        System.out.print("Enter the number corresponding to the doctor you want to book an appointment with: ");
+        int doctorIndex = getIntInput(scanner) - 1;
+    
+        if (doctorIndex < 0 || doctorIndex >= doctors.size()) {
+            System.out.println("Invalid selection. Please try again.");
+            return;
+        }
+    
+        Doctor selectedDoctor = doctors.get(doctorIndex);
+        System.out.println("You have selected Dr. " + selectedDoctor.getName());
+    
+        // Step 3: Display available time slots for the selected doctor and date
+        List<TimeSlot> availableSlots = textDB.getAvailableAppointmentSlots(date, selectedDoctor);
+        
+        if (availableSlots.isEmpty()) {
+            System.out.println("No available slots for Dr. " + selectedDoctor.getName() + " on " + date + ". Please choose a different date or doctor.");
+            return;
+        }
+    
+        System.out.println("\nAvailable Appointment Slots with Dr. " + selectedDoctor.getName() + " on " + date + ":");
         for (int i = 0; i < availableSlots.size(); i++) {
             System.out.println((i + 1) + ". " + availableSlots.get(i));
         }
     
-        // Step 3: Ask the user to select a time slot by entering its index
+        // Step 4: Ask the user to select a time slot by entering its index
         System.out.print("Enter the number corresponding to the time slot you want to book: ");
         int slotIndex = getIntInput(scanner) - 1;
     
@@ -179,18 +227,17 @@ public class PatientMenu {
         }
     
         TimeSlot selectedSlot = availableSlots.get(slotIndex);
+        System.out.println("You have selected " + selectedSlot);
     
-        // Step 4: Use the new addAppointment method in TextDB
-        boolean success = textDB.addAppointment(patient, date, selectedSlot);
+        // Step 5: Use the updated addAppointment method in TextDB
+        boolean success = textDB.addAppointment(patient, selectedDoctor, date, selectedSlot);
     
         if (success) {
-            System.out.println("Appointment scheduled successfully.");
+            System.out.println("Appointment scheduled successfully with Dr. " + selectedDoctor.getName() + " on " + date + " at " + selectedSlot + ".");
         } else {
             System.out.println("Failed to schedule appointment. Please try again.");
         }
     }
-    
-    
 
     private void cancelAppointment(Scanner scanner, Patient patient) {
         System.out.print("Enter the ID of the appointment you want to cancel: ");
@@ -202,8 +249,6 @@ public class PatientMenu {
             System.out.println("Failed to cancel appointment. Please try again.");
         }
     }
-
-
 
     private void changePassword(Scanner scanner, Patient patient) {
         System.out.print("Enter current password: ");

@@ -155,6 +155,9 @@ public class TextDB {
         return data;
     }
 
+
+
+    // ====================================================================== //
     public boolean cancelAppointment(Patient patient, int appointmentId) {
         boolean removed = appointments.removeIf(appointment -> 
             appointment.getId() == appointmentId && appointment.getPatientId().equals(patient.getHospitalID())
@@ -172,18 +175,35 @@ public class TextDB {
         return removed;
     }
 
-    public List<TimeSlot> getAvailableAppointmentSlots(LocalDate date) {
-        List<TimeSlot> allTimeSlots = generateAllTimeSlotsForDate(date);
-        List<Appointment> bookedAppointments = loadAppointmentsForDate(date);
+    private int generateNewAppointmentId() {
+        return appointments.stream()
+                           .mapToInt(Appointment::getId)
+                           .max()
+                           .orElse(0) + 1;
+    }
+    
 
+    public List<Doctor> getAllDoctors() {
+        return users.stream()
+                    .filter(user -> user instanceof Doctor)
+                    .map(user -> (Doctor) user)
+                    .collect(Collectors.toList());
+    }
+    
+
+    public List<TimeSlot> getAvailableAppointmentSlots(LocalDate date, Doctor doctor) {
+        List<TimeSlot> allTimeSlots = generateAllTimeSlotsForDate(date);
+        List<Appointment> bookedAppointments = loadAppointmentsForDateAndDoctor(date, doctor);
+    
         List<TimeSlot> bookedTimeSlots = bookedAppointments.stream()
                 .map(Appointment::getTimeSlot)
                 .collect(Collectors.toList());
-
+    
         return allTimeSlots.stream()
                 .filter(timeSlot -> !bookedTimeSlots.contains(timeSlot))
                 .collect(Collectors.toList());
     }
+    
 
     private List<TimeSlot> generateAllTimeSlotsForDate(LocalDate date) {
         List<TimeSlot> timeSlots = new ArrayList<>();
@@ -217,23 +237,41 @@ public class TextDB {
         return appointmentsForDate;
     }
 
+    private List<Appointment> loadAppointmentsForDateAndDoctor(LocalDate date, Doctor doctor) {
+        List<Appointment> appointmentsForDateAndDoctor = new ArrayList<>();
+        try {
+            List<String> lines = read("appts.txt");
+            for (String line : lines) {
+                Appointment appointment = deserializeAppointment(line);
+                if (appointment.getDoctorId().equals(doctor.getHospitalID()) &&
+                    appointment.getTimeSlot().getStartTime().toLocalDate().equals(date)) {
+                    appointmentsForDateAndDoctor.add(appointment);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return appointmentsForDateAndDoctor;
+    }
+    
+
 
     // Appointment management methods
-    public boolean addAppointment(Patient patient, LocalDate date, TimeSlot timeSlot) {
-        // Check if the timeSlot is valid for the given date
-        List<TimeSlot> availableSlots = getAvailableAppointmentSlots(date);
+    public boolean addAppointment(Patient patient, Doctor doctor, LocalDate date, TimeSlot timeSlot) {
+        // Check if the timeSlot is valid for the given date and doctor
+        List<TimeSlot> availableSlots = getAvailableAppointmentSlots(date, doctor);
         if (!availableSlots.contains(timeSlot)) {
             System.out.println("The selected time slot is not available.");
             return false;
         }
     
         // Generate a new unique appointment ID
-        int newAppointmentId = appointments.size() + 1; // Assuming appointment ID increments
+        int newAppointmentId = generateNewAppointmentId();
     
         // Create the new appointment
         Appointment newAppointment = new Appointment(newAppointmentId, 
                                                      patient.getHospitalID(), 
-                                                     "doctorID_placeholder", // Placeholder for now, can be assigned later
+                                                     doctor.getHospitalID(), 
                                                      timeSlot, 
                                                      "Scheduled",
                                                      "Booked");
@@ -250,9 +288,10 @@ public class TextDB {
             return false;
         }
     
-        System.out.println("Appointment successfully scheduled for " + date + " at " + timeSlot);
+        System.out.println("Appointment successfully scheduled with Dr. " + doctor.getName() + " on " + date + " at " + timeSlot);
         return true;
     }
+    
     
 
     public void removeAppointment(Appointment appointment) {
