@@ -2,15 +2,22 @@ package menus;
 
 import db.TextDB;
 import user_classes.Doctor;
-import items.MedicalRecord;
+
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import items.*;
+
 
 public class DoctorMenu {
     private TextDB textDB;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
     public DoctorMenu(TextDB textDB) {
         this.textDB = textDB;
@@ -73,19 +80,77 @@ public class DoctorMenu {
     }
 
     private void viewPersonalSchedule(Doctor doctor) {
-        // Implementation for viewing personal schedule
+        Schedule schedule = doctor.getSchedule();
+        System.out.println("Personal Schedule:");
+        for (LocalDate date : schedule.getAvailability().keySet()) {
+            System.out.println("Date: " + date.format(DATE_FORMATTER));
+            List<TimeSlot> slots = schedule.getAvailableTimeSlots(date);
+            for (TimeSlot slot : slots) {
+                System.out.println("  " + slot.getStartTime().toLocalTime().format(TIME_FORMATTER) +
+                                   " - " + slot.getEndTime().toLocalTime().format(TIME_FORMATTER));
+            }
+        }
     }
 
-    private void setAvailability(Scanner scanner, Doctor doctor) {
-        // Implementation for setting availability
+    private void setAvailability(Scanner scanner, Doctor doctor) throws IOException {
+        System.out.print("Enter date to set availability (yyyy-MM-dd): ");
+        String dateStr = scanner.nextLine();
+        LocalDate date;
+        try {
+            date = LocalDate.parse(dateStr, DATE_FORMATTER);
+        } catch (Exception e) {
+            System.out.println("Invalid date format.");
+            return;
+        }
+
+        List<TimeSlot> availableSlots = new ArrayList<>();
+        boolean addingSlots = true;
+
+        while (addingSlots) {
+            System.out.print("Enter start time for available slot (HH:mm) or 'done' to finish: ");
+            String startStr = scanner.nextLine();
+            if (startStr.equalsIgnoreCase("done")) {
+                break;
+            }
+
+            System.out.print("Enter end time for available slot (HH:mm): ");
+            String endStr = scanner.nextLine();
+
+            try {
+                LocalTime startTime = LocalTime.parse(startStr, TIME_FORMATTER);
+                LocalTime endTime = LocalTime.parse(endStr, TIME_FORMATTER);
+                TimeSlot slot = new TimeSlot(
+                        LocalDateTime.of(date, startTime),
+                        LocalDateTime.of(date, endTime),
+                        true
+                );
+                availableSlots.add(slot);
+            } catch (Exception e) {
+                System.out.println("Invalid time format. Please try again.");
+            }
+        }
+
+        if (!availableSlots.isEmpty()) {
+            // Update the Doctor's schedule in TextDB to ensure persistence
+            doctor.setAvailability(date, availableSlots);
+            textDB.updateDoctorSchedule(doctor.getHospitalID(), doctor.getSchedule());
+            System.out.println("Availability updated successfully.");
+        } else {
+            System.out.println("No availability slots added.");
+        }
     }
+
 
     private void acceptOrDeclineAppointmentRequests(Scanner scanner, Doctor doctor) {
         // Implementation for accepting or declining appointment requests
     }
 
     private void viewUpcomingAppointments(Doctor doctor) {
-        // Implementation for viewing upcoming appointments
+        List<Appointment> upcoming = textDB.getUpcomingAppointmentsByDoctorId(doctor.getHospitalID());
+        System.out.println("Upcoming Appointments:");
+        for (Appointment appt : upcoming) {
+            System.out.println(appt);
+        }
     }
 
     private void recordAppointmentOutcome(Scanner scanner, Doctor doctor) {

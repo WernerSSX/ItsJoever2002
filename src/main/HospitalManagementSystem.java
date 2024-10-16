@@ -10,20 +10,7 @@ import menus.*;
 public class HospitalManagementSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String userFile = "users.txt"; // Text file containing user information
-        String appointmentFile = "appts.txt"; // Text file containing appointment information
-        // Instantiate TextDB to manage users
         TextDB textDB = TextDB.getInstance();
-
-        // Load users & appts from the file
-        try {
-            textDB.loadFromFile(userFile);
-            textDB.loadAppointmentsFromFile(appointmentFile);
-        } catch (IOException e) {
-            System.out.println("Error reading user file: " + e.getMessage());
-            // Optionally, exit the program if users cannot be loaded
-            System.exit(1);
-        }
 
         boolean systemRunning = true;
 
@@ -68,7 +55,7 @@ public class HospitalManagementSystem {
                 case 5:
                     // Save Changes
                     try {
-                        TextDB.saveToFile(userFile);
+                        TextDB.saveToFile("users.txt");
                         System.out.println("Changes saved successfully!");
                     } catch (IOException e) {
                         System.out.println("Error saving user file: " + e.getMessage());

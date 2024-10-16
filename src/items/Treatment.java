@@ -1,38 +1,125 @@
 package items;
-import java.util.Scanner;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * The Treatment class represents a treatment plan, including prescribed medications and comments.
+ */
 public class Treatment {
-    private Prescription[] allPrescribedMedicine;
-    private final String treatmentComments;
-    
-    public Treatment(int numPrescribedMedicine) {
-        Scanner sc = new Scanner(System.in);
-        int i = numPrescribedMedicine;
-        while (i-1 >= 0) {
-            System.out.printf("Please input the Medicine ID for Prescription %d\n", numPrescribedMedicine-i+1);
-            int medicineID = sc.nextInt();
-            sc.nextLine();
-            // Medicine Name can be retrieved from Medicine
-            System.out.printf("Please input the Medicine Quantity for Prescription %d\n", numPrescribedMedicine-i+1);
-            int medicineQuantity = sc.nextInt();
-            sc.nextLine();
-            allPrescribedMedicine[numPrescribedMedicine-i] = new Prescription(medicineID, medicineQuantity);
-            i--;
-        }
-        System.out.println("Please input some comments for this treatment:");
-        treatmentComments = sc.next();
+    private List<Prescription> allPrescribedMedicine;
+    private String treatmentComments;
+
+    /**
+     * Default constructor initializes the list of prescribed medicines.
+     */
+    public Treatment() {
+        this.allPrescribedMedicine = new ArrayList<>();
+        this.treatmentComments = "";
     }
 
+    /**
+     * Constructor with parameters.
+     *
+     * @param treatmentComments Comments regarding the treatment
+     */
+    public Treatment(String treatmentComments) {
+        this.allPrescribedMedicine = new ArrayList<>();
+        this.treatmentComments = treatmentComments;
+    }
+
+    // Getters and Setters
+
+    public List<Prescription> getAllPrescribedMedicine() {
+        return allPrescribedMedicine;
+    }
+
+    public void addPrescription(Prescription prescription) {
+        this.allPrescribedMedicine.add(prescription);
+    }
+
+    public String getTreatmentComments() {
+        return treatmentComments;
+    }
+
+    public void setTreatmentComments(String treatmentComments) { 
+        this.treatmentComments = treatmentComments;
+    }
+
+    /**
+     * Prints all prescribed medicines with their details.
+     */
     public void printAllPrescribedMedicine() {
-        for (Prescription prescribedMedicine : allPrescribedMedicine) {
-            // Prints out all of the prescribed medicine in terms of quantity, id, name
-            System.out.printf("Medicine ID: %d\n", prescribedMedicine.getMedicineID());
-            System.out.printf("Medicine Name: %s\n", prescribedMedicine.getMedicineName());
-            System.out.printf("Medicine Quantity: %d \n\n", prescribedMedicine.getMedicineQuantity());
+        if (allPrescribedMedicine.isEmpty()) {
+            System.out.println("No medications prescribed.");
+            return;
         }
+        System.out.println("Prescribed Medications:");
+        for (Prescription p : allPrescribedMedicine) {
+            System.out.println("- " + p.getMedicationName() + " | Status: " + p.getStatus());
+        }
+        System.out.println("-------------------------");
     }
 
+    /**
+     * Prints the treatment comments.
+     */
     public void printTreatmentComments() {
-        System.out.printf("%s\n", treatmentComments);
+        if (treatmentComments == null || treatmentComments.trim().isEmpty()) {
+            System.out.println("No treatment comments.");
+            return;
+        }
+        System.out.println("Treatment Comments: " + treatmentComments);
+        System.out.println("-------------------------");
+    }
+
+    /**
+     * Serializes the Treatment object into a string.
+     *
+     * @return Serialized string representation of the Treatment
+     */
+    public String serialize() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(treatmentComments).append(";");
+        for (Prescription p : allPrescribedMedicine) {
+            sb.append(p.getMedicationName()).append(",").append(p.getStatus()).append("|");
+        }
+        // Remove the last "|" if exists
+        if (sb.charAt(sb.length() - 1) == '|') {
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Deserializes a Treatment object from a string.
+     *
+     * @param data Serialized string representation of the Treatment
+     * @return Treatment object
+     */
+    public static Treatment deserialize(String data) {
+        String[] parts = data.split(";");
+        if (parts.length != 2) {
+            throw new IllegalArgumentException("Invalid Treatment data: " + data);
+        }
+        Treatment treatment = new Treatment(parts[0]);
+        String[] prescriptions = parts[1].split("\\|");
+        for (String presc : prescriptions) {
+            String[] prescParts = presc.split(",");
+            if (prescParts.length != 2) {
+                continue; // Skip invalid entries
+            }
+            Prescription prescription = new Prescription(prescParts[0], prescParts[1]);
+            treatment.addPrescription(prescription);
+        }
+        return treatment;
+    }
+
+    @Override
+    public String toString() {
+        return "Treatment{" +
+                "allPrescribedMedicine=" + allPrescribedMedicine +
+                ", treatmentComments='" + treatmentComments + '\'' +
+                '}';
     }
 }

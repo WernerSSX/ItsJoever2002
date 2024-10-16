@@ -7,6 +7,7 @@ public class Administrator extends User {
     
     public Administrator(String hospitalID, String password, String name, LocalDate dateOfBirth, String gender, ContactInformation contactInformation) {
         super(hospitalID, password, name, dateOfBirth, gender, contactInformation);
+        this.role = "Administrator";
     }
 
     @Override

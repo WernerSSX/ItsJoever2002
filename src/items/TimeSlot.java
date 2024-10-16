@@ -2,70 +2,61 @@ package items;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
+/**
+ * The TimeSlot class represents a specific time interval, such as an appointment slot.
+ */
 public class TimeSlot {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private boolean isAvailable;
 
+    /**
+     * Constructor for TimeSlot.
+     *
+     * @param startTime   Start time of the slot
+     * @param endTime     End time of the slot
+     * @param isAvailable Availability status of the slot
+     */
     public TimeSlot(LocalDateTime startTime, LocalDateTime endTime, boolean isAvailable) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.isAvailable = isAvailable;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        
-        TimeSlot timeSlot = (TimeSlot) o;
-        return Objects.equals(startTime, timeSlot.startTime) &&
-               Objects.equals(endTime, timeSlot.endTime);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(startTime, endTime);
-    }
-
-    @Override
-    public String toString() {
-        return "TimeSlot{" +
-                "startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", isAvailable=" + isAvailable +
-                '}';
-    }
-
-
+    // Getters and Setters
     public LocalDateTime getStartTime() {
         return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) { 
+        this.startTime = startTime;
     }
 
     public LocalDateTime getEndTime() {
         return endTime;
     }
 
+    public void setEndTime(LocalDateTime endTime) { 
+        this.endTime = endTime;
+    }
+
     public boolean isAvailable() {
         return isAvailable;
     }
 
-    public void setAvailable(boolean available) {
+    public void setAvailable(boolean available) { 
         isAvailable = available;
     }
 
-    public String toCalendarString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        return String.format("%s - %s : %s", 
-                startTime.format(formatter), 
-                endTime.format(formatter), 
-                isAvailable ? "Available" : "Not Available");
-    }
-
-    
-
+    /**
+     * Parses a TimeSlot from a serialized string.
+     *
+     * @param serialized String in the format "yyyy-MM-ddTHH:mm-yyyy-MM-ddTHH:mm"
+     * @return TimeSlot object
+     */
     public static TimeSlot parse(String timeSlotString) {
         boolean debug = false;
         
@@ -108,5 +99,28 @@ public class TimeSlot {
         }
         boolean isAvailable = false;
         return new TimeSlot(startTime, endTime, isAvailable);
+    }
+
+
+    @Override
+    public String toString() {
+        return startTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm")) +
+               " - " + endTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TimeSlot timeSlot = (TimeSlot) o;
+
+        if (!Objects.equals(startTime, timeSlot.startTime)) return false;
+        return Objects.equals(endTime, timeSlot.endTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(startTime, endTime);
     }
 }

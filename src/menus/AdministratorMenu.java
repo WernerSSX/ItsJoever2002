@@ -170,7 +170,7 @@ public class AdministratorMenu {
                 break;
             case "doctor":
                 newUser = new Doctor(hospitalID, password, name, dateOfBirth, gender, 
-                                     new ContactInformation(email, phone), new Schedule(null, null));
+                                     new ContactInformation(email, phone), null);
                 break;
             case "pharmacist":
                 newUser = new Pharmacist(hospitalID, password, name, dateOfBirth, gender, 

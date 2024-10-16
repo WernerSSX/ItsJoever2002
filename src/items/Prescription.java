@@ -1,33 +1,46 @@
 package items;
 
+/**
+ * The Prescription class represents a medication prescribed to a patient.
+ */
 public class Prescription {
-    private  int medicineID;
-    private  String medicineName;
-    private  int medicineQuantity;
-    private  String medicineInstructions;
+    private String medicationName;
+    private String status; // e.g., Pending, Approved, etc.
 
-    public Prescription(int medicine_id, int medicine_quantity) {
-        medicineID = medicine_id;
-        // medicineName = [get from database]
-        medicineQuantity = medicine_quantity;
-        // medicineInstructions = [get from database]
+    /**
+     * Constructor for Prescription.
+     *
+     * @param medicationName Name of the medication
+     * @param status         Status of the prescription (default is "Pending")
+     */
+    public Prescription(String medicationName, String status) {
+        this.medicationName = medicationName;
+        this.status = status.isEmpty() ? "Pending" : status;
     }
 
-    public int getMedicineID() {
-        return medicineID;
+    // Getters and Setters
+
+    public String getMedicationName() {
+        return medicationName;
     }
 
-    public String getMedicineName() {
-        return medicineName;
+    public void setMedicationName(String medicationName) { 
+        this.medicationName = medicationName;
     }
 
-    public int getMedicineQuantity() {
-        return medicineQuantity;
+    public String getStatus() {
+        return status;
     }
 
-    public String getMedicineInstructions() {
-        return medicineInstructions;
+    public void setStatus(String status) { 
+        this.status = status;
     }
 
-    // Add exception classes
+    @Override
+    public String toString() {
+        return "Prescription{" +
+                "medicationName='" + medicationName + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

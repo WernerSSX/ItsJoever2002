@@ -7,11 +7,11 @@ public class PatientHistory {
     private final LocalDateTime appointmentDateTime; // Changed to LocalDateTime
     private final String treatedByDoctor; 
 
-    public PatientHistory(int numIllnesses, int numPrescribedMedicine, LocalDateTime appointment_date_time, String treated_by_doctor) {
-        pastDiagnosis = new Diagnosis(numIllnesses);
-        pastTreatment = new Treatment(numPrescribedMedicine);
-        appointmentDateTime = appointment_date_time;
-        treatedByDoctor = treated_by_doctor;
+    public PatientHistory() {
+        pastDiagnosis = null;
+        pastTreatment = null;
+        appointmentDateTime = LocalDateTime.now();
+        treatedByDoctor = "Dr. John Doe";
     }
 
     public void printHistory() {

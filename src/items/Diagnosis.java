@@ -1,39 +1,77 @@
 package items;
-import java.util.Scanner;
 
+import java.time.LocalDate;
+
+/**
+ * The Diagnosis class represents a medical diagnosis with a description, date, and comments.
+ */
 public class Diagnosis {
-    private String[] diagnosedIllness;
-    private String[] diagnosisComments;
+    private String description;
+    private LocalDate date;
+    private String comments; // Additional field for comments
 
-    public Diagnosis(int numIllnesses) {
-        Scanner sc = new Scanner(System.in);
-        int i = numIllnesses;
-        while (i-1 >= 0) {
-            System.out.printf("Please write down the illness for Diagnosis %d", numIllnesses-i+1);
-            String illness = sc.next();
-            System.out.printf("Please write down the comments for Diagnosis %d", numIllnesses-i+1);
-            String illnessComments = sc.next();
-            diagnosedIllness[numIllnesses-i] = illness;
-            diagnosisComments[numIllnesses-i] = illnessComments;
-        }
+    /**
+     * Constructor for Diagnosis.
+     *
+     * @param description Description of the diagnosed illness
+     * @param date        Date of diagnosis
+     * @param comments    Additional comments regarding the diagnosis
+     */
+    public Diagnosis(String description, LocalDate date, String comments) {
+        this.description = description;
+        this.date = date;
+        this.comments = comments;
     }
 
-    public void printDiagnosedIllness() {
-        int i = 1;
-        for (String dianosed_illness : diagnosedIllness) {
-            System.out.printf("Patient's Illness %d is %s\n", i, dianosed_illness);
-            i++;
-        }
+    // Existing Constructor without comments (optional)
+    public Diagnosis(String description, LocalDate date) {
+        this(description, date, "");
     }
 
+    // Getters and Setters
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) { 
+        this.description = description;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) { 
+        this.date = date;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) { 
+        this.comments = comments;
+    }
+
+    /**
+     * Prints the diagnosed illness along with any associated comments.
+     */
     public void printDiagnosedIllnessWithComments() {
-        int i = 1;
-        for (String dianosed_illness : diagnosedIllness) {
-            System.out.printf("Patient's Illness %d is %s\n", i, dianosed_illness);
-            System.out.printf("Comments for this illness: %s\n\n", diagnosisComments[i-1]);
-            i++;
+        System.out.println("Diagnosis: " + description);
+        System.out.println("Date: " + date);
+        if (comments != null && !comments.trim().isEmpty()) {
+            System.out.println("Comments: " + comments);
         }
+        System.out.println("-------------------------");
     }
 
-    // Add exception classes
+    @Override
+    public String toString() {
+        return "Diagnosis{" +
+                "description='" + description + '\'' +
+                ", date=" + date +
+                ", comments='" + comments + '\'' +
+                '}';
+    }
 }

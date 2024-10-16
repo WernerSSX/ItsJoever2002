@@ -5,12 +5,12 @@ import items.ContactInformation;
 import db.*;
 
 public abstract class User {
-    private String hospitalID;
-    private String password;
-    private String name;
-    private LocalDate dateOfBirth; // Changed to LocalDate
-    private String gender;
-    private ContactInformation contactInformation;
+    protected String hospitalID;
+    protected String password;
+    protected String name;
+    protected LocalDate dateOfBirth; // Changed to LocalDate
+    protected String gender;
+    protected ContactInformation contactInformation;
     static int userCount = 0;
     public String role;
 

@@ -24,7 +24,7 @@ public class Appointment {
         System.out.println("\nAppointment ID: " + id);
         System.out.println("Patient ID: " + patientId);
         System.out.println("Doctor ID: " + doctorId);
-        System.out.println("Time Slot: " + timeSlot.toCalendarString());
+        System.out.println("Time Slot: " + timeSlot.toString());
         System.out.println("Status: " + status);
         System.out.println("Outcome Record: " + outcomeRecord);
     }
@@ -41,12 +41,24 @@ public class Appointment {
         return doctorId;
     }
 
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
+    }
+
     public TimeSlot getTimeSlot() {
         return timeSlot;
     }
 
+    public void setTimeSlot(TimeSlot timeSlot) {
+        this.timeSlot = timeSlot;
+    }
+
     public String getStatus() {
         return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getOutcomeRecord() {
