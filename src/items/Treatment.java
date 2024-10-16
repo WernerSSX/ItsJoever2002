@@ -11,9 +11,11 @@ public class Treatment {
         while (i-1 >= 0) {
             System.out.printf("Please input the Medicine ID for Prescription %d\n", numPrescribedMedicine-i+1);
             int medicineID = sc.nextInt();
+            sc.nextLine();
             // Medicine Name can be retrieved from Medicine
             System.out.printf("Please input the Medicine Quantity for Prescription %d\n", numPrescribedMedicine-i+1);
             int medicineQuantity = sc.nextInt();
+            sc.nextLine();
             allPrescribedMedicine[numPrescribedMedicine-i] = new Prescription(medicineID, medicineQuantity);
             i--;
         }

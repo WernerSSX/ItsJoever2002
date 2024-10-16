@@ -1,11 +1,15 @@
 package user_classes;
 import items.ContactInformation;
+import items.MedicalRecord;
+
 import java.time.LocalDate;
 
 public class Patient extends User {
+    private MedicalRecord medicalRecord;
     public Patient(String hospitalID, String password, String name, LocalDate dateOfBirth, String gender, ContactInformation contactInformation) {
         super(hospitalID, password, name, dateOfBirth, gender, contactInformation);
         this.role = "Patient";
+        this.medicalRecord = new MedicalRecord(password, name, dateOfBirth, gender, contactInformation);
     }
 
     @Override
@@ -30,9 +34,6 @@ public class Patient extends User {
         // Implementation for patient logout
     }
 
-    public void viewMedicalRecords() {
-        // Implementation for viewing medical records
-    }
 
     public void requestAppointment() {
         // Implementation for requesting appointment
@@ -44,5 +45,9 @@ public class Patient extends User {
 
     public void updateContactInformation() {
         // Implementation for updating contact information
+    }
+
+    public MedicalRecord getMedicalRecord() {
+        return medicalRecord;
     }
 }

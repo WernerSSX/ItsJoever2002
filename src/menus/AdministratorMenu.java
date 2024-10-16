@@ -1,12 +1,10 @@
 package menus;
 
 import java.io.IOException;
-import user_classes.Administrator;
-import user_classes.Doctor;
-import user_classes.Pharmacist;
-import user_classes.Patient;
-import user_classes.User;
+import user_classes.*;
 import db.TextDB;
+
+import java.util.List;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,7 +20,7 @@ public class AdministratorMenu {
         this.textDB = textDB;
     }
 
-    public void showMenu(Scanner scanner, Administrator admin) {
+    public void showMenu(Scanner scanner, Administrator admin) throws IOException {
         boolean exit = false;
 
         while (!exit) {
@@ -30,7 +28,8 @@ public class AdministratorMenu {
             System.out.println("1. View Profile");
             System.out.println("2. Manage Users");
             System.out.println("3. View System Logs");
-            System.out.println("4. Log out");
+            System.out.println("4. Change own password");
+            System.out.println("5. Log out");
             System.out.print("Enter your choice: ");
             
             int choice = getIntInput(scanner);
@@ -46,6 +45,9 @@ public class AdministratorMenu {
                     viewSystemLogs();
                     break;
                 case 4:
+                    changePassword(scanner, admin);
+                    break;
+                case 5:
                     exit = true;
                     System.out.println("Logging out...");
                     break;
@@ -54,6 +56,32 @@ public class AdministratorMenu {
             }
         }
     }
+
+    // Change password
+    private void changePassword(Scanner scanner, Administrator admin) throws IOException {
+        System.out.print("Enter current password: ");
+        String currentPassword = scanner.nextLine();
+        if (admin.getPassword().equals(currentPassword)) {
+            System.out.print("Enter new password: ");
+            String newPassword = scanner.nextLine();
+            admin.setPassword(newPassword);
+            System.out.println("Password changed successfully.");
+        } else {
+            System.out.println("Incorrect current password.");
+        }
+    }
+
+
+    private void viewAllAppointments() {
+        List<Appointment> appointments = textDB.getAppointments();
+        System.out.println("\nAll Appointments:");
+        for (Appointment appointment : appointments) {
+            appointment.print();
+        }
+    }
+
+    
+    
 
     // View admin profile
     private void viewProfile(Administrator admin) {
@@ -65,7 +93,7 @@ public class AdministratorMenu {
     }
 
     // Manage users
-    private void manageUsers(Scanner scanner) {
+    private void manageUsers(Scanner scanner) throws IOException {
         boolean back = false;
 
         while (!back) {
@@ -73,7 +101,9 @@ public class AdministratorMenu {
             System.out.println("1. Add User");
             System.out.println("2. Remove User");
             System.out.println("3. View All Users");
-            System.out.println("4. Back to Menu");
+            System.out.println("4. Reset User Password");
+            System.out.println("5. View All Appts");
+            System.out.println("6. Back");
             System.out.print("Enter your choice: ");
             
             int choice = getIntInput(scanner);
@@ -89,6 +119,12 @@ public class AdministratorMenu {
                     viewAllUsers();
                     break;
                 case 4:
+                    resetUserPassword(scanner);
+                    break;
+                case 5:
+                    viewAllAppointments();
+                    break;
+                case 6:
                     back = true;
                     break;
                 default:
@@ -97,7 +133,7 @@ public class AdministratorMenu {
         }
     }
 
-    // Add a new user
+
     private void addUser(Scanner scanner) {
         System.out.println("\nAdd New User:");
 
@@ -123,7 +159,7 @@ public class AdministratorMenu {
         String gender = getNonEmptyString(scanner, "Enter Gender: ");
         String email = getNonEmptyString(scanner, "Enter Email: ");
         String phone = getNonEmptyString(scanner, "Enter Phone Number: ");
-        String password = getNonEmptyString(scanner, "Enter Password: ");
+        String password = "password"; // Default password
 
         User newUser = null;
 
@@ -154,10 +190,23 @@ public class AdministratorMenu {
 
         // Optionally, save immediately after adding
         try {
-            textDB.saveToFile("users.txt");
+            TextDB.saveToFile("users.txt");
             System.out.println("Changes saved to file.");
         } catch (IOException e) {
             System.out.println("Error saving to file: " + e.getMessage());
+        }
+    }
+
+    private void resetUserPassword(Scanner scanner) throws IOException {
+        System.out.print("Enter Hospital ID of the user: ");
+        String hospitalID = scanner.nextLine();
+        User user = textDB.getUserByHospitalID(hospitalID);
+        if (user != null) {
+            String newPassword = "password"; // Default password
+            user.setPassword(newPassword);
+            System.out.println("Password reset successfully for user with Hospital ID: " + hospitalID);
+        } else {
+            System.out.println("User with Hospital ID " + hospitalID + " not found.");
         }
     }
 
@@ -174,7 +223,7 @@ public class AdministratorMenu {
 
             // Save changes after removal
             try {
-                textDB.saveToFile("users.txt");
+                TextDB.saveToFile("users.txt");
                 System.out.println("Changes saved to file.");
             } catch (IOException e) {
                 System.out.println("Error saving to file: " + e.getMessage());

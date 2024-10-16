@@ -1,6 +1,8 @@
 package user_classes;
+import java.io.IOException;
 import java.time.LocalDate;
 import items.ContactInformation;
+import db.*;
 
 public abstract class User {
     private String hospitalID;
@@ -41,8 +43,9 @@ public abstract class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws IOException {
         this.password = password;
+        TextDB.updateUserPassword(this);
     }
 
     public String getName() {

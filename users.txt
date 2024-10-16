@@ -1,5 +1,5 @@
-A123|adminPass|Alice Smith|1980-05-15|Female|123-456-7890|alice@example.com|Administrator
-D456|docPass|Dr. Bob Jones|1975-08-22|Male|098-765-4321|bob@example.com|Doctor
-P789|pharmaPass|Charlie Brown|1990-12-05|Male|555-555-5555|charlie@example.com|Pharmacist
-PT012|patientPass|Daisy Miller|2000-07-30|Female|444-444-4444|daisy@example.com|Patient
-P788|password|Werner Tan|2002-11-20|Male|999|wtan@ntu.edu.sg|Patient
+D001|password|John Smith|1979-01-01|Male|johnsmith@hospital.org|999|Doctor
+D002|password|Emily Clarke|1986-01-01|Female|emilyclarke@hospital.org|999|Doctor
+P001|password|Mark Lee|1995-01-01|Male|marklee@hospital.org|999|Pharmacist
+A001|password|Sarah Lee|1984-01-01|Female|sarahlee@hospital.org|999|Administrator
+P002|password|Werner Tan|2002-10-16|M|wern@ntu.edu.sg|999|Patient

@@ -11,13 +11,14 @@ public class HospitalManagementSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String userFile = "users.txt"; // Text file containing user information
-
+        String appointmentFile = "appts.txt"; // Text file containing appointment information
         // Instantiate TextDB to manage users
-        TextDB textDB = new TextDB();
+        TextDB textDB = TextDB.getInstance();
 
-        // Load users from the file
+        // Load users & appts from the file
         try {
             textDB.loadFromFile(userFile);
+            textDB.loadAppointmentsFromFile(appointmentFile);
         } catch (IOException e) {
             System.out.println("Error reading user file: " + e.getMessage());
             // Optionally, exit the program if users cannot be loaded
@@ -67,7 +68,7 @@ public class HospitalManagementSystem {
                 case 5:
                     // Save Changes
                     try {
-                        textDB.saveToFile(userFile);
+                        TextDB.saveToFile(userFile);
                         System.out.println("Changes saved successfully!");
                     } catch (IOException e) {
                         System.out.println("Error saving user file: " + e.getMessage());
@@ -114,19 +115,34 @@ public class HospitalManagementSystem {
     }
 
     private static void navigateToMenu(Scanner scanner, User user, TextDB textDB) {
-        // Implement role-specific menus
         if (user instanceof Administrator) {
             AdministratorMenu adminMenu = new AdministratorMenu(textDB);
-            adminMenu.showMenu(scanner, (Administrator) user);
+            try {
+                adminMenu.showMenu(scanner, (Administrator) user);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (user instanceof Doctor) {
-            // DoctorMenu doctorMenu = new DoctorMenu(textDB);
-            // doctorMenu.showMenu(scanner, (Doctor) user);
+            DoctorMenu doctorMenu = new DoctorMenu(textDB);
+            try {
+                doctorMenu.showMenu(scanner, (Doctor) user);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (user instanceof Pharmacist) {
-            // PharmacistMenu pharmacistMenu = new PharmacistMenu(textDB);
-            // pharmacistMenu.showMenu(scanner, (Pharmacist) user);
+            PharmacistMenu pharmacistMenu = new PharmacistMenu(textDB);
+            try {
+                pharmacistMenu.showMenu(scanner, (Pharmacist) user);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (user instanceof Patient) {
-            // PatientMenu patientMenu = new PatientMenu(textDB);
-            // patientMenu.showMenu(scanner, (Patient) user);
+            PatientMenu patientMenu = new PatientMenu(textDB);
+            try {
+                patientMenu.showMenu(scanner, (Patient) user);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             System.out.println("Unknown role. Access denied.");
         }

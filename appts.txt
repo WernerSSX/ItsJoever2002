@@ -1,0 +1,4 @@
+1|P002|D001|2024-10-20T09:00-2024-10-20T09:30|Scheduled|Initial consultation
+2|P003|D002|2024-10-21T10:00-2024-10-21T10:30|Completed|Prescribed medication
+3|P001|D001|2024-10-22T11:00-2024-10-22T11:30|Cancelled|Patient requested cancellation
+4|P004|D003|2024-10-23T14:00-2024-10-23T14:30|Scheduled|N/A
