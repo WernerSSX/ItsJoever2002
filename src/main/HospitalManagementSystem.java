@@ -14,7 +14,6 @@ public class HospitalManagementSystem {
 
         boolean systemRunning = true;
 
-        // CLI loop
         while (systemRunning) {
             System.out.println("\n=== Welcome to the Hospital Management System ===");
             System.out.println("1. Administrator Login");

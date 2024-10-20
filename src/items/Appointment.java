@@ -11,6 +11,8 @@ public class Appointment {
     private String status;
     private String outcomeRecord;
 
+    
+
     public Appointment(int id, String patientId, String doctorId, TimeSlot timeSlot, String status, String outcomeRecord) {
         this.id = id;
         this.patientId = patientId;
@@ -63,6 +65,10 @@ public class Appointment {
 
     public String getOutcomeRecord() {
         return outcomeRecord;
+    }
+
+    public void setOutcomeRecord(String outcomeRecord) {
+        this.outcomeRecord = outcomeRecord;
     }
     
     public LocalDate getDate() {

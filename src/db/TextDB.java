@@ -83,11 +83,11 @@ public class TextDB {
                 System.err.println("Invalid schedule entry: " + line);
                 continue;
             }
-    
+
             String doctorId = fields[0];
             LocalDate date = LocalDate.parse(fields[1], DATE_FORMATTER);
             String timeSlotsStr = fields[2];
-    
+
             List<TimeSlot> timeSlots = new ArrayList<>();
             if (!timeSlotsStr.isEmpty()) {
                 String[] slots = timeSlotsStr.split(",");
@@ -99,15 +99,13 @@ public class TextDB {
                     }
                     LocalTime startTime = LocalTime.parse(times[0], TIME_FORMATTER);
                     LocalTime endTime = LocalTime.parse(times[1], TIME_FORMATTER);
-                    TimeSlot timeSlot = new TimeSlot(
-                            LocalDateTime.of(date, startTime),
-                            LocalDateTime.of(date, endTime),
-                            true
-                    );
-                    timeSlots.add(timeSlot);
+
+                    // Split the time range into 30-minute slots
+                    List<TimeSlot> splitSlots = splitInto30MinSlots(date, startTime, endTime);
+                    timeSlots.addAll(splitSlots);
                 }
             }
-    
+
             // Assign the time slots to the doctor's schedule
             Doctor doctor = (Doctor) getUserByHospitalID(doctorId);
             if (doctor != null) {
@@ -117,6 +115,33 @@ public class TextDB {
             }
         }
     }
+
+        /**
+     * Splits a given time range into 30-minute TimeSlots.
+     *
+     * @param date      The date of the slots.
+     * @param startTime The start time of the range.
+     * @param endTime   The end time of the range.
+     * @return A list of 30-minute TimeSlots.
+     */
+    private List<TimeSlot> splitInto30MinSlots(LocalDate date, LocalTime startTime, LocalTime endTime) {
+        List<TimeSlot> slots = new ArrayList<>();
+        LocalDateTime slotStart = LocalDateTime.of(date, startTime);
+        LocalDateTime slotEnd = slotStart.plusMinutes(30);
+
+        while (!slotStart.toLocalTime().isAfter(endTime.minusMinutes(30))) {
+            // Ensure that slotEnd does not exceed the overall endTime
+            if (slotEnd.toLocalTime().isAfter(endTime)) {
+                slotEnd = LocalDateTime.of(date, endTime);
+            }
+            slots.add(new TimeSlot(slotStart, slotEnd, true));
+            slotStart = slotEnd;
+            slotEnd = slotStart.plusMinutes(30);
+        }
+
+        return slots;
+    }
+
     
     
 
@@ -155,6 +180,7 @@ public class TextDB {
         }
         write(filename, lines);
     }
+
 
     /**
      * Updates a doctor's schedule and saves the changes to the schedules file.
@@ -335,7 +361,7 @@ public class TextDB {
     }
 
     public List<TimeSlot> getAvailableAppointmentSlots(LocalDate date, Doctor doctor) {
-        // Step 1: Retrieve the doctor's available slots for the date
+        // Retrieve the doctor's available slots for the date
         List<TimeSlot> doctorAvailableSlots = doctor.getAvailableTimeSlots(date);
         
         if (doctorAvailableSlots.isEmpty()) {
@@ -343,21 +369,26 @@ public class TextDB {
             return Collections.emptyList();
         }
 
-        // Step 2: Retrieve booked appointments for the doctor on the date
-        List<Appointment> bookedAppointments = loadAppointmentsForDateAndDoctor(date, doctor);
+        // Retrieve booked and requested appointments for the doctor on the date
+        List<Appointment> bookedOrRequestedAppointments = appointments.stream()
+                .filter(appt -> appt.getDoctorId().equals(doctor.getHospitalID()) &&
+                                appt.getDate().equals(date) &&
+                                (appt.getStatus().equalsIgnoreCase("Scheduled") || appt.getStatus().equalsIgnoreCase("Requested")))
+                .collect(Collectors.toList());
 
         // Extract the booked TimeSlots
-        List<TimeSlot> bookedTimeSlots = bookedAppointments.stream()
+        List<TimeSlot> occupiedSlots = bookedOrRequestedAppointments.stream()
                 .map(Appointment::getTimeSlot)
                 .collect(Collectors.toList());
 
-        // Step 3: Filter out the booked slots from the doctor's available slots
+        // Filter out the occupied slots from the doctor's available slots
         List<TimeSlot> availableSlots = doctorAvailableSlots.stream()
-                .filter(slot -> !bookedTimeSlots.contains(slot))
+                .filter(slot -> !occupiedSlots.contains(slot))
                 .collect(Collectors.toList());
 
         return availableSlots;
     }
+
 
     private List<TimeSlot> generateAllTimeSlotsForDate(LocalDate date) {
         List<TimeSlot> timeSlots = new ArrayList<>();
@@ -410,7 +441,6 @@ public class TextDB {
 
     // Appointment management methods
     public boolean addAppointment(Patient patient, Doctor doctor, LocalDate date, TimeSlot timeSlot) {
-        // Check if the timeSlot is valid for the given date and doctor
         List<TimeSlot> availableSlots = getAvailableAppointmentSlots(date, doctor);
         if (!availableSlots.contains(timeSlot)) {
             System.out.println("The selected time slot is not available.");
@@ -420,29 +450,70 @@ public class TextDB {
         // Generate a new unique appointment ID
         int newAppointmentId = generateNewAppointmentId();
 
-        // Create the new appointment
+        // Create the new appointment with status "Requested"
         Appointment newAppointment = new Appointment(newAppointmentId, 
-                                                     patient.getHospitalID(), 
-                                                     doctor.getHospitalID(), 
-                                                     timeSlot, 
-                                                     "Scheduled",
-                                                     "Booked");
+                                                    patient.getHospitalID(), 
+                                                    doctor.getHospitalID(), 
+                                                    timeSlot, 
+                                                    "Requested",
+                                                    "Pending");
 
         // Add the new appointment to the list
         appointments.add(newAppointment);
         
+        // Mark the TimeSlot as unavailable to prevent double booking
+        timeSlot.setAvailable(false);
+
         // Save the appointment to the file for persistence
         try {
             saveAppointmentsToFile("appts.txt");
+            saveSchedulesToFile("schedules.txt"); // Save the updated schedule
         } catch (IOException e) {
             System.out.println("Failed to save the appointment to the file.");
             e.printStackTrace();
             return false;
         }
 
-        System.out.println("Appointment successfully scheduled with Dr. " + doctor.getName() + " on " + date + " at " + timeSlot);
+        System.out.println("Appointment request successfully submitted with Dr. " + doctor.getName() + " on " + date + " at " + timeSlot + ".");
+        System.out.println("Please await doctor's approval.");
         return true;
     }
+
+        public List<Appointment> getRequestedAppointmentsByDoctor(String doctorId) {
+        return appointments.stream()
+                .filter(appt -> appt.getDoctorId().equals(doctorId) && appt.getStatus().equalsIgnoreCase("Requested"))
+                .collect(Collectors.toList());
+    }
+
+
+    public Appointment getAppointmentById(int appointmentId) {
+        for (Appointment appt : appointments) {
+            if (appt.getId() == appointmentId) {
+                return appt;
+            }
+        }
+        return null;
+    }
+
+    public void updateAppointmentStatus(int appointmentId, String newStatus) throws IOException {
+        Appointment appointment = getAppointmentById(appointmentId);
+        if (appointment != null) {
+            appointment.setStatus(newStatus);
+            if (newStatus.equalsIgnoreCase("Scheduled")) {
+                appointment.setOutcomeRecord("Booked");
+            } else if (newStatus.equalsIgnoreCase("Declined")) {
+                // Make the TimeSlot available again
+                appointment.getTimeSlot().setAvailable(true);
+                appointment.setOutcomeRecord("Declined");
+            }
+            saveAppointmentsToFile("appts.txt");
+            saveSchedulesToFile("schedules.txt"); // Save updated TimeSlot availability
+        } else {
+            System.err.println("Appointment with ID " + appointmentId + " not found.");
+        }
+    }
+
+
 
     public void removeAppointment(Appointment appointment) {
         appointments.remove(appointment);
@@ -726,22 +797,28 @@ public class TextDB {
                 .collect(Collectors.toList());
     }
     
-    public Appointment getAppointmentById(int appointmentId) {
-        for (Appointment appt : appointments) {
-            if (appt.getId() == appointmentId) {
-                return appt;
-            }
-        }
-        return null;
-    }
+    
+
     
     public void updateAppointment(Appointment updatedAppt) throws IOException {
         for (int i = 0; i < appointments.size(); i++) {
             if (appointments.get(i).getId() == updatedAppt.getId()) {
                 appointments.set(i, updatedAppt);
+                // Update TimeSlot availability based on status
+                if (updatedAppt.getStatus().equalsIgnoreCase("Scheduled")) {
+                    // Slot already marked as unavailable during request
+                    // No action needed
+                } else if (updatedAppt.getStatus().equalsIgnoreCase("Declined")) {
+                    // Make the TimeSlot available again
+                    updatedAppt.getTimeSlot().setAvailable(true);
+                }
                 saveAppointmentsToFile("appts.txt");
+                saveSchedulesToFile("schedules.txt"); // Save updated TimeSlot availability
                 break;
             }
         }
     }
+
+
+
 }

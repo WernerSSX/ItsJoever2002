@@ -35,7 +35,7 @@ public class DoctorMenu {
             System.out.println("5. Accept or Decline Appointment Requests");
             System.out.println("6. View Upcoming Appointments");
             System.out.println("7. Record Appointment Outcome");
-            System.out.println("8. Back");
+            System.out.println("8. Log out");
             System.out.print("Enter your choice: ");
 
             int choice = getIntInput(scanner);
@@ -45,7 +45,7 @@ public class DoctorMenu {
                     viewPatientMedicalRecords(scanner, doctor);
                     break;
                 case 2:
-                    updatePatientMedicalRecords(scanner, doctor);
+                    //updatePatientMedicalRecords(scanner, doctor);
                     break;
                 case 3:
                     viewPersonalSchedule(doctor);
@@ -72,12 +72,71 @@ public class DoctorMenu {
     }
 
     private void viewPatientMedicalRecords(Scanner scanner, Doctor doctor) {
-        // Implementation for viewing patient medical records
+        System.out.print("Enter Patient ID to view medical records: ");
+        String patientId = scanner.nextLine();
+
+        MedicalRecord record = textDB.getMedicalRecordByPatientId(patientId);
+        if (record == null) {
+            System.out.println("Medical record for Patient ID " + patientId + " not found.");
+            return;
+        }
+
+        System.out.println("\nMedical Record:");
+        System.out.println(record); 
     }
 
-    private void updatePatientMedicalRecords(Scanner scanner, Doctor doctor) {
-        // Implementation for updating patient medical records
+
+
+    private void acceptOrDeclineAppointmentRequests(Scanner scanner, Doctor doctor) throws IOException {
+    List<Appointment> requestedAppointments = textDB.getRequestedAppointmentsByDoctor(doctor.getHospitalID());
+
+    if (requestedAppointments.isEmpty()) {
+        System.out.println("You have no appointment requests to review.");
+        return;
     }
+
+    System.out.println("\nAppointment Requests:");
+        for (int i = 0; i < requestedAppointments.size(); i++) {
+            Appointment appt = requestedAppointments.get(i);
+            System.out.println((i + 1) + ". Appointment ID: " + appt.getId() +
+                            ", Patient ID: " + appt.getPatientId() +
+                            ", Date: " + appt.getDate().format(DATE_FORMATTER) +
+                            ", Time: " + appt.getTimeSlot());
+        }
+
+        System.out.print("Enter the number of the appointment you want to review (or 0 to cancel): ");
+        int choice = getIntInput(scanner) - 1;
+
+        if (choice == -1) {
+            System.out.println("Operation cancelled.");
+            return;
+        }
+
+        if (choice < 0 || choice >= requestedAppointments.size()) {
+            System.out.println("Invalid selection. Please try again.");
+            return;
+        }
+
+        Appointment selectedAppointment = requestedAppointments.get(choice);
+        selectedAppointment.print();
+
+        System.out.print("Do you want to accept this appointment? (y/n): ");
+        String decision = scanner.nextLine().trim().toLowerCase();
+
+        switch (decision) {
+            case "y":
+                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Scheduled");
+                System.out.println("Appointment ID " + selectedAppointment.getId() + " has been accepted and scheduled.");
+                break;
+            case "n":
+                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Declined");
+                System.out.println("Appointment ID " + selectedAppointment.getId() + " has been declined.");
+                break;
+            default:
+                System.out.println("Invalid input. Please enter 'accept' or 'decline'.");
+        }
+    }
+
 
     private void viewPersonalSchedule(Doctor doctor) {
         Schedule schedule = doctor.getSchedule();
@@ -141,9 +200,6 @@ public class DoctorMenu {
     }
 
 
-    private void acceptOrDeclineAppointmentRequests(Scanner scanner, Doctor doctor) {
-        // Implementation for accepting or declining appointment requests
-    }
 
     private void viewUpcomingAppointments(Doctor doctor) {
         List<Appointment> upcoming = textDB.getUpcomingAppointmentsByDoctorId(doctor.getHospitalID());

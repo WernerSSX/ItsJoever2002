@@ -9,3 +9,9 @@ NTU is bad for computer science
 4. Run with `java -cp out main.HospitalManagementSystem`
 
 ## Doxygen
+
+
+## Todo
+
+1. Refine Doctor Menu and Pharamacist menu
+

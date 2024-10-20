@@ -35,7 +35,7 @@ public class PatientMenu {
             System.out.println("7. View Appointment Status");
             System.out.println("8. View Appointment Outcome Records");
             System.out.println("9. Change Password");
-            System.out.println("0. Exit");
+            System.out.println("0. Log out");
             System.out.print("Enter your choice: ");
             int choice = getIntInput(scanner);
 
@@ -102,30 +102,31 @@ public class PatientMenu {
         List<Appointment> appointments = textDB.getAppointments().stream()
             .filter(appt -> appt.getPatientId().equals(patient.getHospitalID()))
             .collect(Collectors.toList());
-    
+
         if (appointments.isEmpty()) {
             System.out.println("You have no appointments.");
             return;
         }
-    
+
         System.out.println("\nYour Appointments:");
         for (Appointment appointment : appointments) {
             Doctor doctor = (Doctor) textDB.getUserByHospitalID(appointment.getDoctorId());
             String doctorName = (doctor != null) ? doctor.getName() : "Unknown Doctor";
-    
+
             // Extract date and time from TimeSlot
             LocalDate appointmentDate = appointment.getTimeSlot().getStartTime().toLocalDate();
             String formattedDate = appointmentDate.format(DATE_FORMATTER);
             String formattedStartTime = appointment.getTimeSlot().getStartTime().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
             String formattedEndTime = appointment.getTimeSlot().getEndTime().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
-    
+
             System.out.println("Appointment ID: " + appointment.getId() +
-                               ", Doctor: Dr. " + doctorName +
-                               ", Date: " + formattedDate +
-                               ", Time: " + formattedStartTime + " - " + formattedEndTime +
-                               ", Status: " + appointment.getStatus());
+                            ", Doctor: Dr. " + doctorName +
+                            ", Date: " + formattedDate +
+                            ", Time: " + formattedStartTime + " - " + formattedEndTime +
+                            ", Status: " + appointment.getStatus());
         }
     }
+
     
 
     private void viewAvailableAppointmentSlotsWithDoctor(Scanner scanner) {
@@ -202,30 +203,30 @@ public class PatientMenu {
             System.out.println("Invalid date format. Please try again.");
             return;
         }
-    
+
         // Step 2: Display list of available doctors
         List<Doctor> doctors = textDB.getAllDoctors();
         if (doctors.isEmpty()) {
             System.out.println("No doctors are currently available.");
             return;
         }
-    
+
         System.out.println("\nAvailable Doctors:");
         for (int i = 0; i < doctors.size(); i++) {
             System.out.println((i + 1) + ". Dr. " + doctors.get(i).getName() + " (ID: " + doctors.get(i).getHospitalID() + ")");
         }
-    
+
         System.out.print("Enter the number corresponding to the doctor you want to book an appointment with: ");
         int doctorIndex = getIntInput(scanner) - 1;
-    
+
         if (doctorIndex < 0 || doctorIndex >= doctors.size()) {
             System.out.println("Invalid selection. Please try again.");
             return;
         }
-    
+
         Doctor selectedDoctor = doctors.get(doctorIndex);
         System.out.println("You have selected Dr. " + selectedDoctor.getName());
-    
+
         // Step 3: Display available time slots for the selected doctor and date
         List<TimeSlot> availableSlots = textDB.getAvailableAppointmentSlots(date, selectedDoctor);
         
@@ -233,33 +234,32 @@ public class PatientMenu {
             System.out.println("No available slots for Dr. " + selectedDoctor.getName() + " on " + date + ". Please choose a different date or doctor.");
             return;
         }
-    
+
         System.out.println("\nAvailable Appointment Slots with Dr. " + selectedDoctor.getName() + " on " + date + ":");
         for (int i = 0; i < availableSlots.size(); i++) {
             System.out.println((i + 1) + ". " + availableSlots.get(i));
         }
-    
+
         // Step 4: Ask the user to select a time slot by entering its index
         System.out.print("Enter the number corresponding to the time slot you want to book: ");
         int slotIndex = getIntInput(scanner) - 1;
-    
+
         if (slotIndex < 0 || slotIndex >= availableSlots.size()) {
             System.out.println("Invalid selection. Please try again.");
             return;
         }
-    
+
         TimeSlot selectedSlot = availableSlots.get(slotIndex);
         System.out.println("You have selected " + selectedSlot);
-    
+
         // Step 5: Use the updated addAppointment method in TextDB
         boolean success = textDB.addAppointment(patient, selectedDoctor, date, selectedSlot);
-    
-        if (success) {
-            System.out.println("Appointment scheduled successfully with Dr. " + selectedDoctor.getName() + " on " + date + " at " + selectedSlot + ".");
-        } else {
-            System.out.println("Failed to schedule appointment. Please try again.");
+
+        if (!success) {
+            System.out.println("Failed to submit appointment request. Please try again.");
         }
     }
+
 
     private void rescheduleAppointment(Scanner scanner, Patient patient) {
         // Step 1: Retrieve and display the patient's appointments
