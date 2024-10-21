@@ -1,1 +1,0 @@
-P002|Werner Tan|1980-05-15|Male|555-1234|johndoe@example.com|O+|Hypertension;2022-01-10,Diabetes;2023-03-15|Consultation;2024-10-15;Metformin:pending,Insulin:pending;Patient advised to monitor blood sugar levels|consult;2024-10-20;NULL;Check sugar levels, levels normal|X-ray;2024-10-20;NULL;Chest X-ray shows no abnormalities
