@@ -1,0 +1,37 @@
+name: Java CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set Up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'  # Specify your Java version
+        distribution: 'temurin'
+
+    - name: Compile Java Code
+      run: |
+        mkdir -p out
+        find src -name "*.java" > sources.txt
+        javac -d out @sources.txt
+
+    - name: Run Unit Tests
+      run: |
+        # Test Case 1
+        echo "Running Test Case 1"
+        java -cp out main.HospitalManagementSystem < test/input1.txt > test/output1.txt
+        diff test/output1.txt test/expected_output1.txt
+
+
+        

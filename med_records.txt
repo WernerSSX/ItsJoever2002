@@ -1,0 +1,1 @@
+P002|Werner Tan|1980-05-15|Male|555-1234|johndoe@example.com|O+|Hypertension;2022-01-10,Diabetes;2023-03-15|Consultation;2024-10-15;Metformin:pending,Insulin:pending;Patient advised to monitor blood sugar levels|blood test;2024-10-28;NULL;cholestrol high|D98765

@@ -156,7 +156,7 @@ public class AdministratorMenu {
 
         String name = getNonEmptyString(scanner, "Enter Name: ");
         LocalDate dateOfBirth = getValidDate(scanner, "Enter Date of Birth (yyyy-MM-dd): ");
-        String gender = getNonEmptyString(scanner, "Enter Gender: ");
+        String gender = getNonEmptyString(scanner, "Enter Gender(Male/Female): ");
         String email = getNonEmptyString(scanner, "Enter Email: ");
         String phone = getNonEmptyString(scanner, "Enter Phone Number: ");
         String password = "password"; // Default password

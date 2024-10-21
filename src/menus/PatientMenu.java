@@ -77,15 +77,12 @@ public class PatientMenu {
 
     private void viewMedicalRecord(Patient patient) {
         MedicalRecord record = patient.getMedicalRecord();
-        System.out.println("\nMedical Record:");
-        System.out.println("Patient ID: " + patient.getHospitalID());
-        System.out.println("Name: " + patient.getName());
-        System.out.println("Date of Birth: " + patient.getDateOfBirth());
-        System.out.println("Gender: " + patient.getGender());
-        System.out.println("Contact Information: " + patient.getContactInformation());
-        System.out.println("Blood Type: " + record.getBloodType());
-        System.out.println("Past Diagnoses: " + record.getPastDiagnoses());
-        System.out.println("Past Treatments: " + record.getPastTreatments());
+        if (record == null) {
+            System.out.println("No medical record found.");
+            return;
+        }
+        System.out.println();
+        record.display();
     }
 
     private void updateContactInformation(Scanner scanner, Patient patient) {

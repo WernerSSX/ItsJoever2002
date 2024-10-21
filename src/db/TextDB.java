@@ -499,19 +499,35 @@ public class TextDB {
         Appointment appointment = getAppointmentById(appointmentId);
         if (appointment != null) {
             appointment.setStatus(newStatus);
-            if (newStatus.equalsIgnoreCase("Scheduled")) {
-                appointment.setOutcomeRecord("Booked");
-            } else if (newStatus.equalsIgnoreCase("Declined")) {
-                // Make the TimeSlot available again
-                appointment.getTimeSlot().setAvailable(true);
-                appointment.setOutcomeRecord("Declined");
+            
+            switch (newStatus.toLowerCase()) {
+                case "completed":
+                    // Do not set outcomeRecord here; it will be handled in recordAppointmentOutcome
+                    break;
+                case "declined":
+                case "cancelled":
+                case "scheduled":
+                    // Make the TimeSlot available again if necessary
+                    if (newStatus.equalsIgnoreCase("declined") || newStatus.equalsIgnoreCase("cancelled")) {
+                        appointment.getTimeSlot().setAvailable(true);
+                    }
+                    // Set outcomeRecord to "NULL" since there's no detailed outcome
+                    appointment.setOutcomeRecord("NULL");
+                    break;
+                default:
+                    // Handle other statuses if any
+                    appointment.setOutcomeRecord("NULL");
+                    break;
             }
+            
             saveAppointmentsToFile("appts.txt");
             saveSchedulesToFile("schedules.txt"); // Save updated TimeSlot availability
         } else {
             System.err.println("Appointment with ID " + appointmentId + " not found.");
         }
     }
+    
+    
 
 
 
@@ -579,7 +595,7 @@ public class TextDB {
     
     public void addMedicalRecord(MedicalRecord record) throws IOException {
         medicalRecords.add(record);
-        saveMedicalRecordsToFile("medical_records.txt");
+        saveMedicalRecordsToFile("med_records.txt");
     }
     
     private void loadMedicalRecordsFromFile(String filename) throws IOException {
@@ -599,7 +615,6 @@ public class TextDB {
     }
     
     private String serializeMedicalRecord(MedicalRecord record) {
-        // Using SEPARATOR to join fields
         StringBuilder sb = new StringBuilder();
         sb.append(record.getPatientID()).append(SEPARATOR);
         sb.append(record.getName()).append(SEPARATOR);
@@ -634,11 +649,13 @@ public class TextDB {
     
         return sb.toString();
     }
+    
+      
 
     
     
     private MedicalRecord deserializeMedicalRecord(String data) {
-        String[] fields = data.split("\\" + SEPARATOR);
+        String[] fields = data.split("\\" + SEPARATOR, -1); // -1 to include trailing empty strings
         if (fields.length < 9) { // Updated to expect 9 fields
             throw new IllegalArgumentException("Invalid medical record data: " + data);
         }
@@ -654,7 +671,7 @@ public class TextDB {
         ContactInformation contactInfo = new ContactInformation(phone, email);
     
         List<Diagnosis> diagnoses = new ArrayList<>();
-        if (!fields[7].equals("NULL")) {
+        if (!fields[7].equals("NULL") && !fields[7].trim().isEmpty()) {
             String[] diagParts = fields[7].split(",");
             for (String diag : diagParts) {
                 String[] diagFields = diag.split(";");
@@ -665,7 +682,7 @@ public class TextDB {
         }
     
         List<Treatment> treatments = new ArrayList<>();
-        if (!fields[8].equals("NULL")) {
+        if (!fields[8].equals("NULL") && !fields[8].trim().isEmpty()) {
             String[] treatParts = fields[8].split("\\|");
             for (String treat : treatParts) {
                 treatments.add(Treatment.deserialize(treat));
@@ -680,6 +697,7 @@ public class TextDB {
     
         return record;
     }
+    
 
     /**
      * Assigns a doctor to a patient by updating the patient's medical record.
@@ -768,7 +786,7 @@ public class TextDB {
         }
 
         if (found) {
-            saveMedicalRecordsToFile("medical_records.txt");
+            saveMedicalRecordsToFile("med_records.txt");
         } else {
             System.err.println("Medical record for patient ID " + updatedRecord.getPatientID() + " not found.");
         }

@@ -1,6 +1,7 @@
 package items;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -166,6 +167,48 @@ public class MedicalRecord {
             // For simplicity, add to the last treatment
             this.pastTreatments.get(this.pastTreatments.size() - 1).addPrescription(prescription);
         }
+    }
+
+    public void display() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        System.out.println("--------------------------------------------------");
+        System.out.println("               Medical Record");
+        System.out.println("--------------------------------------------------");
+        System.out.println("Patient ID       : " + patientID);
+        System.out.println("Name             : " + name);
+        System.out.println("Date of Birth    : " + dateOfBirth.format(dateFormatter));
+        System.out.println("Gender           : " + gender);
+        System.out.println("Contact Information:");
+        System.out.println("  Phone Number   : " + contactInformation.getPhoneNumber());
+        System.out.println("  Email Address  : " + contactInformation.getEmailAddress());
+        System.out.println("Blood Type       : " + bloodType);
+        System.out.println();
+
+        // Display Past Diagnoses
+        System.out.println("Past Diagnoses:");
+        if (pastDiagnoses == null || pastDiagnoses.isEmpty()) {
+            System.out.println("  No past diagnoses recorded.");
+        } else {
+            for (Diagnosis diag : pastDiagnoses) {
+                System.out.println("  - " + diag.getDescription() + " (Date: " + diag.getDate().format(dateFormatter) + ")");
+            }
+        }
+        System.out.println();
+
+        // Display Past Treatments
+        System.out.println("Past Treatments:");
+        if (pastTreatments == null || pastTreatments.isEmpty()) {
+            System.out.println("  No past treatments recorded.");
+        } else {
+            for (Treatment treat : pastTreatments) {
+                treat.display();
+            }
+        }
+        System.out.println();
+
+        // Assigned Doctor
+        System.out.println("Assigned Doctor ID: " + (assignedDoctorId != null ? assignedDoctorId : "None"));
+        System.out.println("--------------------------------------------------");
     }
 
     @Override

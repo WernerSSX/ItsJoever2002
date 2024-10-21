@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
 import items.*;
 
 
@@ -73,7 +75,7 @@ public class DoctorMenu {
 
     private void viewPatientMedicalRecords(Scanner scanner, Doctor doctor) {
         System.out.print("Enter Patient ID to view medical records: ");
-        String patientId = scanner.nextLine();
+        String patientId = scanner.nextLine().trim();
 
         MedicalRecord record = textDB.getMedicalRecordByPatientId(patientId);
         if (record == null) {
@@ -81,8 +83,8 @@ public class DoctorMenu {
             return;
         }
 
-        System.out.println("\nMedical Record:");
-        System.out.println(record); 
+        System.out.println();
+        record.display();
     }
 
 
@@ -202,24 +204,180 @@ public class DoctorMenu {
 
 
     private void viewUpcomingAppointments(Doctor doctor) {
-        List<Appointment> upcoming = textDB.getUpcomingAppointmentsByDoctorId(doctor.getHospitalID());
-        System.out.println("Upcoming Appointments:");
-        for (Appointment appt : upcoming) {
-            System.out.println(appt);
+        // Fetch all appointments
+        List<Appointment> allAppointments = textDB.getAppointments();
+
+        // Current date and time for comparison
+        LocalDateTime now = LocalDateTime.now();
+
+        // Filter appointments based on:
+        // 1. Assigned to the current doctor
+        // 2. Status is "Scheduled"
+        // 3. Start time is after the current time
+        List<Appointment> upcomingAppointments = allAppointments.stream()
+                .filter(appt -> appt.getDoctorId().equals(doctor.getHospitalID()))
+                .filter(appt -> appt.getStatus().equalsIgnoreCase("Scheduled"))
+                .filter(appt -> appt.getTimeSlot().getStartTime().isAfter(now))
+                .sorted((a1, a2) -> a1.getTimeSlot().getStartTime().compareTo(a2.getTimeSlot().getStartTime()))
+                .collect(Collectors.toList());
+
+        if (upcomingAppointments.isEmpty()) {
+            System.out.println("You have no upcoming appointments.");
+            return;
+        }
+
+        System.out.println("\nUpcoming Appointments:");
+        for (int i = 0; i < upcomingAppointments.size(); i++) {
+            Appointment appt = upcomingAppointments.get(i);
+            String date = appt.getTimeSlot().getStartTime().format(DATE_FORMATTER);
+            String startTime = appt.getTimeSlot().getStartTime().format(TIME_FORMATTER);
+            String endTime = appt.getTimeSlot().getEndTime().format(TIME_FORMATTER);
+            System.out.println((i + 1) + ". Appointment ID: " + appt.getId() +
+                    ", Patient ID: " + appt.getPatientId() +
+                    ", Date: " + date +
+                    ", Time: " + startTime + " - " + endTime);
         }
     }
 
-    private void recordAppointmentOutcome(Scanner scanner, Doctor doctor) {
-        // Implementation for recording appointment outcome
+
+
+    /**
+     * Allows the doctor to record the outcome of a completed appointment.
+     *
+     * Appointment Outcome Record includes:
+     * - Date of Appointment
+     * - Type of service provided (e.g., consultation, X-ray, blood test etc.)
+     * - Any prescribed medications:
+     *   - Medication name
+     *   - Status (default is pending)
+     * - Consultation notes
+     *
+     * @param scanner Scanner object for user input
+     * @param doctor  The doctor recording the outcome
+     * @throws IOException If an I/O error occurs during data saving
+     */
+    public void recordAppointmentOutcome(Scanner scanner, Doctor doctor) throws IOException {
+        LocalDateTime now = LocalDateTime.now();
+        // Step 1: Fetch eligible appointments
+        List<Appointment> eligibleAppointments = textDB.getAppointments().stream()
+            .filter(appt -> appt.getDoctorId().equals(doctor.getHospitalID()))
+            .filter(appt -> appt.getStatus().equalsIgnoreCase("Scheduled"))
+            .filter(appt -> appt.getTimeSlot().getStartTime().isAfter(now))
+            .sorted((a1, a2) -> a1.getTimeSlot().getStartTime().compareTo(a2.getTimeSlot().getStartTime()))
+            .collect(Collectors.toList());
+
+        if (eligibleAppointments.isEmpty()) {
+            System.out.println("You have no completed appointments to record outcomes for.");
+            return;
+        }
+
+        // Step 2: Display the eligible appointments
+        System.out.println("\nCompleted Appointments:");
+        for (int i = 0; i < eligibleAppointments.size(); i++) {
+            Appointment appt = eligibleAppointments.get(i);
+            System.out.println((i + 1) + ". Appointment ID: " + appt.getId() +
+                    ", Patient ID: " + appt.getPatientId() +
+                    ", Date: " + appt.getDate().format(DATE_FORMATTER) +
+                    ", Time: " + appt.getTimeSlot().getStartTime().toLocalTime().format(TIME_FORMATTER) +
+                    " - " + appt.getTimeSlot().getEndTime().toLocalTime().format(TIME_FORMATTER));
+        }
+
+        // Step 3: Select an appointment
+        System.out.print("Enter the number of the appointment to record outcome (or 0 to cancel): ");
+        int choice = getIntInput(scanner) - 1;
+
+        if (choice == -1 || choice >= eligibleAppointments.size()) {
+            System.out.println("Operation cancelled or invalid selection.");
+            return;
+        }
+
+        Appointment selectedAppt = eligibleAppointments.get(choice);
+
+        // Step 4: Input outcome data
+        System.out.println("\nRecording outcome for Appointment ID: " + selectedAppt.getId());
+
+        // Type of service
+        System.out.print("Enter the type of service provided (e.g., consultation, X-ray, blood test): ");
+        String serviceType = scanner.nextLine().trim();
+        while (serviceType.isEmpty()) {
+            System.out.print("Service type cannot be empty. Please enter again: ");
+            serviceType = scanner.nextLine().trim();
+        }
+
+        // Prescribed medications
+        List<Prescription> prescriptions = new ArrayList<>();
+        System.out.println("Enter prescribed medications (enter 'done' when finished):");
+        while (true) {
+            System.out.print("Medication Name (or 'done'): ");
+            String medName = scanner.nextLine().trim();
+            if (medName.equalsIgnoreCase("done")) {
+                break;
+            }
+            if (medName.isEmpty()) {
+                System.out.println("Medication name cannot be empty.");
+                continue;
+            }
+            System.out.print("Status for " + medName + " (default is 'pending'): ");
+            String status = scanner.nextLine().trim();
+            if (status.isEmpty()) {
+                status = "pending";
+            }
+            prescriptions.add(new Prescription(medName, status));
+        }
+
+        // Consultation notes
+        System.out.print("Enter consultation notes: ");
+        String consultationNotes = scanner.nextLine().trim();
+        while (consultationNotes.isEmpty()) {
+            System.out.print("Consultation notes cannot be empty. Please enter again: ");
+            consultationNotes = scanner.nextLine().trim();
+        }
+
+        // Step 5: Create Treatment object
+        Treatment treatment = new Treatment();
+        treatment.setServiceType(serviceType);
+        treatment.setDateOfAppointment(selectedAppt.getTimeSlot().getStartTime().toLocalDate());
+        treatment.setTreatmentComments(consultationNotes);
+        for (Prescription p : prescriptions) {
+            treatment.addPrescription(p);
+        }
+
+        // Step 6: Update MedicalRecord
+        MedicalRecord record = textDB.getMedicalRecordByPatientId(selectedAppt.getPatientId());
+        if (record == null) {
+            System.out.println("Medical record for Patient ID " + selectedAppt.getPatientId() + " not found.");
+            return;
+        }
+
+        record.addTreatment(treatment);
+        textDB.updateMedicalRecord(record);
+
+        // Step 7: Update Appointment status to "Completed" and set outcomeRecord
+        selectedAppt.setStatus("Completed");
+        selectedAppt.setOutcomeRecord(treatment.serialize());
+        textDB.updateAppointment(selectedAppt);
+
+        System.out.println("Appointment outcome recorded successfully.");
     }
 
+    /**
+     * Utility method to safely get integer input from the user.
+     *
+     * @param scanner Scanner object for user input
+     * @return The integer entered by the user
+     */
     private int getIntInput(Scanner scanner) {
-        while (!scanner.hasNextInt()) {
-            System.out.print("Invalid input. Please enter a number: ");
-            scanner.next();
+        while (true) {
+            if (scanner.hasNextInt()) {
+                int num = scanner.nextInt();
+                scanner.nextLine(); // consume the newline character
+                return num;
+            } else {
+                System.out.print("Invalid input. Please enter a valid number: ");
+                scanner.nextLine(); // consume the invalid input
+            }
         }
-        int out = scanner.nextInt();
-        scanner.nextLine();
-        return out;
     }
+
+
 }
