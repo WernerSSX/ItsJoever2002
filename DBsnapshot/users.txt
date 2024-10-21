@@ -1,0 +1,6 @@
+D001|password|John Smith|1979-01-01|Male|999|johnsmith@hospital.org|Doctor
+D002|password|Emily Clarke|1986-01-01|Female|999|emilyclarke@hospital.org|Doctor
+P001|password|Mark Lee|1995-01-01|Male|999|marklee@hospital.org|Pharmacist
+A001|password|Sarah Lee|1984-01-01|Female|999|sarahlee@hospital.org|Administrator
+P002|password|Werner Tan|2002-10-16|Male|991|wen@e.ntu.edu.sg|Patient
+P003|password|Wern|2002-01-01|Male|w@e.ntu.edu|909|Patient

@@ -1,0 +1,255 @@
+
+=== Welcome to the Hospital Management System ===
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): Enter Hospital ID: Enter Password: Patient logged in successfully!
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 
+Available Doctors:
+1. Dr. John Smith (ID: D001)
+2. Dr. Emily Clarke (ID: D002)
+Enter the number corresponding to the doctor you want to view available slots for: You have selected Dr. John Smith
+Enter the date (yyyy-MM-dd) for which you want to see available slots: Dr. John Smith has not set availability for 2024-10-27.
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 
+Available Doctors:
+1. Dr. John Smith (ID: D001)
+2. Dr. Emily Clarke (ID: D002)
+Enter the number corresponding to the doctor you want to view available slots for: You have selected Dr. John Smith
+Enter the date (yyyy-MM-dd) for which you want to see available slots: 
+Available Appointment Slots with Dr. John Smith on 2024-10-28:
+1. 09:00 - 09:30
+2. 09:30 - 10:00
+3. 10:00 - 10:30
+4. 10:30 - 11:00
+5. 11:00 - 11:30
+6. 11:30 - 12:00
+7. 12:00 - 12:30
+8. 12:30 - 13:00
+9. 13:00 - 13:30
+10. 13:30 - 14:00
+11. 14:00 - 14:30
+12. 14:30 - 15:00
+13. 15:00 - 15:30
+14. 16:00 - 16:30
+15. 16:30 - 17:00
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: Enter the date (yyyy-MM-dd) for which you want to schedule an appointment: 
+Available Doctors:
+1. Dr. John Smith (ID: D001)
+2. Dr. Emily Clarke (ID: D002)
+Enter the number corresponding to the doctor you want to book an appointment with: You have selected Dr. John Smith
+
+Available Appointment Slots with Dr. John Smith on 2024-10-28:
+1. 09:00 - 09:30
+2. 09:30 - 10:00
+3. 10:00 - 10:30
+4. 10:30 - 11:00
+5. 11:00 - 11:30
+6. 11:30 - 12:00
+7. 12:00 - 12:30
+8. 12:30 - 13:00
+9. 13:00 - 13:30
+10. 13:30 - 14:00
+11. 14:00 - 14:30
+12. 14:30 - 15:00
+13. 15:00 - 15:30
+14. 16:00 - 16:30
+15. 16:30 - 17:00
+Enter the number corresponding to the time slot you want to book: You have selected 13:00 - 13:30
+Appointment request successfully submitted with Dr. John Smith on 2024-10-28 at 13:00 - 13:30.
+Please await doctor's approval.
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 
+Your Appointments:
+Appointment ID: 1, Doctor: Dr. John Smith, Date: 2024-10-20, Time: 09:00 - 09:30, Status: Completed
+Appointment ID: 4, Doctor: Dr. John Smith, Date: 2024-10-28, Time: 15:30 - 16:00, Status: Declined
+Appointment ID: 5, Doctor: Dr. John Smith, Date: 2024-10-28, Time: 15:30 - 16:00, Status: Scheduled
+Appointment ID: 6, Doctor: Dr. John Smith, Date: 2024-10-28, Time: 13:00 - 13:30, Status: Requested
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 
+=== Welcome to the Hospital Management System ===
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): Enter Hospital ID: Enter Password: Doctor logged in successfully!
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+8. Log out
+Enter your choice: 
+Appointment Requests:
+1. Appointment ID: 6, Patient ID: P002, Date: 2024-10-28, Time: 13:00 - 13:30
+Enter the number of the appointment you want to review (or 0 to cancel): 
+Appointment ID: 6
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 13:00 - 13:30
+Status: Requested
+Outcome Record: Pending
+Do you want to accept this appointment? (y/n): Appointment ID 6 has been accepted and scheduled.
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+8. Log out
+Enter your choice: 
+Upcoming Appointments:
+1. Appointment ID: 6, Patient ID: P002, Date: 2024-10-28, Time: 13:00 - 13:30
+2. Appointment ID: 5, Patient ID: P002, Date: 2024-10-28, Time: 15:30 - 16:00
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+8. Log out
+Enter your choice: 
+Completed Appointments:
+1. Appointment ID: 6, Patient ID: P002, Date: 2024-10-28, Time: 13:00 - 13:30
+2. Appointment ID: 5, Patient ID: P002, Date: 2024-10-28, Time: 15:30 - 16:00
+Enter the number of the appointment to record outcome (or 0 to cancel): 
+Recording outcome for Appointment ID: 6
+Enter the type of service provided (e.g., consultation, X-ray, blood test): Enter prescribed medications (enter 'done' when finished):
+Medication Name (or 'done'): Enter consultation notes: Appointment outcome recorded successfully.
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+8. Log out
+Enter your choice: Enter Patient ID to view medical records: 
+--------------------------------------------------
+               Medical Record
+--------------------------------------------------
+Patient ID       : P002
+Name             : Werner Tan
+Date of Birth    : 1980-05-15
+Gender           : Male
+Contact Information:
+  Phone Number   : 555-1234
+  Email Address  : johndoe@example.com
+Blood Type       : O+
+
+Past Diagnoses:
+  - Hypertension (Date: 2022-01-10)
+  - Diabetes (Date: 2023-03-15)
+
+Past Treatments:
+  ------------------------------------------------
+    Service Type      : Consultation
+    Date of Appointment: 2024-10-15
+    Prescribed Medications:
+      - Metformin | Status: pending
+      - Insulin | Status: pending
+    Consultation Notes : Patient advised to monitor blood sugar levels
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type      : blood test
+    Date of Appointment: 2024-10-28
+    Prescribed Medications:
+      No medications prescribed.
+    Consultation Notes : cholestrol high
+  ------------------------------------------------
+
+Assigned Doctor ID: blood test;2024-10-28;NULL;cholestrol high
+--------------------------------------------------
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+8. Log out
+Enter your choice: 
+=== Welcome to the Hospital Management System ===
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): Exiting system...
