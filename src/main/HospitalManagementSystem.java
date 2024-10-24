@@ -1,11 +1,11 @@
 package main;
 
-import java.io.IOException;
-import java.util.Scanner;
-import user_classes.*;
-import java.util.List;
 import db.TextDB;
+import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
 import menus.*;
+import user_classes.*;
 
 public class HospitalManagementSystem {
     public static void main(String[] args) {
@@ -77,8 +77,11 @@ public class HospitalManagementSystem {
     private static void handleLogin(Scanner scanner, TextDB textDB, String role) {
         System.out.print("Enter Hospital ID: ");
         String inputHospitalID = scanner.nextLine();
+        // POSSIBLE UPDATE: Include Error Handling and minimal requirements for Hospital ID
         System.out.print("Enter Password: ");
         String inputPass = scanner.nextLine();
+        // POSSIBLE UPDATE: Include Error Handling and minimal requirements for Password
+        // POSSIBLE UPDATE: Include "Forget Password" Feature
 
         User user = getUserByRoleAndID(textDB.getUsers(), role, inputHospitalID);
 
