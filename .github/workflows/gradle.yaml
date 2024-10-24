@@ -22,9 +22,7 @@ jobs:
 
     - name: Compile Java Code
       run: |
-        mkdir -p out
-        find src -name "*.java" > sources.txt
-        javac -d out @sources.txt
+        javac -d out $(find src -name "*.java")
 
     # Step to copy the DB snapshot into place before running tests
     - name: Copy DB snapshot to working directory
