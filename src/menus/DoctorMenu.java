@@ -6,7 +6,6 @@ import user_classes.Doctor;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,10 @@ import java.util.stream.Collectors;
 
 import items.*;
 
-
+/**
+ * The DoctorMenu class provides an interactive menu for doctors to manage patient records,
+ * appointments, schedules, and other related tasks.
+ */
 public class DoctorMenu {
     private TextDB textDB;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -25,6 +27,13 @@ public class DoctorMenu {
         this.textDB = textDB;
     }
 
+    /**
+     * Displays the Doctor Menu and handles user selections.
+     *
+     * @param scanner Scanner object for user input
+     * @param doctor  The currently logged-in doctor
+     * @throws IOException If an I/O error occurs during operations
+     */
     public void showMenu(Scanner scanner, Doctor doctor) throws IOException {
         boolean back = false;
 
@@ -33,11 +42,11 @@ public class DoctorMenu {
             System.out.println("1. View Patient Medical Records");
             System.out.println("2. Update Patient Medical Records");
             System.out.println("3. View Personal Schedule");
-            System.out.println("4. Set Availability");
+            System.out.println("4. Set Availability for Appointments");
             System.out.println("5. Accept or Decline Appointment Requests");
             System.out.println("6. View Upcoming Appointments");
             System.out.println("7. Record Appointment Outcome");
-            System.out.println("8. Log out");
+            System.out.println("0. Logout");
             System.out.print("Enter your choice: ");
 
             int choice = getIntInput(scanner);
@@ -47,13 +56,13 @@ public class DoctorMenu {
                     viewPatientMedicalRecords(scanner, doctor);
                     break;
                 case 2:
-                    //updatePatientMedicalRecords(scanner, doctor);
+                    updatePatientMedicalRecords(scanner, doctor);
                     break;
                 case 3:
                     viewPersonalSchedule(doctor);
                     break;
                 case 4:
-                    setAvailability(scanner, doctor);
+                    setAvailabilityForAppointments(scanner, doctor);
                     break;
                 case 5:
                     acceptOrDeclineAppointmentRequests(scanner, doctor);
@@ -64,8 +73,9 @@ public class DoctorMenu {
                 case 7:
                     recordAppointmentOutcome(scanner, doctor);
                     break;
-                case 8:
+                case 0:
                     back = true;
+                    System.out.println("Logging out...");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -73,6 +83,12 @@ public class DoctorMenu {
         }
     }
 
+    /**
+     * Views a patient's medical records based on Patient ID.
+     *
+     * @param scanner Scanner object for user input
+     * @param doctor  The currently logged-in doctor
+     */
     private void viewPatientMedicalRecords(Scanner scanner, Doctor doctor) {
         System.out.print("Enter Patient ID to view medical records: ");
         String patientId = scanner.nextLine().trim();
@@ -87,59 +103,92 @@ public class DoctorMenu {
         record.display();
     }
 
+    /**
+     * Updates a patient's medical records by adding new treatments.
+     *
+     * @param scanner Scanner object for user input
+     * @param doctor  The currently logged-in doctor
+     * @throws IOException If an I/O error occurs during data saving
+     */
+    private void updatePatientMedicalRecords(Scanner scanner, Doctor doctor) throws IOException {
+        System.out.print("Enter Patient ID to update medical records: ");
+        String patientId = scanner.nextLine().trim();
 
-
-    private void acceptOrDeclineAppointmentRequests(Scanner scanner, Doctor doctor) throws IOException {
-    List<Appointment> requestedAppointments = textDB.getRequestedAppointmentsByDoctor(doctor.getHospitalID());
-
-    if (requestedAppointments.isEmpty()) {
-        System.out.println("You have no appointment requests to review.");
-        return;
-    }
-
-    System.out.println("\nAppointment Requests:");
-        for (int i = 0; i < requestedAppointments.size(); i++) {
-            Appointment appt = requestedAppointments.get(i);
-            System.out.println((i + 1) + ". Appointment ID: " + appt.getId() +
-                            ", Patient ID: " + appt.getPatientId() +
-                            ", Date: " + appt.getDate().format(DATE_FORMATTER) +
-                            ", Time: " + appt.getTimeSlot());
-        }
-
-        System.out.print("Enter the number of the appointment you want to review (or 0 to cancel): ");
-        int choice = getIntInput(scanner) - 1;
-
-        if (choice == -1) {
-            System.out.println("Operation cancelled.");
+        MedicalRecord record = textDB.getMedicalRecordByPatientId(patientId);
+        if (record == null) {
+            System.out.println("Medical record for Patient ID " + patientId + " not found.");
             return;
         }
 
-        if (choice < 0 || choice >= requestedAppointments.size()) {
-            System.out.println("Invalid selection. Please try again.");
-            return;
+        System.out.println("Existing Medical Record:");
+        record.display();
+
+        // Create a new Treatment
+        Treatment treatment = new Treatment();
+
+        // Service Type
+        System.out.print("Enter the type of service provided (e.g., consultation, X-ray, blood test): ");
+        String serviceType = scanner.nextLine().trim();
+        while (serviceType.isEmpty()) {
+            System.out.print("Service type cannot be empty. Please enter again: ");
+            serviceType = scanner.nextLine().trim();
+        }
+        treatment.setServiceType(serviceType);
+
+        // Date of Appointment
+        LocalDate dateOfAppointment = null;
+        while (dateOfAppointment == null) {
+            System.out.print("Enter date of appointment (yyyy-MM-dd): ");
+            String dateStr = scanner.nextLine().trim();
+            try {
+                dateOfAppointment = LocalDate.parse(dateStr, DATE_FORMATTER);
+            } catch (Exception e) {
+                System.out.println("Invalid date format. Please try again.");
+            }
+        }
+        treatment.setDateOfAppointment(dateOfAppointment);
+
+        // Treatment Comments
+        System.out.print("Enter treatment comments: ");
+        String treatmentComments = scanner.nextLine().trim();
+        while (treatmentComments.isEmpty()) {
+            System.out.print("Treatment comments cannot be empty. Please enter again: ");
+            treatmentComments = scanner.nextLine().trim();
+        }
+        treatment.setTreatmentComments(treatmentComments);
+
+        // Prescribed Medications
+        System.out.println("Enter prescribed medications (enter 'done' when finished):");
+        while (true) {
+            System.out.print("Medication Name (or 'done'): ");
+            String medName = scanner.nextLine().trim();
+            if (medName.equalsIgnoreCase("done")) {
+                break;
+            }
+            if (medName.isEmpty()) {
+                System.out.println("Medication name cannot be empty.");
+                continue;
+            }
+            System.out.print("Status for " + medName + " (default is 'pending'): ");
+            String status = scanner.nextLine().trim();
+            if (status.isEmpty()) {
+                status = "pending";
+            }
+            treatment.addPrescription(new Prescription(medName, status));
         }
 
-        Appointment selectedAppointment = requestedAppointments.get(choice);
-        selectedAppointment.print();
+        // Add the new Treatment to the Medical Record
+        record.addTreatment(treatment);
+        textDB.updateMedicalRecord(record);
 
-        System.out.print("Do you want to accept this appointment? (y/n): ");
-        String decision = scanner.nextLine().trim().toLowerCase();
-
-        switch (decision) {
-            case "y":
-                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Scheduled");
-                System.out.println("Appointment ID " + selectedAppointment.getId() + " has been accepted and scheduled.");
-                break;
-            case "n":
-                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Declined");
-                System.out.println("Appointment ID " + selectedAppointment.getId() + " has been declined.");
-                break;
-            default:
-                System.out.println("Invalid input. Please enter 'accept' or 'decline'.");
-        }
+        System.out.println("Medical record updated successfully.");
     }
 
-
+    /**
+     * Displays the doctor's personal schedule.
+     *
+     * @param doctor The currently logged-in doctor
+     */
     private void viewPersonalSchedule(Doctor doctor) {
         Schedule schedule = doctor.getSchedule();
         System.out.println("Personal Schedule:");
@@ -153,7 +202,14 @@ public class DoctorMenu {
         }
     }
 
-    private void setAvailability(Scanner scanner, Doctor doctor) throws IOException {
+    /**
+     * Sets the doctor's availability for appointments.
+     *
+     * @param scanner Scanner object for user input
+     * @param doctor  The currently logged-in doctor
+     * @throws IOException If an I/O error occurs during data saving
+     */
+    private void setAvailabilityForAppointments(Scanner scanner, Doctor doctor) throws IOException {
         System.out.print("Enter date to set availability (yyyy-MM-dd): ");
         String dateStr = scanner.nextLine();
         LocalDate date;
@@ -178,11 +234,17 @@ public class DoctorMenu {
             String endStr = scanner.nextLine();
 
             try {
-                LocalTime startTime = LocalTime.parse(startStr, TIME_FORMATTER);
-                LocalTime endTime = LocalTime.parse(endStr, TIME_FORMATTER);
+                LocalDateTime startTime = LocalDateTime.of(date, java.time.LocalTime.parse(startStr, TIME_FORMATTER));
+                LocalDateTime endTime = LocalDateTime.of(date, java.time.LocalTime.parse(endStr, TIME_FORMATTER));
+
+                if (endTime.isBefore(startTime) || endTime.equals(startTime)) {
+                    System.out.println("End time must be after start time. Please try again.");
+                    continue;
+                }
+
                 TimeSlot slot = new TimeSlot(
-                        LocalDateTime.of(date, startTime),
-                        LocalDateTime.of(date, endTime),
+                        startTime,
+                        endTime,
                         true
                 );
                 availableSlots.add(slot);
@@ -201,8 +263,71 @@ public class DoctorMenu {
         }
     }
 
+    /**
+     * Accepts or declines appointment requests for the doctor.
+     *
+     * @param scanner Scanner object for user input
+     * @param doctor  The currently logged-in doctor
+     * @throws IOException If an I/O error occurs during data saving
+     */
+    private void acceptOrDeclineAppointmentRequests(Scanner scanner, Doctor doctor) throws IOException {
+        List<Appointment> requestedAppointments = textDB.getRequestedAppointmentsByDoctor(doctor.getHospitalID());
 
+        if (requestedAppointments.isEmpty()) {
+            System.out.println("You have no appointment requests to review.");
+            return;
+        }
 
+        System.out.println("\nAppointment Requests:");
+        for (int i = 0; i < requestedAppointments.size(); i++) {
+            Appointment appt = requestedAppointments.get(i);
+            System.out.println((i + 1) + ". Appointment ID: " + appt.getId() +
+                            ", Patient ID: " + appt.getPatientId() +
+                            ", Date: " + appt.getDate().format(DATE_FORMATTER) +
+                            ", Time: " + appt.getTimeSlot().getStartTime().toLocalTime().format(TIME_FORMATTER) +
+                            " - " + appt.getTimeSlot().getEndTime().toLocalTime().format(TIME_FORMATTER));
+        }
+
+        System.out.print("Enter the number of the appointment you want to review (or 0 to cancel): ");
+        int choice = getIntInput(scanner) - 1;
+
+        if (choice == -1) {
+            System.out.println("Operation cancelled.");
+            return;
+        }
+
+        if (choice < 0 || choice >= requestedAppointments.size()) {
+            System.out.println("Invalid selection. Please try again.");
+            return;
+        }
+
+        Appointment selectedAppointment = requestedAppointments.get(choice);
+        selectedAppointment.print();
+
+        System.out.print("Do you want to accept this appointment? (y/n): ");
+        String decision = scanner.nextLine().trim().toLowerCase();
+
+        switch (decision) {
+            case "y":
+            case "yes":
+                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Scheduled");
+                System.out.println("Appointment ID " + selectedAppointment.getId() + " has been accepted and scheduled.");
+                break;
+            case "n":
+            case "no":
+                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Declined");
+                System.out.println("Appointment ID " + selectedAppointment.getId() + " has been declined.");
+                break;
+            default:
+                System.out.println("Invalid input. Please enter 'y' or 'n'.");
+        }
+    }
+
+    /**
+     * Views the doctor's upcoming appointments.
+     *
+     * @param doctor The currently logged-in doctor
+     */
     private void viewUpcomingAppointments(Doctor doctor) {
         // Fetch all appointments
         List<Appointment> allAppointments = textDB.getAppointments();
@@ -239,21 +364,11 @@ public class DoctorMenu {
         }
     }
 
-
-
     /**
-     * Allows the doctor to record the outcome of a completed appointment.
-     *
-     * Appointment Outcome Record includes:
-     * - Date of Appointment
-     * - Type of service provided (e.g., consultation, X-ray, blood test etc.)
-     * - Any prescribed medications:
-     *   - Medication name
-     *   - Status (default is pending)
-     * - Consultation notes
+     * Records the outcome of a completed appointment.
      *
      * @param scanner Scanner object for user input
-     * @param doctor  The doctor recording the outcome
+     * @param doctor  The currently logged-in doctor
      * @throws IOException If an I/O error occurs during data saving
      */
     public void recordAppointmentOutcome(Scanner scanner, Doctor doctor) throws IOException {
@@ -262,7 +377,7 @@ public class DoctorMenu {
         List<Appointment> eligibleAppointments = textDB.getAppointments().stream()
             .filter(appt -> appt.getDoctorId().equals(doctor.getHospitalID()))
             .filter(appt -> appt.getStatus().equalsIgnoreCase("Scheduled"))
-            .filter(appt -> appt.getTimeSlot().getStartTime().isAfter(now))
+            .filter(appt -> appt.getTimeSlot().getStartTime().isBefore(now))
             .sorted((a1, a2) -> a1.getTimeSlot().getStartTime().compareTo(a2.getTimeSlot().getStartTime()))
             .collect(Collectors.toList());
 
@@ -378,6 +493,4 @@ public class DoctorMenu {
             }
         }
     }
-
-
 }

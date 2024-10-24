@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.FileInputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -18,12 +16,15 @@ import java.util.stream.Collectors;
 import user_classes.*;
 import items.*;
 
+
 public class TextDB {
     private static TextDB instance;
     private List<MedicalRecord> medicalRecords;
     public static final String SEPARATOR = "|";
     private static List<User> users;
     private static List<Appointment> appointments;
+    private List<Medication> medications;
+    public List<ReplenishmentRequest> replenishmentRequests;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
@@ -31,7 +32,10 @@ public class TextDB {
         users = new ArrayList<>();
         appointments = new ArrayList<>();
         medicalRecords = new ArrayList<>();
+        medications = new ArrayList<>();
+        replenishmentRequests = new ArrayList<>();
     }
+    
 
     public static TextDB getInstance() {
         if (instance == null) {
@@ -49,11 +53,14 @@ public class TextDB {
      * Loads all data including users, appointments, medical records, and schedules.
      */
     private void loadAllData() throws IOException {
+        loadMedicalRecordsFromFile("med_records.txt");
         loadFromFile("users.txt");
         loadAppointmentsFromFile("appts.txt");
-        loadMedicalRecordsFromFile("med_records.txt");
         loadSchedulesFromFile("schedules.txt");
+        loadMedicationInventory("inventory.txt");
+        loadReplenishmentRequests("replenishment_requests.txt");
     }
+    
 
     /**
      * Saves all data including users, appointments, medical records, and schedules.
@@ -63,6 +70,8 @@ public class TextDB {
         saveAppointmentsToFile("appts.txt");
         saveMedicalRecordsToFile("med_records.txt");
         saveSchedulesToFile("schedules.txt");
+        saveMedicationInventory("inventory.txt");
+        saveReplenishmentRequests("replenishment_requests.txt");
     }
 
     // Existing methods for Users, Appointments, and MedicalRecords...
@@ -259,41 +268,38 @@ public class TextDB {
                 user.getName(),
                 user.getDateOfBirth().format(DATE_FORMATTER),
                 user.getGender(),
-                user.getContactInformation().getPhoneNumber(),
-                user.getContactInformation().getEmailAddress(),
                 user.getRole());
     }
+    
+    
 
     private User deserializeUser(String userData) {
         String[] fields = userData.split("\\" + SEPARATOR);
-        if (fields.length < 8) {
+        if (fields.length < 6) {
             throw new IllegalArgumentException("Invalid user data: " + userData);
         }
-
+    
         String hospitalID = fields[0];
         String password = fields[1];
         String name = fields[2];
         LocalDate dateOfBirth = LocalDate.parse(fields[3], DATE_FORMATTER);
         String gender = fields[4];
-        String phone = fields[5];
-        String email = fields[6];
-        String role = fields[7].toLowerCase();
-
-        ContactInformation contactInformation = new ContactInformation(phone, email);
-
+        String role = fields[5].toLowerCase();
+    
         switch (role) {
             case "administrator":
-                return new Administrator(hospitalID, password, name, dateOfBirth, gender, contactInformation);
+                return new Administrator(hospitalID, password, name, dateOfBirth, gender);
             case "doctor":
-                return new Doctor(hospitalID, password, name, dateOfBirth, gender, contactInformation, new Schedule());
+                return new Doctor(hospitalID, password, name, dateOfBirth, gender, new Schedule());
             case "patient":
-                return new Patient(hospitalID, password, name, dateOfBirth, gender, contactInformation);
+                return new Patient(hospitalID, password, name, dateOfBirth, gender);
             case "pharmacist":
-                return new Pharmacist(hospitalID, password, name, dateOfBirth, gender, contactInformation);
+                return new Pharmacist(hospitalID, password, name, dateOfBirth, gender);
             default:
                 throw new IllegalArgumentException("Unknown role: " + role);
         }
     }
+    
 
     public static void write(String fileName, List<String> data) throws IOException {
         PrintWriter out = new PrintWriter(new FileWriter(fileName));
@@ -614,62 +620,83 @@ public class TextDB {
         write(filename, stringList);
     }
     
+
+    /**
+     * Serializes the MedicalRecord object into a string.
+     *
+     * Format:
+     * patientID|name|dateOfBirth|gender|phone|email|bloodType|diag1;date1,diag2;date2|treatment1^treatment2|NULL
+     *
+     * Note: The last field for Assigned Doctor ID is removed.
+     *
+     * @return Serialized string representation of the MedicalRecord
+     */
     private String serializeMedicalRecord(MedicalRecord record) {
         StringBuilder sb = new StringBuilder();
+
+        // Basic information
         sb.append(record.getPatientID()).append(SEPARATOR);
         sb.append(record.getName()).append(SEPARATOR);
         sb.append(record.getDateOfBirth().format(DATE_FORMATTER)).append(SEPARATOR);
         sb.append(record.getGender()).append(SEPARATOR);
         sb.append(record.getContactInformation().getPhoneNumber()).append(SEPARATOR);
         sb.append(record.getContactInformation().getEmailAddress()).append(SEPARATOR);
-        sb.append(record.getBloodType()).append(SEPARATOR);
-    
+        sb.append(record.getBloodType() != null ? record.getBloodType() : "NULL").append(SEPARATOR);
+
         // Serialize Diagnoses
         if (record.getPastDiagnoses() != null && !record.getPastDiagnoses().isEmpty()) {
             String diagnoses = record.getPastDiagnoses().stream()
                 .map(d -> d.getDescription() + ";" + d.getDate().format(DATE_FORMATTER))
                 .collect(Collectors.joining(","));
-            sb.append(diagnoses).append(SEPARATOR);
+            sb.append(diagnoses);
         } else {
-            sb.append("NULL").append(SEPARATOR);
+            sb.append("NULL");
         }
-    
-        // Serialize Treatments
+        sb.append(SEPARATOR);
+
+        // Serialize Treatments using '^' as the separator
         if (record.getPastTreatments() != null && !record.getPastTreatments().isEmpty()) {
             String treatments = record.getPastTreatments().stream()
                 .map(Treatment::serialize)
-                .collect(Collectors.joining("|"));
-            sb.append(treatments).append(SEPARATOR);
+                .collect(Collectors.joining("^")); // Ensure '^' is used here
+            sb.append(treatments);
         } else {
-            sb.append("NULL").append(SEPARATOR);
+            sb.append("NULL");
         }
-    
-        // Serialize Assigned Doctor ID
-        sb.append(record.getAssignedDoctorId() != null ? record.getAssignedDoctorId() : "NULL");
-    
+        // No Assigned Doctor ID field
+        // sb.append(SEPARATOR).append(record.getAssignedDoctorId() != null ? record.getAssignedDoctorId() : "NULL");
+
         return sb.toString();
     }
-    
-      
 
-    
-    
+    /**
+     * Deserializes a MedicalRecord object from a string.
+     *
+     * Expected Format:
+     * patientID|name|dateOfBirth|gender|phone|email|bloodType|diag1;date1,diag2;date2|treatment1^treatment2
+     *
+     * @param data Serialized string representation of the MedicalRecord
+     * @return MedicalRecord object
+     */
     private MedicalRecord deserializeMedicalRecord(String data) {
-        String[] fields = data.split("\\" + SEPARATOR, -1); // -1 to include trailing empty strings
-        if (fields.length < 9) { // Updated to expect 9 fields
+        String[] fields = data.split("\\" + SEPARATOR, -1); // -1 to include empty trailing fields
+
+        if (fields.length < 9) { // Expecting 9 fields now
             throw new IllegalArgumentException("Invalid medical record data: " + data);
         }
-    
+
+        // Basic information
         String patientID = fields[0];
         String name = fields[1];
         LocalDate dob = LocalDate.parse(fields[2], DATE_FORMATTER);
         String gender = fields[3];
         String phone = fields[4];
         String email = fields[5];
-        String bloodType = fields[6];
-    
+        String bloodType = fields[6].equals("NULL") ? null : fields[6];
+
         ContactInformation contactInfo = new ContactInformation(phone, email);
-    
+
+        // Deserialize Diagnoses
         List<Diagnosis> diagnoses = new ArrayList<>();
         if (!fields[7].equals("NULL") && !fields[7].trim().isEmpty()) {
             String[] diagParts = fields[7].split(",");
@@ -680,79 +707,25 @@ public class TextDB {
                 }
             }
         }
-    
+
+        // Deserialize Treatments using '^' as the separator
         List<Treatment> treatments = new ArrayList<>();
         if (!fields[8].equals("NULL") && !fields[8].trim().isEmpty()) {
-            String[] treatParts = fields[8].split("\\|");
+            String[] treatParts = fields[8].split("\\^"); // Ensure '^' is used here
             for (String treat : treatParts) {
-                treatments.add(Treatment.deserialize(treat));
+                treatments.add(Treatment.deserialize(treat)); // Ensure Treatment.deserialize handles the format correctly
             }
         }
-    
-        // Assigned Doctor ID
-        String assignedDoctorId = fields.length > 9 && !fields[9].equals("NULL") ? fields[9] : null;
-    
+
+        // Create and return the MedicalRecord
         MedicalRecord record = new MedicalRecord(patientID, name, dob, gender, contactInfo, bloodType, diagnoses, treatments);
-        record.setAssignedDoctorId(assignedDoctorId);
-    
+        // No Assigned Doctor ID
+        // record.setAssignedDoctorId(assignedDoctorId);
+
         return record;
     }
+
     
-
-    /**
-     * Assigns a doctor to a patient by updating the patient's medical record.
-     *
-     * @param doctorId  The hospital ID of the doctor.
-     * @param patientId The hospital ID of the patient.
-     * @throws IOException If an I/O error occurs during the update.
-     */
-    public void assignDoctorToPatient(String doctorId, String patientId) throws IOException {
-        MedicalRecord record = getMedicalRecordByPatientId(patientId);
-        if (record == null) {
-            System.err.println("Medical record for patient ID " + patientId + " not found.");
-            return;
-        }
-
-        if (record.getAssignedDoctorId() != null) {
-            System.out.println("Patient already has a doctor assigned: " + record.getAssignedDoctorId());
-            return;
-        }
-
-        // Assign the doctor
-        record.setAssignedDoctorId(doctorId);
-        updateMedicalRecord(record);
-        System.out.println("Doctor " + doctorId + " has been assigned to patient " + patientId + ".");
-    }
-
-    /**
-     * Unassigns a doctor from a patient by updating the patient's medical record.
-     *
-     * @param doctorId  The hospital ID of the doctor.
-     * @param patientId The hospital ID of the patient.
-     * @throws IOException If an I/O error occurs during the update.
-     */
-    public void unassignDoctorFromPatient(String doctorId, String patientId) throws IOException {
-        MedicalRecord record = getMedicalRecordByPatientId(patientId);
-        if (record == null) {
-            System.err.println("Medical record for patient ID " + patientId + " not found.");
-            return;
-        }
-
-        if (record.getAssignedDoctorId() == null) {
-            System.out.println("No doctor is currently assigned to patient " + patientId + ".");
-            return;
-        }
-
-        if (!record.getAssignedDoctorId().equals(doctorId)) {
-            System.out.println("Doctor " + doctorId + " is not assigned to patient " + patientId + ".");
-            return;
-        }
-
-        // Unassign the doctor
-        record.setAssignedDoctorId(null);
-        updateMedicalRecord(record);
-        System.out.println("Doctor " + doctorId + " has been unassigned from patient " + patientId + ".");
-    }
 
     /**
      * Retrieves the MedicalRecord object for a given patient ID.
@@ -784,13 +757,14 @@ public class TextDB {
                 break;
             }
         }
-
+    
         if (found) {
             saveMedicalRecordsToFile("med_records.txt");
         } else {
             System.err.println("Medical record for patient ID " + updatedRecord.getPatientID() + " not found.");
         }
     }
+    
     
 
     // Additional Appointment Management Enhancements
@@ -836,6 +810,131 @@ public class TextDB {
             }
         }
     }
+
+
+
+// ====================== Medication and prescription ========================= //
+
+    /**
+     * Loads medication inventory from the specified file.
+     *
+     * @param filename The name of the inventory file.
+     * @throws IOException If an I/O error occurs.
+     */
+    public void loadMedicationInventory(String filename) throws IOException {
+        List<String> lines = read(filename);
+        medications.clear();
+        for (String line : lines) {
+            medications.add(deserializeMedication(line));
+        }
+    }
+
+    /**
+     * Saves medication inventory to the specified file.
+     *
+     * @param filename The name of the inventory file.
+     * @throws IOException If an I/O error occurs.
+     */
+    public void saveMedicationInventory(String filename) throws IOException {
+        List<String> lines = new ArrayList<>();
+        for (Medication med : medications) {
+            lines.add(serializeMedication(med));
+        }
+        write(filename, lines);
+    }
+
+    private String serializeMedication(Medication medication) {
+        return String.join("|",
+                medication.getName(),
+                String.valueOf(medication.getQuantity()),
+                medication.getSupplier() != null ? medication.getSupplier() : "NULL"
+        );
+    }
+
+    private Medication deserializeMedication(String data) {
+        String[] parts = data.split("\\|", -1);
+        if (parts.length != 3) {
+            throw new IllegalArgumentException("Invalid Medication data: " + data);
+        }
+        String name = parts[0];
+        int quantity = Integer.parseInt(parts[1]);
+        String supplier = parts[2].equals("NULL") ? null : parts[2];
+        return new Medication(name, quantity, supplier);
+    }
+
+    /**
+     * Retrieves an unmodifiable list of medications.
+     *
+     * @return Unmodifiable list of medications.
+     */
+    public List<Medication> getMedications() {
+        return Collections.unmodifiableList(medications);
+    }
+
+    /**
+     * Updates a medication in the inventory.
+     *
+     * @param updatedMedication The updated Medication object.
+     */
+    public void updateMedication(Medication updatedMedication) throws IOException {
+        boolean found = false;
+        for (int i = 0; i < medications.size(); i++) {
+            if (medications.get(i).getName().equalsIgnoreCase(updatedMedication.getName())) {
+                medications.set(i, updatedMedication);
+                found = true;
+                break;
+            }
+        }
+        if (found) {
+            saveMedicationInventory("inventory.txt");
+        } else {
+            System.err.println("Medication " + updatedMedication.getName() + " not found in inventory.");
+        }
+    }
+
+    /**
+     * Loads replenishment requests from the specified file.
+     *
+     * @param filename The name of the replenishment requests file.
+     * @throws IOException If an I/O error occurs.
+     */
+    public void loadReplenishmentRequests(String filename) throws IOException {
+        List<String> lines = read(filename);
+        replenishmentRequests.clear();
+        for (String line : lines) {
+            replenishmentRequests.add(deserializeReplenishmentRequest(line));
+        }
+    }
+
+    /**
+     * Saves replenishment requests to the specified file.
+     *
+     * @param filename The name of the replenishment requests file.
+     * @throws IOException If an I/O error occurs.
+     */
+    public void saveReplenishmentRequests(String filename) throws IOException {
+        List<String> lines = new ArrayList<>();
+        for (ReplenishmentRequest request : replenishmentRequests) {
+            lines.add(request.serialize());
+        }
+        write(filename, lines);
+    }
+
+    private ReplenishmentRequest deserializeReplenishmentRequest(String data) {
+        return ReplenishmentRequest.deserialize(data);
+    }
+
+    /**
+     * Adds a new replenishment request.
+     *
+     * @param request The ReplenishmentRequest object to add.
+     */
+    public void addReplenishmentRequest(ReplenishmentRequest request) throws IOException {
+        replenishmentRequests.add(request);
+        saveReplenishmentRequests("replenishment_requests.txt");
+    }
+
+
 
 
 

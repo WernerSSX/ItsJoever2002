@@ -5,8 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import db.TextDB;
-
 /**
  * The Treatment class represents a treatment plan, including prescribed medications, service type,
  * date of appointment, and comments.
@@ -16,6 +14,7 @@ public class Treatment {
     private LocalDate dateOfAppointment;
     private List<Prescription> allPrescribedMedicine;
     private String treatmentComments;
+    private String doctorId;
 
     /**
      * Default constructor initializes the list of prescribed medicines.
@@ -32,11 +31,12 @@ public class Treatment {
      * @param dateOfAppointment  Date of the appointment
      * @param treatmentComments  Comments regarding the treatment
      */
-    public Treatment(String serviceType, LocalDate dateOfAppointment, String treatmentComments) {
+    public Treatment(String serviceType, LocalDate dateOfAppointment, String treatmentComments, String doctorId) {
         this.serviceType = serviceType;
         this.dateOfAppointment = dateOfAppointment;
         this.allPrescribedMedicine = new ArrayList<>();
         this.treatmentComments = treatmentComments;
+        this.doctorId = doctorId;
     }
 
     // Getters and Setters
@@ -73,6 +73,14 @@ public class Treatment {
         this.treatmentComments = treatmentComments;
     }
 
+    public String getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
+    }
+
     /**
      * Prints all prescribed medicines with their details.
      */
@@ -104,7 +112,7 @@ public class Treatment {
      * Serializes the Treatment object into a string.
      *
      * Format:
-     * serviceType;dateOfAppointment;med1:status1,med2:status2;treatmentComments
+     * serviceType;dateOfAppointment;med1:status1,med2:status2;treatmentComments;doctorId
      *
      * @return Serialized string representation of the Treatment
      */
@@ -112,7 +120,7 @@ public class Treatment {
         StringBuilder sb = new StringBuilder();
         sb.append(serviceType != null ? serviceType : "NULL").append(";");
         sb.append(dateOfAppointment != null ? dateOfAppointment.format(DateTimeFormatter.ISO_LOCAL_DATE) : "NULL").append(";");
-
+        
         // Serialize Prescribed Medications
         if (allPrescribedMedicine != null && !allPrescribedMedicine.isEmpty()) {
             String meds = String.join(",",
@@ -124,10 +132,13 @@ public class Treatment {
             sb.append("NULL");
         }
         sb.append(";");
-
+        
         // Serialize Treatment Comments (escape semicolons)
-        sb.append(treatmentComments != null ? treatmentComments.replace(";", "\\;") : "NULL");
-
+        sb.append(treatmentComments != null ? treatmentComments.replace(";", "\\;") : "NULL").append(";");
+        
+        // Serialize Doctor ID
+        sb.append(doctorId != null ? doctorId : "NULL");
+        
         return sb.toString();
     }
 
@@ -135,14 +146,14 @@ public class Treatment {
      * Deserializes a Treatment object from a string.
      *
      * Expected Format:
-     * serviceType;dateOfAppointment;med1:status1,med2:status2;treatmentComments
+     * serviceType;dateOfAppointment;med1:status1,med2:status2;treatmentComments;doctorId
      *
      * @param data Serialized string representation of the Treatment
      * @return Treatment object
      */
     public static Treatment deserialize(String data) {
         String[] parts = data.split(";", -1); // -1 to include trailing empty strings
-        if (parts.length != 4) {
+        if (parts.length != 5) {
             throw new IllegalArgumentException("Invalid Treatment data: " + data);
         }
 
@@ -150,11 +161,13 @@ public class Treatment {
         LocalDate dateOfAppointment = parts[1].equals("NULL") ? null : LocalDate.parse(parts[1], DateTimeFormatter.ISO_LOCAL_DATE);
         String medsPart = parts[2];
         String treatmentComments = parts[3].equals("NULL") ? "" : parts[3].replace("\\;", ";");
+        String doctorId = parts[4].equals("NULL") ? null : parts[4];
 
         Treatment treatment = new Treatment();
         treatment.setServiceType(serviceType);
         treatment.setDateOfAppointment(dateOfAppointment);
         treatment.setTreatmentComments(treatmentComments);
+        treatment.setDoctorId(doctorId);
 
         if (!medsPart.equals("NULL") && !medsPart.trim().isEmpty()) {
             String[] meds = medsPart.split(",");
@@ -169,26 +182,35 @@ public class Treatment {
         return treatment;
     }
 
+
+    /**
+     * Displays the Treatment details including Doctor ID.
+     */
     public void display() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         System.out.println("  ------------------------------------------------");
-        System.out.println("    Service Type      : " + (serviceType != null ? serviceType : "N/A"));
-        System.out.println("    Date of Appointment: " + (dateOfAppointment != null ? dateOfAppointment.format(dateFormatter) : "N/A"));
+        System.out.println("    Service Type        : " + (serviceType != null ? serviceType : "N/A"));
+        System.out.println("    Date of Appointment  : " + (dateOfAppointment != null ? dateOfAppointment.format(dateFormatter) : "N/A"));
         
         // Prescribed Medications
         System.out.println("    Prescribed Medications:");
         if (allPrescribedMedicine == null || allPrescribedMedicine.isEmpty()) {
-            System.out.println("      No medications prescribed.");
+            System.out.println("      - NULL");
         } else {
             for (Prescription presc : allPrescribedMedicine) {
                 System.out.println("      - " + presc.getMedicationName() + " | Status: " + presc.getStatus());
             }
         }
-
+        
         // Treatment Comments
-        System.out.println("    Consultation Notes : " + (treatmentComments != null && !treatmentComments.trim().isEmpty() ? treatmentComments : "None"));
+        System.out.println("    Consultation Notes   : " + (treatmentComments != null && !treatmentComments.trim().isEmpty() ? treatmentComments : "None"));
+        
+        // Display Doctor ID
+        System.out.println("    Doctor ID            : " + (doctorId != null ? doctorId : "N/A"));
         System.out.println("  ------------------------------------------------");
     }
+
+    
     
     @Override
     public String toString() {

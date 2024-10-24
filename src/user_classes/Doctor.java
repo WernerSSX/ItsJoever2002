@@ -25,12 +25,11 @@ public class Doctor extends User {
      * @param name              Full name of the doctor
      * @param dateOfBirth       Date of birth
      * @param gender            Gender of the doctor
-     * @param contactInformation Contact information (phone number, email)
      * @param schedule          Initial schedule of the doctor
      */
     public Doctor(String hospitalID, String password, String name, LocalDate dateOfBirth,
-                  String gender, ContactInformation contactInformation, Schedule schedule) {
-        super(hospitalID, password, name, dateOfBirth, gender, contactInformation);
+                  String gender, Schedule schedule) {
+        super(hospitalID, password, name, dateOfBirth, gender);
         this.patientIds = new ArrayList<>();
         this.schedule = schedule != null ? schedule : new Schedule();
         this.role = "Doctor";
@@ -49,9 +48,9 @@ public class Doctor extends User {
      * @param patientIds         List of patient hospital IDs assigned to the doctor
      */
     public Doctor(String hospitalID, String password, String name, LocalDate dateOfBirth,
-                  String gender, ContactInformation contactInformation, Schedule schedule,
+                  String gender, Schedule schedule,
                   List<String> patientIds) {
-        super(hospitalID, password, name, dateOfBirth, gender, contactInformation);
+        super(hospitalID, password, name, dateOfBirth, gender);
         this.schedule = schedule != null ? schedule : new Schedule();
         this.patientIds = patientIds != null ? patientIds : new ArrayList<>();
     }
@@ -101,38 +100,6 @@ public class Doctor extends User {
      */
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
-    }
-
-    /**
-     * Assigns a patient to the doctor.
-     *
-     * @param patientId Hospital ID of the patient to assign
-     */
-    public void assignPatient(String patientId) {
-        addPatient(patientId);
-        // Optionally, update the patient's record to include this doctor
-        try {
-            TextDB.getInstance().assignDoctorToPatient(this.hospitalID, patientId);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Unassigns a patient from the doctor.
-     *
-     * @param patientId Hospital ID of the patient to unassign
-     */
-    public void unassignPatient(String patientId) {
-        removePatient(patientId);
-        // Optionally, update the patient's record to remove this doctor
-        try {
-            TextDB.getInstance().unassignDoctorFromPatient(this.hospitalID, patientId);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 
     
@@ -193,15 +160,13 @@ public class Doctor extends User {
      */
     @Override
     public String toString() {
-        return "Doctor{" +
+        return "Doctor: " +
                 "hospitalID='" + hospitalID + '\'' +
                 ", name='" + name + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", gender='" + gender + '\'' +
-                ", contactInformation=" + contactInformation +
                 ", patientIds=" + patientIds +
-                ", schedule=" + schedule +
-                '}';
+                ", schedule=" + schedule;
     }
 
     @Override

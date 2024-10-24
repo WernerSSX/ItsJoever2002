@@ -10,17 +10,16 @@ public abstract class User {
     protected String name;
     protected LocalDate dateOfBirth; // Changed to LocalDate
     protected String gender;
-    protected ContactInformation contactInformation;
+
     static int userCount = 0;
     public String role;
 
-    public User(String hospitalID, String password, String name, LocalDate dateOfBirth, String gender, ContactInformation contactInformation) {
+    public User(String hospitalID, String password, String name, LocalDate dateOfBirth, String gender) {
         this.hospitalID = hospitalID;
         this.password = password;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.contactInformation = contactInformation;
     }
 
     public String getRole() {
@@ -72,13 +71,6 @@ public abstract class User {
         this.gender = gender;
     }
 
-    public ContactInformation getContactInformation() {
-        return contactInformation;
-    }
-
-    public void setContactInformation(ContactInformation contactInformation) {
-        this.contactInformation = contactInformation;
-    }
 
     public abstract void login();
 

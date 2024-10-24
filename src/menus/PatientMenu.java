@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 
 public class PatientMenu {
     private TextDB textDB;
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public PatientMenu(TextDB textDB) {
@@ -76,7 +78,7 @@ public class PatientMenu {
     }
 
     private void viewMedicalRecord(Patient patient) {
-        MedicalRecord record = patient.getMedicalRecord();
+        MedicalRecord record = textDB.getMedicalRecordByPatientId(patient.getHospitalID());
         if (record == null) {
             System.out.println("No medical record found.");
             return;
@@ -90,10 +92,24 @@ public class PatientMenu {
         String email = scanner.nextLine();
         System.out.print("Enter new phone number: ");
         String phone = scanner.nextLine();
-        patient.getContactInformation().setEmailAddress(email);
-        patient.getContactInformation().setPhoneNumber(phone);
-        System.out.println("Contact information updated.");
+        
+        MedicalRecord medicalRecord = patient.getMedicalRecord();
+        if (medicalRecord != null) {
+            medicalRecord.getContactInformation().setEmailAddress(email);
+            medicalRecord.getContactInformation().setPhoneNumber(phone);
+            try {
+                textDB.updateMedicalRecord(medicalRecord);
+                System.out.println("Contact information updated successfully.");
+            } catch (IOException e) {
+                System.out.println("Failed to update contact information.");
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Medical record not found. Cannot update contact information.");
+        }
     }
+    
+    
 
     private void viewAppointmentStatus(Patient patient) {
         List<Appointment> appointments = textDB.getAppointments().stream()
@@ -271,10 +287,17 @@ public class PatientMenu {
     
         System.out.println("\nYour Appointments:");
         for (Appointment appointment : patientAppointments) {
+            LocalDate appointmentDate = appointment.getTimeSlot().getStartTime().toLocalDate();
+            String formattedDate = appointmentDate.format(DATE_FORMATTER);
+            String formattedStartTime = appointment.getTimeSlot().getStartTime().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            String formattedEndTime = appointment.getTimeSlot().getEndTime().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+
             System.out.println("Appointment ID: " + appointment.getId() +
-                               ", Doctor: " + textDB.getUserByHospitalID(appointment.getDoctorId()).getName() +
-                               ", Date & Time: " + appointment.getTimeSlot() +
-                               ", Status: " + appointment.getStatus());
+                            ", Doctor: " + textDB.getUserByHospitalID(appointment.getDoctorId()).getName() +
+                            ", Date: " + formattedDate +
+                            ", Time: " + formattedStartTime + " - " + formattedEndTime +
+                            ", Status: " + appointment.getStatus());
+
         }
     
         // Step 2: Prompt user to enter the Appointment ID to reschedule
@@ -415,10 +438,17 @@ public class PatientMenu {
     
         System.out.println("\nYour Appointments:");
         for (Appointment appointment : patientAppointments) {
+            LocalDate appointmentDate = appointment.getTimeSlot().getStartTime().toLocalDate();
+            String formattedDate = appointmentDate.format(DATE_FORMATTER);
+            String formattedStartTime = appointment.getTimeSlot().getStartTime().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+            String formattedEndTime = appointment.getTimeSlot().getEndTime().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+
             System.out.println("Appointment ID: " + appointment.getId() +
-                               ", Doctor: " + textDB.getUserByHospitalID(appointment.getDoctorId()).getName() +
-                               ", Date & Time: " + appointment.getTimeSlot() +
-                               ", Status: " + appointment.getStatus());
+                            ", Doctor: " + textDB.getUserByHospitalID(appointment.getDoctorId()).getName() +
+                            ", Date: " + formattedDate +
+                            ", Time: " + formattedStartTime + " - " + formattedEndTime +
+                            ", Status: " + appointment.getStatus());
+
         }
     
         // Step 2: Prompt user to enter the Appointment ID to cancel

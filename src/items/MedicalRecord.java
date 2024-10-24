@@ -17,7 +17,6 @@ public class MedicalRecord {
     private String bloodType;
     private List<Diagnosis> pastDiagnoses;
     private List<Treatment> pastTreatments;
-    private String assignedDoctorId;
 
     /**
      * Constructor for MedicalRecord.
@@ -64,7 +63,6 @@ public class MedicalRecord {
         this.bloodType = bloodType;
         this.pastDiagnoses = pastDiagnoses;
         this.pastTreatments = pastTreatments;
-        this.assignedDoctorId = null; // Initially no doctor assigned
     }
 
     // Getters and Setters
@@ -121,13 +119,6 @@ public class MedicalRecord {
         return pastDiagnoses;
     }
 
-    public String getAssignedDoctorId() {
-        return assignedDoctorId;
-    }
-
-    public void setAssignedDoctorId(String assignedDoctorId) {
-        this.assignedDoctorId = assignedDoctorId;
-    }
 
     /**
      * Adds a diagnosis to the patient's medical record.
@@ -143,11 +134,14 @@ public class MedicalRecord {
     }
 
     /**
-     * Adds a treatment to the patient's medical record.
+     * Adds a treatment to the medical record.
      *
-     * @param treatment Treatment object to add
+     * @param treatment The Treatment object to add.
      */
     public void addTreatment(Treatment treatment) {
+        if (this.pastTreatments == null) {
+            this.pastTreatments = new ArrayList<>();
+        }
         this.pastTreatments.add(treatment);
     }
 
@@ -169,6 +163,7 @@ public class MedicalRecord {
         }
     }
 
+
     public void display() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         System.out.println("--------------------------------------------------");
@@ -181,13 +176,13 @@ public class MedicalRecord {
         System.out.println("Contact Information:");
         System.out.println("  Phone Number   : " + contactInformation.getPhoneNumber());
         System.out.println("  Email Address  : " + contactInformation.getEmailAddress());
-        System.out.println("Blood Type       : " + bloodType);
+        System.out.println("Blood Type       : " + (bloodType != null ? bloodType : "N/A"));
         System.out.println();
 
         // Display Past Diagnoses
         System.out.println("Past Diagnoses:");
         if (pastDiagnoses == null || pastDiagnoses.isEmpty()) {
-            System.out.println("  No past diagnoses recorded.");
+            System.out.println("  - No past diagnoses recorded.");
         } else {
             for (Diagnosis diag : pastDiagnoses) {
                 System.out.println("  - " + diag.getDescription() + " (Date: " + diag.getDate().format(dateFormatter) + ")");
@@ -198,18 +193,15 @@ public class MedicalRecord {
         // Display Past Treatments
         System.out.println("Past Treatments:");
         if (pastTreatments == null || pastTreatments.isEmpty()) {
-            System.out.println("  No past treatments recorded.");
+            System.out.println("  - No past treatments recorded.");
         } else {
             for (Treatment treat : pastTreatments) {
                 treat.display();
             }
         }
         System.out.println();
-
-        // Assigned Doctor
-        System.out.println("Assigned Doctor ID: " + (assignedDoctorId != null ? assignedDoctorId : "None"));
-        System.out.println("--------------------------------------------------");
     }
+
 
     @Override
     public String toString() {

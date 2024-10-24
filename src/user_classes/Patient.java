@@ -3,13 +3,32 @@ import items.ContactInformation;
 import items.MedicalRecord;
 
 import java.time.LocalDate;
+import java.io.IOException;
+
+import db.TextDB;
 
 public class Patient extends User {
     private MedicalRecord medicalRecord;
-    public Patient(String hospitalID, String password, String name, LocalDate dateOfBirth, String gender, ContactInformation contactInformation) {
-        super(hospitalID, password, name, dateOfBirth, gender, contactInformation);
+    public Patient(String hospitalID, String password, String name, LocalDate dateOfBirth, String gender) {
+        super(hospitalID, password, name, dateOfBirth, gender);
         this.role = "Patient";
-        this.medicalRecord = new MedicalRecord(password, name, dateOfBirth, gender, contactInformation);
+        
+        // Load existing medical record from the TextDB if it exists
+        TextDB textDB = TextDB.getInstance();
+        MedicalRecord existingRecord = textDB.getMedicalRecordByPatientId(hospitalID);
+
+        if (existingRecord != null) {
+            this.medicalRecord = existingRecord;
+        } else {
+            // If no record exists, create a new medical record without contact information
+            this.medicalRecord = new MedicalRecord(hospitalID, name, dateOfBirth, gender, new ContactInformation("", ""));
+            try {
+                // Save the new record to the database
+                textDB.addMedicalRecord(this.medicalRecord);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -19,9 +38,7 @@ public class Patient extends User {
 
     @Override
     public String toString() {
-        return "Patient [ID=" + getHospitalID() + ", Name=" + getName() + ", Email=" + 
-        getContactInformation().getEmailAddress() + ", Phone=" + 
-        getContactInformation().getPhoneNumber() + "]";
+        return "Patient: ID=" + getHospitalID() + ", Name=" + getName();
     }
 
     @Override

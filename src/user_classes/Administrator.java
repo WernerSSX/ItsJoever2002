@@ -5,16 +5,14 @@ import java.time.LocalDate;
 
 public class Administrator extends User {
     
-    public Administrator(String hospitalID, String password, String name, LocalDate dateOfBirth, String gender, ContactInformation contactInformation) {
-        super(hospitalID, password, name, dateOfBirth, gender, contactInformation);
+    public Administrator(String hospitalID, String password, String name, LocalDate dateOfBirth, String gender) {
+        super(hospitalID, password, name, dateOfBirth, gender);
         this.role = "Administrator";
     }
 
     @Override
     public String toString() {
-        return "Administrator [ID=" + getHospitalID() + ", Name=" + getName() + ", Email=" + 
-        getContactInformation().getEmailAddress() + ", Phone=" + 
-        getContactInformation().getPhoneNumber() + "]";
+        return "Administrator [ID=" + getHospitalID() + ", Name=" + getName();
     }
 
     @Override
