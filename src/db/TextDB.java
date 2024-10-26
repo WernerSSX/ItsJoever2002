@@ -18,6 +18,7 @@ import items.*;
 
 
 public class TextDB {
+	private List<DataLoader> loaders;
     private static TextDB instance;
     private List<MedicalRecord> medicalRecords;
     public static final String SEPARATOR = "|";
@@ -29,6 +30,8 @@ public class TextDB {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
     private TextDB() {
+    	loaders = new ArrayList<>();
+    	loaders.add(new MedicalRecordLoader("med_records.txt"));
         users = new ArrayList<>();
         appointments = new ArrayList<>();
         medicalRecords = new ArrayList<>();
@@ -53,7 +56,9 @@ public class TextDB {
      * Loads all data including users, appointments, medical records, and schedules.
      */
     private void loadAllData() throws IOException {
-        loadMedicalRecordsFromFile("med_records.txt");
+    	for (DataLoader loader : loaders) {
+            loader.loadData();
+        }
         loadFromFile("users.txt");
         loadAppointmentsFromFile("appts.txt");
         loadSchedulesFromFile("schedules.txt");
@@ -604,14 +609,6 @@ public class TextDB {
         saveMedicalRecordsToFile("med_records.txt");
     }
     
-    private void loadMedicalRecordsFromFile(String filename) throws IOException {
-        List<String> lines = read(filename);
-        medicalRecords.clear();
-        for (String line : lines) {
-            medicalRecords.add(deserializeMedicalRecord(line));
-        }
-    }
-    
     private void saveMedicalRecordsToFile(String filename) throws IOException {
         List<String> stringList = new ArrayList<>();
         for (MedicalRecord record : medicalRecords) {
@@ -668,63 +665,6 @@ public class TextDB {
 
         return sb.toString();
     }
-
-    /**
-     * Deserializes a MedicalRecord object from a string.
-     *
-     * Expected Format:
-     * patientID|name|dateOfBirth|gender|phone|email|bloodType|diag1;date1,diag2;date2|treatment1^treatment2
-     *
-     * @param data Serialized string representation of the MedicalRecord
-     * @return MedicalRecord object
-     */
-    private MedicalRecord deserializeMedicalRecord(String data) {
-        String[] fields = data.split("\\" + SEPARATOR, -1); // -1 to include empty trailing fields
-
-        if (fields.length < 9) { // Expecting 9 fields now
-            throw new IllegalArgumentException("Invalid medical record data: " + data);
-        }
-
-        // Basic information
-        String patientID = fields[0];
-        String name = fields[1];
-        LocalDate dob = LocalDate.parse(fields[2], DATE_FORMATTER);
-        String gender = fields[3];
-        String phone = fields[4];
-        String email = fields[5];
-        String bloodType = fields[6].equals("NULL") ? null : fields[6];
-
-        ContactInformation contactInfo = new ContactInformation(phone, email);
-
-        // Deserialize Diagnoses
-        List<Diagnosis> diagnoses = new ArrayList<>();
-        if (!fields[7].equals("NULL") && !fields[7].trim().isEmpty()) {
-            String[] diagParts = fields[7].split(",");
-            for (String diag : diagParts) {
-                String[] diagFields = diag.split(";");
-                if (diagFields.length == 2) {
-                    diagnoses.add(new Diagnosis(diagFields[0], LocalDate.parse(diagFields[1], DATE_FORMATTER)));
-                }
-            }
-        }
-
-        // Deserialize Treatments using '^' as the separator
-        List<Treatment> treatments = new ArrayList<>();
-        if (!fields[8].equals("NULL") && !fields[8].trim().isEmpty()) {
-            String[] treatParts = fields[8].split("\\^"); // Ensure '^' is used here
-            for (String treat : treatParts) {
-                treatments.add(Treatment.deserialize(treat)); // Ensure Treatment.deserialize handles the format correctly
-            }
-        }
-
-        // Create and return the MedicalRecord
-        MedicalRecord record = new MedicalRecord(patientID, name, dob, gender, contactInfo, bloodType, diagnoses, treatments);
-        // No Assigned Doctor ID
-        // record.setAssignedDoctorId(assignedDoctorId);
-
-        return record;
-    }
-
     
 
     /**
