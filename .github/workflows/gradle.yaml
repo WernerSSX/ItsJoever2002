@@ -27,10 +27,7 @@ jobs:
     # Step to copy the DB snapshot into place before running tests
     - name: Copy DB snapshot to working directory
       run: |
-        cp DBsnapshot/appts.txt .
-        cp DBsnapshot/med_records.txt .
-        cp DBsnapshot/schedules.txt .
-        cp DBsnapshot/users.txt .
+        cp DBsnapshot/* .
 
     - name: Run Unit Tests
       run: |
