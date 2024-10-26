@@ -7,25 +7,19 @@ password
 3
 1
 2024-10-28
-4
-2024-10-28
-1
-9
-7
 0
 2
 D001
 password
-5
-1
-y
-6
-7
-1
-blood test
-done
-cholestrol high
 1
 P002
-8
+2
+P002
+checkup
+2024-10-30
+all normal
+done
+1
+P002
+0
 6
