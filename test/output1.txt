@@ -1,0 +1,298 @@
+
+=== Welcome to the Hospital Management System ===
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): Enter Hospital ID: Enter Password: Patient logged in successfully!
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 
+Available Doctors:
+1. Dr. John Smith (ID: D001)
+2. Dr. Emily Clarke (ID: D002)
+Enter the number corresponding to the doctor you want to view available slots for: You have selected Dr. John Smith
+Enter the date (yyyy-MM-dd) for which you want to see available slots: Dr. John Smith has not set availability for 2024-10-27.
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 
+Available Doctors:
+1. Dr. John Smith (ID: D001)
+2. Dr. Emily Clarke (ID: D002)
+Enter the number corresponding to the doctor you want to view available slots for: You have selected Dr. John Smith
+Enter the date (yyyy-MM-dd) for which you want to see available slots: 
+Available Appointment Slots with Dr. John Smith on 2024-10-28:
+1. 09:00 - 09:30
+2. 09:30 - 10:00
+3. 10:00 - 10:30
+4. 10:30 - 11:00
+5. 11:00 - 11:30
+6. 11:30 - 12:00
+7. 12:00 - 12:30
+8. 12:30 - 13:00
+9. 13:00 - 13:30
+10. 13:30 - 14:00
+11. 14:00 - 14:30
+12. 14:30 - 15:00
+13. 15:00 - 15:30
+14. 16:00 - 16:30
+15. 16:30 - 17:00
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 
+=== Welcome to the Hospital Management System ===
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): Enter Hospital ID: Enter Password: Doctor logged in successfully!
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice: Enter Patient ID to view medical records: 
+--------------------------------------------------
+               Medical Record
+--------------------------------------------------
+Patient ID       : P002
+Name             : Werner Tan
+Date of Birth    : 2002-10-16
+Gender           : Male
+Contact Information:
+  Phone Number   : 999
+  Email Address  : wtan@e.ntu.edu.sg
+Blood Type       : O+
+
+Past Diagnoses:
+  - Hypertension (Date: 2022-01-10)
+  - Diabetes (Date: 2023-03-15)
+
+Past Treatments:
+  ------------------------------------------------
+    Service Type        : Consultation
+    Date of Appointment  : 2024-10-15
+    Prescribed Medications:
+      - Metformin | Status: Approved
+      - Insulin | Status: pending
+    Consultation Notes   : Patient advised to monitor blood sugar levels
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : blood test
+    Date of Appointment  : 2024-10-28
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : cholestrol high
+    Doctor ID            : D002
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : X-ray
+    Date of Appointment  : 2024-10-29
+    Prescribed Medications:
+      - panadol | Status: pending
+    Consultation Notes   : Broken bone
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : checkup
+    Date of Appointment  : 2024-10-30
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : all normal
+    Doctor ID            : N/A
+  ------------------------------------------------
+
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice: Enter Patient ID to update medical records: Existing Medical Record:
+--------------------------------------------------
+               Medical Record
+--------------------------------------------------
+Patient ID       : P002
+Name             : Werner Tan
+Date of Birth    : 2002-10-16
+Gender           : Male
+Contact Information:
+  Phone Number   : 999
+  Email Address  : wtan@e.ntu.edu.sg
+Blood Type       : O+
+
+Past Diagnoses:
+  - Hypertension (Date: 2022-01-10)
+  - Diabetes (Date: 2023-03-15)
+
+Past Treatments:
+  ------------------------------------------------
+    Service Type        : Consultation
+    Date of Appointment  : 2024-10-15
+    Prescribed Medications:
+      - Metformin | Status: Approved
+      - Insulin | Status: pending
+    Consultation Notes   : Patient advised to monitor blood sugar levels
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : blood test
+    Date of Appointment  : 2024-10-28
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : cholestrol high
+    Doctor ID            : D002
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : X-ray
+    Date of Appointment  : 2024-10-29
+    Prescribed Medications:
+      - panadol | Status: pending
+    Consultation Notes   : Broken bone
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : checkup
+    Date of Appointment  : 2024-10-30
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : all normal
+    Doctor ID            : N/A
+  ------------------------------------------------
+
+Enter the type of service provided (e.g., consultation, X-ray, blood test): Enter date of appointment (yyyy-MM-dd): Enter treatment comments: Enter prescribed medications (enter 'done' when finished):
+Medication Name (or 'done'): Medical record updated successfully.
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice: Enter Patient ID to view medical records: 
+--------------------------------------------------
+               Medical Record
+--------------------------------------------------
+Patient ID       : P002
+Name             : Werner Tan
+Date of Birth    : 2002-10-16
+Gender           : Male
+Contact Information:
+  Phone Number   : 999
+  Email Address  : wtan@e.ntu.edu.sg
+Blood Type       : O+
+
+Past Diagnoses:
+  - Hypertension (Date: 2022-01-10)
+  - Diabetes (Date: 2023-03-15)
+
+Past Treatments:
+  ------------------------------------------------
+    Service Type        : Consultation
+    Date of Appointment  : 2024-10-15
+    Prescribed Medications:
+      - Metformin | Status: Approved
+      - Insulin | Status: pending
+    Consultation Notes   : Patient advised to monitor blood sugar levels
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : blood test
+    Date of Appointment  : 2024-10-28
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : cholestrol high
+    Doctor ID            : D002
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : X-ray
+    Date of Appointment  : 2024-10-29
+    Prescribed Medications:
+      - panadol | Status: pending
+    Consultation Notes   : Broken bone
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : checkup
+    Date of Appointment  : 2024-10-30
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : all normal
+    Doctor ID            : N/A
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : checkup
+    Date of Appointment  : 2024-10-30
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : all normal
+    Doctor ID            : N/A
+  ------------------------------------------------
+
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice: Logging out...
+
+=== Welcome to the Hospital Management System ===
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): Exiting system...

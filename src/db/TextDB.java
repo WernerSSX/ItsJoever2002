@@ -58,26 +58,18 @@ public class TextDB {
     private void loadAllData() throws IOException {
     	for (DataLoader loader : loaders) {
             loader.loadData();
+            if (loader instanceof MedicalRecordLoader) {
+                medicalRecords = new ArrayList<>(((MedicalRecordLoader) loader).getMedicalRecords());
+            }
         }
         loadFromFile("users.txt");
         loadAppointmentsFromFile("appts.txt");
         loadSchedulesFromFile("schedules.txt");
         loadMedicationInventory("inventory.txt");
-        loadReplenishmentRequests("replenishment_requests.txt");
+        loadReplenishmentRequests("replenishment_requests.txt"); 
     }
     
 
-    /**
-     * Saves all data including users, appointments, medical records, and schedules.
-     */
-    public void saveAllData() throws IOException {
-        saveToFile("users.txt");
-        saveAppointmentsToFile("appts.txt");
-        saveMedicalRecordsToFile("med_records.txt");
-        saveSchedulesToFile("schedules.txt");
-        saveMedicationInventory("inventory.txt");
-        saveReplenishmentRequests("replenishment_requests.txt");
-    }
 
     // Existing methods for Users, Appointments, and MedicalRecords...
 

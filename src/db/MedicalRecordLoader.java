@@ -3,6 +3,7 @@ package db;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -94,6 +95,15 @@ public class MedicalRecordLoader extends DataLoader<MedicalRecord> {
         // record.setAssignedDoctorId(assignedDoctorId);
 
         return record;
+    }
+
+    /**
+     * Retrieves the list of loaded MedicalRecords.
+     *
+     * @return List of MedicalRecord objects.
+     */
+    public List<MedicalRecord> getMedicalRecords() {
+        return Collections.unmodifiableList(medicalRecords);
     }
     
     protected String serialize(MedicalRecord record) {
