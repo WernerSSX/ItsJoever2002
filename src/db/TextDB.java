@@ -32,6 +32,10 @@ public class TextDB {
     private TextDB() {
     	loaders = new ArrayList<>();
     	loaders.add(new MedicalRecordLoader("med_records.txt"));
+    	loaders.add(new UsersLoader("users.txt"));
+    	loaders.add(new AppointmentsLoader("appts.txt"));
+    	loaders.add(new MedicationInventoryLoader("inventory.txt"));
+    	loaders.add(new ReplenishmentRequestsLoader("replenishment_requests.txt"));
         users = new ArrayList<>();
         appointments = new ArrayList<>();
         medicalRecords = new ArrayList<>();
@@ -61,12 +65,27 @@ public class TextDB {
             if (loader instanceof MedicalRecordLoader) {
                 medicalRecords = new ArrayList<>(((MedicalRecordLoader) loader).getMedicalRecords());
             }
+            if (loader instanceof UsersLoader) {
+            	users = new ArrayList<>(((UsersLoader) loader).getUsers());
+            }
+            if (loader instanceof AppointmentsLoader) {
+            	appointments = new ArrayList<>(((AppointmentsLoader) loader).getAppointments());
+            }
+            if (loader instanceof MedicationInventoryLoader) {
+            	medications = new ArrayList<>(((MedicationInventoryLoader) loader).getMedicationInventory());
+            }
+            if (loader instanceof ReplenishmentRequestsLoader) {
+            	replenishmentRequests = new ArrayList<>(((ReplenishmentRequestsLoader) loader).getReplenishmentRequests());
+            }
         }
+    	/*
         loadFromFile("users.txt");
         loadAppointmentsFromFile("appts.txt");
-        loadSchedulesFromFile("schedules.txt");
         loadMedicationInventory("inventory.txt");
-        loadReplenishmentRequests("replenishment_requests.txt"); 
+        loadReplenishmentRequests("replenishment_requests.txt");
+        */
+    	
+        loadSchedulesFromFile("schedules.txt");
     }
     
 
@@ -250,14 +269,6 @@ public class TextDB {
         write(filename, stringList);
     }
 
-    public void loadFromFile(String filename) throws IOException {
-        List<String> stringArray = read(filename);
-        users.clear();
-        for (String line : stringArray) {
-            users.add(deserializeUser(line));
-        }
-    }
-
     private static String serializeUser(User user) {
         return String.join(SEPARATOR,
                 user.getHospitalID(),
@@ -268,34 +279,6 @@ public class TextDB {
                 user.getRole());
     }
     
-    
-
-    private User deserializeUser(String userData) {
-        String[] fields = userData.split("\\" + SEPARATOR);
-        if (fields.length < 6) {
-            throw new IllegalArgumentException("Invalid user data: " + userData);
-        }
-    
-        String hospitalID = fields[0];
-        String password = fields[1];
-        String name = fields[2];
-        LocalDate dateOfBirth = LocalDate.parse(fields[3], DATE_FORMATTER);
-        String gender = fields[4];
-        String role = fields[5].toLowerCase();
-    
-        switch (role) {
-            case "administrator":
-                return new Administrator(hospitalID, password, name, dateOfBirth, gender);
-            case "doctor":
-                return new Doctor(hospitalID, password, name, dateOfBirth, gender, new Schedule());
-            case "patient":
-                return new Patient(hospitalID, password, name, dateOfBirth, gender);
-            case "pharmacist":
-                return new Pharmacist(hospitalID, password, name, dateOfBirth, gender);
-            default:
-                throw new IllegalArgumentException("Unknown role: " + role);
-        }
-    }
     
 
     public static void write(String fileName, List<String> data) throws IOException {
@@ -542,14 +525,6 @@ public class TextDB {
         return appointments;
     }
 
-    public void loadAppointmentsFromFile(String filename) throws IOException {
-        List<String> stringArray = read(filename);
-        appointments.clear();
-        for (String line : stringArray) {
-            appointments.add(deserializeAppointment(line));
-        }
-    }
-
     public static void saveAppointmentsToFile(String filename) throws IOException {
         List<String> stringList = new ArrayList<>();
         for (Appointment appointment : appointments) {
@@ -747,19 +722,6 @@ public class TextDB {
 
 // ====================== Medication and prescription ========================= //
 
-    /**
-     * Loads medication inventory from the specified file.
-     *
-     * @param filename The name of the inventory file.
-     * @throws IOException If an I/O error occurs.
-     */
-    public void loadMedicationInventory(String filename) throws IOException {
-        List<String> lines = read(filename);
-        medications.clear();
-        for (String line : lines) {
-            medications.add(deserializeMedication(line));
-        }
-    }
 
     /**
      * Saves medication inventory to the specified file.
@@ -781,17 +743,6 @@ public class TextDB {
                 String.valueOf(medication.getQuantity()),
                 medication.getSupplier() != null ? medication.getSupplier() : "NULL"
         );
-    }
-
-    private Medication deserializeMedication(String data) {
-        String[] parts = data.split("\\|", -1);
-        if (parts.length != 3) {
-            throw new IllegalArgumentException("Invalid Medication data: " + data);
-        }
-        String name = parts[0];
-        int quantity = Integer.parseInt(parts[1]);
-        String supplier = parts[2].equals("NULL") ? null : parts[2];
-        return new Medication(name, quantity, supplier);
     }
 
     /**
@@ -825,20 +776,6 @@ public class TextDB {
     }
 
     /**
-     * Loads replenishment requests from the specified file.
-     *
-     * @param filename The name of the replenishment requests file.
-     * @throws IOException If an I/O error occurs.
-     */
-    public void loadReplenishmentRequests(String filename) throws IOException {
-        List<String> lines = read(filename);
-        replenishmentRequests.clear();
-        for (String line : lines) {
-            replenishmentRequests.add(deserializeReplenishmentRequest(line));
-        }
-    }
-
-    /**
      * Saves replenishment requests to the specified file.
      *
      * @param filename The name of the replenishment requests file.
@@ -850,10 +787,6 @@ public class TextDB {
             lines.add(request.serialize());
         }
         write(filename, lines);
-    }
-
-    private ReplenishmentRequest deserializeReplenishmentRequest(String data) {
-        return ReplenishmentRequest.deserialize(data);
     }
 
     /**

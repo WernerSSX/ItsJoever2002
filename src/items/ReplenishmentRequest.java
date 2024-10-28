@@ -74,19 +74,6 @@ public class ReplenishmentRequest {
      * Expected Format:
      * medicationName;quantity;requestedBy;requestDate
      */
-    public static ReplenishmentRequest deserialize(String data) {
-        String[] parts = data.split(";", -1);
-        if (parts.length != 4) {
-            throw new IllegalArgumentException("Invalid ReplenishmentRequest data: " + data);
-        }
-
-        String medicationName = parts[0].equals("NULL") ? null : parts[0];
-        int quantity = Integer.parseInt(parts[1]);
-        String requestedBy = parts[2].equals("NULL") ? null : parts[2];
-        LocalDate requestDate = parts[3].equals("NULL") ? null : LocalDate.parse(parts[3], DateTimeFormatter.ISO_LOCAL_DATE);
-
-        return new ReplenishmentRequest(medicationName, quantity, requestedBy, requestDate);
-    }
 
     @Override
     public String toString() {
