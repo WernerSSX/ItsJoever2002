@@ -8,6 +8,8 @@ import items.Appointment;
 import items.MedicalRecord;
 import items.Schedule;
 import items.TimeSlot;
+import items.Treatment;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -64,7 +66,7 @@ public class PatientMenu {
                     viewAppointmentStatus(patient);
                     break;
                 case 8:
-                    
+                    viewPastAppointmentOutcomeRecords(patient);
                     break;
                 case 9:
                     changePassword(scanner, patient);
@@ -76,7 +78,27 @@ public class PatientMenu {
             }
         }
     }
-
+    
+    private void viewPastAppointmentOutcomeRecords(Patient patient) {
+    	MedicalRecord record = textDB.getMedicalRecordByPatientId(patient.getHospitalID());
+    	if (record == null) {
+    		System.out.println("No appointment recorded.");
+    		return;
+    	}
+    	System.out.println();
+    	List<Treatment> pastTreatments = record.getPastTreatments();
+    	
+        System.out.println("Appointment records:");
+        if (pastTreatments == null || pastTreatments.isEmpty()) {
+            System.out.println("  - No appointment recorded.");
+        } else {
+            for (Treatment treat : pastTreatments) {
+                treat.display();
+            }
+        }
+        System.out.println();	
+    }
+    
     private void viewMedicalRecord(Patient patient) {
         MedicalRecord record = textDB.getMedicalRecordByPatientId(patient.getHospitalID());
         if (record == null) {
