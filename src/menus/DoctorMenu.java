@@ -192,7 +192,7 @@ public class DoctorMenu {
      */
     private void viewPersonalSchedule(Doctor doctor) {
         Schedule schedule = doctor.getSchedule();
-        System.out.println("Personal Schedule:");
+        System.out.println("Availability slots:");
         for (LocalDate date : schedule.getAvailability().keySet()) {
             System.out.println("Date: " + date.format(DATE_FORMATTER));
             List<TimeSlot> slots = schedule.getAvailableTimeSlots(date);
@@ -201,6 +201,8 @@ public class DoctorMenu {
                                    " - " + slot.getEndTime().toLocalTime().format(TIME_FORMATTER));
             }
         }
+        System.out.println();
+        viewUpcomingAppointments(doctor);
     }
 
     /**
