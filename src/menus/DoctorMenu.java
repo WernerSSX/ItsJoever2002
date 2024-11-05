@@ -313,12 +313,12 @@ public class DoctorMenu {
         switch (decision) {
             case "y":
             case "yes":
-                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Scheduled");
+                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Confirmed");
                 System.out.println("Appointment ID " + selectedAppointment.getId() + " has been accepted and scheduled.");
                 break;
             case "n":
             case "no":
-                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Declined");
+                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Cancelled");
                 System.out.println("Appointment ID " + selectedAppointment.getId() + " has been declined.");
                 break;
             default:
