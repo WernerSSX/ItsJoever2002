@@ -176,6 +176,7 @@ public class DoctorMenu {
             }
             treatment.addPrescription(new Prescription(medName, status));
         }
+        treatment.setDoctorId(doctor.getHospitalID());
 
         // Add the new Treatment to the Medical Record
         record.addTreatment(treatment);
