@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The Schedule class manages a doctor's availability across different dates.
+ * @class Schedule
+ * @brief The Schedule class manages a doctor's availability across different dates.
  */
 public class Schedule {
     // Mapping from date to list of available TimeSlots
@@ -16,12 +17,20 @@ public class Schedule {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd"); /**< Formatter for date */
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm"); /**< Formatter for time */
 
+    /****************
+     * Constructors *
+     ****************/
+
     /**
      * Constructor for Schedule. Initializes the availability map.
      */
     public Schedule() {
         this.availability = new HashMap<>();
     }
+
+    /***********************
+     * Getters and Setters *
+     ***********************/
 
     /**
      * Sets availability for a specific date.
@@ -60,6 +69,10 @@ public class Schedule {
     public void setAvailabilityMap(Map<LocalDate, List<TimeSlot>> availability) {
         this.availability = availability; // Update the availability map with the provided one
     }
+
+    /**********
+     * Methods *
+     **********/
 
     /**
      * Provides a string representation of the Schedule.

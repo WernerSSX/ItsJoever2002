@@ -14,6 +14,10 @@ public class Diagnosis {
     private LocalDate date;     /**< Date of the diagnosis */
     private String comments;    /**< Additional comments regarding the diagnosis */
 
+    /****************
+     * Constructors *
+     ****************/
+
     /**
      * @brief Constructs a Diagnosis with the specified description, date, and comments.
      *
@@ -39,7 +43,9 @@ public class Diagnosis {
         this(description, date, "");
     }
 
-    // Getters and Setters
+    /***********************
+     * Getters and Setters *
+     ***********************/
 
     /**
      * @brief Gets the description of the diagnosed illness.
@@ -102,6 +108,10 @@ public class Diagnosis {
         }
         System.out.println("-------------------------");
     }
+
+    /**********
+     * Methods *
+     **********/
 
     /**
      * @brief Returns a string representation of the diagnosis.

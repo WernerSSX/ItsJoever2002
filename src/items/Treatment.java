@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The Treatment class represents a treatment plan, including prescribed medications, service type,
+ * @class Treatment
+ * @brief The Treatment class represents a treatment plan, including prescribed medications, service type,
  * date of appointment, and comments.
  */
 public class Treatment {
@@ -16,8 +17,12 @@ public class Treatment {
     private String treatmentComments;             /**< Comments regarding the treatment */
     private String doctorId;                      /**< ID of the doctor providing the treatment */
 
+    /****************
+     * Constructors *
+     ****************/
+
     /**
-     * Default constructor initializes the list of prescribed medicines and sets comments to an empty string.
+     * @brief Default constructor initializes the list of prescribed medicines and sets comments to an empty string.
      */
     public Treatment() {
         this.allPrescribedMedicine = new ArrayList<>();
@@ -25,7 +30,7 @@ public class Treatment {
     }
 
     /**
-     * Constructor with parameters.
+     * @brief Constructor with parameters.
      *
      * @param serviceType        Type of service provided (e.g., consultation, X-ray)
      * @param dateOfAppointment  Date of the appointment
@@ -40,55 +45,95 @@ public class Treatment {
         this.doctorId = doctorId;
     }
 
-    // Getters and Setters
-
+    /***********************
+     * Getters and Setters *
+     ***********************/
+    /**
+     * @brief Gets the service type of the treatment
+     * @return Returns the service type of the treatment
+     */
     public String getServiceType() {
-        return serviceType; // Return the service type
-    }
-
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType; // Set the service type
-    }
-
-    public LocalDate getDateOfAppointment() {
-        return dateOfAppointment; // Return the date of appointment
-    }
-
-    public void setDateOfAppointment(LocalDate dateOfAppointment) {
-        this.dateOfAppointment = dateOfAppointment; // Set the date of appointment
-    }
-
-    public List<Prescription> getAllPrescribedMedicine() {
-        return allPrescribedMedicine; // Return the list of prescribed medicines
+        return serviceType;
     }
 
     /**
-     * Adds a prescription to the list of prescribed medicines.
-     *
+     * @brief Sets the service type of the treatment
+     * @param serviceType Service type of the treatment
+     */
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    /**
+     * @brief Gets the date of appointment of treatment
+     * @return Returns the date of appointment of treatment
+     */
+    public LocalDate getDateOfAppointment() {
+        return dateOfAppointment;
+    }
+
+    /**
+     * @brief Sets the date of appointment of treatment
+     * @param dateOfAppointment Date of appointment of treatment
+     */
+    public void setDateOfAppointment(LocalDate dateOfAppointment) {
+        this.dateOfAppointment = dateOfAppointment;
+    }
+
+    /**
+     * @brief Gets a list of all prescribed medicine. Look at Prescription class
+     * @return Returns a list of prescribed medicine
+     */
+    public List<Prescription> getAllPrescribedMedicine() {
+        return allPrescribedMedicine;
+    }
+
+    /**
+     * @brief Adds a prescription to the list of prescribed medicines.
      * @param prescription The Prescription object to be added
      */
     public void addPrescription(Prescription prescription) {
-        this.allPrescribedMedicine.add(prescription); // Add the prescription to the list
-    }
-
-    public String getTreatmentComments() {
-        return treatmentComments; // Return treatment comments
-    }
-
-    public void setTreatmentComments(String treatmentComments) {
-        this.treatmentComments = treatmentComments; // Set treatment comments
-    }
-
-    public String getDoctorId() {
-        return doctorId; // Return the doctor's ID
-    }
-
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId; // Set the doctor's ID
+        this.allPrescribedMedicine.add(prescription);
     }
 
     /**
-     * Prints all prescribed medicines with their details.
+     * @brief Gets the comments of the treatment
+     * @return Returns the comments of the treatment
+     */
+    public String getTreatmentComments() {
+        return treatmentComments;
+    }
+
+    /**
+     * @brief Sets the comments of the treatment
+     * @param treatmentComments Comments of the treatment
+     */
+    public void setTreatmentComments(String treatmentComments) {
+        this.treatmentComments = treatmentComments;
+    }
+
+    /**
+     * @brief Gets the id of the doctor doing the treatment
+     * @return Returns the id of the doctor doing the treatment
+     */
+    public String getDoctorId() {
+        return doctorId;
+    }
+
+    /**
+     * @brief Sets the id of the doctor doing the treatment
+     * @param doctorId id of the doctor doing the treatment
+     */
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    /**********
+     * Methods *
+     **********/
+
+    /**
+     * @brief Prints all prescribed medicines with their details.
      */
     public void printAllPrescribedMedicine() {
         if (allPrescribedMedicine.isEmpty()) {
@@ -103,7 +148,7 @@ public class Treatment {
     }
 
     /**
-     * Prints the treatment comments.
+     * @brief Prints the treatment comments.
      */
     public void printTreatmentComments() {
         if (treatmentComments == null || treatmentComments.trim().isEmpty()) {
@@ -115,7 +160,7 @@ public class Treatment {
     }
 
     /**
-     * Serializes the Treatment object into a string.
+     * @brief Serializes the Treatment object into a string.
      *
      * Format:
      * serviceType;dateOfAppointment;med1:status1,med2:status2;treatmentComments;doctorId
@@ -149,7 +194,7 @@ public class Treatment {
     }
 
     /**
-     * Deserializes a Treatment object from a string.
+     * @brief Deserializes a Treatment object from a string.
      *
      * Expected Format:
      * serviceType;dateOfAppointment;med1:status1,med2:status2;treatmentComments;doctorId
@@ -191,7 +236,7 @@ public class Treatment {
     }
 
     /**
-     * Displays the Treatment details including Doctor ID.
+     * @brief Displays the Treatment details including Doctor ID.
      */
     public void display() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -217,6 +262,10 @@ public class Treatment {
         System.out.println("  ------------------------------------------------");
     }
 
+    /**
+     * @brief Returns the string representation of the Treatment object
+     * @return Returns the string representation of the Treatment object
+     */
     @Override
     public String toString() {
         return "Treatment{" +
@@ -224,6 +273,6 @@ public class Treatment {
                 ", dateOfAppointment=" + dateOfAppointment +
                 ", allPrescribedMedicine=" + allPrescribedMedicine +
                 ", treatmentComments='" + treatmentComments + '\'' +
-                '}'; // Return string representation of the Treatment object
+                '}';
     }
 }

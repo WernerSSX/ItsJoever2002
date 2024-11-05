@@ -4,13 +4,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- * The ReplenishmentRequest class represents a request to replenish a specific medication.
+ * @class ReplenishmentRequest
+ * @brief Represents a request to replenish a specific medication.
  */
 public class ReplenishmentRequest {
     private String medicationName; /**< Name of the medication requested for replenishment */
     private int quantity; /**< Quantity of the medication requested */
     private String requestedBy; /**< Name of the person requesting the medication */
     private LocalDate requestDate; /**< Date when the replenishment request was made */
+
+    /****************
+     * Constructors *
+     ****************/
 
     /**
      * Constructor for ReplenishmentRequest.
@@ -27,9 +32,12 @@ public class ReplenishmentRequest {
         this.requestDate = requestDate;
     }
 
-    // Getters and Setters
+    /***********************
+     * Getters and Setters *
+     ***********************/
 
     /**
+     * @brief Gets the name of the medication
      * @return The name of the medication requested.
      */
     public String getMedicationName() {
@@ -37,6 +45,7 @@ public class ReplenishmentRequest {
     }
 
     /**
+     * @brief Sets the name of the medication
      * @param medicationName The new name of the medication requested.
      */
     public void setMedicationName(String medicationName) {
@@ -44,6 +53,7 @@ public class ReplenishmentRequest {
     }
 
     /**
+     * @brief Gets the quantity of the medication
      * @return The quantity of the medication requested.
      */
     public int getQuantity() {
@@ -51,6 +61,7 @@ public class ReplenishmentRequest {
     }
 
     /**
+     * @brief Sets the quantity of the medication
      * @param quantity The new quantity of the medication requested.
      */
     public void setQuantity(int quantity) {
@@ -58,6 +69,7 @@ public class ReplenishmentRequest {
     }
 
     /**
+     * @brief Gets the name of the person who requested the medication
      * @return The name of the person who requested the medication.
      */
     public String getRequestedBy() {
@@ -65,6 +77,7 @@ public class ReplenishmentRequest {
     }
 
     /**
+     * @brief Sets the name of the person who requested the medication
      * @param requestedBy The new name of the person making the request.
      */
     public void setRequestedBy(String requestedBy) {
@@ -72,6 +85,7 @@ public class ReplenishmentRequest {
     }
 
     /**
+     * @brief Gets the date of when the replenishment request was made
      * @return The date when the replenishment request was made.
      */
     public LocalDate getRequestDate() {
@@ -79,11 +93,16 @@ public class ReplenishmentRequest {
     }
 
     /**
+     * @brief Sets the new date for the replenishment request
      * @param requestDate The new date for the request.
      */
     public void setRequestDate(LocalDate requestDate) {
         this.requestDate = requestDate;
     }
+
+    /**********
+     * Methods *
+     **********/
 
     /**
      * Serializes the ReplenishmentRequest into a string.

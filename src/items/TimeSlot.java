@@ -5,12 +5,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 /**
- * The TimeSlot class represents a specific time interval, such as an appointment slot.
+ * @class TimeSlot
+ * @brief The TimeSlot class represents a specific time interval, such as an appointment slot.
  */
 public class TimeSlot {
     private LocalDateTime startTime; /**< Start time of the time slot */
     private LocalDateTime endTime;   /**< End time of the time slot */
     private boolean isAvailable;      /**< Availability status of the time slot */
+
+    /****************
+     * Constructors *
+     ****************/
 
     /**
      * Constructor for TimeSlot.
@@ -25,30 +30,61 @@ public class TimeSlot {
         this.isAvailable = isAvailable;
     }
 
-    // Getters and Setters
+    /***********************
+     * Getters and Setters *
+     ***********************/
+
+    /**
+     * @brief Gets the start time of the timeslot
+     * @return Returns the start time of the timeslot
+     */
     public LocalDateTime getStartTime() {
-        return startTime; // Return the start time
+        return startTime;
     }
 
+    /**
+     * @brief Sets the start time of the timeslot
+     * @param startTime Start time of the timeslot
+     */
     public void setStartTime(LocalDateTime startTime) { 
-        this.startTime = startTime; // Set the start time
+        this.startTime = startTime;
     }
 
+    /**
+     * @brief Gets the end time of the timeslot
+     * @return Returns the end time of the timeslot
+     */
     public LocalDateTime getEndTime() {
-        return endTime; // Return the end time
+        return endTime;
     }
 
+    /**
+     * @brief Sets the end time of the timeslot
+     * @param endTime End time of the timeslot
+     */
     public void setEndTime(LocalDateTime endTime) { 
-        this.endTime = endTime; // Set the end time
+        this.endTime = endTime;
     }
 
+    /**
+     * @brief Checks if the timeslot is available
+     * @return availability of the timeslot
+     */
     public boolean isAvailable() {
-        return isAvailable; // Return the availability status
+        return isAvailable;
     }
 
+    /**
+     * @brief Sets availability of the timeslot
+     * @param available Availability
+     */
     public void setAvailable(boolean available) { 
-        isAvailable = available; // Set the availability status
+        isAvailable = available;
     }
+
+    /**********
+     * Methods *
+     **********/
 
     /**
      * Parses a TimeSlot from a serialized string.
@@ -108,7 +144,7 @@ public class TimeSlot {
     /**
      * Provides a string representation of the TimeSlot in a human-readable format.
      *
-     * @return A string representing the time interval of the slot
+     * @return A string representing the time interval of the slot in HH:mm format
      */
     @Override
     public String toString() {
@@ -116,6 +152,11 @@ public class TimeSlot {
                " - " + endTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm")); // Format the start and end time
     }
 
+    /**
+     * @brief Checks if two timeslots are the same
+     * @param o Object that is checked to be a Timeslot
+     * @return True if the two timeslots are the same
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true; // Check reference equality
@@ -128,6 +169,10 @@ public class TimeSlot {
         return Objects.equals(endTime, timeSlot.endTime);
     }
 
+    /**
+     * @brief Gets HashCode of Timeslot
+     * @return Returns HashCode based on startTime and endTime of TimeSlot
+     */
     @Override
     public int hashCode() {
         return Objects.hash(startTime, endTime); // Generate hash code based on start and end times

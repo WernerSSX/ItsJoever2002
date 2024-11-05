@@ -8,6 +8,10 @@ public class Prescription {
     private String medicationName; /**< Name of the prescribed medication */
     private String status; /**< Status of the prescription, e.g., Pending, Approved */
 
+    /****************
+     * Constructors *
+     ****************/
+
     /**
      * @brief Constructs a Prescription with a given medication name and status.
      *
@@ -19,7 +23,9 @@ public class Prescription {
         this.status = status.isEmpty() ? "Pending" : status;
     }
 
-    // Getters and Setters
+    /***********************
+     * Getters and Setters *
+     ***********************/
 
     /**
      * @brief Gets the name of the prescribed medication.
@@ -52,6 +58,10 @@ public class Prescription {
     public void setStatus(String status) { 
         this.status = status;
     }
+
+    /**********
+     * Methods *
+     **********/
 
     /**
      * @brief Provides a string representation of the prescription.

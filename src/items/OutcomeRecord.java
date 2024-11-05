@@ -13,6 +13,10 @@ public class OutcomeRecord {
     private List<Prescription> prescribedMedications; /**< List of prescribed medications during the appointment */
     private String consultationNotes; /**< Notes from the consultation */
 
+    /****************
+     * Constructors *
+     ****************/
+
     /**
      * @brief Constructs an OutcomeRecord with specified details.
      *
@@ -29,7 +33,9 @@ public class OutcomeRecord {
         this.consultationNotes = consultationNotes;
     }
 
-    // Getters and Setters
+    /***********************
+     * Getters and Setters *
+     ***********************/
 
     /**
      * @brief Gets the date of the appointment.
@@ -94,6 +100,10 @@ public class OutcomeRecord {
     public void setConsultationNotes(String consultationNotes) { 
         this.consultationNotes = consultationNotes;
     }
+
+    /**********
+     * Methods *
+     **********/
 
     /**
      * @brief Provides a string representation of the outcome record.

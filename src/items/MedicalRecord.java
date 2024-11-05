@@ -22,6 +22,10 @@ public class MedicalRecord {
     private List<Diagnosis> pastDiagnoses; /**< List of past diagnoses */
     private List<Treatment> pastTreatments; /**< List of past treatments */
 
+    /****************
+     * Constructors *
+     ****************/
+
     /**
      * @brief Constructs a MedicalRecord with specified basic details.
      *
@@ -68,7 +72,9 @@ public class MedicalRecord {
         this.pastTreatments = pastTreatments;
     }
 
-    // Getters and Setters
+    /***********************
+     * Getters and Setters *
+     ***********************/
 
     /**
      * @brief Gets the patient's unique identifier.
@@ -218,6 +224,10 @@ public class MedicalRecord {
             this.pastTreatments.get(this.pastTreatments.size() - 1).addPrescription(prescription);
         }
     }
+    
+    /**********
+     * Methods *
+     **********/
 
     /**
      * @brief Displays the complete medical record details.

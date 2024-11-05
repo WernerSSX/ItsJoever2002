@@ -9,6 +9,10 @@ public class Medication {
     private int quantity; /**< Quantity of the medication in stock */
     private String supplier; /**< Supplier of the medication */
 
+    /****************
+     * Constructors *
+     ****************/
+
     /**
      * @brief Constructs a Medication with specified details.
      *
@@ -22,7 +26,9 @@ public class Medication {
         this.supplier = supplier;
     }
 
-    // Getters and Setters
+    /***********************
+     * Getters and Setters *
+     ***********************/
 
     /**
      * @brief Gets the name of the medication.
@@ -71,6 +77,10 @@ public class Medication {
     public void setSupplier(String supplier) {
         this.supplier = supplier;
     }
+
+    /**********
+     * Methods *
+     **********/
 
     /**
      * @brief Returns a string representation of the medication details.

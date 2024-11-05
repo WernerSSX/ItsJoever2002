@@ -12,6 +12,10 @@ public class ContactInformation {
     private String phoneNumber;    /**< Phone number of the user */
     private String emailAddress;   /**< Email address of the user */
 
+    /****************
+     * Constructors *
+     ****************/
+
     /**
      * @brief Constructs a ContactInformation instance with the specified phone number and email address.
      *
@@ -22,6 +26,10 @@ public class ContactInformation {
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
     }
+
+    /***********************
+     * Getters and Setters *
+     ***********************/
 
     /**
      * @brief Gets the phone number of the user.
@@ -55,6 +63,10 @@ public class ContactInformation {
         this.emailAddress = emailAddress;
     }
 
+    /**********
+     * Methods *
+     **********/
+    
     /**
      * @brief Returns a string representation of the contact information.
      * @return A string containing the phone number and email address.

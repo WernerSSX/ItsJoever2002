@@ -19,6 +19,10 @@ public class Appointment {
     private String status;        /**< Current status of the appointment */ 
     private String outcomeRecord; /**< Record of the appointment outcome */ 
 
+    /****************
+     * Constructors *
+     ****************/
+
     /**
      * @brief Constructs an Appointment with the specified details.
      * 
@@ -38,17 +42,9 @@ public class Appointment {
         this.outcomeRecord = outcomeRecord;
     }
 
-    /**
-     * @brief Prints the details of the appointment.
-     */
-    public void print() {
-        System.out.println("\nAppointment ID: " + id);
-        System.out.println("Patient ID: " + patientId);
-        System.out.println("Doctor ID: " + doctorId);
-        System.out.println("Time Slot: " + timeSlot.toString());
-        System.out.println("Status: " + status);
-        System.out.println("Outcome Record: " + outcomeRecord);
-    }
+    /***********************
+     * Getters and Setters *
+     ***********************/
 
     /**
      * @brief Gets the unique identifier of the appointment.
@@ -144,5 +140,21 @@ public class Appointment {
      */
     public boolean isPast() {
         return timeSlot.getEndTime().isBefore(LocalDateTime.now());
+    }
+
+    /**********
+     * Methods *
+     **********/
+
+    /**
+     * @brief Prints the details of the appointment.
+     */
+    public void print() {
+        System.out.println("\nAppointment ID: " + id);
+        System.out.println("Patient ID: " + patientId);
+        System.out.println("Doctor ID: " + doctorId);
+        System.out.println("Time Slot: " + timeSlot.toString());
+        System.out.println("Status: " + status);
+        System.out.println("Outcome Record: " + outcomeRecord);
     }
 }
