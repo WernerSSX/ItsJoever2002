@@ -1,5 +1,5 @@
-Paracetamol|100|Pfizer
+Paracetamol|150|Pfizer
 COVID Vaccine|50|AstraZeneca
 Amoxicillin|75|GSK
 Ibuprofen|50|AstraZeneca
-Metformin|50|GSK
+Metformin|100|GSK
