@@ -534,6 +534,7 @@ public class AdministratorMenu {
 
     private int getPositiveInt(Scanner scanner, String string) {
         int input;
+        System.out.println(string);
         while (true) {
             String line = scanner.nextLine();
             try {

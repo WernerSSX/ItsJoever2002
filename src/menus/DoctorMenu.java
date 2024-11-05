@@ -176,6 +176,7 @@ public class DoctorMenu {
             }
             treatment.addPrescription(new Prescription(medName, status));
         }
+        treatment.setDoctorId(doctor.getHospitalID());
 
         // Add the new Treatment to the Medical Record
         record.addTreatment(treatment);
@@ -191,7 +192,7 @@ public class DoctorMenu {
      */
     private void viewPersonalSchedule(Doctor doctor) {
         Schedule schedule = doctor.getSchedule();
-        System.out.println("Personal Schedule:");
+        System.out.println("Availability slots:");
         for (LocalDate date : schedule.getAvailability().keySet()) {
             System.out.println("Date: " + date.format(DATE_FORMATTER));
             List<TimeSlot> slots = schedule.getAvailableTimeSlots(date);
@@ -200,6 +201,8 @@ public class DoctorMenu {
                                    " - " + slot.getEndTime().toLocalTime().format(TIME_FORMATTER));
             }
         }
+        System.out.println();
+        viewUpcomingAppointments(doctor);
     }
 
     /**
@@ -310,12 +313,12 @@ public class DoctorMenu {
         switch (decision) {
             case "y":
             case "yes":
-                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Scheduled");
+                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Confirmed");
                 System.out.println("Appointment ID " + selectedAppointment.getId() + " has been accepted and scheduled.");
                 break;
             case "n":
             case "no":
-                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Declined");
+                textDB.updateAppointmentStatus(selectedAppointment.getId(), "Cancelled");
                 System.out.println("Appointment ID " + selectedAppointment.getId() + " has been declined.");
                 break;
             default:
@@ -337,11 +340,11 @@ public class DoctorMenu {
 
         // Filter appointments based on:
         // 1. Assigned to the current doctor
-        // 2. Status is "Scheduled"
+        // 2. Status is "Confirmed"
         // 3. Start time is after the current time
         List<Appointment> upcomingAppointments = allAppointments.stream()
                 .filter(appt -> appt.getDoctorId().equals(doctor.getHospitalID()))
-                .filter(appt -> appt.getStatus().equalsIgnoreCase("Scheduled"))
+                .filter(appt -> appt.getStatus().equalsIgnoreCase("Confirmed"))
                 .filter(appt -> appt.getTimeSlot().getStartTime().isAfter(now))
                 .sorted((a1, a2) -> a1.getTimeSlot().getStartTime().compareTo(a2.getTimeSlot().getStartTime()))
                 .collect(Collectors.toList());
@@ -376,7 +379,7 @@ public class DoctorMenu {
         // Step 1: Fetch eligible appointments
         List<Appointment> eligibleAppointments = textDB.getAppointments().stream()
             .filter(appt -> appt.getDoctorId().equals(doctor.getHospitalID()))
-            .filter(appt -> appt.getStatus().equalsIgnoreCase("Scheduled"))
+            .filter(appt -> appt.getStatus().equalsIgnoreCase("Confirmed"))
             .filter(appt -> appt.getTimeSlot().getStartTime().isBefore(now))
             .sorted((a1, a2) -> a1.getTimeSlot().getStartTime().compareTo(a2.getTimeSlot().getStartTime()))
             .collect(Collectors.toList());
@@ -463,7 +466,7 @@ public class DoctorMenu {
             System.out.println("Medical record for Patient ID " + selectedAppt.getPatientId() + " not found.");
             return;
         }
-
+        treatment.setDoctorId(doctor.getHospitalID());
         record.addTreatment(treatment);
         textDB.updateMedicalRecord(record);
 

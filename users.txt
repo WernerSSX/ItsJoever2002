@@ -4,3 +4,4 @@ P001|password|Mark Lee|1995-01-01|Male|Pharmacist
 A001|password|Sarah Lee|1984-01-01|Female|Administrator
 P002|password|Werner Tan|2002-10-16|Male|Patient
 P003|password|Wern|2002-01-01|Male|Patient
+P004|password|Viet|2004-09-01|Male|Patient
