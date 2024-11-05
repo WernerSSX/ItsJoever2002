@@ -3,19 +3,23 @@ package items;
 import java.time.LocalDate;
 
 /**
- * The Diagnosis class represents a medical diagnosis with a description, date, and comments.
+ * @class Diagnosis
+ * @brief Represents a medical diagnosis with a description, date, and additional comments.
+ *
+ * The Diagnosis class stores information about a medical diagnosis, including a description
+ * of the diagnosed illness, the date of diagnosis, and optional comments.
  */
 public class Diagnosis {
-    private String description;
-    private LocalDate date;
-    private String comments; // Additional field for comments
+    private String description; /**< Description of the diagnosed illness */
+    private LocalDate date;     /**< Date of the diagnosis */
+    private String comments;    /**< Additional comments regarding the diagnosis */
 
     /**
-     * Constructor for Diagnosis.
+     * @brief Constructs a Diagnosis with the specified description, date, and comments.
      *
-     * @param description Description of the diagnosed illness
-     * @param date        Date of diagnosis
-     * @param comments    Additional comments regarding the diagnosis
+     * @param description Description of the diagnosed illness.
+     * @param date        Date of diagnosis.
+     * @param comments    Additional comments regarding the diagnosis.
      */
     public Diagnosis(String description, LocalDate date, String comments) {
         this.description = description;
@@ -23,39 +27,72 @@ public class Diagnosis {
         this.comments = comments;
     }
 
-    // Existing Constructor without comments (optional)
+    /**
+     * @brief Constructs a Diagnosis with the specified description and date.
+     *
+     * This constructor is provided for cases where comments are not needed.
+     *
+     * @param description Description of the diagnosed illness.
+     * @param date        Date of diagnosis.
+     */
     public Diagnosis(String description, LocalDate date) {
         this(description, date, "");
     }
 
     // Getters and Setters
 
+    /**
+     * @brief Gets the description of the diagnosed illness.
+     * @return The description of the illness.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * @brief Sets the description of the diagnosed illness.
+     * @param description The new description of the illness.
+     */
     public void setDescription(String description) { 
         this.description = description;
     }
 
+    /**
+     * @brief Gets the date of the diagnosis.
+     * @return The date of diagnosis.
+     */
     public LocalDate getDate() {
         return date;
     }
 
+    /**
+     * @brief Sets the date of the diagnosis.
+     * @param date The new date of diagnosis.
+     */
     public void setDate(LocalDate date) { 
         this.date = date;
     }
 
+    /**
+     * @brief Gets additional comments about the diagnosis.
+     * @return Comments regarding the diagnosis.
+     */
     public String getComments() {
         return comments;
     }
 
+    /**
+     * @brief Sets additional comments about the diagnosis.
+     * @param comments The new comments.
+     */
     public void setComments(String comments) { 
         this.comments = comments;
     }
 
     /**
-     * Prints the diagnosed illness along with any associated comments.
+     * @brief Prints the diagnosed illness details along with any associated comments.
+     *
+     * This method outputs the description, date, and comments (if any) related to the diagnosis.
      */
     public void printDiagnosedIllnessWithComments() {
         System.out.println("Diagnosis: " + description);
@@ -66,6 +103,10 @@ public class Diagnosis {
         System.out.println("-------------------------");
     }
 
+    /**
+     * @brief Returns a string representation of the diagnosis.
+     * @return A string containing the description, date, and comments.
+     */
     @Override
     public String toString() {
         return "Diagnosis{" +

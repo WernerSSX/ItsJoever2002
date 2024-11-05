@@ -7,11 +7,19 @@ import java.time.format.DateTimeFormatter;
  * The ReplenishmentRequest class represents a request to replenish a specific medication.
  */
 public class ReplenishmentRequest {
-    private String medicationName;
-    private int quantity;
-    private String requestedBy;
-    private LocalDate requestDate;
+    private String medicationName; /**< Name of the medication requested for replenishment */
+    private int quantity; /**< Quantity of the medication requested */
+    private String requestedBy; /**< Name of the person requesting the medication */
+    private LocalDate requestDate; /**< Date when the replenishment request was made */
 
+    /**
+     * Constructor for ReplenishmentRequest.
+     *
+     * @param medicationName Name of the medication requested
+     * @param quantity       Quantity of the medication requested
+     * @param requestedBy    Name of the person making the request
+     * @param requestDate    Date of the request
+     */
     public ReplenishmentRequest(String medicationName, int quantity, String requestedBy, LocalDate requestDate) {
         this.medicationName = medicationName;
         this.quantity = quantity;
@@ -21,34 +29,58 @@ public class ReplenishmentRequest {
 
     // Getters and Setters
 
+    /**
+     * @return The name of the medication requested.
+     */
     public String getMedicationName() {
         return medicationName;
     }
 
+    /**
+     * @param medicationName The new name of the medication requested.
+     */
     public void setMedicationName(String medicationName) {
         this.medicationName = medicationName;
     }
 
-	public int getQuantity() {
+    /**
+     * @return The quantity of the medication requested.
+     */
+    public int getQuantity() {
         return quantity;
     }
 
+    /**
+     * @param quantity The new quantity of the medication requested.
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-	
-	public String getRequestedBy() {
+
+    /**
+     * @return The name of the person who requested the medication.
+     */
+    public String getRequestedBy() {
         return requestedBy;
     }
 
+    /**
+     * @param requestedBy The new name of the person making the request.
+     */
     public void setRequestedBy(String requestedBy) {
         this.requestedBy = requestedBy;
     }
 
+    /**
+     * @return The date when the replenishment request was made.
+     */
     public LocalDate getRequestDate() {
         return requestDate;
     }
 
+    /**
+     * @param requestDate The new date for the request.
+     */
     public void setRequestDate(LocalDate requestDate) {
         this.requestDate = requestDate;
     }
@@ -56,8 +88,10 @@ public class ReplenishmentRequest {
     /**
      * Serializes the ReplenishmentRequest into a string.
      *
-     * Format:
+     * The format of the serialized string is:
      * medicationName;quantity;requestedBy;requestDate
+     *
+     * @return A string representation of the ReplenishmentRequest.
      */
     public String serialize() {
         return String.join(";",
@@ -71,8 +105,12 @@ public class ReplenishmentRequest {
     /**
      * Deserializes a ReplenishmentRequest from a string.
      *
-     * Expected Format:
+     * The expected format of the string is:
      * medicationName;quantity;requestedBy;requestDate
+     *
+     * @param data The serialized string containing the request details.
+     * @return A new ReplenishmentRequest object created from the serialized data.
+     * @throws IllegalArgumentException if the data string does not contain the expected format.
      */
     public static ReplenishmentRequest deserialize(String data) {
         String[] parts = data.split(";", -1);
@@ -88,6 +126,11 @@ public class ReplenishmentRequest {
         return new ReplenishmentRequest(medicationName, quantity, requestedBy, requestDate);
     }
 
+    /**
+     * Provides a string representation of the ReplenishmentRequest.
+     *
+     * @return A string describing the ReplenishmentRequest.
+     */
     @Override
     public String toString() {
         return "ReplenishmentRequest{" +

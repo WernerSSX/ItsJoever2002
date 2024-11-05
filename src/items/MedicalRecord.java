@@ -6,26 +6,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The MedicalRecord class holds comprehensive medical information about a patient.
+ * @class MedicalRecord
+ * @brief Holds comprehensive medical information about a patient.
+ *
+ * The MedicalRecord class stores details about a patient's personal and medical information,
+ * including diagnoses, treatments, and contact information.
  */
 public class MedicalRecord {
-    private String patientID;
-    private String name;
-    private LocalDate dateOfBirth;
-    private String gender;
-    private ContactInformation contactInformation;
-    private String bloodType;
-    private List<Diagnosis> pastDiagnoses;
-    private List<Treatment> pastTreatments;
+    private String patientID; /**< Unique identifier for the patient */
+    private String name; /**< Full name of the patient */
+    private LocalDate dateOfBirth; /**< Date of birth of the patient */
+    private String gender; /**< Gender of the patient */
+    private ContactInformation contactInformation; /**< Contact information for the patient */
+    private String bloodType; /**< Blood type of the patient */
+    private List<Diagnosis> pastDiagnoses; /**< List of past diagnoses */
+    private List<Treatment> pastTreatments; /**< List of past treatments */
 
     /**
-     * Constructor for MedicalRecord.
+     * @brief Constructs a MedicalRecord with specified basic details.
      *
-     * @param patientID          Unique identifier for the patient
-     * @param name               Full name of the patient
-     * @param dateOfBirth        Date of birth
-     * @param gender             Gender of the patient
-     * @param contactInformation Contact information (phone number, email)
+     * @param patientID          Unique identifier for the patient.
+     * @param name               Full name of the patient.
+     * @param dateOfBirth        Date of birth.
+     * @param gender             Gender of the patient.
+     * @param contactInformation Contact information (phone number, email).
      */
     public MedicalRecord(String patientID, String name, LocalDate dateOfBirth, String gender,
                         ContactInformation contactInformation) {
@@ -37,20 +41,19 @@ public class MedicalRecord {
         this.bloodType = "";
         this.pastDiagnoses = new ArrayList<>();
         this.pastTreatments = new ArrayList<>();
-        
     }
 
     /**
-     * Overloaded constructor with additional fields.
+     * @brief Constructs a MedicalRecord with additional fields.
      *
-     * @param patientID          Unique identifier for the patient
-     * @param name               Full name of the patient
-     * @param dateOfBirth        Date of birth
-     * @param gender             Gender of the patient
-     * @param contactInformation Contact information (phone number, email)
-     * @param bloodType          Blood type of the patient
-     * @param pastDiagnoses      List of past diagnoses
-     * @param pastTreatments     List of past treatments
+     * @param patientID          Unique identifier for the patient.
+     * @param name               Full name of the patient.
+     * @param dateOfBirth        Date of birth.
+     * @param gender             Gender of the patient.
+     * @param contactInformation Contact information (phone number, email).
+     * @param bloodType          Blood type of the patient.
+     * @param pastDiagnoses      List of past diagnoses.
+     * @param pastTreatments     List of past treatments.
      */
     public MedicalRecord(String patientID, String name, LocalDate dateOfBirth, String gender,
                         ContactInformation contactInformation, String bloodType,
@@ -67,75 +70,128 @@ public class MedicalRecord {
 
     // Getters and Setters
 
+    /**
+     * @brief Gets the patient's unique identifier.
+     * @return The patient's unique identifier.
+     */
     public String getPatientID() {
         return patientID;
     }
 
+    /**
+     * @brief Sets the patient's unique identifier.
+     * @param patientID The new unique identifier for the patient.
+     */
     public void setPatientID(String patientID) { 
         this.patientID = patientID;
     }
 
+    /**
+     * @brief Gets the patient's full name.
+     * @return The patient's full name.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @brief Sets the patient's full name.
+     * @param name The new full name of the patient.
+     */
     public void setName(String name) { 
         this.name = name;
     }
 
+    /**
+     * @brief Gets the patient's date of birth.
+     * @return The date of birth.
+     */
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
+    /**
+     * @brief Sets the patient's date of birth.
+     * @param dateOfBirth The new date of birth.
+     */
     public void setDateOfBirth(LocalDate dateOfBirth) { 
         this.dateOfBirth = dateOfBirth;
     }
 
+    /**
+     * @brief Gets the patient's gender.
+     * @return The gender of the patient.
+     */
     public String getGender() {
         return gender;
     }
 
+    /**
+     * @brief Sets the patient's gender.
+     * @param gender The new gender of the patient.
+     */
     public void setGender(String gender) { 
         this.gender = gender;
     }
 
+    /**
+     * @brief Gets the patient's contact information.
+     * @return The contact information.
+     */
     public ContactInformation getContactInformation() {
         return contactInformation;
     }
 
+    /**
+     * @brief Sets the patient's contact information.
+     * @param contactInformation The new contact information.
+     */
     public void setContactInformation(ContactInformation contactInformation) { 
         this.contactInformation = contactInformation;
     }
 
+    /**
+     * @brief Gets the patient's blood type.
+     * @return The blood type.
+     */
     public String getBloodType() {
         return bloodType;
     }
 
+    /**
+     * @brief Sets the patient's blood type.
+     * @param bloodType The new blood type.
+     */
     public void setBloodType(String bloodType) { 
         this.bloodType = bloodType;
     }
 
+    /**
+     * @brief Gets the list of past diagnoses.
+     * @return List of past diagnoses.
+     */
     public List<Diagnosis> getPastDiagnoses() {
         return pastDiagnoses;
     }
 
-
     /**
-     * Adds a diagnosis to the patient's medical record.
-     *
-     * @param diagnosis Diagnosis object to add
+     * @brief Adds a diagnosis to the patient's medical record.
+     * @param diagnosis Diagnosis object to add.
      */
     public void addDiagnosis(Diagnosis diagnosis) {
         this.pastDiagnoses.add(diagnosis);
     }
 
+    /**
+     * @brief Gets the list of past treatments.
+     * @return List of past treatments.
+     */
     public List<Treatment> getPastTreatments() {
         return pastTreatments;
     }
 
     /**
-     * Adds a treatment to the medical record.
-     *
+     * @brief Adds a treatment to the medical record.
      * @param treatment The Treatment object to add.
      */
     public void addTreatment(Treatment treatment) {
@@ -146,24 +202,28 @@ public class MedicalRecord {
     }
 
     /**
-     * Adds a prescription to the patient's medical record.
-     * This assumes each prescription is part of a treatment.
+     * @brief Adds a prescription to the patient's medical record.
      *
-     * @param prescription Prescription object to add
+     * This method assumes each prescription is part of a treatment.
+     * If no treatments exist, a new treatment is created.
+     *
+     * @param prescription Prescription object to add.
      */
     public void addPrescription(Prescription prescription) {
-        // Find or create a treatment to add the prescription
         if (this.pastTreatments.isEmpty()) {
             Treatment treatment = new Treatment();
             treatment.addPrescription(prescription);
             this.pastTreatments.add(treatment);
         } else {
-            // For simplicity, add to the last treatment
             this.pastTreatments.get(this.pastTreatments.size() - 1).addPrescription(prescription);
         }
     }
 
-
+    /**
+     * @brief Displays the complete medical record details.
+     *
+     * This method prints out all patient information, past diagnoses, and treatments.
+     */
     public void display() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         System.out.println("--------------------------------------------------");
@@ -179,7 +239,6 @@ public class MedicalRecord {
         System.out.println("Blood Type       : " + (bloodType != null ? bloodType : "N/A"));
         System.out.println();
 
-        // Display Past Diagnoses
         System.out.println("Past Diagnoses:");
         if (pastDiagnoses == null || pastDiagnoses.isEmpty()) {
             System.out.println("  - No past diagnoses recorded.");
@@ -190,7 +249,6 @@ public class MedicalRecord {
         }
         System.out.println();
 
-        // Display Past Treatments
         System.out.println("Past Treatments:");
         if (pastTreatments == null || pastTreatments.isEmpty()) {
             System.out.println("  - No past treatments recorded.");
@@ -202,7 +260,10 @@ public class MedicalRecord {
         System.out.println();
     }
 
-
+    /**
+     * @brief Returns a string representation of the medical record.
+     * @return A string containing the patient's information, diagnoses, and treatments.
+     */
     @Override
     public String toString() {
         return "MedicalRecord{" +

@@ -21,9 +21,7 @@ import user_classes.*;
  * @brief This class 
  */
 public class TextDB {
-    /**
-     * @brief The age of the object in years.
-     */
+	private List<DataLoader> loaders;
     private static TextDB instance;
     private List<MedicalRecord> medicalRecords;
     public static final String SEPARATOR = "|";
@@ -38,6 +36,12 @@ public class TextDB {
      * @brief Default constructor.
      */
     private TextDB() {
+    	loaders = new ArrayList<>();
+    	loaders.add(new MedicalRecordLoader("med_records.txt"));
+    	loaders.add(new UsersLoader("users.txt"));
+    	loaders.add(new AppointmentsLoader("appts.txt"));
+    	loaders.add(new MedicationInventoryLoader("inventory.txt"));
+    	loaders.add(new ReplenishmentRequestsLoader("replenishment_requests.txt"));
         users = new ArrayList<>();
         appointments = new ArrayList<>();
         medicalRecords = new ArrayList<>();
@@ -68,26 +72,35 @@ public class TextDB {
      * Loads all data including users, appointments, medical records, and schedules.
      */
     private void loadAllData() throws IOException {
-        loadMedicalRecordsFromFile("med_records.txt");
+    	for (DataLoader loader : loaders) {
+            loader.loadData();
+            if (loader instanceof MedicalRecordLoader) {
+                medicalRecords = new ArrayList<>(((MedicalRecordLoader) loader).getMedicalRecords());
+            }
+            if (loader instanceof UsersLoader) {
+            	users = new ArrayList<>(((UsersLoader) loader).getUsers());
+            }
+            if (loader instanceof AppointmentsLoader) {
+            	appointments = new ArrayList<>(((AppointmentsLoader) loader).getAppointments());
+            }
+            if (loader instanceof MedicationInventoryLoader) {
+            	medications = new ArrayList<>(((MedicationInventoryLoader) loader).getMedicationInventory());
+            }
+            if (loader instanceof ReplenishmentRequestsLoader) {
+            	replenishmentRequests = new ArrayList<>(((ReplenishmentRequestsLoader) loader).getReplenishmentRequests());
+            }
+        }
+    	/*
         loadFromFile("users.txt");
         loadAppointmentsFromFile("appts.txt");
-        loadSchedulesFromFile("schedules.txt");
         loadMedicationInventory("inventory.txt");
         loadReplenishmentRequests("replenishment_requests.txt");
+        */
+    	
+        loadSchedulesFromFile("schedules.txt");
     }
     
 
-    /**
-     * Saves all data including users, appointments, medical records, and schedules.
-     */
-    public void saveAllData() throws IOException {
-        saveToFile("users.txt");
-        saveAppointmentsToFile("appts.txt");
-        saveMedicalRecordsToFile("med_records.txt");
-        saveSchedulesToFile("schedules.txt");
-        saveMedicationInventory("inventory.txt");
-        saveReplenishmentRequests("replenishment_requests.txt");
-    }
 
     // Existing methods for Users, Appointments, and MedicalRecords...
 
@@ -302,26 +315,6 @@ public class TextDB {
         write(filename, stringList);
     }
 
-    /**
-     * @brief Sets the object's name.
-     *
-     * @param name The new name.
-     */
-    public void loadFromFile(String filename) throws IOException {
-        List<String> stringArray = read(filename);
-        users.clear();
-        for (String line : stringArray) {
-            users.add(deserializeUser(line));
-        }
-    }
-
-    /**
-     * @brief Calculates the result.
-     *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
-     */
     private static String serializeUser(User user) {
         return String.join(SEPARATOR,
                 user.getHospitalID(),
@@ -333,45 +326,6 @@ public class TextDB {
     }
     
     
-    /**
-     * @brief Calculates the result.
-     *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
-     */
-    private User deserializeUser(String userData) {
-        String[] fields = userData.split("\\" + SEPARATOR);
-        if (fields.length < 6) {
-            throw new IllegalArgumentException("Invalid user data: " + userData);
-        }
-    
-        String hospitalID = fields[0];
-        String password = fields[1];
-        String name = fields[2];
-        LocalDate dateOfBirth = LocalDate.parse(fields[3], DATE_FORMATTER);
-        String gender = fields[4];
-        String role = fields[5].toLowerCase();
-    
-        switch (role) {
-            case "administrator":
-                return new Administrator(hospitalID, password, name, dateOfBirth, gender);
-            case "doctor":
-                return new Doctor(hospitalID, password, name, dateOfBirth, gender, new Schedule());
-            case "patient":
-                return new Patient(hospitalID, password, name, dateOfBirth, gender);
-            case "pharmacist":
-                return new Pharmacist(hospitalID, password, name, dateOfBirth, gender);
-            default:
-                throw new IllegalArgumentException("Unknown role: " + role);
-        }
-    }
-    
-    /**
-     * @brief Sets the object's name.
-     *
-     * @param name The new name.
-     */
     public static void write(String fileName, List<String> data) throws IOException {
         PrintWriter out = new PrintWriter(new FileWriter(fileName));
         try {
@@ -708,28 +662,6 @@ public class TextDB {
         return appointments;
     }
 
-    /**
-     * @brief Calculates the result.
-     *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
-     */
-    public void loadAppointmentsFromFile(String filename) throws IOException {
-        List<String> stringArray = read(filename);
-        appointments.clear();
-        for (String line : stringArray) {
-            appointments.add(deserializeAppointment(line));
-        }
-    }
-
-    /**
-     * @brief Calculates the result.
-     *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
-     */
     public static void saveAppointmentsToFile(String filename) throws IOException {
         List<String> stringList = new ArrayList<>();
         for (Appointment appointment : appointments) {
@@ -808,28 +740,6 @@ public class TextDB {
         saveMedicalRecordsToFile("med_records.txt");
     }
     
-    /**
-     * @brief Calculates the result.
-     *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
-     */
-    private void loadMedicalRecordsFromFile(String filename) throws IOException {
-        List<String> lines = read(filename);
-        medicalRecords.clear();
-        for (String line : lines) {
-            medicalRecords.add(deserializeMedicalRecord(line));
-        }
-    }
-    
-    /**
-     * @brief Calculates the result.
-     *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
-     */
     private void saveMedicalRecordsToFile(String filename) throws IOException {
         List<String> stringList = new ArrayList<>();
         for (MedicalRecord record : medicalRecords) {
@@ -886,63 +796,6 @@ public class TextDB {
 
         return sb.toString();
     }
-
-    /**
-     * Deserializes a MedicalRecord object from a string.
-     *
-     * Expected Format:
-     * patientID|name|dateOfBirth|gender|phone|email|bloodType|diag1;date1,diag2;date2|treatment1^treatment2
-     *
-     * @param data Serialized string representation of the MedicalRecord
-     * @return MedicalRecord object
-     */
-    private MedicalRecord deserializeMedicalRecord(String data) {
-        String[] fields = data.split("\\" + SEPARATOR, -1); // -1 to include empty trailing fields
-
-        if (fields.length < 9) { // Expecting 9 fields now
-            throw new IllegalArgumentException("Invalid medical record data: " + data);
-        }
-
-        // Basic information
-        String patientID = fields[0];
-        String name = fields[1];
-        LocalDate dob = LocalDate.parse(fields[2], DATE_FORMATTER);
-        String gender = fields[3];
-        String phone = fields[4];
-        String email = fields[5];
-        String bloodType = fields[6].equals("NULL") ? null : fields[6];
-
-        ContactInformation contactInfo = new ContactInformation(phone, email);
-
-        // Deserialize Diagnoses
-        List<Diagnosis> diagnoses = new ArrayList<>();
-        if (!fields[7].equals("NULL") && !fields[7].trim().isEmpty()) {
-            String[] diagParts = fields[7].split(",");
-            for (String diag : diagParts) {
-                String[] diagFields = diag.split(";");
-                if (diagFields.length == 2) {
-                    diagnoses.add(new Diagnosis(diagFields[0], LocalDate.parse(diagFields[1], DATE_FORMATTER)));
-                }
-            }
-        }
-
-        // Deserialize Treatments using '^' as the separator
-        List<Treatment> treatments = new ArrayList<>();
-        if (!fields[8].equals("NULL") && !fields[8].trim().isEmpty()) {
-            String[] treatParts = fields[8].split("\\^"); // Ensure '^' is used here
-            for (String treat : treatParts) {
-                treatments.add(Treatment.deserialize(treat)); // Ensure Treatment.deserialize handles the format correctly
-            }
-        }
-
-        // Create and return the MedicalRecord
-        MedicalRecord record = new MedicalRecord(patientID, name, dob, gender, contactInfo, bloodType, diagnoses, treatments);
-        // No Assigned Doctor ID
-        // record.setAssignedDoctorId(assignedDoctorId);
-
-        return record;
-    }
-
     
 
     /**
@@ -1033,19 +886,6 @@ public class TextDB {
 
 // ====================== Medication and prescription ========================= //
 
-    /**
-     * Loads medication inventory from the specified file.
-     *
-     * @param filename The name of the inventory file.
-     * @throws IOException If an I/O error occurs.
-     */
-    public void loadMedicationInventory(String filename) throws IOException {
-        List<String> lines = read(filename);
-        medications.clear();
-        for (String line : lines) {
-            medications.add(deserializeMedication(line));
-        }
-    }
 
     /**
      * Saves medication inventory to the specified file.
@@ -1067,17 +907,6 @@ public class TextDB {
                 String.valueOf(medication.getQuantity()),
                 medication.getSupplier() != null ? medication.getSupplier() : "NULL"
         );
-    }
-
-    private Medication deserializeMedication(String data) {
-        String[] parts = data.split("\\|", -1);
-        if (parts.length != 3) {
-            throw new IllegalArgumentException("Invalid Medication data: " + data);
-        }
-        String name = parts[0];
-        int quantity = Integer.parseInt(parts[1]);
-        String supplier = parts[2].equals("NULL") ? null : parts[2];
-        return new Medication(name, quantity, supplier);
     }
 
     /**
@@ -1111,20 +940,6 @@ public class TextDB {
     }
 
     /**
-     * Loads replenishment requests from the specified file.
-     *
-     * @param filename The name of the replenishment requests file.
-     * @throws IOException If an I/O error occurs.
-     */
-    public void loadReplenishmentRequests(String filename) throws IOException {
-        List<String> lines = read(filename);
-        replenishmentRequests.clear();
-        for (String line : lines) {
-            replenishmentRequests.add(deserializeReplenishmentRequest(line));
-        }
-    }
-
-    /**
      * Saves replenishment requests to the specified file.
      *
      * @param filename The name of the replenishment requests file.
@@ -1136,10 +951,6 @@ public class TextDB {
             lines.add(request.serialize());
         }
         write(filename, lines);
-    }
-
-    private ReplenishmentRequest deserializeReplenishmentRequest(String data) {
-        return ReplenishmentRequest.deserialize(data);
     }
 
     /**

@@ -10,14 +10,14 @@ import java.util.List;
  * date of appointment, and comments.
  */
 public class Treatment {
-    private String serviceType;
-    private LocalDate dateOfAppointment;
-    private List<Prescription> allPrescribedMedicine;
-    private String treatmentComments;
-    private String doctorId;
+    private String serviceType;                  /**< Type of service provided (e.g., consultation, X-ray) */
+    private LocalDate dateOfAppointment;         /**< Date of the appointment */
+    private List<Prescription> allPrescribedMedicine; /**< List of all prescribed medications */
+    private String treatmentComments;             /**< Comments regarding the treatment */
+    private String doctorId;                      /**< ID of the doctor providing the treatment */
 
     /**
-     * Default constructor initializes the list of prescribed medicines.
+     * Default constructor initializes the list of prescribed medicines and sets comments to an empty string.
      */
     public Treatment() {
         this.allPrescribedMedicine = new ArrayList<>();
@@ -30,6 +30,7 @@ public class Treatment {
      * @param serviceType        Type of service provided (e.g., consultation, X-ray)
      * @param dateOfAppointment  Date of the appointment
      * @param treatmentComments  Comments regarding the treatment
+     * @param doctorId          ID of the doctor providing the treatment
      */
     public Treatment(String serviceType, LocalDate dateOfAppointment, String treatmentComments, String doctorId) {
         this.serviceType = serviceType;
@@ -42,43 +43,48 @@ public class Treatment {
     // Getters and Setters
 
     public String getServiceType() {
-        return serviceType;
+        return serviceType; // Return the service type
     }
 
     public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
+        this.serviceType = serviceType; // Set the service type
     }
 
     public LocalDate getDateOfAppointment() {
-        return dateOfAppointment;
+        return dateOfAppointment; // Return the date of appointment
     }
 
     public void setDateOfAppointment(LocalDate dateOfAppointment) {
-        this.dateOfAppointment = dateOfAppointment;
+        this.dateOfAppointment = dateOfAppointment; // Set the date of appointment
     }
 
     public List<Prescription> getAllPrescribedMedicine() {
-        return allPrescribedMedicine;
+        return allPrescribedMedicine; // Return the list of prescribed medicines
     }
 
+    /**
+     * Adds a prescription to the list of prescribed medicines.
+     *
+     * @param prescription The Prescription object to be added
+     */
     public void addPrescription(Prescription prescription) {
-        this.allPrescribedMedicine.add(prescription);
+        this.allPrescribedMedicine.add(prescription); // Add the prescription to the list
     }
 
     public String getTreatmentComments() {
-        return treatmentComments;
+        return treatmentComments; // Return treatment comments
     }
 
     public void setTreatmentComments(String treatmentComments) {
-        this.treatmentComments = treatmentComments;
+        this.treatmentComments = treatmentComments; // Set treatment comments
     }
 
     public String getDoctorId() {
-        return doctorId;
+        return doctorId; // Return the doctor's ID
     }
 
     public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId;
+        this.doctorId = doctorId; // Set the doctor's ID
     }
 
     /**
@@ -86,12 +92,12 @@ public class Treatment {
      */
     public void printAllPrescribedMedicine() {
         if (allPrescribedMedicine.isEmpty()) {
-            System.out.println("No medications prescribed.");
+            System.out.println("No medications prescribed."); // Inform if no medications are prescribed
             return;
         }
         System.out.println("Prescribed Medications:");
         for (Prescription p : allPrescribedMedicine) {
-            System.out.println("- " + p.getMedicationName() + " | Status: " + p.getStatus());
+            System.out.println("- " + p.getMedicationName() + " | Status: " + p.getStatus()); // Print each prescribed medication
         }
         System.out.println("-------------------------");
     }
@@ -101,10 +107,10 @@ public class Treatment {
      */
     public void printTreatmentComments() {
         if (treatmentComments == null || treatmentComments.trim().isEmpty()) {
-            System.out.println("No treatment comments.");
+            System.out.println("No treatment comments."); // Inform if no comments are present
             return;
         }
-        System.out.println("Treatment Comments: " + treatmentComments);
+        System.out.println("Treatment Comments: " + treatmentComments); // Print treatment comments
         System.out.println("-------------------------");
     }
 
@@ -118,8 +124,8 @@ public class Treatment {
      */
     public String serialize() {
         StringBuilder sb = new StringBuilder();
-        sb.append(serviceType != null ? serviceType : "NULL").append(";");
-        sb.append(dateOfAppointment != null ? dateOfAppointment.format(DateTimeFormatter.ISO_LOCAL_DATE) : "NULL").append(";");
+        sb.append(serviceType != null ? serviceType : "NULL").append(";"); // Append service type
+        sb.append(dateOfAppointment != null ? dateOfAppointment.format(DateTimeFormatter.ISO_LOCAL_DATE) : "NULL").append(";"); // Append date of appointment
         
         // Serialize Prescribed Medications
         if (allPrescribedMedicine != null && !allPrescribedMedicine.isEmpty()) {
@@ -127,19 +133,19 @@ public class Treatment {
                     allPrescribedMedicine.stream()
                             .map(p -> p.getMedicationName() + ":" + p.getStatus())
                             .toArray(String[]::new));
-            sb.append(meds);
+            sb.append(meds); // Append serialized medications
         } else {
-            sb.append("NULL");
+            sb.append("NULL"); // Indicate no medications prescribed
         }
         sb.append(";");
-        
+
         // Serialize Treatment Comments (escape semicolons)
         sb.append(treatmentComments != null ? treatmentComments.replace(";", "\\;") : "NULL").append(";");
-        
+
         // Serialize Doctor ID
-        sb.append(doctorId != null ? doctorId : "NULL");
-        
-        return sb.toString();
+        sb.append(doctorId != null ? doctorId : "NULL"); // Append doctor's ID
+
+        return sb.toString(); // Return the serialized string
     }
 
     /**
@@ -154,34 +160,35 @@ public class Treatment {
     public static Treatment deserialize(String data) {
         String[] parts = data.split(";", -1); // -1 to include trailing empty strings
         if (parts.length != 5) {
-            throw new IllegalArgumentException("Invalid Treatment data: " + data);
+            throw new IllegalArgumentException("Invalid Treatment data: " + data); // Validate the expected format
         }
 
-        String serviceType = parts[0].equals("NULL") ? null : parts[0];
-        LocalDate dateOfAppointment = parts[1].equals("NULL") ? null : LocalDate.parse(parts[1], DateTimeFormatter.ISO_LOCAL_DATE);
-        String medsPart = parts[2];
-        String treatmentComments = parts[3].equals("NULL") ? "" : parts[3].replace("\\;", ";");
-        String doctorId = parts[4].equals("NULL") ? null : parts[4];
+        String serviceType = parts[0].equals("NULL") ? null : parts[0]; // Parse service type
+        LocalDate dateOfAppointment = parts[1].equals("NULL") ? null : LocalDate.parse(parts[1], DateTimeFormatter.ISO_LOCAL_DATE); // Parse date of appointment
+        String medsPart = parts[2]; // Store medications part
+        String treatmentComments = parts[3].equals("NULL") ? "" : parts[3].replace("\\;", ";"); // Parse treatment comments
+        String doctorId = parts[4].equals("NULL") ? null : parts[4]; // Parse doctor's ID
 
+        // Create a new Treatment object and set its fields
         Treatment treatment = new Treatment();
         treatment.setServiceType(serviceType);
         treatment.setDateOfAppointment(dateOfAppointment);
         treatment.setTreatmentComments(treatmentComments);
         treatment.setDoctorId(doctorId);
 
+        // Deserialize prescribed medications if present
         if (!medsPart.equals("NULL") && !medsPart.trim().isEmpty()) {
-            String[] meds = medsPart.split(",");
+            String[] meds = medsPart.split(","); // Split medications
             for (String med : meds) {
-                String[] medParts = med.split(":");
+                String[] medParts = med.split(":"); // Split medication name and status
                 if (medParts.length == 2) {
-                    treatment.addPrescription(new Prescription(medParts[0], medParts[1]));
+                    treatment.addPrescription(new Prescription(medParts[0], medParts[1])); // Add each prescription
                 }
             }
         }
 
-        return treatment;
+        return treatment; // Return the deserialized Treatment object
     }
-
 
     /**
      * Displays the Treatment details including Doctor ID.
@@ -189,29 +196,27 @@ public class Treatment {
     public void display() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         System.out.println("  ------------------------------------------------");
-        System.out.println("    Service Type        : " + (serviceType != null ? serviceType : "N/A"));
-        System.out.println("    Date of Appointment  : " + (dateOfAppointment != null ? dateOfAppointment.format(dateFormatter) : "N/A"));
+        System.out.println("    Service Type        : " + (serviceType != null ? serviceType : "N/A")); // Display service type
+        System.out.println("    Date of Appointment  : " + (dateOfAppointment != null ? dateOfAppointment.format(dateFormatter) : "N/A")); // Display date of appointment
         
         // Prescribed Medications
         System.out.println("    Prescribed Medications:");
         if (allPrescribedMedicine == null || allPrescribedMedicine.isEmpty()) {
-            System.out.println("      - NULL");
+            System.out.println("      - NULL"); // Inform if no medications are prescribed
         } else {
             for (Prescription presc : allPrescribedMedicine) {
-                System.out.println("      - " + presc.getMedicationName() + " | Status: " + presc.getStatus());
+                System.out.println("      - " + presc.getMedicationName() + " | Status: " + presc.getStatus()); // Print each prescribed medication
             }
         }
-        
+
         // Treatment Comments
-        System.out.println("    Consultation Notes   : " + (treatmentComments != null && !treatmentComments.trim().isEmpty() ? treatmentComments : "None"));
+        System.out.println("    Consultation Notes   : " + (treatmentComments != null && !treatmentComments.trim().isEmpty() ? treatmentComments : "None")); // Display comments
         
         // Display Doctor ID
-        System.out.println("    Doctor ID            : " + (doctorId != null ? doctorId : "N/A"));
+        System.out.println("    Doctor ID            : " + (doctorId != null ? doctorId : "N/A")); // Display doctor ID
         System.out.println("  ------------------------------------------------");
     }
 
-    
-    
     @Override
     public String toString() {
         return "Treatment{" +
@@ -219,6 +224,6 @@ public class Treatment {
                 ", dateOfAppointment=" + dateOfAppointment +
                 ", allPrescribedMedicine=" + allPrescribedMedicine +
                 ", treatmentComments='" + treatmentComments + '\'' +
-                '}';
+                '}'; // Return string representation of the Treatment object
     }
 }
