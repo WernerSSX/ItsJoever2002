@@ -1,8 +1,7 @@
 package menus;
 
 import db.TextDB;
-import user_classes.Doctor;
-
+import items.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
-import items.*;
+import user_classes.Doctor;
 
 /**
  * The DoctorMenu class provides an interactive menu for doctors to manage patient records,
@@ -174,6 +172,7 @@ public class DoctorMenu {
             if (status.isEmpty()) {
                 status = "pending";
             }
+            // POSSIBLE UPDATE: Include confirmation of medication
             treatment.addPrescription(new Prescription(medName, status));
         }
 
@@ -320,7 +319,7 @@ public class DoctorMenu {
                 break;
             default:
                 System.out.println("Invalid input. Please enter 'y' or 'n'.");
-        }
+        } // POSSIBLE UPDATE: Ensure that decision is case sensitive
     }
 
     /**
