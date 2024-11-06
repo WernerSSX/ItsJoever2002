@@ -7,13 +7,22 @@ import java.util.Scanner;
 import menus.*;
 import user_classes.*;
 
+/**
+ * @brief Entry point for the Hospital Management System application.
+ */
 public class HospitalManagementSystem {
+    /**
+     * @brief Main method for running the Hospital Management System.
+     * 
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         TextDB textDB = TextDB.getInstance();
 
         boolean systemRunning = true;
 
+        // Main system loop
         while (systemRunning) {
             System.out.println("\n=== Welcome to the Hospital Management System ===");
             System.out.println("1. Administrator Login");
@@ -34,6 +43,7 @@ public class HospitalManagementSystem {
                 continue;
             }
 
+            // Handle user choice
             switch (choice) {
                 case 1:
                     // Administrator Login
@@ -74,14 +84,18 @@ public class HospitalManagementSystem {
         scanner.close();
     }
 
+    /**
+     * @brief Handles the login process for a specific role.
+     * 
+     * @param scanner   Scanner instance for input.
+     * @param textDB    Database instance.
+     * @param role      Role of the user attempting to log in.
+     */
     private static void handleLogin(Scanner scanner, TextDB textDB, String role) {
         System.out.print("Enter Hospital ID: ");
         String inputHospitalID = scanner.nextLine();
-        // POSSIBLE UPDATE: Include Error Handling and minimal requirements for Hospital ID
         System.out.print("Enter Password: ");
         String inputPass = scanner.nextLine();
-        // POSSIBLE UPDATE: Include Error Handling and minimal requirements for Password
-        // POSSIBLE UPDATE: Include "Forget Password" Feature
 
         User user = getUserByRoleAndID(textDB.getUsers(), role, inputHospitalID);
 
@@ -93,6 +107,14 @@ public class HospitalManagementSystem {
         }
     }
 
+    /**
+     * @brief Retrieves a user by role and hospital ID.
+     * 
+     * @param userList    List of all users in the system.
+     * @param role        Role of the user to find.
+     * @param hospitalID  Hospital ID of the user to find.
+     * @return            User object if a match is found, null otherwise.
+     */
     private static User getUserByRoleAndID(List<User> userList, String role, String hospitalID) {
         for (User user : userList) {
             if (user.getClass().getSimpleName().equalsIgnoreCase(role) &&
@@ -103,6 +125,13 @@ public class HospitalManagementSystem {
         return null; // No matching user found
     }
 
+    /**
+     * @brief Navigates to the appropriate menu based on the user's role.
+     * 
+     * @param scanner Scanner instance for input.
+     * @param user    User who has logged in.
+     * @param textDB  Database instance.
+     */
     private static void navigateToMenu(Scanner scanner, User user, TextDB textDB) {
         if (user instanceof Administrator) {
             AdministratorMenu adminMenu = new AdministratorMenu(textDB);
