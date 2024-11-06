@@ -1,31 +1,32 @@
 package user_classes;
 
+import db.TextDB;
+import items.*;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import db.TextDB;
-
-import java.io.IOException;
-import items.*;
 
 /**
- * The Doctor class represents a doctor in the hospital management system.
- * It extends the User class and includes additional attributes and methods
+ * @class Doctor
+ * @brief Represents a doctor in the hospital management system.
+ * 
+ * This class extends the User class and adds attributes and methods
  * specific to doctors, such as managing patient lists, schedules, and availability.
  */
 public class Doctor extends User {
-    private List<String> patientIds; // List of patient hospital IDs assigned to the doctor
-    private Schedule schedule;       // Doctor's schedule for managing availability
+    private List<String> patientIds; ///< List of patient hospital IDs assigned to the doctor
+    private Schedule schedule;       ///< Doctor's schedule for managing availability
 
     /**
-     * Constructor for the Doctor class.
+     * @brief Constructs a Doctor object with the specified attributes.
      *
-     * @param hospitalID        Unique identifier for the doctor within the hospital
-     * @param password          Password for authentication
-     * @param name              Full name of the doctor
-     * @param dateOfBirth       Date of birth
-     * @param gender            Gender of the doctor
-     * @param schedule          Initial schedule of the doctor
+     * @param hospitalID Unique identifier for the doctor within the hospital
+     * @param password   Password for authentication
+     * @param name       Full name of the doctor
+     * @param dateOfBirth Date of birth
+     * @param gender     Gender of the doctor
+     * @param schedule   Initial schedule of the doctor
      */
     public Doctor(String hospitalID, String password, String name, LocalDate dateOfBirth,
                   String gender, Schedule schedule) {
@@ -36,28 +37,28 @@ public class Doctor extends User {
     }
 
     /**
-     * Constructor used during deserialization when patient IDs are known.
+     * @brief Constructs a Doctor object with known patient IDs.
+     *
+     * This constructor is used during deserialization when the patient IDs
+     * are already known.
      *
      * @param hospitalID         Unique identifier for the doctor within the hospital
      * @param password           Password for authentication
      * @param name               Full name of the doctor
      * @param dateOfBirth        Date of birth
      * @param gender             Gender of the doctor
-     * @param contactInformation Contact information (phone number, email)
      * @param schedule           Initial schedule of the doctor
      * @param patientIds         List of patient hospital IDs assigned to the doctor
      */
     public Doctor(String hospitalID, String password, String name, LocalDate dateOfBirth,
-                  String gender, Schedule schedule,
-                  List<String> patientIds) {
+                  String gender, Schedule schedule, List<String> patientIds) {
         super(hospitalID, password, name, dateOfBirth, gender);
         this.schedule = schedule != null ? schedule : new Schedule();
         this.patientIds = patientIds != null ? patientIds : new ArrayList<>();
     }
 
     /**
-     * Retrieves the list of patient hospital IDs assigned to the doctor.
-     *
+     * @brief Gets the list of patient hospital IDs assigned to the doctor.
      * @return List of patient IDs
      */
     public List<String> getPatients() {
@@ -65,8 +66,7 @@ public class Doctor extends User {
     }
 
     /**
-     * Adds a patient to the doctor's list of assigned patients.
-     *
+     * @brief Adds a patient to the doctor's list of assigned patients.
      * @param patientId Hospital ID of the patient to add
      */
     public void addPatient(String patientId) {
@@ -76,8 +76,7 @@ public class Doctor extends User {
     }
 
     /**
-     * Removes a patient from the doctor's list of assigned patients.
-     *
+     * @brief Removes a patient from the doctor's list of assigned patients.
      * @param patientId Hospital ID of the patient to remove
      */
     public void removePatient(String patientId) {
@@ -85,8 +84,7 @@ public class Doctor extends User {
     }
 
     /**
-     * Retrieves the doctor's schedule.
-     *
+     * @brief Gets the doctor's schedule.
      * @return Schedule object representing the doctor's availability
      */
     public Schedule getSchedule() {
@@ -94,20 +92,18 @@ public class Doctor extends User {
     }
 
     /**
-     * Sets the doctor's schedule.
-     *
+     * @brief Sets the doctor's schedule.
      * @param schedule Schedule object to set
      */
     public void setSchedule(Schedule schedule) {
         this.schedule = schedule;
     }
 
-    
     /**
-     * Retrieves the MedicalRecord of a specific patient assigned to the doctor.
+     * @brief Retrieves the MedicalRecord of a specific patient assigned to the doctor.
      *
      * @param patientId Hospital ID of the patient
-     * @return MedicalRecord object if found, else null
+     * @return MedicalRecord object if found, otherwise null
      */
     public MedicalRecord getPatientMedicalRecord(String patientId) {
         if (!patientIds.contains(patientId)) {
@@ -117,7 +113,7 @@ public class Doctor extends User {
     }
 
     /**
-     * Updates the MedicalRecord of a specific patient.
+     * @brief Updates the MedicalRecord of a specific patient.
      *
      * @param patientId     Hospital ID of the patient
      * @param updatedRecord The updated MedicalRecord object
@@ -131,7 +127,7 @@ public class Doctor extends User {
     }
 
     /**
-     * Sets the doctor's availability for a specific date.
+     * @brief Sets the doctor's availability for a specific date.
      *
      * @param date        The date for which to set availability
      * @param availability List of TimeSlot objects representing available times
@@ -144,7 +140,7 @@ public class Doctor extends User {
     }
 
     /**
-     * Retrieves the doctor's available TimeSlots for a specific date.
+     * @brief Retrieves the doctor's available TimeSlots for a specific date.
      *
      * @param date The date for which to retrieve availability
      * @return List of available TimeSlot objects
@@ -154,8 +150,7 @@ public class Doctor extends User {
     }
 
     /**
-     * Overrides the toString method to provide a string representation of the Doctor.
-     *
+     * @brief Provides a string representation of the Doctor object.
      * @return String representation of the Doctor
      */
     @Override
@@ -169,23 +164,27 @@ public class Doctor extends User {
                 ", schedule=" + schedule;
     }
 
+    /**
+     * @brief Logs the doctor into the system.
+     */
     @Override
     public void login() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'login'");
     }
 
+    /**
+     * @brief Allows the doctor to change their password.
+     */
     @Override
     public void changePassword() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'changePassword'");
     }
 
+    /**
+     * @brief Logs the doctor out of the system.
+     */
     @Override
     public void logout() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'logout'");
     }
-
-    // Additional methods can be added here as needed for extended functionalities
 }
