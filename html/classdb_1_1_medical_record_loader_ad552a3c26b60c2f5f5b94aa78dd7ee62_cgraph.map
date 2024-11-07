@@ -1,0 +1,11 @@
+<map id="db.MedicalRecordLoader.loadData" name="db.MedicalRecordLoader.loadData">
+<area shape="rect" id="Node000001" title="Loads medical records from the associated file." alt="" coords="5,31,226,56"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_medical_record_loader.html#a90d533c86c0cb78c0ffbcddbfdd9e3ee" title="Deserializes a MedicalRecord object from a string representation." alt="" coords="284,5,514,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,31,268,27,268,32,226,36"/>
+<area shape="rect" id="Node000005" href="$classdb_1_1_data_loader.html#af737f278a0a511944938fdcd5880f0d9" title="Reads all lines from a specified file." alt="" coords="274,55,524,80"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="226,50,258,53,258,58,226,56"/>
+<area shape="rect" id="Node000003" href="$classitems_1_1_treatment.html#a8f88f9c1ac686801ba3e47b65c7142b5" title="Deserializes a Treatment object from a string." alt="" coords="572,5,754,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="515,16,556,16,556,21,515,21"/>
+<area shape="rect" id="Node000004" href="$classitems_1_1_treatment.html#a392635dc4fde65f3db7b4372503fad72" title="Default constructor initializes the list of prescribed medicines and sets comments to an empty string..." alt="" coords="802,5,982,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="755,16,787,16,787,21,755,21"/>
+</map>

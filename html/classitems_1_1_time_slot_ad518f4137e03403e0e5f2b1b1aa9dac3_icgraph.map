@@ -1,0 +1,5 @@
+<map id="items.TimeSlot.setAvailable" name="items.TimeSlot.setAvailable">
+<area shape="rect" id="Node000001" title="Sets availability of the timeslot." alt="" coords="235,5,419,31"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_text_d_b.html#ad012623bfd1b59de612a4bdb189029a4" title="Calculates the result." alt="" coords="5,5,187,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,21,187,21,187,16,219,16"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="db.MedicalRecordLoader.deserialize" name="db.MedicalRecordLoader.deserialize">
+<area shape="rect" id="Node000001" title="Deserializes a MedicalRecord object from a string representation." alt="" coords="274,5,504,31"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_medical_record_loader.html#ad552a3c26b60c2f5f5b94aa78dd7ee62" title="Loads medical records from the associated file." alt="" coords="5,5,226,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="258,21,226,21,226,16,258,16"/>
+</map>

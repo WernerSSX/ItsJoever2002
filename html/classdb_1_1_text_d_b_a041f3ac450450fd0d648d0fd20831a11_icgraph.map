@@ -1,0 +1,5 @@
+<map id="db.TextDB.updateUserPassword" name="db.TextDB.updateUserPassword">
+<area shape="rect" id="Node000001" title="Sets the object&#39;s name." alt="" coords="263,5,475,31"/>
+<area shape="rect" id="Node000002" href="$classuser__classes_1_1_user.html#a8b403334d60adc09d7eaedbb5711dfeb" title="Sets the user&#39;s password and updates it in the database." alt="" coords="5,5,215,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="247,21,215,21,215,16,247,16"/>
+</map>

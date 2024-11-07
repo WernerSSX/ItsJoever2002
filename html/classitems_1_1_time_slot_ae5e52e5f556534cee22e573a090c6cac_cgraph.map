@@ -1,0 +1,6 @@
+<map id="items.TimeSlot.equals" name="items.TimeSlot.equals">
+<area shape="rect" id="Node000001" title="Checks if two timeslots are the same." alt="" coords="5,29,157,55"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="47,31,40,21,44,11,58,5,81,3,106,5,119,12,117,17,105,10,81,8,59,10,48,15,45,20,51,27"/>
+<area shape="rect" id="Node000002" href="$classitems_1_1_time_slot.html#a47501583da2ebd3ad2bcad768d10e634" title=" " alt="" coords="205,29,370,55"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="157,40,189,40,189,45,157,45"/>
+</map>

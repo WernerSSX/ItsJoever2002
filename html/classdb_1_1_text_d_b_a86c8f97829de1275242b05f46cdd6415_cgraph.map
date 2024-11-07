@@ -1,0 +1,14 @@
+<map id="db.TextDB.updateAppointment" name="db.TextDB.updateAppointment">
+<area shape="rect" id="Node000001" title="Updates an appointment with a new status and saves changes." alt="" coords="5,31,205,56"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_text_d_b.html#a15e72117fb552c009020fe017eff11b1" title=" " alt="" coords="253,5,483,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,31,237,28,237,33,205,37"/>
+<area shape="rect" id="Node000004" href="$classdb_1_1_text_d_b.html#ad0cc1ccd01528bf3a15b1dda0e764482" title=" " alt="" coords="262,55,474,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="205,50,247,54,246,59,205,55"/>
+<area shape="rect" id="Node000003" href="$classdb_1_1_text_d_b.html#ab0828cdec6203b29d3036e79ecd6cc5e" title=" " alt="" coords="596,5,711,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="484,16,580,16,580,21,484,21"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="446,51,581,28,582,33,447,57"/>
+<area shape="rect" id="Node000005" href="$classitems_1_1_schedule.html#a4549ab37ec9b3215ebfaf575c5d691c6" title=" " alt="" coords="556,55,752,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="474,65,540,65,540,70,474,70"/>
+<area shape="rect" id="Node000006" href="$classitems_1_1_schedule.html#a85b87460a427b084400c5a4fa7f1a2c5" title=" " alt="" coords="531,104,776,130"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="447,78,561,98,560,103,446,84"/>
+</map>

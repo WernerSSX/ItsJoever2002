@@ -1,0 +1,5 @@
+<map id="services.AppointmentService.getCurrentAppointments" name="services.AppointmentService.getCurrentAppointments">
+<area shape="rect" id="Node000001" title="Retrieves current and upcoming appointments." alt="" coords="5,5,342,31"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_text_d_b.html#abbad566987a06b5249224e8e5ea7e667" title="Calculates the result." alt="" coords="390,5,575,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="342,16,374,16,374,21,342,21"/>
+</map>

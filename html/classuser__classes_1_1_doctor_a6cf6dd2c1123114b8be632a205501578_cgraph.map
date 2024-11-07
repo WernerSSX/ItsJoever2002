@@ -1,0 +1,5 @@
+<map id="user_classes.Doctor.getAvailableTimeSlots" name="user_classes.Doctor.getAvailableTimeSlots">
+<area shape="rect" id="Node000001" title="Retrieves the doctor&#39;s available TimeSlots for a specific date." alt="" coords="5,5,280,31"/>
+<area shape="rect" id="Node000002" href="$classitems_1_1_schedule.html#a85b87460a427b084400c5a4fa7f1a2c5" title=" " alt="" coords="328,5,573,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,16,312,16,312,21,280,21"/>
+</map>

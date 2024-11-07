@@ -1,0 +1,9 @@
+<map id="db.TextDB.saveToFile" name="db.TextDB.saveToFile">
+<area shape="rect" id="Node000001" title="Sets the object&#39;s name." alt="" coords="564,31,714,56"/>
+<area shape="rect" id="Node000002" href="$classmain_1_1_hospital_management_system.html#abc443238cd870242799d0f301cf2109e" title="Main method for running the Hospital Management System." alt="" coords="263,5,516,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="548,37,516,34,517,28,549,32"/>
+<area shape="rect" id="Node000003" href="$classdb_1_1_text_d_b.html#a041f3ac450450fd0d648d0fd20831a11" title="Sets the object&#39;s name." alt="" coords="283,55,496,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="548,55,496,60,496,55,548,50"/>
+<area shape="rect" id="Node000004" href="$classuser__classes_1_1_user.html#a8b403334d60adc09d7eaedbb5711dfeb" title="Sets the user&#39;s password and updates it in the database." alt="" coords="5,55,215,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="267,70,215,70,215,65,267,65"/>
+</map>

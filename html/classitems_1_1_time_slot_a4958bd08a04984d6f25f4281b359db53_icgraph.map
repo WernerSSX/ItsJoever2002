@@ -1,0 +1,5 @@
+<map id="items.TimeSlot.getEndTime" name="items.TimeSlot.getEndTime">
+<area shape="rect" id="Node000001" title="Gets the end time of the timeslot." alt="" coords="225,5,408,31"/>
+<area shape="rect" id="Node000002" href="$classitems_1_1_appointment.html#a9ea9b510f774ebf263ee08aef3f3492f" title="Checks if the appointment is in the past." alt="" coords="5,5,177,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,21,177,21,177,16,209,16"/>
+</map>

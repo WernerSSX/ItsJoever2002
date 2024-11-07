@@ -1,0 +1,9 @@
+<map id="main.HospitalManagementSystem.main" name="main.HospitalManagementSystem.main">
+<area shape="rect" id="Node000001" title="Main method for running the Hospital Management System." alt="" coords="5,31,259,56"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_text_d_b.html#a5d8e8525dbf6f42ff115b51b639faa4c" title="Calculates the result." alt="" coords="307,5,462,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,28,291,25,291,30,260,33"/>
+<area shape="rect" id="Node000003" href="$classdb_1_1_text_d_b.html#a5d011188d9c20f646307db43839666c7" title="Sets the object&#39;s name." alt="" coords="309,55,460,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="260,53,294,56,294,62,259,58"/>
+<area shape="rect" id="Node000004" href="$classdb_1_1_text_d_b.html#ab0828cdec6203b29d3036e79ecd6cc5e" title=" " alt="" coords="510,55,625,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="460,65,495,65,495,70,460,70"/>
+</map>

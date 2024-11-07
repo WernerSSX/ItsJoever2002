@@ -1,0 +1,7 @@
+<map id="db.UsersLoader.loadData" name="db.UsersLoader.loadData">
+<area shape="rect" id="Node000001" title="Loads user data from the specified file." alt="" coords="5,31,174,56"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_users_loader.html#a63e6c2b5ab1c255ad9af7869356cd0ff" title="Deserializes a User object from a string representation." alt="" coords="228,5,406,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,31,212,27,213,32,174,37"/>
+<area shape="rect" id="Node000003" href="$classdb_1_1_data_loader.html#af737f278a0a511944938fdcd5880f0d9" title="Reads all lines from a specified file." alt="" coords="222,55,413,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,50,206,53,206,58,174,55"/>
+</map>

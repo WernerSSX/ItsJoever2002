@@ -1,0 +1,5 @@
+<map id="db.MedicalRecordLoader.serialize" name="db.MedicalRecordLoader.serialize">
+<area shape="rect" id="Node000001" title="Serializes a MedicalRecord object into a string representation." alt="" coords="278,5,494,31"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_medical_record_loader.html#a8fbb4abb9b99d283ef5a7e333389c05a" title="Saves all loaded medical records to the associated file." alt="" coords="5,5,230,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="262,21,230,21,230,16,262,16"/>
+</map>

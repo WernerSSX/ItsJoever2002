@@ -1,0 +1,3 @@
+<map id="items.Medication" name="items.Medication">
+<area shape="rect" id="Node000001" title="Represents a medication in the inventory, with details about its name, quantity, and supplier." alt="" coords="5,5,240,225"/>
+</map>

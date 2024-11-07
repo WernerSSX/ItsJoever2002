@@ -1,0 +1,5 @@
+<map id="items.TimeSlot.getStartTime" name="items.TimeSlot.getStartTime">
+<area shape="rect" id="Node000001" title="Gets the start time of the timeslot." alt="" coords="234,5,422,31"/>
+<area shape="rect" id="Node000002" href="$classitems_1_1_appointment.html#a165d9b13de5de745404e939d5216e167" title="Gets the date of the appointment." alt="" coords="5,5,186,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,21,186,21,186,16,218,16"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="db.TextDB.updateAppointment" name="db.TextDB.updateAppointment">
+<area shape="rect" id="Node000001" title="Updates an appointment with a new status and saves changes." alt="" coords="605,5,804,31"/>
+<area shape="rect" id="Node000002" href="$classmenus_1_1_doctor_menu.html#ae7d20b71f38894a6236e1f23b637ce42" title="Records the outcome of a completed appointment." alt="" coords="256,5,557,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="589,21,558,21,558,16,589,16"/>
+<area shape="rect" id="Node000003" href="$classmenus_1_1_doctor_menu.html#af4a80d7af2990dd2f809c409c732536d" title="Displays the Doctor Menu and handles user selections." alt="" coords="5,5,208,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="240,21,208,21,208,16,240,16"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="services.AppointmentService.getPastAppointments" name="services.AppointmentService.getPastAppointments">
+<area shape="rect" id="Node000001" title="Retrieves past appointments for a given patient." alt="" coords="5,5,326,31"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_text_d_b.html#abbad566987a06b5249224e8e5ea7e667" title="Calculates the result." alt="" coords="374,5,559,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="326,16,358,16,358,21,326,21"/>
+</map>

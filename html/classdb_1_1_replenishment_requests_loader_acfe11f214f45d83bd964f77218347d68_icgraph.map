@@ -1,0 +1,5 @@
+<map id="db.ReplenishmentRequestsLoader.serialize" name="db.ReplenishmentRequestsLoader.serialize">
+<area shape="rect" id="Node000001" title="Serializes a ReplenishmentRequest object into a string representation." alt="" coords="334,5,606,31"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_replenishment_requests_loader.html#aed5b10f1e608a50f4091544de8a5e75e" title="Saves all loaded replenishment requests to the associated file." alt="" coords="5,5,286,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="318,21,286,21,286,16,318,16"/>
+</map>

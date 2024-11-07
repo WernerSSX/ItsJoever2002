@@ -1,0 +1,7 @@
+<map id="db.MedicalRecordLoader" name="db.MedicalRecordLoader">
+<area shape="rect" id="Node000001" title="Class responsible for loading and saving MedicalRecord data from and to files." alt="" coords="5,558,285,723"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_data_loader.html" title=" " alt="" coords="13,288,278,508"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,523,148,558,143,558,143,523"/>
+<area shape="rect" id="Node000003" href="$classdb_1_1_data_loader.html" title="Abstract base class for loading and saving data from files." alt="" coords="13,5,278,225"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="148,240,148,288,143,288,143,240"/>
+</map>

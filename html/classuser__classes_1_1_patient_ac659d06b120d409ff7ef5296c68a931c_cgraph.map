@@ -1,0 +1,9 @@
+<map id="user_classes.Patient.Patient" name="user_classes.Patient.Patient">
+<area shape="rect" id="Node000001" title="Constructs a Patient object with the specified attributes." alt="" coords="5,55,194,80"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_text_d_b.html#ae4d7dee0f323fb75131199d649226e71" title="Calculates the result." alt="" coords="274,5,470,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,51,281,32,282,37,175,57"/>
+<area shape="rect" id="Node000003" href="$classdb_1_1_text_d_b.html#a5d8e8525dbf6f42ff115b51b639faa4c" title="Calculates the result." alt="" coords="294,55,450,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,65,279,65,279,70,194,70"/>
+<area shape="rect" id="Node000004" href="$classdb_1_1_text_d_b.html#aab1523293cf65f8ac7227048532a7d11" title=" " alt="" coords="242,104,502,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,78,282,98,281,103,174,84"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="db.MedicationInventoryLoader.deserialize" name="db.MedicationInventoryLoader.deserialize">
+<area shape="rect" id="Node000001" title="Deserializes a Medication object from a string representation." alt="" coords="304,5,564,31"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_medication_inventory_loader.html#aceef8bf08061d59a1b961fa1bc8ad17b" title="Loads medication inventory from the specified file." alt="" coords="5,5,256,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="288,21,256,21,256,16,288,16"/>
+</map>

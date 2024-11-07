@@ -1,0 +1,9 @@
+<map id="db.TextDB.saveSchedulesToFile" name="db.TextDB.saveSchedulesToFile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,217,80"/>
+<area shape="rect" id="Node000002" href="$classitems_1_1_schedule.html#a4549ab37ec9b3215ebfaf575c5d691c6" title=" " alt="" coords="289,5,486,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,51,296,32,297,37,188,57"/>
+<area shape="rect" id="Node000003" href="$classitems_1_1_schedule.html#a85b87460a427b084400c5a4fa7f1a2c5" title=" " alt="" coords="265,55,510,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="217,65,249,65,249,70,217,70"/>
+<area shape="rect" id="Node000004" href="$classdb_1_1_text_d_b.html#ab0828cdec6203b29d3036e79ecd6cc5e" title=" " alt="" coords="330,104,445,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,78,315,101,314,106,187,84"/>
+</map>

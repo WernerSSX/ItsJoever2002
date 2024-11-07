@@ -1,0 +1,7 @@
+<map id="user_classes.Patient.toString" name="user_classes.Patient.toString">
+<area shape="rect" id="Node000001" title="Provides a string representation of the Patient object." alt="" coords="5,31,198,56"/>
+<area shape="rect" id="Node000002" href="$classuser__classes_1_1_user.html#a3182331e1a0ffcddfed96b814425efb8" title="Gets the hospital ID of the user." alt="" coords="246,5,459,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,31,230,28,230,33,198,36"/>
+<area shape="rect" id="Node000003" href="$classuser__classes_1_1_user.html#a3e0dc31aaed7eb8a71c26e936e96e374" title="Gets the user&#39;s full name." alt="" coords="259,55,446,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="198,50,244,54,244,60,198,55"/>
+</map>

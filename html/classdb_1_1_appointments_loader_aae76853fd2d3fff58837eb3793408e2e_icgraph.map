@@ -1,0 +1,5 @@
+<map id="db.AppointmentsLoader.deserialize" name="db.AppointmentsLoader.deserialize">
+<area shape="rect" id="Node000001" title="Deserializes an Appointment object from a string." alt="" coords="267,5,490,31"/>
+<area shape="rect" id="Node000002" href="$classdb_1_1_appointments_loader.html#a124d3d36e66348efb296bc8208204f9b" title="Loads appointment data from the specified file." alt="" coords="5,5,219,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="251,21,219,21,219,16,251,16"/>
+</map>
