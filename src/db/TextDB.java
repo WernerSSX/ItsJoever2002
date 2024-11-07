@@ -839,18 +839,36 @@ public class TextDB {
     
 
     // Additional Appointment Management Enhancements
+    /**
+     * @brief Retrieves appointments associated with a specific doctor by their ID.
+     *
+     * @param doctorId The ID of the doctor.
+     * @return List of appointments for the specified doctor.
+     */
     public List<Appointment> getAppointmentsByDoctorId(String doctorId) {
         return appointments.stream()
                 .filter(appt -> appt.getDoctorId().equals(doctorId))
                 .collect(Collectors.toList());
     }
     
+    /**
+     * @brief Retrieves pending appointments for a specific doctor.
+     *
+     * @param doctorId The ID of the doctor.
+     * @return List of pending appointments for the specified doctor.
+     */
     public List<Appointment> getPendingAppointmentsByDoctorId(String doctorId) {
         return appointments.stream()
                 .filter(appt -> appt.getDoctorId().equals(doctorId) && appt.getStatus().equalsIgnoreCase("Pending"))
                 .collect(Collectors.toList());
     }
     
+    /**
+     * @brief Retrieves upcoming appointments for a specific doctor, excluding declined ones.
+     *
+     * @param doctorId The ID of the doctor.
+     * @return List of upcoming appointments for the specified doctor.
+     */
     public List<Appointment> getUpcomingAppointmentsByDoctorId(String doctorId) {
         LocalDateTime now = LocalDateTime.now();
         return appointments.stream()
@@ -862,7 +880,12 @@ public class TextDB {
     
     
 
-    
+    /**
+     * @brief Updates an appointment with a new status and saves changes.
+     *
+     * @param updatedAppt The appointment with updated details.
+     * @throws IOException If an I/O error occurs while saving appointments or schedules.
+     */
     public void updateAppointment(Appointment updatedAppt) throws IOException {
         for (int i = 0; i < appointments.size(); i++) {
             if (appointments.get(i).getId() == updatedAppt.getId()) {
