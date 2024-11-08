@@ -1,5 +1,0 @@
-<map id="items.Schedule.setAvailability" name="items.Schedule.setAvailability">
-<area shape="rect" id="Node000001" title=" " alt="" coords="279,5,475,31"/>
-<area shape="rect" id="Node000002" href="$classuser__classes_1_1_doctor.html#a402d63c83dfd86656f8a817a3eff5834" title="Sets the doctor&#39;s availability for a specific date." alt="" coords="5,5,231,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,21,231,21,231,16,263,16"/>
-</map>

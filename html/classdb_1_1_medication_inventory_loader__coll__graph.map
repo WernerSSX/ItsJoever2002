@@ -1,7 +1,0 @@
-<map id="db.MedicationInventoryLoader" name="db.MedicationInventoryLoader">
-<area shape="rect" id="Node000001" title="Handles the loading and saving of medication inventory data from/to a file." alt="" coords="5,558,284,723"/>
-<area shape="rect" id="Node000002" href="$classdb_1_1_data_loader.html" title=" " alt="" coords="12,288,277,508"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,523,147,558,142,558,142,523"/>
-<area shape="rect" id="Node000003" href="$classdb_1_1_data_loader.html" title="Abstract base class for loading and saving data from files." alt="" coords="12,5,277,225"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="147,240,147,288,142,288,142,240"/>
-</map>

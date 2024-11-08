@@ -1,9 +1,0 @@
-<map id="items.PatientHistory.printHistory" name="items.PatientHistory.printHistory">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,215,80"/>
-<area shape="rect" id="Node000002" href="$classitems_1_1_treatment.html#a7e38d237cd5f339079befeb239ce5c21" title="Prints all prescribed medicines with their details." alt="" coords="293,5,568,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,51,262,40,318,31,319,36,263,45,190,57"/>
-<area shape="rect" id="Node000003" href="$classitems_1_1_diagnosis.html#ac04e549a35e959b55144f9dc3d6d87ec" title="Prints the diagnosed illness details along with any associated comments." alt="" coords="263,55,598,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,65,247,65,247,70,215,70"/>
-<area shape="rect" id="Node000004" href="$classitems_1_1_treatment.html#ac84c30dd33100c8a0b87721f26eac7e0" title="Prints the treatment comments." alt="" coords="296,104,564,130"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="190,78,263,90,319,99,318,104,262,95,189,84"/>
-</map>

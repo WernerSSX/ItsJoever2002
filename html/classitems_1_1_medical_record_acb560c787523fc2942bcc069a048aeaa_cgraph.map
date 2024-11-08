@@ -1,7 +1,0 @@
-<map id="items.MedicalRecord.display" name="items.MedicalRecord.display">
-<area shape="rect" id="Node000001" title="Displays the complete medical record details." alt="" coords="5,31,195,56"/>
-<area shape="rect" id="Node000002" href="$classitems_1_1_contact_information.html#ac4ea2dc4f2082d45cf33175e67315e3a" title="Gets the email address of the user." alt="" coords="244,5,515,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,32,228,29,228,35,195,38"/>
-<area shape="rect" id="Node000003" href="$classitems_1_1_contact_information.html#a5872200a5d68f1a3dcd25365dff319f1" title="Gets the phone number of the user." alt="" coords="243,55,516,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,49,227,52,227,57,195,54"/>
-</map>

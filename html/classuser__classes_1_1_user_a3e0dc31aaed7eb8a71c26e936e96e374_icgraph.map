@@ -1,9 +1,0 @@
-<map id="user_classes.User.getName" name="user_classes.User.getName">
-<area shape="rect" id="Node000001" title="Gets the user&#39;s full name." alt="" coords="281,55,467,80"/>
-<area shape="rect" id="Node000002" href="$classuser__classes_1_1_administrator.html#a24c973d691e8f131548748e938278205" title="Provides a string representation of the Administrator." alt="" coords="5,5,233,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="288,54,189,34,190,29,289,48"/>
-<area shape="rect" id="Node000003" href="$classuser__classes_1_1_patient.html#a3488bd010f03f5765b2bd3893526f2e1" title="Provides a string representation of the Patient object." alt="" coords="23,55,215,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="265,70,216,70,216,65,265,65"/>
-<area shape="rect" id="Node000004" href="$classuser__classes_1_1_pharmacist.html#a23cacee25a06c298a36ea2cc0edf0914" title="Provides a string representation of the Pharmacist object." alt="" coords="10,104,228,130"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="289,87,190,106,189,101,288,81"/>
-</map>

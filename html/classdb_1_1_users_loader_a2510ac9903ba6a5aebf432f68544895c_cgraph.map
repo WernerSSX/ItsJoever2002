@@ -1,7 +1,0 @@
-<map id="db.UsersLoader.saveData" name="db.UsersLoader.saveData">
-<area shape="rect" id="Node000001" title="Saves all loaded user data to the associated file." alt="" coords="5,31,178,56"/>
-<area shape="rect" id="Node000002" href="$classdb_1_1_users_loader.html#aad044c51e36f7c9622a61f4a54748966" title="Serializes a User object into a string representation." alt="" coords="241,5,405,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,31,225,26,226,31,178,37"/>
-<area shape="rect" id="Node000003" href="$classdb_1_1_data_loader.html#aa5158bfeba84e106797b9139c4ef8bf1" title="Writes a list of strings to a specified file." alt="" coords="226,55,420,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,50,210,53,210,58,178,55"/>
-</map>

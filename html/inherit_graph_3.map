@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classdb_1_1_data_loader.html" title=" " alt="" coords="5,5,272,31"/>
-<area shape="rect" id="Node000001" href="$classdb_1_1_replenishment_requests_loader.html" title="Manages the loading and saving of replenishment requests data from/to a file." alt="" coords="320,5,541,31"/>
-<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="287,16,319,16,319,21,287,21"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="db.MedicationInventoryLoader.saveData" name="db.MedicationInventoryLoader.saveData">
-<area shape="rect" id="Node000001" title="Saves all loaded medications to the associated file." alt="" coords="5,31,260,56"/>
-<area shape="rect" id="Node000002" href="$classdb_1_1_medication_inventory_loader.html#a3f02e3c747ed41fe69b6541e402e29a5" title="Serializes a Medication object into a string representation." alt="" coords="308,5,554,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="260,30,292,27,293,33,260,35"/>
-<area shape="rect" id="Node000003" href="$classdb_1_1_data_loader.html#aa5158bfeba84e106797b9139c4ef8bf1" title="Writes a list of strings to a specified file." alt="" coords="316,55,546,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="260,51,301,54,301,60,260,56"/>
-</map>

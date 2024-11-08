@@ -1,7 +1,0 @@
-<map id="db.UsersLoader" name="db.UsersLoader">
-<area shape="rect" id="Node000001" title="Manages loading and saving of User objects (e.g., Administrator, Doctor, Patient, Pharmacist) from/to..." alt="" coords="30,558,246,723"/>
-<area shape="rect" id="Node000002" href="$classdb_1_1_data_loader.html" title=" " alt="" coords="5,288,271,508"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,523,141,558,135,558,135,523"/>
-<area shape="rect" id="Node000003" href="$classdb_1_1_data_loader.html" title="Abstract base class for loading and saving data from files." alt="" coords="5,5,271,225"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="141,240,141,288,135,288,135,240"/>
-</map>

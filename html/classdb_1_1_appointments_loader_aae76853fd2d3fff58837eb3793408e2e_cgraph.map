@@ -1,7 +1,0 @@
-<map id="db.AppointmentsLoader.deserialize" name="db.AppointmentsLoader.deserialize">
-<area shape="rect" id="Node000001" title="Deserializes an Appointment object from a string." alt="" coords="5,5,229,31"/>
-<area shape="rect" id="Node000002" href="$classitems_1_1_time_slot.html#a0667b222129a8a35cab99a64ecf33b42" title=" " alt="" coords="277,5,422,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="229,16,261,16,261,21,229,21"/>
-<area shape="rect" id="Node000003" href="$classitems_1_1_time_slot.html#a47501583da2ebd3ad2bcad768d10e634" title=" " alt="" coords="470,5,635,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="423,16,454,16,454,21,423,21"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="db.TextDB.addMedicalRecord" name="db.TextDB.addMedicalRecord">
-<area shape="rect" id="Node000001" title="Calculates the result." alt="" coords="242,5,437,31"/>
-<area shape="rect" id="Node000002" href="$classuser__classes_1_1_patient.html#ac659d06b120d409ff7ef5296c68a931c" title="Constructs a Patient object with the specified attributes." alt="" coords="5,5,194,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,21,194,21,194,16,226,16"/>
-</map>

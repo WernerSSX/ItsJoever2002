@@ -1,5 +1,0 @@
-<map id="items.Appointment.isPast" name="items.Appointment.isPast">
-<area shape="rect" id="Node000001" title="Checks if the appointment is in the past." alt="" coords="5,5,177,31"/>
-<area shape="rect" id="Node000002" href="$classitems_1_1_time_slot.html#a4958bd08a04984d6f25f4281b359db53" title="Gets the end time of the timeslot." alt="" coords="225,5,408,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,16,209,16,209,21,177,21"/>
-</map>

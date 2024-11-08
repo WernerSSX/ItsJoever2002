@@ -1,5 +1,0 @@
-<map id="items.Treatment.deserialize" name="items.Treatment.deserialize">
-<area shape="rect" id="Node000001" title="Deserializes a Treatment object from a string." alt="" coords="5,5,188,31"/>
-<area shape="rect" id="Node000002" href="$classitems_1_1_treatment.html#a392635dc4fde65f3db7b4372503fad72" title="Default constructor initializes the list of prescribed medicines and sets comments to an empty string..." alt="" coords="236,5,415,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,16,220,16,220,21,188,21"/>
-</map>

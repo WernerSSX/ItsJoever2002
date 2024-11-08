@@ -1,7 +1,0 @@
-<map id="items.Treatment.serialize" name="items.Treatment.serialize">
-<area shape="rect" id="Node000001" title="Serializes the Treatment object into a string." alt="" coords="542,5,710,31"/>
-<area shape="rect" id="Node000002" href="$classdb_1_1_medical_record_loader.html#a74c661fbd5b13961ff19ad859d9e01c6" title="Serializes a MedicalRecord object into a string representation." alt="" coords="278,5,494,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="526,21,495,21,495,16,526,16"/>
-<area shape="rect" id="Node000003" href="$classdb_1_1_medical_record_loader.html#a8fbb4abb9b99d283ef5a7e333389c05a" title="Saves all loaded medical records to the associated file." alt="" coords="5,5,230,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,21,230,21,230,16,262,16"/>
-</map>

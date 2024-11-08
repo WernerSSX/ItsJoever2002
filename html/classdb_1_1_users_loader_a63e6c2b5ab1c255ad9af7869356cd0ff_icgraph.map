@@ -1,5 +1,0 @@
-<map id="db.UsersLoader.deserialize" name="db.UsersLoader.deserialize">
-<area shape="rect" id="Node000001" title="Deserializes a User object from a string representation." alt="" coords="222,5,400,31"/>
-<area shape="rect" id="Node000002" href="$classdb_1_1_users_loader.html#a3178def83d48e534bb16a74e66db6807" title="Loads user data from the specified file." alt="" coords="5,5,174,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,21,174,21,174,16,206,16"/>
-</map>

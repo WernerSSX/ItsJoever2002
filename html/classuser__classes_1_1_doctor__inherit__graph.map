@@ -1,5 +1,0 @@
-<map id="user_classes.Doctor" name="user_classes.Doctor">
-<area shape="rect" id="Node000001" title="Represents a doctor in the hospital management system." alt="" coords="5,453,341,916"/>
-<area shape="rect" id="Node000002" href="$classuser__classes_1_1_user.html" title="An abstract base class representing a generic user in the hospital management system." alt="" coords="11,5,335,405"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,420,176,453,171,453,171,420"/>
-</map>

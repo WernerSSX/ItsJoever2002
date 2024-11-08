@@ -1,7 +1,0 @@
-<map id="db.MedicalRecordLoader.deserialize" name="db.MedicalRecordLoader.deserialize">
-<area shape="rect" id="Node000001" title="Deserializes a MedicalRecord object from a string representation." alt="" coords="5,5,236,31"/>
-<area shape="rect" id="Node000002" href="$classitems_1_1_treatment.html#a8f88f9c1ac686801ba3e47b65c7142b5" title="Deserializes a Treatment object from a string." alt="" coords="284,5,466,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,16,268,16,268,21,236,21"/>
-<area shape="rect" id="Node000003" href="$classitems_1_1_treatment.html#a392635dc4fde65f3db7b4372503fad72" title="Default constructor initializes the list of prescribed medicines and sets comments to an empty string..." alt="" coords="514,5,693,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="466,16,498,16,498,21,466,21"/>
-</map>

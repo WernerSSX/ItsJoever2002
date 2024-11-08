@@ -1,5 +1,0 @@
-<map id="items.Appointment.print" name="items.Appointment.print">
-<area shape="rect" id="Node000001" title="Prints the details of the appointment." alt="" coords="5,5,165,31"/>
-<area shape="rect" id="Node000002" href="$classitems_1_1_time_slot.html#adde7d44b94192b8fce5921554c74799c" title=" " alt="" coords="213,5,371,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,16,197,16,197,21,165,21"/>
-</map>

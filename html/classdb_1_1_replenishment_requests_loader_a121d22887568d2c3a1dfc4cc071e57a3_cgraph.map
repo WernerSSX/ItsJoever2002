@@ -1,7 +1,0 @@
-<map id="db.ReplenishmentRequestsLoader.loadData" name="db.ReplenishmentRequestsLoader.loadData">
-<area shape="rect" id="Node000001" title="Loads replenishment requests from the specified file." alt="" coords="5,31,282,56"/>
-<area shape="rect" id="Node000002" href="$classdb_1_1_replenishment_requests_loader.html#abeccd48de944fe61781853778d9bc44d" title="Deserializes a ReplenishmentRequest object from a string representation." alt="" coords="336,5,622,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="282,30,321,27,321,33,282,36"/>
-<area shape="rect" id="Node000003" href="$classdb_1_1_data_loader.html#af737f278a0a511944938fdcd5880f0d9" title="Reads all lines from a specified file." alt="" coords="330,55,629,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="282,51,315,53,314,58,282,56"/>
-</map>

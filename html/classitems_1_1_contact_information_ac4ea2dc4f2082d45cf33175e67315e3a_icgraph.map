@@ -1,5 +1,0 @@
-<map id="items.ContactInformation.getEmailAddress" name="items.ContactInformation.getEmailAddress">
-<area shape="rect" id="Node000001" title="Gets the email address of the user." alt="" coords="243,5,514,31"/>
-<area shape="rect" id="Node000002" href="$classitems_1_1_medical_record.html#acb560c787523fc2942bcc069a048aeaa" title="Displays the complete medical record details." alt="" coords="5,5,195,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,21,195,21,195,16,227,16"/>
-</map>

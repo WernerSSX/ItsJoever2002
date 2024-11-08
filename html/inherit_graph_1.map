@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classdb_1_1_data_loader.html" title=" " alt="" coords="5,5,223,31"/>
-<area shape="rect" id="Node000001" href="$classdb_1_1_medical_record_loader.html" title="Class responsible for loading and saving MedicalRecord data from and to files." alt="" coords="271,5,436,31"/>
-<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="238,16,270,16,270,21,238,21"/>
-</map>

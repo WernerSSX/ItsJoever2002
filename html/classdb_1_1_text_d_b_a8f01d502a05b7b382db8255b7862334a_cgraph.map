@@ -1,7 +1,0 @@
-<map id="db.TextDB.loadSchedulesFromFile" name="db.TextDB.loadSchedulesFromFile">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,229,56"/>
-<area shape="rect" id="Node000002" href="$classdb_1_1_text_d_b.html#ab39cc2b53e47baa667d4749f2209342b" title="Calculates the result." alt="" coords="277,5,488,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="229,30,261,27,262,32,229,35"/>
-<area shape="rect" id="Node000003" href="$classdb_1_1_text_d_b.html#a6175f81627d5e82fbb6494d2a1b30239" title="Calculates the result." alt="" coords="326,55,438,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,51,311,58,310,64,229,56"/>
-</map>

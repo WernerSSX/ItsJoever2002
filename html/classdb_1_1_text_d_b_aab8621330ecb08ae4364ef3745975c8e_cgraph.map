@@ -1,5 +1,0 @@
-<map id="db.TextDB.getAvailableAppointmentSlots" name="db.TextDB.getAvailableAppointmentSlots">
-<area shape="rect" id="Node000001" title="Calculates the result." alt="" coords="5,5,267,31"/>
-<area shape="rect" id="Node000002" href="$classitems_1_1_appointment.html#a6a84a91381635c3891317409c4f90f6e" title="Gets the time slot for the appointment." alt="" coords="315,5,519,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,16,299,16,299,21,267,21"/>
-</map>
