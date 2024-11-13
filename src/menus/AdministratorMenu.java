@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 import user_classes.*;
 import db.TextDB;
+import items.*;
 
 import java.util.Base64;
 import java.util.List;
