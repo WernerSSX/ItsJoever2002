@@ -1,0 +1,134 @@
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): 2
+Enter Hospital ID: D001
+Enter Password: password
+Doctor logged in successfully!
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice: 2
+Enter Patient ID to update medical records: P002
+Existing Medical Record:
+--------------------------------------------------    
+               Medical Record
+--------------------------------------------------    
+Patient ID       : P002
+Name             : Werner Tan
+Date of Birth    : 2002-10-16
+Gender           : Male
+Contact Information:
+  Phone Number   : 91236789
+  Email Address  : wernertan@gmail.com
+Blood Type       : O+
+
+Past Diagnoses:
+  - Hypertension (Date: 2022-01-10)
+  - Diabetes (Date: 2023-03-15)
+
+Past Treatments:
+  ------------------------------------------------    
+    Service Type        : Consultation
+    Date of Appointment  : 2024-10-15
+    Prescribed Medications:
+      - Metformin | Status: Approved
+      - Insulin | Status: pending
+    Consultation Notes   : Patient advised to monitor blood sugar levels
+    Doctor ID            : D001
+  ------------------------------------------------    
+  ------------------------------------------------    
+    Service Type        : blood test
+    Date of Appointment  : 2024-10-28
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : cholestrol high
+    Doctor ID            : D002
+  ------------------------------------------------    
+  ------------------------------------------------    
+    Service Type        : X-ray
+    Date of Appointment  : 2024-10-29
+    Prescribed Medications:
+      - panadol | Status: Approved
+    Consultation Notes   : Broken bone
+    Doctor ID            : D001
+  ------------------------------------------------    
+  ------------------------------------------------    
+    Service Type        : checkup
+    Date of Appointment  : 2024-10-30
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : all normal
+    Doctor ID            : N/A
+  ------------------------------------------------    
+  ------------------------------------------------    
+    Service Type        : checkup
+    Date of Appointment  : 2024-10-30
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : all normal
+    Doctor ID            : N/A
+  ------------------------------------------------    
+  ------------------------------------------------    
+    Service Type        : blood test
+    Date of Appointment  : 2024-10-20
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : none
+    Doctor ID            : N/A
+  ------------------------------------------------    
+  ------------------------------------------------    
+    Service Type        : consultation
+    Date of Appointment  : 2024-12-20
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : die hard
+    Doctor ID            : D001
+  ------------------------------------------------    
+  ------------------------------------------------    
+    Service Type        : consultation
+    Date of Appointment  : 2024-12-12
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : hello
+    Doctor ID            : D001
+  ------------------------------------------------    
+
+Enter the type of service provided (e.g., consultation, X-ray, blood test): consultation
+Enter date of appointment (yyyy-MM-dd): 2024-12-12
+Enter treatment comments: broken nose
+Enter prescribed medications (enter 'done' when finished):
+Medication Name (or 'done'): done
+Medical record updated successfully.
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice: 0
+Logging out...
+
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6):

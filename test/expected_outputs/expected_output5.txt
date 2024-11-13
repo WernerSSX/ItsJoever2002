@@ -1,0 +1,50 @@
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): 4
+Enter Hospital ID: P002
+Enter Password: password
+Patient logged in successfully!
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 5
+
+Your Appointments:
+Appointment ID: 1, Doctor: John Smith, Date: 2024-10-20, Time: 09:00 - 09:30, Status: Completed
+Appointment ID: 5, Doctor: John Smith, Date: 2024-10-28, Time: 15:30 - 16:00, Status: Scheduled
+Appointment ID: 7, Doctor: John Smith, Date: 2024-10-28, Time: 09:00 - 09:30, Status: Rescheduled
+Appointment ID: 10, Doctor: John Smith, Date: 2024-05-11, Time: 09:30 - 10:30, Status: Declined
+Appointment ID: 11, Doctor: John Smith, Date: 2024-10-28, Time: 09:00 - 09:30, Status: Scheduled
+Appointment ID: 14, Doctor: John Smith, Date: 2024-10-28, Time: 10:00 - 10:30, Status: Requested
+
+Enter the ID of the appointment you want to reschedule: 1
+Enter the new date for the appointment (yyyy-MM-dd): 2
+024-10-28
+Cannot reschedule to a past date. Please choose a future date.
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 0

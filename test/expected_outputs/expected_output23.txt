@@ -1,0 +1,80 @@
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): 1
+Enter Hospital ID: A001
+Enter Password: password
+Administrator logged in successfully!
+
+Administrator Menu:
+1. View and Manage Hospital Staff
+2. View Appointments Details
+3. View and Manage Medication Inventory
+4. Approve Replenishment Requests
+5. Logout
+Enter your choice: 4
+
+Approve Replenishment Requests:
+1. View All Requests
+2. Approve a Request
+3. Reject a Request
+4. Back
+Enter your choice: 1
+
+Replenishment Requests:
+1. Medication: Paracetamol, Quantity: 50, Requested By: Pharmacist: P005, Request Date: 2024-10-23
+2. Medication: Paracetamol, Quantity: 30, Requested By: Pharmacist: F001, Request Date: 2024-11-13
+
+Approve Replenishment Requests:
+1. View All Requests
+2. Approve a Request
+3. Reject a Request
+4. Back
+Enter your choice: 2
+
+Replenishment Requests:
+1. Medication: Paracetamol, Quantity: 50, Requested By: Pharmacist: P005, Request Date: 2024-10-23
+2. Medication: Paracetamol, Quantity: 30, Requested By: Pharmacist: F001, Request Date: 2024-11-13
+Enter the number of the request to approve (or 0 to cancel): 1
+Replenishment request approved. Inventory updated.
+
+Approve Replenishment Requests:
+1. View All Requests
+2. Approve a Request
+3. Reject a Request
+4. Back
+Enter your choice: 3
+
+Replenishment Requests:
+1. Medication: Paracetamol, Quantity: 30, Requested By: Pharmacist: F001, Request Date: 2024-11-13
+Enter the number of the request to reject (or 0 to cancel): 1
+Replenishment request rejected.
+
+Approve Replenishment Requests:
+1. View All Requests
+2. Approve a Request
+3. Reject a Request
+4. Back
+Enter your choice: 4
+
+Administrator Menu:
+1. View and Manage Hospital Staff
+2. View Appointments Details
+3. View and Manage Medication Inventory
+4. Approve Replenishment Requests
+5. Logout
+Enter your choice: 5
+Logging out...
+
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6):

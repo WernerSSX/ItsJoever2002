@@ -1,0 +1,49 @@
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): 2
+Enter Hospital ID: D001
+Enter Password: password
+Doctor logged in successfully!
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice: 4
+Enter date to set availability (yyyy-MM-dd): 2024-12-2
+5
+Enter start time for available slot (HH:mm) or 'done' to finish: 12:30
+Enter end time for available slot (HH:mm): 13:00
+Enter start time for available slot (HH:mm) or 'done' to finish: done
+Availability updated successfully.
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice: 0
+Logging out...
+
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6):

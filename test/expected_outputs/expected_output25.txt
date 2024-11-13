@@ -1,0 +1,74 @@
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): 4
+Enter Hospital ID: P002
+Enter Password: password
+Patient logged in successfully!
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 9
+Enter current password: password
+Enter new password: password1
+Password changed successfully.
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 0
+
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): 4
+Enter Hospital ID: P002
+Enter Password: password1
+Patient logged in successfully!
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 0
+
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6):

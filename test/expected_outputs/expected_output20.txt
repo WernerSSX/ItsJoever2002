@@ -1,0 +1,132 @@
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6): 1
+Enter Hospital ID: A001
+Enter Password: password
+Administrator logged in successfully!
+
+Administrator Menu:
+1. View and Manage Hospital Staff
+2. View Appointments Details
+3. View and Manage Medication Inventory
+4. Approve Replenishment Requests
+5. Logout
+Enter your choice: 1
+
+Manage Hospital Staff:
+1. Add User
+2. Remove User
+3. View All Users
+4. Reset User Password
+5. Back
+Enter your choice: 1
+
+Add New User:
+Enter role (Administrator/Doctor/Pharmacist/Patient):Patient
+Enter Hospital ID: P005
+Enter Name: Jerome Powell
+Enter Date of Birth (yyyy-MM-dd): 1945-06-13
+Enter Gender (Male/Female): Male
+Enter Email: jpmorgan@gmail.com
+Enter Phone Number: 98888888
+User added successfully!
+Changes saved to file.
+
+Manage Hospital Staff:
+1. Add User
+2. Remove User
+3. View All Users
+4. Reset User Password
+5. Back
+Enter your choice: 2
+
+Remove User:
+Enter Hospital ID of user to remove: P005
+User removed successfully!
+Changes saved to file.
+
+Manage Hospital Staff:
+1. Add User
+2. Remove User
+3. View All Users
+4. Reset User Password
+5. Back
+Enter your choice: 3
+
+List of All Users:
+Doctor: hospitalID='D001', name='John Smith', dateOfBirth=1979-01-01, gender='Male', patientIds=[], schedule=Schedule:
+Date: 2024-10-28
+  09:00 - 09:30
+  09:30 - 10:00
+  10:00 - 10:30
+  10:30 - 11:00
+  11:00 - 11:30
+  11:30 - 12:00
+  12:00 - 12:30
+  12:30 - 13:00
+  13:00 - 13:30
+  13:30 - 14:00
+  14:00 - 14:30
+  14:30 - 15:00
+  15:00 - 15:30
+  15:30 - 16:00
+  16:00 - 16:30
+  16:30 - 17:00
+Date: 2024-05-11
+  09:30 - 10:00
+  10:00 - 10:30
+Date: 2024-11-11
+  10:30 - 11:00
+  11:00 - 11:30
+  11:30 - 12:00
+  12:00 - 12:30
+Date: 2024-12-25
+  12:30 - 13:00
+
+======================================
+Doctor: hospitalID='D002', name='Emily Clarke', dateOfBirth=1986-01-01, gender='Female', patientIds=[], schedule=Schedule:
+
+======================================
+Pharmacist [ID=P001, Name=Mark Lee
+======================================
+Administrator [ID=A001, Name=Sarah Lee
+======================================
+Patient: ID=P002, Name=Werner Tan
+======================================
+Patient: ID=P003, Name=Wern
+======================================
+Patient: ID=P004, Name=Viet
+======================================
+Pharmacist [ID=F001, Name=Mike Lee
+======================================
+
+Manage Hospital Staff:
+1. Add User
+2. Remove User
+3. View All Users
+4. Reset User Password
+5. Back
+Enter your choice: 5
+
+Administrator Menu:
+1. View and Manage Hospital Staff
+2. View Appointments Details
+3. View and Manage Medication Inventory
+4. Approve Replenishment Requests
+5. Logout
+Enter your choice: 5
+Logging out...
+
+=== Welcome to the Hospital Management System ===     
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6):
