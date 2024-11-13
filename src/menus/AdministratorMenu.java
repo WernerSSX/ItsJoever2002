@@ -1,8 +1,16 @@
 package menus;
 
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import user_classes.*;
 import db.TextDB;
 import items.*;
-import java.io.IOException;
+
+import java.util.Base64;
+import java.util.List;
+import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -113,6 +121,16 @@ public class AdministratorMenu {
             }
         }
     }
+    private static String hashPassword(String hospitalID, String password) {
+        String combined = hospitalID + password;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = digest.digest(combined.getBytes());
+            return Base64.getEncoder().encodeToString(hashedBytes);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Hashing algorithm not found", e);
+        }
+    }
 
     /**
      * @brief Adds a new user to the hospital staff based on role and provided details.
@@ -144,7 +162,8 @@ public class AdministratorMenu {
         String gender = getNonEmptyString(scanner, "Enter Gender (Male/Female): ");
         String email = getNonEmptyString(scanner, "Enter Email: ");
         String phone = getNonEmptyString(scanner, "Enter Phone Number: ");
-        String password = "password"; // Default password
+        String default_password = "password"; // Default password
+        String password = hashPassword(hospitalID, default_password);
 
         User newUser = null;
 
@@ -227,6 +246,7 @@ public class AdministratorMenu {
         User user = textDB.getUserByHospitalID(hospitalID);
         if (user != null) {
             String newPassword = "password"; // Default password
+            newPassword = hashPassword(hospitalID, newPassword);
             user.setPassword(newPassword);
             System.out.println("Password reset successfully for user with Hospital ID: " + hospitalID);
             textDB.updateUserPassword(user);

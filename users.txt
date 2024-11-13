@@ -1,8 +1,9 @@
 D001|password|John Smith|1979-01-01|Male|Doctor
 D002|password|Emily Clarke|1986-01-01|Female|Doctor
 P001|password|Mark Lee|1995-01-01|Male|Pharmacist
-A001|password|Sarah Lee|1984-01-01|Female|Administrator
-P002|password1|Werner Tan|2002-10-16|Male|Patient
+A001|Thqweh3Yvs7WJdBEhIyL6CkMTKrWmCIBwam8Gb11GWM=|Sarah Lee|1984-01-01|Female|Administrator
+P002|password|Werner Tan|2002-10-16|Male|Patient
 P003|password|Wern|2002-01-01|Male|Patient
 P004|password|Viet|2004-09-01|Male|Patient
-F001|password|Mike Lee|1997-01-01|Male|Pharmacist
+P005|password|viet2004|2004-01-09|Male|Patient
+P006|vg6tmuIo6kXQiB8yoblC/riXNXbGp+2eVg1ycynEB0w=|Test|2000-01-01|Female|Patient

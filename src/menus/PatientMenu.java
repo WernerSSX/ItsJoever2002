@@ -5,8 +5,11 @@ import items.MedicalRecord;
 import items.TimeSlot;
 import items.Treatment;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -553,7 +556,16 @@ public class PatientMenu {
         }
     }
     
-
+    private static String hashPassword(String hospitalID, String password) {
+        String combined = hospitalID + password;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = digest.digest(combined.getBytes());
+            return Base64.getEncoder().encodeToString(hashedBytes);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Hashing algorithm not found", e);
+        }
+    }
     /**
      * Changes the password of a patient.
      * 
@@ -570,9 +582,9 @@ public class PatientMenu {
         String newPassword = scanner.nextLine();
         
         // Assuming Patient class has a method to verify the current password
-        if (patient.getPassword().equals(currentPassword)) {
+        if (patient.getPassword().equals(hashPassword(patient.getHospitalID(), currentPassword))) {
             try {
-                patient.setPassword(newPassword);
+                patient.setPassword(hashPassword(patient.getHospitalID(), newPassword));
             } catch (IOException e) {
                 e.printStackTrace();
             }

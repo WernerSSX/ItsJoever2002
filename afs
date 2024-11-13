@@ -1,0 +1,166 @@
+[33mcommit 5c1b52b242f90b7d219fa08ad77d0e25fd6846b5[m[33m ([m[1;36mHEAD -> [m[1;32mrefator-loader[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: e0b931b 2f7707e
+Author: Bryan Shan <58582368+Oseltamivir@users.noreply.github.com>
+Date:   Mon Oct 28 13:55:45 2024 +0800
+
+    Merge pull request #2 from WernerSSX/refactor-loader
+    
+    Refactor all load from textDB except Schedules
+
+[33mcommit 2f7707ea8f88e8f168570b6acdc2acba1dd86787[m[33m ([m[1;31morigin/refactor-loader[m[33m)[m
+Author: VietCT <transonviet2004@gmail.com>
+Date:   Mon Oct 28 13:51:53 2024 +0800
+
+    Refactor all load from textDB except Schedules
+
+[33mcommit e0b931bbe50722f09747bd0ee2225aa46a60c0ea[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Sat Oct 26 13:25:23 2024 +0800
+
+    fixed dataloading order
+
+[33mcommit 36d973851076b72cdf69781e33f6bede5342e35e[m
+Author: Bryan Shan <58582368+Oseltamivir@users.noreply.github.com>
+Date:   Sat Oct 26 13:08:29 2024 +0800
+
+    Update gradle.yaml
+
+[33mcommit 3b9a986489528bac5e70db9b6d9f1297f8792a86[m
+Merge: b4ba2bc c30b137
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Sat Oct 26 13:03:09 2024 +0800
+
+    conflitc
+
+[33mcommit b4ba2bc4afe07062859d15985fa1e5183546833c[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Sat Oct 26 13:01:16 2024 +0800
+
+     - checked Tran's code
+     - added a working test case
+
+[33mcommit c30b137b6292bca15c44b219763112970a38cf14[m[33m ([m[1;31morigin/refactor-load[m[33m)[m
+Author: VietCT <transonviet2004@gmail.com>
+Date:   Sat Oct 26 04:09:36 2024 +0800
+
+    Refactor OOP only for load medicalRecord
+
+[33mcommit c6f05806599748588aa85224890b261863381ff3[m
+Merge: cb79948 1d8f314
+Author: BossMan Werner <wernersoon@gmail.com>
+Date:   Fri Oct 25 00:22:55 2024 +0800
+
+    Merge branch 'main' of https://github.com/WernerSSX/ItsJoever2002
+
+[33mcommit cb799484653017885d864561a963d3a2175af754[m
+Author: BossMan Werner <wernersoon@gmail.com>
+Date:   Fri Oct 25 00:22:37 2024 +0800
+
+    entered some additional work
+
+[33mcommit 1d8f314e78a703ed579ce97c798df70268dcd696[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Thu Oct 24 15:25:44 2024 +0800
+
+    CICD stuff
+
+[33mcommit acb6953206b8daea0d4fba4e6d7cd86016ac1881[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Thu Oct 24 15:21:12 2024 +0800
+
+    CICD-testing
+
+[33mcommit a00f70e57aac7addb0c0666fb73ecb247d35c4c6[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Thu Oct 24 15:14:50 2024 +0800
+
+    readdall
+
+[33mcommit dbf6c44d7708f9768d7af5f29dcaf2274e30d227[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Mon Oct 21 15:23:17 2024 +0800
+
+    CICD debug
+
+[33mcommit 8bdd3dab93543fee2359af29a74a42714354f5c5[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Mon Oct 21 15:21:23 2024 +0800
+
+    CICD
+
+[33mcommit e1d80828dae032ce3da1d96f5e76fa1366bf13ce[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Mon Oct 21 14:51:29 2024 +0800
+
+    1
+
+[33mcommit f4c08055965815ee63307f06becf0687fd2b52dd[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Mon Oct 21 14:45:16 2024 +0800
+
+     - Added CICD
+     - Fixed appointments
+
+[33mcommit ee27a421971726a4da658c68b686c9c43954fde1[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Mon Oct 21 02:40:33 2024 +0800
+
+    - Addded requesting of appointments and accept/reject by doctors
+    - Changed exit to logout
+
+[33mcommit 1ed6964a7d3ca95d54a18010ac414ae106e00757[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Wed Oct 16 21:46:27 2024 +0800
+
+    - Added doctor scheduling
+    
+    - Fixed some appointment creating/cancelling/changing
+    
+    - Improved date output format
+
+[33mcommit 055b276ccbb5a01f8c7e2a20d73ce18f4e8a6135[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Wed Oct 16 16:53:18 2024 +0800
+
+    Fixed appt scheduling bug
+
+[33mcommit 1981c75cb9552f08b694e689555b1a582e674dc0[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Wed Oct 16 16:13:24 2024 +0800
+
+    - implemented appointment system
+    - need more testing
+
+[33mcommit 7a2a7e7d0169594fddc4a01451e6144bf2dff5f9[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Tue Oct 15 23:20:20 2024 +0800
+
+    - Implemented writing to the database (users.txt)
+    - updated README with instructions
+
+[33mcommit 9f15498fe50cbca25d9e3027590bb2cb79ec07fa[m
+Author: Oseltamivir <bryansg2013@gmail.com>
+Date:   Tue Oct 15 22:34:13 2024 +0800
+
+    - Added TextDB funtionality with serialization
+    - Made main function work
+    - Implemented most items
+    - Implemented administrator menu
+
+[33mcommit ab29237a9a019f47e01052c16613e3563959fe17[m
+Author: BossMan Werner <wernersoon@gmail.com>
+Date:   Mon Oct 14 23:33:17 2024 +0800
+
+    update 2
+
+[33mcommit 1adcf201de2849390ed88600695a97ab6fcd5f5c[m
+Author: BossMan Werner <wernersoon@gmail.com>
+Date:   Thu Oct 10 15:54:53 2024 +0800
+
+    Added some things to this repo
+
+[33mcommit 9a61237f12c479a7935d63c9f53a7db06629a286[m
+Author: WernerSSX <156522180+WernerSSX@users.noreply.github.com>
+Date:   Thu Oct 10 15:44:46 2024 +0800
+
+    Initial commit
