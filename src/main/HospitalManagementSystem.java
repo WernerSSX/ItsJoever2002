@@ -1,6 +1,9 @@
 package main;
 
 import db.TextDB;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +11,8 @@ import menus.*;
 import user_classes.*;
 
 public class HospitalManagementSystem {
-    public static void main(String[] args) {
+	private static final String DEFAULT_PASSWORD = "password";
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         TextDB textDB = TextDB.getInstance();
 
@@ -73,8 +77,40 @@ public class HospitalManagementSystem {
 
         scanner.close();
     }
+    private static boolean isDefaultPassword(String hospitalID, String passwordHash) {
+        return passwordHash.equals(hashPassword(hospitalID, DEFAULT_PASSWORD));
+    }
+    private static String hashPassword(String hospitalID, String password) {
+        String combined = hospitalID + password;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = digest.digest(combined.getBytes());
+            return Base64.getEncoder().encodeToString(hashedBytes);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Hashing algorithm not found", e);
+        }
+    }
+    private static void updatePassword(Scanner scanner, User user) throws IOException {
+        String newPassword;
+        while (true) {
+            System.out.print("Enter new password: ");
+            newPassword = scanner.nextLine();
+            System.out.print("Confirm new password: ");
+            String confirmPassword = scanner.nextLine();
 
-    private static void handleLogin(Scanner scanner, TextDB textDB, String role) {
+            if (newPassword.equals(confirmPassword)) {
+                break;
+            } else {
+                System.out.println("Passwords do not match. Try again.");
+            }
+        }
+
+        // Update user's password hash
+        String newHashedPassword = hashPassword(user.getHospitalID(), newPassword);
+        user.setPassword(newHashedPassword);
+        System.out.println("Password updated successfully!");
+    }
+    private static void handleLogin(Scanner scanner, TextDB textDB, String role) throws IOException {
         System.out.print("Enter Hospital ID: ");
         String inputHospitalID = scanner.nextLine();
         // POSSIBLE UPDATE: Include Error Handling and minimal requirements for Hospital ID
@@ -84,13 +120,34 @@ public class HospitalManagementSystem {
         // POSSIBLE UPDATE: Include "Forget Password" Feature
 
         User user = getUserByRoleAndID(textDB.getUsers(), role, inputHospitalID);
+        
+        if (user != null) {
+            String hashedInputPassword = hashPassword(inputHospitalID, inputPass);
 
+            if (user.getPassword().equals(hashedInputPassword)) {
+                System.out.println(role + " logged in successfully!");
+
+                // Check if the password is the default
+                if (isDefaultPassword(inputHospitalID, hashedInputPassword)) {
+                    System.out.println("Your password is the default. Please change your password.");
+                    updatePassword(scanner, user);
+                }
+
+                navigateToMenu(scanner, user, textDB);
+            } else {
+                System.out.println("Invalid Hospital ID or Password!");
+            }
+        } else {
+            System.out.println("Invalid Hospital ID or Password!");
+        }
+        /*
         if (user != null && user.getPassword().equals(inputPass)) {
             System.out.println(role + " logged in successfully!");
             navigateToMenu(scanner, user, textDB);
         } else {
             System.out.println("Invalid Hospital ID or Password!");
         }
+        */
     }
 
     private static User getUserByRoleAndID(List<User> userList, String role, String hospitalID) {
