@@ -1,61 +1,82 @@
 package db;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
+import items.Medication;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-import items.Medication;
-
+/**
+ * @class MedicationInventoryLoader
+ * @brief Handles the loading and saving of medication inventory data from/to a file.
+ *
+ * This class extends DataLoader to manage Medication objects, providing functionality
+ * for reading from and writing to a file in a specified format.
+ */
 public class MedicationInventoryLoader extends DataLoader<Medication> {
-    private List<Medication> medications;
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+    private List<Medication> medications; /**< List to store loaded Medication objects. */
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd"); /**< Date formatter for serialization. */
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm"); /**< Time formatter for serialization. */
 
+    /**
+     * @brief Constructs a MedicationInventoryLoader with the specified file path.
+     *
+     * @param filePath Path to the file associated with this MedicationInventoryLoader.
+     */
     public MedicationInventoryLoader(String filePath) {
         super(filePath);
         this.medications = new ArrayList<>();
     }
 
-    @Override
     /**
-     * Loads medication inventory from the specified file.
+     * @brief Loads medication inventory from the specified file.
      *
-     * @param filename The name of the inventory file.
-     * @throws IOException If an I/O error occurs.
+     * Reads each line from the file, deserializing each line to a Medication object.
+     *
+     * @throws IOException If an I/O error occurs during file reading.
      */
+    @Override
     public void loadData() throws IOException {
-    	List<String> lines = read(filePath);
+        List<String> lines = read(filePath);
         medications.clear();
         for (String line : lines) {
             medications.add(deserialize(line));
         }
     }
 
-    // Implement the abstract saveData() method from DataLoader
+    /**
+     * @brief Saves all loaded medications to the associated file.
+     *
+     * Serializes each Medication object and writes it as a line in the file.
+     *
+     * @throws IOException If an I/O error occurs during file writing.
+     */
     @Override
     public void saveData() throws IOException {
-    	List<String> lines = new ArrayList<>();
+        List<String> lines = new ArrayList<>();
         for (Medication med : medications) {
             lines.add(serialize(med));
         }
         write(filePath, lines);
     }
+
     /**
-     * Deserializes a MedicalRecord object from a string.
+     * @brief Deserializes a Medication object from a string representation.
      *
-     * Expected Format:
-     * patientID|name|dateOfBirth|gender|phone|email|bloodType|diag1;date1,diag2;date2|treatment1^treatment2
+     * Expected Format: name|quantity|supplier
      *
-     * @param data Serialized string representation of the MedicalRecord
-     * @return MedicalRecord object
+     * @param data Serialized string representation of the Medication.
+     * @return Deserialized Medication object.
+     * @throws IllegalArgumentException If the data format is invalid.
      */
     protected Medication deserialize(String data) {
-    	String[] parts = data.split("\\|", -1);
+        String[] parts = data.split("\\|", -1);
+
         if (parts.length != 3) {
             throw new IllegalArgumentException("Invalid Medication data: " + data);
         }
+
         String name = parts[0];
         int quantity = Integer.parseInt(parts[1]);
         String supplier = parts[2].equals("NULL") ? null : parts[2];
@@ -63,16 +84,24 @@ public class MedicationInventoryLoader extends DataLoader<Medication> {
     }
 
     /**
-     * Retrieves the list of loaded MedicalRecords.
+     * @brief Retrieves the list of loaded Medications.
      *
-     * @return List of MedicalRecord objects.
+     * @return Unmodifiable list of Medication objects.
      */
     public List<Medication> getMedicationInventory() {
         return Collections.unmodifiableList(medications);
     }
-    
+
+    /**
+     * @brief Serializes a Medication object into a string representation.
+     *
+     * The format is name|quantity|supplier, where supplier can be "NULL" if not provided.
+     *
+     * @param medication Medication object to serialize.
+     * @return Serialized string representation of the Medication.
+     */
     protected String serialize(Medication medication) {
-    	return String.join("|",
+        return String.join("|",
                 medication.getName(),
                 String.valueOf(medication.getQuantity()),
                 medication.getSupplier() != null ? medication.getSupplier() : "NULL"

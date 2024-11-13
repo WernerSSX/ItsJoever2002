@@ -7,28 +7,39 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
- * The Schedule class manages a doctor's availability across different dates.
+ * @class Schedule
+ * @brief The Schedule class manages a doctor's availability across different dates.
  */
 public class Schedule {
     // Mapping from date to list of available TimeSlots
-    private Map<LocalDate, List<TimeSlot>> availability;
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+    private Map<LocalDate, List<TimeSlot>> availability; /**< Map to store availability of time slots keyed by date */
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd"); /**< Formatter for date */
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm"); /**< Formatter for time */
 
+    /****************
+     * Constructors *
+     ****************/
+
+    /**
+     * Constructor for Schedule. Initializes the availability map.
+     */
     public Schedule() {
         this.availability = new HashMap<>();
     }
 
+    /***********************
+     * Getters and Setters *
+     ***********************/
+
     /**
      * Sets availability for a specific date.
      *
-     * @param date         The date for which to set availability
+     * @param date      The date for which to set availability
      * @param timeSlots List of TimeSlot objects representing available times
      */
     public void setAvailability(LocalDate date, List<TimeSlot> timeSlots) {
-        availability.put(date, new ArrayList<>(timeSlots));
+        availability.put(date, new ArrayList<>(timeSlots)); // Store the provided time slots for the specified date
     }
 
     /**
@@ -38,7 +49,7 @@ public class Schedule {
      * @return List of available TimeSlot objects, or an empty list if none are set
      */
     public List<TimeSlot> getAvailableTimeSlots(LocalDate date) {
-        return availability.getOrDefault(date, new ArrayList<>());
+        return availability.getOrDefault(date, new ArrayList<>()); // Return available time slots or an empty list if not found
     }
 
     /**
@@ -47,7 +58,7 @@ public class Schedule {
      * @return Map of dates to lists of available TimeSlots
      */
     public Map<LocalDate, List<TimeSlot>> getAvailability() {
-        return availability;
+        return availability; // Return the entire availability map
     }
 
     /**
@@ -56,9 +67,18 @@ public class Schedule {
      * @param availability Map of dates to lists of available TimeSlots
      */
     public void setAvailabilityMap(Map<LocalDate, List<TimeSlot>> availability) {
-        this.availability = availability;
+        this.availability = availability; // Update the availability map with the provided one
     }
 
+    /**********
+     * Methods *
+     **********/
+
+    /**
+     * Provides a string representation of the Schedule.
+     *
+     * @return A formatted string showing the availability for each date and corresponding time slots
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -71,9 +91,8 @@ public class Schedule {
                 .append("\n");
             }
         }
-        return sb.toString();
+        return sb.toString(); // Return the constructed string representation of the schedule
     }
-
 
     // Additional methods can be added here as needed
 }

@@ -1,34 +1,55 @@
 package db;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
+import items.Appointment;
+import items.TimeSlot;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-import items.TimeSlot;
-import items.Appointment;
-
+/**
+ * @class AppointmentsLoader
+ * @brief Handles loading, saving, and managing appointment data from a file.
+ * 
+ * This class extends DataLoader and provides functionality to load and save Appointment
+ * objects from and to a specified file. It includes methods to serialize and deserialize
+ * appointments for persistence.
+ */
 public class AppointmentsLoader extends DataLoader<Appointment> {
-    private List<Appointment> appointments;
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+    private List<Appointment> appointments;   /**< List of appointments loaded from the file */
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd"); /**< Formatter for date */
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");      /**< Formatter for time */
 
+    /**
+     * @brief Constructs an AppointmentsLoader with a specified file path.
+     *
+     * @param filePath Path to the file containing appointment data.
+     */
     public AppointmentsLoader(String filePath) {
         super(filePath);
         this.appointments = new ArrayList<>();
     }
 
+    /**
+     * @brief Loads appointment data from the specified file.
+     * 
+     * @throws IOException if an error occurs while reading from the file.
+     */
     @Override
     public void loadData() throws IOException {
         List<String> lines = read(filePath);
         appointments.clear();
         for (String line : lines) {
-        	appointments.add(deserialize(line));
+            appointments.add(deserialize(line));
         }
     }
 
-    // Implement the abstract saveData() method from DataLoader
+    /**
+     * @brief Saves the current list of appointments to the specified file.
+     * 
+     * @throws IOException if an error occurs while writing to the file.
+     */
     @Override
     public void saveData() throws IOException {
         List<String> lines = new ArrayList<>();
@@ -37,14 +58,16 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
         }
         write(filePath, lines); // Assuming there's a 'write' method to write lines to a file
     }
+
     /**
-     * Deserializes a MedicalRecord object from a string.
-     *
+     * @brief Deserializes an Appointment object from a string.
+     * 
      * Expected Format:
-     * patientID|name|dateOfBirth|gender|phone|email|bloodType|diag1;date1,diag2;date2|treatment1^treatment2
+     * id|patientId|doctorId|timeSlot|status|outcomeRecord
      *
-     * @param data Serialized string representation of the MedicalRecord
-     * @return MedicalRecord object
+     * @param appointmentData Serialized string representation of the Appointment.
+     * @return Appointment object deserialized from the input data.
+     * @throws IllegalArgumentException if the appointment data is invalid.
      */
     protected Appointment deserialize(String appointmentData) {
         String[] fields = appointmentData.split("\\" + SEPARATOR);
@@ -65,16 +88,22 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
     }
 
     /**
-     * Retrieves the list of loaded MedicalRecords.
-     *
-     * @return List of MedicalRecord objects.
+     * @brief Retrieves an unmodifiable list of loaded appointments.
+     * 
+     * @return List of Appointment objects.
      */
     public List<Appointment> getAppointments() {
         return Collections.unmodifiableList(appointments);
     }
     
+    /**
+     * @brief Serializes an Appointment object into a string for storage.
+     *
+     * @param appointment Appointment object to serialize.
+     * @return Serialized string representation of the Appointment.
+     */
     protected String serialize(Appointment appointment) {
-    	return String.join(SEPARATOR,
+        return String.join(SEPARATOR,
                 String.valueOf(appointment.getId()),
                 appointment.getPatientId(),
                 appointment.getDoctorId(),
@@ -82,6 +111,13 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
                 appointment.getStatus(),
                 appointment.getOutcomeRecord());
     }
+
+    /**
+     * @brief Serializes a TimeSlot object into a formatted string.
+     * 
+     * @param timeSlot TimeSlot object to serialize.
+     * @return Serialized string representation of the TimeSlot.
+     */
     private static String serializeTimeSlot(TimeSlot timeSlot) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         return timeSlot.getStartTime().format(formatter) + "-" + timeSlot.getEndTime().format(formatter);

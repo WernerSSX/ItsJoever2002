@@ -13,17 +13,34 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import items.*;
+import java.util.List;
+import java.util.Scanner;
+import user_classes.*;
 
+/**
+ * @class AdministratorMenu
+ * @brief This class provides the interface for administrators to manage hospital staff, view appointments, 
+ *        manage medication inventory, and approve replenishment requests.
+ */
 public class AdministratorMenu {
 
     private TextDB textDB;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+    /**
+     * @brief Constructor to initialize the AdministratorMenu with a database.
+     * @param textDB The database object that handles data storage and retrieval.
+     */
     public AdministratorMenu(TextDB textDB) {
         this.textDB = textDB;
     }
 
+    /**
+     * @brief Displays the administrator menu and handles user choices.
+     * @param scanner The Scanner object for user input.
+     * @param admin The Administrator object currently logged in.
+     * @throws IOException If an error occurs during file operations.
+     */
     public void showMenu(Scanner scanner, Administrator admin) throws IOException {
         boolean exit = false;
 
@@ -63,6 +80,11 @@ public class AdministratorMenu {
 
     // ----------------------- 1. View and Manage Hospital Staff ----------------------- //
 
+    /**
+     * @brief Manages the hospital staff, allowing the administrator to add, remove, view, and reset user passwords.
+     * @param scanner The Scanner object for user input.
+     * @throws IOException If an error occurs during file operations.
+     */
     private void manageHospitalStaff(Scanner scanner) throws IOException {
         boolean back = false;
 
@@ -109,7 +131,11 @@ public class AdministratorMenu {
         }
     }
 
-    // Add a new user
+    /**
+     * @brief Adds a new user to the hospital staff based on role and provided details.
+     * @param scanner The Scanner object for user input.
+     * @throws IOException If an error occurs during file operations.
+     */
     private void addUser(Scanner scanner) throws IOException {
         System.out.println("\nAdd New User:");
 
@@ -170,7 +196,11 @@ public class AdministratorMenu {
         }
     }
 
-    // Remove an existing user
+    /**
+     * @brief Removes a user from the hospital staff based on their Hospital ID.
+     * @param scanner The Scanner object for user input.
+     * @throws IOException If an error occurs during file operations.
+     */
     private void removeUser(Scanner scanner) throws IOException {
         System.out.println("\nRemove User:");
         String hospitalID = getNonEmptyString(scanner, "Enter Hospital ID of user to remove: ");
@@ -193,7 +223,9 @@ public class AdministratorMenu {
         }
     }
 
-    // View all users
+    /**
+     * @brief Displays a list of all users in the hospital staff.
+     */
     private void viewAllUsers() {
         System.out.println("\nList of All Users:");
         for (User user : textDB.getUsers()) {
@@ -202,7 +234,11 @@ public class AdministratorMenu {
         }
     }
 
-    // Reset user password
+    /**
+     * @brief Resets the password for a specified user based on their Hospital ID.
+     * @param scanner The Scanner object for user input.
+     * @throws IOException If an error occurs during file operations.
+     */
     private void resetUserPassword(Scanner scanner) throws IOException {
         System.out.print("Enter Hospital ID of the user: ");
         String hospitalID = scanner.nextLine().trim();
@@ -220,6 +256,10 @@ public class AdministratorMenu {
 
     // ----------------------- 2. View Appointments Details ----------------------- //
 
+    /**
+     * @brief Displays appointment details, allowing the administrator to view all or specific appointments.
+     * @param scanner The Scanner object for user input.
+     */
     private void viewAppointmentsDetails(Scanner scanner) {
         boolean back = false;
 
@@ -248,7 +288,9 @@ public class AdministratorMenu {
         }
     }
 
-    // View all appointments
+    /**
+     * @brief Displays all appointments in the database.
+     */
     private void viewAllAppointments() {
         List<Appointment> appointments = textDB.getAppointments();
         if (appointments.isEmpty()) {
@@ -263,7 +305,10 @@ public class AdministratorMenu {
         }
     }
 
-    // View appointment by ID
+    /**
+     * @brief Displays details of a specific appointment based on appointment ID.
+     * @param scanner The Scanner object for user input.
+     */
     private void viewAppointmentById(Scanner scanner) {
         System.out.print("Enter Appointment ID to view details: ");
         String input = scanner.nextLine().trim();
@@ -287,6 +332,11 @@ public class AdministratorMenu {
 
     // ----------------------- 3. View and Manage Medication Inventory ----------------------- //
 
+    /**
+     * @brief Manages the medication inventory, allowing the administrator to view, add, update, and remove medications.
+     * @param scanner The Scanner object for user input.
+     * @throws IOException If an error occurs during file operations.
+     */
     private void manageMedicationInventory(Scanner scanner) throws IOException {
         boolean back = false;
 
@@ -323,7 +373,9 @@ public class AdministratorMenu {
         }
     }
 
-    // View medication inventory
+    /**
+     * @brief Displays the current medication inventory.
+     */
     private void viewMedicationInventory() {
         List<Medication> medications = textDB.getMedications();
         if (medications.isEmpty()) {
@@ -342,7 +394,11 @@ public class AdministratorMenu {
         }
     }
 
-    // Add a new medication
+    /**
+     * @brief Adds a new medication to the inventory based on provided details.
+     * @param scanner The Scanner object for user input.
+     * @throws IOException If an error occurs during file operations.
+     */
     private void addMedication(Scanner scanner) throws IOException {
         System.out.println("\nAdd New Medication:");
         String name = getNonEmptyString(scanner, "Enter Medication Name: ");
@@ -364,7 +420,11 @@ public class AdministratorMenu {
         System.out.println("Medication added successfully.");
     }
 
-    // Update existing medication
+    /**
+     * @brief Updates an existing medication's quantity and supplier in the inventory.
+     * @param scanner The Scanner object for user input.
+     * @throws IOException If an error occurs during file operations.
+     */
     private void updateMedication(Scanner scanner) throws IOException {
         System.out.print("Enter Medication Name to update: ");
         String name = scanner.nextLine().trim();
@@ -394,7 +454,11 @@ public class AdministratorMenu {
         System.out.println("Medication updated successfully.");
     }
 
-    // Remove a medication
+    /**
+     * @brief Removes a medication from the inventory based on its name.
+     * @param scanner The Scanner object for user input.
+     * @throws IOException If an error occurs during file operations.
+     */
     private void removeMedication(Scanner scanner) throws IOException {
         System.out.print("Enter Medication Name to remove: ");
         String name = scanner.nextLine().trim();
@@ -419,6 +483,11 @@ public class AdministratorMenu {
 
     // ----------------------- 4. Approve Replenishment Requests ----------------------- //
 
+    /**
+     * @brief Handles the approval or rejection of medication replenishment requests.
+     * @param scanner The Scanner object for user input.
+     * @throws IOException If an error occurs during file operations.
+     */
     private void approveReplenishmentRequests(Scanner scanner) throws IOException {
         boolean back = false;
 
@@ -451,7 +520,9 @@ public class AdministratorMenu {
         }
     }
 
-    // View all replenishment requests
+    /**
+     * @brief Displays all replenishment requests awaiting approval.
+     */
     private void viewAllReplenishmentRequests() {
         List<ReplenishmentRequest> requests = textDB.replenishmentRequests;
         if (requests.isEmpty()) {
@@ -469,7 +540,12 @@ public class AdministratorMenu {
         }
     }
 
-    // Approve or Reject a replenishment request
+    /**
+     * @brief Processes a specific replenishment request, either approving or rejecting it.
+     * @param scanner The Scanner object for user input.
+     * @param isApprove Boolean indicating whether the request is approved (true) or rejected (false).
+     * @throws IOException If an error occurs during file operations.
+     */
     private void processReplenishmentRequest(Scanner scanner, boolean isApprove) throws IOException {
         List<ReplenishmentRequest> requests = textDB.replenishmentRequests;
         if (requests.isEmpty()) {
@@ -526,14 +602,21 @@ public class AdministratorMenu {
 
     // ----------------------- Utility Methods ----------------------- //
 
-    // View admin profile
+    /**
+     * @brief Displays the profile information of the current administrator.
+     * @param admin The Administrator object whose profile is being displayed.
+     */
     private void viewProfile(Administrator admin) {
         System.out.println("\nAdministrator Profile:");
         System.out.println("ID: " + admin.getHospitalID());
         System.out.println("Name: " + admin.getName());
     }
 
-    // Utility method to get integer input with validation
+    /**
+     * @brief Utility method to obtain an integer input from the user.
+     * @param scanner The Scanner object for user input.
+     * @return The integer value entered by the user.
+     */
     private int getIntInput(Scanner scanner) {
         int input;
         while (true) {
@@ -548,6 +631,12 @@ public class AdministratorMenu {
         return input;
     }
 
+    /**
+     * @brief Utility method to obtain a positive integer input from the user.
+     * @param scanner The Scanner object for user input.
+     * @param prompt The message prompt displayed to the user.
+     * @return The positive integer value entered by the user.
+     */
     private int getPositiveInt(Scanner scanner, String string) {
         int input;
         System.out.println(string);
@@ -563,7 +652,12 @@ public class AdministratorMenu {
         return input;
     }
 
-    // Utility method to get non-empty string input
+    /**
+     * @brief Utility method to obtain a non-empty string input from the user.
+     * @param scanner The Scanner object for user input.
+     * @param prompt The message prompt displayed to the user.
+     * @return The non-empty string entered by the user.
+     */
     private String getNonEmptyString(Scanner scanner, String prompt) {
         String input;
         while (true) {
@@ -577,7 +671,12 @@ public class AdministratorMenu {
         return input;
     }
 
-    // Utility method to get valid date input
+    /**
+     * @brief Utility method to obtain a valid date input from the user.
+     * @param scanner The Scanner object for user input.
+     * @param prompt The message prompt displayed to the user.
+     * @return The LocalDate object representing the entered date.
+     */
     private LocalDate getValidDate(Scanner scanner, String prompt) {
         LocalDate date;
         while (true) {

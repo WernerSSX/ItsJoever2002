@@ -8,15 +8,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @class DataLoader
+ * @brief Abstract base class for loading and saving data from files.
+ * 
+ * This class provides basic methods for reading and writing string data to files.
+ * Subclasses can specify the type of data (generic type T) they load and save, 
+ * implementing specific deserialization and serialization methods.
+ *
+ * @tparam T Type of object managed by the DataLoader.
+ */
 public abstract class DataLoader<T> {  // Generic type T to represent the type of object we are loading
-    protected String filePath;
-    public static final String SEPARATOR = "|";
+    protected String filePath; /**< Path to the file from which data is loaded and saved. */
+    public static final String SEPARATOR = "|"; /**< Separator used in serialized data representation. */
 
+    /**
+     * @brief Constructs a DataLoader with the specified file path.
+     *
+     * @param filePath Path to the file associated with this DataLoader.
+     */
     public DataLoader(String filePath) {
         this.filePath = filePath;
     }
 
-    // Reading the file
+    /**
+     * @brief Reads all lines from a specified file.
+     *
+     * @param fileName Name of the file to read data from.
+     * @return List of strings, each representing a line from the file.
+     * @throws IOException If an I/O error occurs while reading the file.
+     */
     public static List<String> read(String fileName) throws IOException {
         List<String> data = new ArrayList<>();
         FileInputStream fis = null;
@@ -38,7 +59,13 @@ public abstract class DataLoader<T> {  // Generic type T to represent the type o
         return data;
     }
 
-    // Writing data to file
+    /**
+     * @brief Writes a list of strings to a specified file.
+     *
+     * @param fileName Name of the file to write data to.
+     * @param data List of strings to be written to the file.
+     * @throws IOException If an I/O error occurs while writing the file.
+     */
     public static void write(String fileName, List<String> data) throws IOException {
         PrintWriter out = new PrintWriter(new FileWriter(fileName));
         try {
@@ -50,8 +77,43 @@ public abstract class DataLoader<T> {  // Generic type T to represent the type o
         }
     }
 
+    /**
+     * @brief Abstract method to load data from the associated file.
+     *
+     * Subclasses must implement this method to load their specific type of data.
+     *
+     * @throws IOException If an error occurs during file reading.
+     */
     public abstract void loadData() throws IOException;
+
+    /**
+     * @brief Abstract method to save data to the associated file.
+     *
+     * Subclasses must implement this method to save their specific type of data.
+     *
+     * @throws IOException If an error occurs during file writing.
+     */
     public abstract void saveData() throws IOException;
+
+    /**
+     * @brief Abstract method to deserialize a string into an object of type T.
+     *
+     * Subclasses must implement this method to convert serialized data into 
+     * their specific data type.
+     *
+     * @param data String data to deserialize.
+     * @return Deserialized object of type T.
+     */
     protected abstract T deserialize(String data);
+
+    /**
+     * @brief Abstract method to serialize an object of type T into a string.
+     *
+     * Subclasses must implement this method to convert their specific data 
+     * type into a serialized string representation.
+     *
+     * @param data Object of type T to serialize.
+     * @return Serialized string representation of the object.
+     */
     protected abstract String serialize(T data);
 }

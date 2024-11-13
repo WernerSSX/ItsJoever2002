@@ -1,32 +1,41 @@
 package menus;
-import services.*;
-
 import db.TextDB;
-import user_classes.Doctor;
-import user_classes.Patient;
 import items.Appointment;
 import items.MedicalRecord;
-import items.Schedule;
 import items.TimeSlot;
 import items.Treatment;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import user_classes.Doctor;
+import user_classes.Patient;
 
+/**
+ * @class PatientMenu
+ * @brief Displays a menu for patients to view and manage their appointments, medical records, and contact information.
+ */
 public class PatientMenu {
     private TextDB textDB;
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+    /**
+     * @brief Constructor to initialize PatientMenu with a TextDB instance.
+     * @param textDB A TextDB instance for data retrieval and storage.
+     */
     public PatientMenu(TextDB textDB) {
         this.textDB = textDB;
     }
 
+    /**
+     * @brief Displays the patient menu and processes user input.
+     * @param scanner Scanner object to take user input.
+     * @param patient The patient using the menu.
+     * @throws IOException If an input or output exception occurs.
+     */
     public void showMenu(Scanner scanner, Patient patient) throws IOException {
         while (true) {
             System.out.println("\nPatient Menu:");
@@ -79,6 +88,10 @@ public class PatientMenu {
         }
     }
     
+    /**
+     * @brief Displays a patient's past appointment outcome records.
+     * @param patient The patient whose records are being accessed.
+     */
     private void viewPastAppointmentOutcomeRecords(Patient patient) {
     	MedicalRecord record = textDB.getMedicalRecordByPatientId(patient.getHospitalID());
     	if (record == null) {
@@ -99,6 +112,10 @@ public class PatientMenu {
         System.out.println();	
     }
     
+    /**
+     * @brief Displays a patient's medical record.
+     * @param patient The patient whose medical record is being viewed.
+     */
     private void viewMedicalRecord(Patient patient) {
         MedicalRecord record = textDB.getMedicalRecordByPatientId(patient.getHospitalID());
         if (record == null) {
@@ -109,6 +126,11 @@ public class PatientMenu {
         record.display();
     }
 
+    /**
+     * @brief Updates the contact information of the patient.
+     * @param scanner Scanner object for user input.
+     * @param patient The patient whose contact information is updated.
+     */
     private void updateContactInformation(Scanner scanner, Patient patient) {
         System.out.print("Enter new email address: ");
         String email = scanner.nextLine();
@@ -131,8 +153,10 @@ public class PatientMenu {
         }
     }
     
-    
-
+    /**
+     * @brief Displays the current appointment status for the patient.
+     * @param patient The patient whose appointments are being viewed.
+     */
     private void viewAppointmentStatus(Patient patient) {
         List<Appointment> appointments = textDB.getAppointments().stream()
             .filter(appt -> appt.getPatientId().equals(patient.getHospitalID()))
@@ -162,8 +186,10 @@ public class PatientMenu {
         }
     }
 
-    
-
+    /**
+     * @brief Displays a list of available appointment slots with a specific doctor.
+     * @param scanner Scanner object for user input.
+     */
     private void viewAvailableAppointmentSlotsWithDoctor(Scanner scanner) {
         // Step 1: Display list of available doctors
         List<Doctor> doctors = textDB.getAllDoctors();
@@ -192,7 +218,11 @@ public class PatientMenu {
         viewAvailableAppointmentSlots(scanner, selectedDoctor);
     }
 
-    
+    /**
+     * @brief Displays available appointment slots for a specific doctor on a given date.
+     * @param scanner Scanner object for user input.
+     * @param doctor The doctor for whom to view available slots.
+     */
     private void viewAvailableAppointmentSlots(Scanner scanner, Doctor doctor) {
         System.out.print("Enter the date (yyyy-MM-dd) for which you want to see available slots: ");
         String dateInput = scanner.nextLine();
@@ -225,7 +255,11 @@ public class PatientMenu {
         }
     }
 
-
+    /**
+     * @brief Schedules a new appointment for the patient.
+     * @param scanner Scanner object for user input.
+     * @param patient The patient scheduling the appointment.
+     */
     private void scheduleAppointment(Scanner scanner, Patient patient) {
         // Step 1: Ask for the date of the appointment
         System.out.print("Enter the date (yyyy-MM-dd) for which you want to schedule an appointment: ");
@@ -295,7 +329,16 @@ public class PatientMenu {
         }
     }
 
-
+    /**
+     * Reschedules an existing appointment for a patient.
+     * 
+     * This method allows a patient to view their current appointments, select an appointment to reschedule, 
+     * choose a new date, and select a new time slot and/or doctor. 
+     * It then updates the appointment details in the database if the rescheduling is confirmed.
+     * 
+     * @param scanner The scanner object to read user input.
+     * @param patient The patient whose appointment is being rescheduled.
+     */
     private void rescheduleAppointment(Scanner scanner, Patient patient) {
         // Step 1: Retrieve and display the patient's appointments
         List<Appointment> patientAppointments = textDB.getAppointments().stream()
@@ -447,6 +490,15 @@ public class PatientMenu {
     }
     
 
+    /**
+     * Cancels an existing appointment for a patient.
+     * 
+     * This method allows a patient to view their current appointments, select an appointment to cancel, 
+     * and confirm the cancellation. The appointment is then removed from the system.
+     * 
+     * @param scanner The scanner object to read user input.
+     * @param patient The patient whose appointment is being canceled.
+     */
     private void cancelAppointment(Scanner scanner, Patient patient) {
         // Step 1: Retrieve and display the patient's appointments
         List<Appointment> patientAppointments = textDB.getAppointments().stream()
@@ -502,6 +554,15 @@ public class PatientMenu {
     }
     
 
+    /**
+     * Changes the password of a patient.
+     * 
+     * This method allows a patient to change their password by entering the current password, 
+     * then the new password. It checks if the current password is correct before updating it.
+     * 
+     * @param scanner The scanner object to read user input.
+     * @param patient The patient whose password is being changed.
+     */
     private void changePassword(Scanner scanner, Patient patient) {
         System.out.print("Enter current password: ");
         String currentPassword = scanner.nextLine();
@@ -521,6 +582,14 @@ public class PatientMenu {
         }
     }
 
+    /**
+     * Helper method to get an integer input from the user.
+     * 
+     * This method ensures that the user enters a valid integer.
+     * 
+     * @param scanner The scanner object to read user input.
+     * @return The integer input entered by the user.
+     */
     private int getIntInput(Scanner scanner) {
         while (!scanner.hasNextInt()) {
             System.out.print("Invalid input. Please enter a number: ");

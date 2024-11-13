@@ -2,22 +2,36 @@ package menus;
 
 import db.TextDB;
 import items.*;
-import user_classes.Doctor;
-import user_classes.Pharmacist;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
+import user_classes.Pharmacist;
 
-
+/**
+ * @class PharmacistMenu
+ * @brief Displays a menu for pharmacists to do pharmacist tasks
+ */
 public class PharmacistMenu {
     private TextDB textDB;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+    /**
+     * Constructs a PharmacistMenu object with the given TextDB instance.
+     * 
+     * @param textDB The TextDB instance for accessing the database.
+     */
     public PharmacistMenu(TextDB textDB) {
         this.textDB = textDB;
     }
 
+    /**
+     * Displays the pharmacist menu and handles user input for various pharmacist tasks.
+     * 
+     * @param scanner The scanner object to read user input.
+     * @param pharmacist The pharmacist whose menu is being shown.
+     * @throws IOException If an I/O error occurs during database operations.
+     */
     public void showMenu(Scanner scanner, Pharmacist pharmacist) throws IOException {
         boolean back = false;
 
@@ -54,6 +68,12 @@ public class PharmacistMenu {
         }
     }
 
+    /**
+     * Allows the pharmacist to view a patient's medical records.
+     * 
+     * @param scanner The scanner object to read user input.
+     * @param pharmacist The pharmacist viewing the medical records.
+     */
     private void viewPatientMedicalRecords(Scanner scanner, Pharmacist pharmacist) {
         System.out.print("Enter Patient ID to view medical records: ");
         String patientId = scanner.nextLine().trim();
@@ -68,6 +88,13 @@ public class PharmacistMenu {
         record.display();
     }
 
+    /**
+     * Allows the pharmacist to update the status of a prescription for a patient.
+     * 
+     * @param scanner The scanner object to read user input.
+     * @param pharmacist The pharmacist updating the prescription status.
+     * @throws IOException If an I/O error occurs while updating the record.
+     */
     private void updatePrescriptionStatus(Scanner scanner, Pharmacist pharmacist) throws IOException {
         System.out.print("Enter Patient ID: ");
         String patientId = scanner.nextLine().trim();
@@ -145,7 +172,9 @@ public class PharmacistMenu {
         System.out.println("Prescription status updated successfully.");
     }
 
-
+    /**
+     * Displays the current medication inventory.
+     */
     private void viewMedicationInventory() {
         List<Medication> medications = textDB.getMedications();
         if (medications.isEmpty()) {
@@ -164,7 +193,13 @@ public class PharmacistMenu {
         }
     }
 
-
+    /**
+     * Allows the pharmacist to submit a replenishment request for medication.
+     * 
+     * @param scanner The scanner object to read user input.
+     * @param pharmacist The pharmacist submitting the replenishment request.
+     * @throws IOException If an I/O error occurs during the request submission.
+     */
     private void submitReplenishmentRequest(Scanner scanner, Pharmacist pharmacist) throws IOException {
         System.out.print("Enter Medication Name to replenish: ");
         String medicationName = scanner.nextLine().trim();
@@ -217,15 +252,20 @@ public class PharmacistMenu {
         textDB.addReplenishmentRequest(request);
         System.out.println("Replenishment request submitted successfully.");
     }
-    
 
+    /**
+     * Helper method to get an integer input from the user.
+     * 
+     * @param scanner The scanner object to read user input.
+     * @return The integer input entered by the user.
+     */
     private int getIntInput(Scanner scanner) {
         while (!scanner.hasNextInt()) {
             System.out.print("Invalid input. Please enter a number: ");
             scanner.next();
         }
         int out = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // Consume newline
         return out;
     }
 }

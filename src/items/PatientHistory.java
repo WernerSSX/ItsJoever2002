@@ -1,6 +1,7 @@
 package items;
 import java.time.LocalDateTime;
 
+// This file is outdated and will not be used in the implementation
 public class PatientHistory {
     private final Diagnosis pastDiagnosis;
     private final Treatment pastTreatment;
