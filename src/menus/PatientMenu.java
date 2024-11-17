@@ -1,4 +1,5 @@
 package menus;
+import HospitalNotificationSystem.NotifyDoctor;
 import db.TextDB;
 import items.Appointment;
 import items.MedicalRecord;
@@ -329,6 +330,9 @@ public class PatientMenu {
 
         if (!success) {
             System.out.println("Failed to submit appointment request. Please try again.");
+        } else {
+            // Notify doctor when appointment is added
+            NotifyDoctor.getInstance().notifyDoctorUser("New Appointment request from " + patient + " on " + dateInput);
         }
     }
 

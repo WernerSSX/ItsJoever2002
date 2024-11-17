@@ -1,5 +1,6 @@
 package menus;
 
+import HospitalNotificationSystem.NotifyAdministrator;
 import db.TextDB;
 import items.*;
 import java.io.IOException;
@@ -251,6 +252,9 @@ public class PharmacistMenu {
         // Add the request to TextDB
         textDB.addReplenishmentRequest(request);
         System.out.println("Replenishment request submitted successfully.");
+
+        // Notify Administrator
+        NotifyAdministrator.getInstance().notifyAdminUser(request.toString());
     }
 
     /**

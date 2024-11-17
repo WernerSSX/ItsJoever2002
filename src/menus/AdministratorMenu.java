@@ -1,19 +1,15 @@
 package menus;
 
+import HospitalNotificationSystem.NotifyPharmacist;
+import db.TextDB;
+import items.*;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import user_classes.*;
-import db.TextDB;
-import items.*;
-
-import java.util.Base64;
-import java.util.List;
-import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Scanner;
 import user_classes.*;
@@ -419,6 +415,9 @@ public class AdministratorMenu {
         textDB.getMedications().add(newMedication);
         textDB.saveMedicationInventory("inventory.txt");
         System.out.println("Medication added successfully.");
+
+        // Notify Pharmacist's telegram
+        NotifyPharmacist.getInstance().notifyPharmacistUser("New Medicine called " + newMedication.getName() + " added to inventory");
     }
 
     /**
@@ -582,8 +581,12 @@ public class AdministratorMenu {
                 medication.setQuantity(medication.getQuantity() + quantity);
                 textDB.updateMedication(medication);
                 System.out.println("Replenishment request approved. Inventory updated.");
+                // Notify Pharmacist's telegram
+                NotifyPharmacist.getInstance().notifyPharmacistUser("Replenishment request for " + medication.getName() + " approved");
             } else {
                 System.out.println("Medication not found in inventory. Cannot approve request.");
+                // Notify Pharmacist's telegram
+                NotifyPharmacist.getInstance().notifyPharmacistUser("Replenishment request for " + medication.getName() + " rejected");
                 return;
             }
         } else {

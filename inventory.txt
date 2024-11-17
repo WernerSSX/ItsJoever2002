@@ -1,5 +1,7 @@
-Paracetamol|200|Pfizer
+Paracetamol|260|Moderna
 COVID Vaccine|50|AstraZeneca
 Amoxicillin|75|GSK
 Ibuprofen|50|AstraZeneca
 Metformin|100|GSK
+Sildenafil|200|Moderna
+Laughing Gas|100|Pfizer

@@ -938,7 +938,8 @@ public class TextDB {
      * @return Unmodifiable list of medications.
      */
     public List<Medication> getMedications() {
-        return Collections.unmodifiableList(medications);
+        //return Collections.unmodifiableList(medications);
+        return medications;
     }
 
     /**
