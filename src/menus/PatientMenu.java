@@ -490,6 +490,7 @@ public class PatientMenu {
             textDB.updateAppointment(appointmentToReschedule);
     
             System.out.println("Appointment rescheduled successfully to " + newDate + " at " + newTimeSlot + ".");
+            NotifyDoctor.getInstance().notifyDoctorUser("Appointment rescheduled from " + patient + " on " + newDate + "at" + newTimeSlot);
         } catch (IOException e) {
             System.out.println("Failed to reschedule appointment due to an internal error. Please try again later.");
             e.printStackTrace();
@@ -555,6 +556,7 @@ public class PatientMenu {
         boolean success = textDB.cancelAppointment(patient, appointmentId);
         if (success) {
             System.out.println("Appointment canceled successfully.");
+            NotifyDoctor.getInstance().notifyDoctorUser("Appointment >> " + appointmentToCancel.toString() + " has been cancelled.");
         } else {
             System.out.println("Failed to cancel appointment. Please try again.");
         }
