@@ -18,7 +18,7 @@ import java.util.Scanner;
  *
  * T Type of object managed by the DataLoader.
  */
-public abstract class DataLoader<T> {  // Generic type T to represent the type of object we are loading
+public abstract class DataLoader<T> implements DataLoadInterface{  // Generic type T to represent the type of object we are loading
     protected String filePath; /**< Path to the file from which data is loaded and saved. */
     public static final String SEPARATOR = "|"; /**< Separator used in serialized data representation. */
 
