@@ -13,7 +13,7 @@ import java.net.URL;
  * using the Telegram Bot API. Subclasses should implement the `getChatId` 
  * method to retrieve the specific chat ID where the messages will be sent.
  */
-public abstract class HNSTelegramBot {
+public abstract class HNSTelegramBot implements TeleBotInterface{
     
     /** 
      * File path for storing Telegram bot details.
