@@ -3,8 +3,8 @@ package user_classes;
 import java.time.LocalDate;
 
 /**
- * @class Administrator
- * @brief Represents an administrator user with specific responsibilities within the hospital system.
+ * Administrator
+ * Represents an administrator user with specific responsibilities within the hospital system.
  *
  * The Administrator class extends the User class and provides additional functionalities
  * such as managing hospital staff, viewing appointment details, managing medication inventory,
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Administrator extends User {
     
     /**
-     * @brief Constructs an Administrator with specified details.
+     * Constructs an Administrator with specified details.
      * @param hospitalID The unique hospital ID of the administrator.
      * @param password The login password for the administrator.
      * @param name The name of the administrator.
@@ -28,7 +28,7 @@ public class Administrator extends User {
     }
 
     /**
-     * @brief Provides a string representation of the Administrator.
+     * Provides a string representation of the Administrator.
      * @return A string containing the administrator's ID and name.
      */
     @Override
@@ -37,7 +37,7 @@ public class Administrator extends User {
     }
 
     /**
-     * @brief Handles the login process for the administrator.
+     * Handles the login process for the administrator.
      *
      * This method contains the specific implementation for administrator login.
      */
@@ -47,7 +47,7 @@ public class Administrator extends User {
     }
 
     /**
-     * @brief Allows the administrator to change their password.
+     * Allows the administrator to change their password.
      *
      * This method contains the specific implementation for password modification.
      */
@@ -57,7 +57,7 @@ public class Administrator extends User {
     }
 
     /**
-     * @brief Handles the logout process for the administrator.
+     * Handles the logout process for the administrator.
      *
      * This method contains the specific implementation for administrator logout.
      */
@@ -67,7 +67,7 @@ public class Administrator extends User {
     }
 
     /**
-     * @brief Manages hospital staff.
+     * Manages hospital staff.
      *
      * This method contains the specific implementation for managing hospital staff.
      */
@@ -76,7 +76,7 @@ public class Administrator extends User {
     }
 
     /**
-     * @brief Views detailed appointment information.
+     * Views detailed appointment information.
      *
      * This method contains the specific implementation for viewing appointment details.
      */
@@ -85,7 +85,7 @@ public class Administrator extends User {
     }
 
     /**
-     * @brief Views and manages the medication inventory.
+     * Views and manages the medication inventory.
      *
      * This method contains the specific implementation for managing the medication inventory.
      */
@@ -94,7 +94,7 @@ public class Administrator extends User {
     }
 
     /**
-     * @brief Approves replenishment requests for medications.
+     * Approves replenishment requests for medications.
      *
      * This method contains the specific implementation for approving medication replenishment requests.
      */

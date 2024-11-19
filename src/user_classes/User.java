@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 /**
- * @class User
- * @brief An abstract base class representing a generic user in the hospital management system.
+ * User
+ * An abstract base class representing a generic user in the hospital management system.
  * 
  * The User class contains common attributes and methods shared by all user types,
  * such as hospital ID, password, name, date of birth, and gender. Specific user roles
@@ -22,7 +22,7 @@ public abstract class User {
     public String role;                /**< Role of the user (e.g., Patient, Doctor) */
 
     /**
-     * @brief Constructs a User object with the specified attributes.
+     * Constructs a User object with the specified attributes.
      *
      * @param hospitalID  Unique identifier for the user
      * @param password    Password for authentication
@@ -39,7 +39,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Gets the user's role.
+     * Gets the user's role.
      * 
      * @return Role of the user as a string.
      */
@@ -48,7 +48,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Gets the user's age.
+     * Gets the user's age.
      * 
      * @return Age of the user as a string.
      */
@@ -57,7 +57,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Gets the hospital ID of the user.
+     * Gets the hospital ID of the user.
      * 
      * @return Hospital ID as a string.
      */
@@ -66,7 +66,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Sets the hospital ID of the user.
+     * Sets the hospital ID of the user.
      * 
      * @param hospitalID New hospital ID to set.
      */
@@ -75,7 +75,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Gets the user's password.
+     * Gets the user's password.
      * 
      * @return Password as a string.
      */
@@ -84,7 +84,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Sets the user's password and updates it in the database.
+     * Sets the user's password and updates it in the database.
      * 
      * @param password New password to set.
      * @throws IOException if an I/O error occurs while updating the password in the database.
@@ -95,7 +95,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Gets the user's full name.
+     * Gets the user's full name.
      * 
      * @return Name of the user as a string.
      */
@@ -104,7 +104,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Sets the user's full name.
+     * Sets the user's full name.
      * 
      * @param name New name to set.
      */
@@ -113,7 +113,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Gets the user's date of birth.
+     * Gets the user's date of birth.
      * 
      * @return Date of birth as a LocalDate object.
      */
@@ -122,7 +122,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Sets the user's date of birth.
+     * Sets the user's date of birth.
      * 
      * @param dateOfBirth New date of birth to set.
      */
@@ -131,7 +131,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Gets the user's gender.
+     * Gets the user's gender.
      * 
      * @return Gender of the user as a string.
      */
@@ -140,7 +140,7 @@ public abstract class User {
     }
 
     /**
-     * @brief Sets the user's gender.
+     * Sets the user's gender.
      * 
      * @param gender New gender to set.
      */
@@ -149,17 +149,17 @@ public abstract class User {
     }
 
     /**
-     * @brief Abstract method for user login. To be implemented by subclasses.
+     * Abstract method for user login. To be implemented by subclasses.
      */
     public abstract void login();
 
     /**
-     * @brief Abstract method for changing user password. To be implemented by subclasses.
+     * Abstract method for changing user password. To be implemented by subclasses.
      */
     public abstract void changePassword();
 
     /**
-     * @brief Abstract method for user logout. To be implemented by subclasses.
+     * Abstract method for user logout. To be implemented by subclasses.
      */
     public abstract void logout();
 }

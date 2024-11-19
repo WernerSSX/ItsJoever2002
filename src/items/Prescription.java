@@ -1,8 +1,8 @@
 package items;
 
 /**
- * @class Prescription
- * @brief Represents a medication prescribed to a patient with a specified status.
+ * Prescription
+ * Represents a medication prescribed to a patient with a specified status.
  */
 public class Prescription {
     private String medicationName; /**< Name of the prescribed medication */
@@ -13,7 +13,7 @@ public class Prescription {
      ****************/
 
     /**
-     * @brief Constructs a Prescription with a given medication name and status.
+     * Constructs a Prescription with a given medication name and status.
      *
      * @param medicationName Name of the medication prescribed.
      * @param status         Status of the prescription; if empty, defaults to "Pending".
@@ -28,7 +28,7 @@ public class Prescription {
      ***********************/
 
     /**
-     * @brief Gets the name of the prescribed medication.
+     * Gets the name of the prescribed medication.
      * @return The medication name.
      */
     public String getMedicationName() {
@@ -36,7 +36,7 @@ public class Prescription {
     }
 
     /**
-     * @brief Sets the name of the prescribed medication.
+     * Sets the name of the prescribed medication.
      * @param medicationName The new medication name.
      */
     public void setMedicationName(String medicationName) { 
@@ -44,7 +44,7 @@ public class Prescription {
     }
 
     /**
-     * @brief Gets the status of the prescription.
+     * Gets the status of the prescription.
      * @return The status of the prescription (e.g., Pending, Approved).
      */
     public String getStatus() {
@@ -52,7 +52,7 @@ public class Prescription {
     }
 
     /**
-     * @brief Sets the status of the prescription.
+     * Sets the status of the prescription.
      * @param status The new status for the prescription.
      */
     public void setStatus(String status) { 
@@ -64,7 +64,7 @@ public class Prescription {
      **********/
 
     /**
-     * @brief Provides a string representation of the prescription.
+     * Provides a string representation of the prescription.
      * @return A string containing the medication name and status.
      */
     @Override

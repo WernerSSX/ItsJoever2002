@@ -16,10 +16,6 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import user_classes.*;
 
-/**
- * @class TextDB
- * @brief This class 
- */
 public class TextDB {
 	private List<DataLoader> loaders;
     private static TextDB instance;
@@ -33,7 +29,7 @@ public class TextDB {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
     /**
-     * @brief Default constructor.
+     * Default constructor.
      */
     private TextDB() {
     	loaders = new ArrayList<>();
@@ -50,7 +46,7 @@ public class TextDB {
     }
     
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -239,7 +235,7 @@ public class TextDB {
     // ====================== Existing Methods ========================= //
 
     /**
-     * @brief Sets the object's name.
+     * Sets the object's name.
      *
      * @param name The new name.
      */
@@ -248,7 +244,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Sets the object's name.
+     * Sets the object's name.
      *
      * @param name The new name.
      */
@@ -257,7 +253,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -273,7 +269,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -284,7 +280,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Sets the object's name.
+     * Sets the object's name.
      *
      * @param name The new name.
      */
@@ -303,7 +299,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Sets the object's name.
+     * Sets the object's name.
      *
      * @param name The new name.
      */
@@ -338,7 +334,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -368,7 +364,7 @@ public class TextDB {
     // ====================== Appointment Management ========================= //
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -392,7 +388,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -406,7 +402,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -420,7 +416,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -456,7 +452,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -479,7 +475,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -502,7 +498,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -526,7 +522,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -573,7 +569,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -586,7 +582,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -602,7 +598,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -641,7 +637,7 @@ public class TextDB {
     }
     
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -652,7 +648,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -671,7 +667,7 @@ public class TextDB {
     }
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -688,7 +684,7 @@ public class TextDB {
     }
     
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -700,7 +696,7 @@ public class TextDB {
     }
     
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -729,7 +725,7 @@ public class TextDB {
     // ====================== Doctor Assignment and Medical Records ========================= //
 
     /**
-     * @brief Calculates the result.
+     * Calculates the result.
      *
      * @param a First parameter for calculation.
      * @param b Second parameter for calculation.
@@ -840,7 +836,7 @@ public class TextDB {
 
     // Additional Appointment Management Enhancements
     /**
-     * @brief Retrieves appointments associated with a specific doctor by their ID.
+     * Retrieves appointments associated with a specific doctor by their ID.
      *
      * @param doctorId The ID of the doctor.
      * @return List of appointments for the specified doctor.
@@ -852,7 +848,7 @@ public class TextDB {
     }
     
     /**
-     * @brief Retrieves pending appointments for a specific doctor.
+     * Retrieves pending appointments for a specific doctor.
      *
      * @param doctorId The ID of the doctor.
      * @return List of pending appointments for the specified doctor.
@@ -864,7 +860,7 @@ public class TextDB {
     }
     
     /**
-     * @brief Retrieves upcoming appointments for a specific doctor, excluding declined ones.
+     * Retrieves upcoming appointments for a specific doctor, excluding declined ones.
      *
      * @param doctorId The ID of the doctor.
      * @return List of upcoming appointments for the specified doctor.
@@ -881,7 +877,7 @@ public class TextDB {
     
 
     /**
-     * @brief Updates an appointment with a new status and saves changes.
+     * Updates an appointment with a new status and saves changes.
      *
      * @param updatedAppt The appointment with updated details.
      * @throws IOException If an I/O error occurs while saving appointments or schedules.

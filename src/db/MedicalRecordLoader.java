@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @class MedicalRecordLoader
- * @brief Class responsible for loading and saving MedicalRecord data from and to files.
+ * MedicalRecordLoader
+ * Class responsible for loading and saving MedicalRecord data from and to files.
  *
  * MedicalRecordLoader extends DataLoader to handle MedicalRecord objects, managing
  * serialization and deserialization from a specified file format.
@@ -25,7 +25,7 @@ public class MedicalRecordLoader extends DataLoader<MedicalRecord> {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm"); /**< Time formatter for serialization. */
 
     /**
-     * @brief Constructs a MedicalRecordLoader with the specified file path.
+     * Constructs a MedicalRecordLoader with the specified file path.
      *
      * @param filePath Path to the file associated with this MedicalRecordLoader.
      */
@@ -35,7 +35,7 @@ public class MedicalRecordLoader extends DataLoader<MedicalRecord> {
     }
 
     /**
-     * @brief Loads medical records from the associated file.
+     * Loads medical records from the associated file.
      *
      * Reads each line from the file, deserializing each line to a MedicalRecord object.
      *
@@ -51,7 +51,7 @@ public class MedicalRecordLoader extends DataLoader<MedicalRecord> {
     }
 
     /**
-     * @brief Saves all loaded medical records to the associated file.
+     * Saves all loaded medical records to the associated file.
      *
      * Serializes each MedicalRecord object and writes it as a line in the file.
      *
@@ -67,7 +67,7 @@ public class MedicalRecordLoader extends DataLoader<MedicalRecord> {
     }
 
     /**
-     * @brief Deserializes a MedicalRecord object from a string representation.
+     * Deserializes a MedicalRecord object from a string representation.
      *
      * Expected Format: patientID|name|dateOfBirth|gender|phone|email|bloodType|diag1;date1,diag2;date2|treatment1^treatment2
      *
@@ -117,7 +117,7 @@ public class MedicalRecordLoader extends DataLoader<MedicalRecord> {
     }
 
     /**
-     * @brief Retrieves the list of loaded MedicalRecords.
+     * Retrieves the list of loaded MedicalRecords.
      *
      * @return Unmodifiable list of MedicalRecord objects.
      */
@@ -126,7 +126,7 @@ public class MedicalRecordLoader extends DataLoader<MedicalRecord> {
     }
 
     /**
-     * @brief Serializes a MedicalRecord object into a string representation.
+     * Serializes a MedicalRecord object into a string representation.
      *
      * The format is patientID|name|dateOfBirth|gender|phone|email|bloodType|diagnoses|treatments
      * where diagnoses and treatments are serialized lists.

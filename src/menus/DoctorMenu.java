@@ -13,19 +13,19 @@ import java.util.stream.Collectors;
 import user_classes.Doctor;
 
 /**
- * @class DoctorMenu
- * @brief Provides an interactive menu for doctors to manage patient records, appointments, schedules, and other related tasks.
+ * DoctorMenu
+ * Provides an interactive menu for doctors to manage patient records, appointments, schedules, and other related tasks.
  */
 public class DoctorMenu {
-    /** @brief Reference to the database handling text-based storage operations. */
+    /** Reference to the database handling text-based storage operations. */
     private TextDB textDB;
-    /** @brief Date format used for user interaction. */
+    /** Date format used for user interaction. */
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    /** @brief Time format used for user interaction. */
+    /** Time format used for user interaction. */
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
     /**
-     * @brief Constructor that initializes the DoctorMenu with the given database.
+     * Constructor that initializes the DoctorMenu with the given database.
      * @param textDB The database to interact with for data persistence.
      */
     public DoctorMenu(TextDB textDB) {
@@ -33,7 +33,7 @@ public class DoctorMenu {
     }
 
     /**
-     * @brief Displays the Doctor Menu and handles user selections.
+     * Displays the Doctor Menu and handles user selections.
      * @param scanner Scanner object for user input.
      * @param doctor The currently logged-in doctor.
      * @throws IOException If an I/O error occurs during operations.
@@ -88,7 +88,7 @@ public class DoctorMenu {
     }
 
     /**
-     * @brief Views a patient's medical records based on Patient ID.
+     * Views a patient's medical records based on Patient ID.
      *
      * @param scanner Scanner object for user input
      * @param doctor  The currently logged-in doctor
@@ -108,7 +108,7 @@ public class DoctorMenu {
     }
 
     /**
-     * @brief Updates a patient's medical records by adding new treatments.
+     * Updates a patient's medical records by adding new treatments.
      *
      * @param scanner Scanner object for user input
      * @param doctor  The currently logged-in doctor
@@ -191,7 +191,7 @@ public class DoctorMenu {
     }
 
     /**
-     * @brief Displays the doctor's personal schedule.
+     * Displays the doctor's personal schedule.
      *
      * @param doctor The currently logged-in doctor
      */
@@ -211,7 +211,7 @@ public class DoctorMenu {
     }
 
     /**
-     * @brief Sets the doctor's availability for appointments.
+     * Sets the doctor's availability for appointments.
      *
      * @param scanner Scanner object for user input
      * @param doctor  The currently logged-in doctor
@@ -272,7 +272,7 @@ public class DoctorMenu {
     }
 
     /**
-     * @brief Accepts or declines appointment requests for the doctor.
+     * Accepts or declines appointment requests for the doctor.
      *
      * @param scanner Scanner object for user input
      * @param doctor  The currently logged-in doctor
@@ -332,7 +332,7 @@ public class DoctorMenu {
     }
 
     /**
-     * @brief Views the doctor's upcoming appointments.
+     * Views the doctor's upcoming appointments.
      *
      * @param doctor The currently logged-in doctor
      */
@@ -373,7 +373,7 @@ public class DoctorMenu {
     }
 
     /**
-     * @brief Records the outcome of a completed appointment.
+     * Records the outcome of a completed appointment.
      *
      * @param scanner Scanner object for user input
      * @param doctor  The currently logged-in doctor
@@ -484,7 +484,7 @@ public class DoctorMenu {
     }
 
     /**
-     * @brief Utility method to safely get integer input from the user.
+     * Utility method to safely get integer input from the user.
      *
      * @param scanner Scanner object for user input
      * @return The integer entered by the user

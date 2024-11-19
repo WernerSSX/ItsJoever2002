@@ -2,8 +2,8 @@ package user_classes;
 import java.time.LocalDate;
 
 /**
- * @class Pharmacist
- * @brief Represents a pharmacist in the hospital management system.
+ * Pharmacist
+ * Represents a pharmacist in the hospital management system.
  * 
  * This class extends the User class and includes additional methods
  * specific to the role of a pharmacist, such as managing prescriptions,
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Pharmacist extends User {
 
     /**
-     * @brief Constructs a Pharmacist object with the specified attributes.
+     * Constructs a Pharmacist object with the specified attributes.
      *
      * @param hospitalID  Unique identifier for the pharmacist within the hospital
      * @param password    Password for authentication
@@ -26,7 +26,7 @@ public class Pharmacist extends User {
     }
 
     /**
-     * @brief Logs the pharmacist into the system.
+     * Logs the pharmacist into the system.
      */
     @Override
     public void login() {
@@ -34,7 +34,7 @@ public class Pharmacist extends User {
     }
 
     /**
-     * @brief Allows the pharmacist to change their password.
+     * Allows the pharmacist to change their password.
      */
     @Override
     public void changePassword() {
@@ -42,7 +42,7 @@ public class Pharmacist extends User {
     }
 
     /**
-     * @brief Logs the pharmacist out of the system.
+     * Logs the pharmacist out of the system.
      */
     @Override
     public void logout() {
@@ -50,7 +50,7 @@ public class Pharmacist extends User {
     }
 
     /**
-     * @brief Provides a string representation of the Pharmacist object.
+     * Provides a string representation of the Pharmacist object.
      * @return String representation of the Pharmacist
      */
     @Override
@@ -59,28 +59,28 @@ public class Pharmacist extends User {
     }
 
     /**
-     * @brief Views appointment outcome records related to pharmacy tasks.
+     * Views appointment outcome records related to pharmacy tasks.
      */
     public void viewAppointmentOutcomeRecords() {
         // Implementation for viewing appointment outcome records
     }
 
     /**
-     * @brief Updates the status of a patient's prescription.
+     * Updates the status of a patient's prescription.
      */
     public void updatePrescriptionStatus() {
         // Implementation for updating prescription status
     }
 
     /**
-     * @brief Views the current inventory of medications.
+     * Views the current inventory of medications.
      */
     public void viewMedicationInventory() {
         // Implementation for viewing medication inventory
     }
 
     /**
-     * @brief Submits a request to replenish the medication inventory.
+     * Submits a request to replenish the medication inventory.
      */
     public void submitReplenishmentRequest() {
         // Implementation for submitting replenishment request

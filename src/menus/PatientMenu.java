@@ -18,8 +18,8 @@ import user_classes.Doctor;
 import user_classes.Patient;
 
 /**
- * @class PatientMenu
- * @brief Displays a menu for patients to view and manage their appointments, medical records, and contact information.
+ * PatientMenu
+ * Displays a menu for patients to view and manage their appointments, medical records, and contact information.
  */
 public class PatientMenu {
     private TextDB textDB;
@@ -27,7 +27,7 @@ public class PatientMenu {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     /**
-     * @brief Constructor to initialize PatientMenu with a TextDB instance.
+     * Constructor to initialize PatientMenu with a TextDB instance.
      * @param textDB A TextDB instance for data retrieval and storage.
      */
     public PatientMenu(TextDB textDB) {
@@ -35,7 +35,7 @@ public class PatientMenu {
     }
 
     /**
-     * @brief Displays the patient menu and processes user input.
+     * Displays the patient menu and processes user input.
      * @param scanner Scanner object to take user input.
      * @param patient The patient using the menu.
      * @throws IOException If an input or output exception occurs.
@@ -93,7 +93,7 @@ public class PatientMenu {
     }
     
     /**
-     * @brief Displays a patient's past appointment outcome records.
+     * Displays a patient's past appointment outcome records.
      * @param patient The patient whose records are being accessed.
      */
     private void viewPastAppointmentOutcomeRecords(Patient patient) {
@@ -117,7 +117,7 @@ public class PatientMenu {
     }
     
     /**
-     * @brief Displays a patient's medical record.
+     * Displays a patient's medical record.
      * @param patient The patient whose medical record is being viewed.
      */
     private void viewMedicalRecord(Patient patient) {
@@ -131,7 +131,7 @@ public class PatientMenu {
     }
 
     /**
-     * @brief Updates the contact information of the patient.
+     * Updates the contact information of the patient.
      * @param scanner Scanner object for user input.
      * @param patient The patient whose contact information is updated.
      */
@@ -158,7 +158,7 @@ public class PatientMenu {
     }
     
     /**
-     * @brief Displays the current appointment status for the patient.
+     * Displays the current appointment status for the patient.
      * @param patient The patient whose appointments are being viewed.
      */
     private void viewAppointmentStatus(Patient patient) {
@@ -191,7 +191,7 @@ public class PatientMenu {
     }
 
     /**
-     * @brief Displays a list of available appointment slots with a specific doctor.
+     * Displays a list of available appointment slots with a specific doctor.
      * @param scanner Scanner object for user input.
      */
     private void viewAvailableAppointmentSlotsWithDoctor(Scanner scanner) {
@@ -223,7 +223,7 @@ public class PatientMenu {
     }
 
     /**
-     * @brief Displays available appointment slots for a specific doctor on a given date.
+     * Displays available appointment slots for a specific doctor on a given date.
      * @param scanner Scanner object for user input.
      * @param doctor The doctor for whom to view available slots.
      */
@@ -260,7 +260,7 @@ public class PatientMenu {
     }
 
     /**
-     * @brief Schedules a new appointment for the patient.
+     * Schedules a new appointment for the patient.
      * @param scanner Scanner object for user input.
      * @param patient The patient scheduling the appointment.
      */

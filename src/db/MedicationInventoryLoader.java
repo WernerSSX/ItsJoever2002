@@ -8,8 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @class MedicationInventoryLoader
- * @brief Handles the loading and saving of medication inventory data from/to a file.
+ * MedicationInventoryLoader
+ * Handles the loading and saving of medication inventory data from/to a file.
  *
  * This class extends DataLoader to manage Medication objects, providing functionality
  * for reading from and writing to a file in a specified format.
@@ -20,7 +20,7 @@ public class MedicationInventoryLoader extends DataLoader<Medication> {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm"); /**< Time formatter for serialization. */
 
     /**
-     * @brief Constructs a MedicationInventoryLoader with the specified file path.
+     * Constructs a MedicationInventoryLoader with the specified file path.
      *
      * @param filePath Path to the file associated with this MedicationInventoryLoader.
      */
@@ -30,7 +30,7 @@ public class MedicationInventoryLoader extends DataLoader<Medication> {
     }
 
     /**
-     * @brief Loads medication inventory from the specified file.
+     * Loads medication inventory from the specified file.
      *
      * Reads each line from the file, deserializing each line to a Medication object.
      *
@@ -46,7 +46,7 @@ public class MedicationInventoryLoader extends DataLoader<Medication> {
     }
 
     /**
-     * @brief Saves all loaded medications to the associated file.
+     * Saves all loaded medications to the associated file.
      *
      * Serializes each Medication object and writes it as a line in the file.
      *
@@ -62,7 +62,7 @@ public class MedicationInventoryLoader extends DataLoader<Medication> {
     }
 
     /**
-     * @brief Deserializes a Medication object from a string representation.
+     * Deserializes a Medication object from a string representation.
      *
      * Expected Format: name|quantity|supplier
      *
@@ -84,7 +84,7 @@ public class MedicationInventoryLoader extends DataLoader<Medication> {
     }
 
     /**
-     * @brief Retrieves the list of loaded Medications.
+     * Retrieves the list of loaded Medications.
      *
      * @return Unmodifiable list of Medication objects.
      */
@@ -93,7 +93,7 @@ public class MedicationInventoryLoader extends DataLoader<Medication> {
     }
 
     /**
-     * @brief Serializes a Medication object into a string representation.
+     * Serializes a Medication object into a string representation.
      *
      * The format is name|quantity|supplier, where supplier can be "NULL" if not provided.
      *

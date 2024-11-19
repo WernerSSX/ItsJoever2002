@@ -10,8 +10,8 @@ import java.util.Scanner;
 import user_classes.Pharmacist;
 
 /**
- * @class PharmacistMenu
- * @brief Displays a menu for pharmacists to do pharmacist tasks
+ * PharmacistMenu
+ * Displays a menu for pharmacists to do pharmacist tasks
  */
 public class PharmacistMenu {
     private TextDB textDB;

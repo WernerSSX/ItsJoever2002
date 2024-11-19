@@ -5,8 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * @class NotifyPharmacist
- * @brief Singleton class for notifying a pharmacist via Telegram.
+ * NotifyPharmacist
+ * Singleton class for notifying a pharmacist via Telegram.
  * 
  * This class allows sending notifications to a pharmacist through Telegram using 
  * the Telegram Bot API. It uses a singleton pattern to ensure only one instance 
@@ -25,7 +25,7 @@ public class NotifyPharmacist extends HNSTelegramBot {
     private String botToken;
 
     /**
-     * @brief Private constructor to prevent direct instantiation.
+     * Private constructor to prevent direct instantiation.
      * 
      * This constructor ensures that the class can only be instantiated 
      * through the `getInstance()` method to enforce the Singleton pattern.
@@ -33,7 +33,7 @@ public class NotifyPharmacist extends HNSTelegramBot {
     private NotifyPharmacist() {}
 
     /**
-     * @brief Retrieves the singleton instance of the NotifyPharmacist class.
+     * Retrieves the singleton instance of the NotifyPharmacist class.
      * 
      * If the instance does not exist, it will create a new one. This method 
      * ensures that only one instance of the class is used throughout the 
@@ -49,7 +49,7 @@ public class NotifyPharmacist extends HNSTelegramBot {
     }
 
     /**
-     * @brief Retrieves the chat ID and bot token from a configuration file.
+     * Retrieves the chat ID and bot token from a configuration file.
      * 
      * This method reads the configuration file specified by `filePath` to 
      * retrieve the bot token and chat ID. The file should contain the bot 
@@ -69,7 +69,7 @@ public class NotifyPharmacist extends HNSTelegramBot {
     }
 
     /**
-     * @brief Sends a notification message to the pharmacist via Telegram.
+     * Sends a notification message to the pharmacist via Telegram.
      * 
      * This method sends a message to the pharmacist's Telegram chat using the 
      * bot token and chat ID. It first retrieves the bot token and chat ID 

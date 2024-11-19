@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 /**
- * @class Patient
- * @brief Represents a patient in the hospital management system.
+ * Patient
+ * Represents a patient in the hospital management system.
  * 
  * This class extends the User class and includes additional methods
  * and attributes specific to patients, such as managing their medical
@@ -17,7 +17,7 @@ public class Patient extends User {
     private MedicalRecord medicalRecord; ///< The medical record associated with the patient
 
     /**
-     * @brief Constructs a Patient object with the specified attributes.
+     * Constructs a Patient object with the specified attributes.
      * 
      * Upon creation, this constructor checks if a medical record exists
      * for the patient in the database. If it exists, the record is loaded;
@@ -52,7 +52,7 @@ public class Patient extends User {
     }
 
     /**
-     * @brief Logs the patient into the system.
+     * Logs the patient into the system.
      */
     @Override
     public void login() {
@@ -60,7 +60,7 @@ public class Patient extends User {
     }
 
     /**
-     * @brief Provides a string representation of the Patient object.
+     * Provides a string representation of the Patient object.
      * @return String representation of the Patient
      */
     @Override
@@ -69,7 +69,7 @@ public class Patient extends User {
     }
 
     /**
-     * @brief Allows the patient to change their password.
+     * Allows the patient to change their password.
      */
     @Override
     public void changePassword() {
@@ -77,7 +77,7 @@ public class Patient extends User {
     }
 
     /**
-     * @brief Logs the patient out of the system.
+     * Logs the patient out of the system.
      */
     @Override
     public void logout() {
@@ -85,28 +85,28 @@ public class Patient extends User {
     }
 
     /**
-     * @brief Requests an appointment for the patient.
+     * Requests an appointment for the patient.
      */
     public void requestAppointment() {
         // Implementation for requesting appointment
     }
 
     /**
-     * @brief Views the patient's current prescriptions.
+     * Views the patient's current prescriptions.
      */
     public void viewPrescriptions() {
         // Implementation for viewing prescriptions
     }
 
     /**
-     * @brief Updates the contact information of the patient.
+     * Updates the contact information of the patient.
      */
     public void updateContactInformation() {
         // Implementation for updating contact information
     }
 
     /**
-     * @brief Retrieves the patient's medical record.
+     * Retrieves the patient's medical record.
      * @return The MedicalRecord object associated with the patient
      */
     public MedicalRecord getMedicalRecord() {

@@ -14,8 +14,8 @@ import user_classes.Pharmacist;
 import user_classes.User;
 
 /**
- * @class UsersLoader
- * @brief Manages loading and saving of User objects (e.g., Administrator, Doctor, Patient, Pharmacist) from/to a file.
+ * UsersLoader
+ * Manages loading and saving of User objects (e.g., Administrator, Doctor, Patient, Pharmacist) from/to a file.
  *
  * This class extends DataLoader to handle various User types, reading from and writing to a file.
  */
@@ -25,7 +25,7 @@ public class UsersLoader extends DataLoader<User> {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm"); /**< Time formatter for serialization. */
 
     /**
-     * @brief Constructs a UsersLoader with the specified file path.
+     * Constructs a UsersLoader with the specified file path.
      *
      * @param filePath Path to the file associated with this UsersLoader.
      */
@@ -35,7 +35,7 @@ public class UsersLoader extends DataLoader<User> {
     }
 
     /**
-     * @brief Loads user data from the specified file.
+     * Loads user data from the specified file.
      *
      * Reads each line from the file, deserializing each line into a User object (specific type depends on role).
      *
@@ -51,7 +51,7 @@ public class UsersLoader extends DataLoader<User> {
     }
 
     /**
-     * @brief Saves all loaded user data to the associated file.
+     * Saves all loaded user data to the associated file.
      *
      * Serializes each User object and writes it as a line in the file.
      *
@@ -67,7 +67,7 @@ public class UsersLoader extends DataLoader<User> {
     }
 
     /**
-     * @brief Deserializes a User object from a string representation.
+     * Deserializes a User object from a string representation.
      *
      * Expected Format: hospitalID|password|name|dateOfBirth|gender|role
      * 
@@ -105,7 +105,7 @@ public class UsersLoader extends DataLoader<User> {
     }
 
     /**
-     * @brief Retrieves the list of loaded User objects.
+     * Retrieves the list of loaded User objects.
      *
      * @return Unmodifiable list of User objects.
      */
@@ -114,7 +114,7 @@ public class UsersLoader extends DataLoader<User> {
     }
 
     /**
-     * @brief Serializes a User object into a string representation.
+     * Serializes a User object into a string representation.
      *
      * Format: hospitalID|password|name|dateOfBirth|gender|role.
      *

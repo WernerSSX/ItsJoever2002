@@ -15,8 +15,8 @@ import java.util.Scanner;
 import user_classes.*;
 
 /**
- * @class AdministratorMenu
- * @brief This class provides the interface for administrators to manage hospital staff, view appointments, 
+ * AdministratorMenu
+ * This class provides the interface for administrators to manage hospital staff, view appointments, 
  *        manage medication inventory, and approve replenishment requests.
  */
 public class AdministratorMenu {
@@ -25,7 +25,7 @@ public class AdministratorMenu {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     /**
-     * @brief Constructor to initialize the AdministratorMenu with a database.
+     * Constructor to initialize the AdministratorMenu with a database.
      * @param textDB The database object that handles data storage and retrieval.
      */
     public AdministratorMenu(TextDB textDB) {
@@ -33,7 +33,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Displays the administrator menu and handles user choices.
+     * Displays the administrator menu and handles user choices.
      * @param scanner The Scanner object for user input.
      * @param admin The Administrator object currently logged in.
      * @throws IOException If an error occurs during file operations.
@@ -78,7 +78,7 @@ public class AdministratorMenu {
     // ----------------------- 1. View and Manage Hospital Staff ----------------------- //
 
     /**
-     * @brief Manages the hospital staff, allowing the administrator to add, remove, view, and reset user passwords.
+     * Manages the hospital staff, allowing the administrator to add, remove, view, and reset user passwords.
      * @param scanner The Scanner object for user input.
      * @throws IOException If an error occurs during file operations.
      */
@@ -129,7 +129,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Adds a new user to the hospital staff based on role and provided details.
+     * Adds a new user to the hospital staff based on role and provided details.
      * @param scanner The Scanner object for user input.
      * @throws IOException If an error occurs during file operations.
      */
@@ -194,7 +194,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Removes a user from the hospital staff based on their Hospital ID.
+     * Removes a user from the hospital staff based on their Hospital ID.
      * @param scanner The Scanner object for user input.
      * @throws IOException If an error occurs during file operations.
      */
@@ -221,7 +221,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Displays a list of all users in the hospital staff.
+     * Displays a list of all users in the hospital staff.
      */
     private void viewAllUsers() {
         System.out.println("\nList of All Users:");
@@ -232,7 +232,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Resets the password for a specified user based on their Hospital ID.
+     * Resets the password for a specified user based on their Hospital ID.
      * @param scanner The Scanner object for user input.
      * @throws IOException If an error occurs during file operations.
      */
@@ -254,7 +254,7 @@ public class AdministratorMenu {
     // ----------------------- 2. View Appointments Details ----------------------- //
 
     /**
-     * @brief Displays appointment details, allowing the administrator to view all or specific appointments.
+     * Displays appointment details, allowing the administrator to view all or specific appointments.
      * @param scanner The Scanner object for user input.
      */
     private void viewAppointmentsDetails(Scanner scanner) {
@@ -286,7 +286,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Displays all appointments in the database.
+     * Displays all appointments in the database.
      */
     private void viewAllAppointments() {
         List<Appointment> appointments = textDB.getAppointments();
@@ -303,7 +303,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Displays details of a specific appointment based on appointment ID.
+     * Displays details of a specific appointment based on appointment ID.
      * @param scanner The Scanner object for user input.
      */
     private void viewAppointmentById(Scanner scanner) {
@@ -330,7 +330,7 @@ public class AdministratorMenu {
     // ----------------------- 3. View and Manage Medication Inventory ----------------------- //
 
     /**
-     * @brief Manages the medication inventory, allowing the administrator to view, add, update, and remove medications.
+     * Manages the medication inventory, allowing the administrator to view, add, update, and remove medications.
      * @param scanner The Scanner object for user input.
      * @throws IOException If an error occurs during file operations.
      */
@@ -371,7 +371,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Displays the current medication inventory.
+     * Displays the current medication inventory.
      */
     private void viewMedicationInventory() {
         List<Medication> medications = textDB.getMedications();
@@ -392,7 +392,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Adds a new medication to the inventory based on provided details.
+     * Adds a new medication to the inventory based on provided details.
      * @param scanner The Scanner object for user input.
      * @throws IOException If an error occurs during file operations.
      */
@@ -421,7 +421,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Updates an existing medication's quantity and supplier in the inventory.
+     * Updates an existing medication's quantity and supplier in the inventory.
      * @param scanner The Scanner object for user input.
      * @throws IOException If an error occurs during file operations.
      */
@@ -455,7 +455,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Removes a medication from the inventory based on its name.
+     * Removes a medication from the inventory based on its name.
      * @param scanner The Scanner object for user input.
      * @throws IOException If an error occurs during file operations.
      */
@@ -484,7 +484,7 @@ public class AdministratorMenu {
     // ----------------------- 4. Approve Replenishment Requests ----------------------- //
 
     /**
-     * @brief Handles the approval or rejection of medication replenishment requests.
+     * Handles the approval or rejection of medication replenishment requests.
      * @param scanner The Scanner object for user input.
      * @throws IOException If an error occurs during file operations.
      */
@@ -521,7 +521,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Displays all replenishment requests awaiting approval.
+     * Displays all replenishment requests awaiting approval.
      */
     private void viewAllReplenishmentRequests() {
         List<ReplenishmentRequest> requests = textDB.replenishmentRequests;
@@ -541,7 +541,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Processes a specific replenishment request, either approving or rejecting it.
+     * Processes a specific replenishment request, either approving or rejecting it.
      * @param scanner The Scanner object for user input.
      * @param isApprove Boolean indicating whether the request is approved (true) or rejected (false).
      * @throws IOException If an error occurs during file operations.
@@ -607,7 +607,7 @@ public class AdministratorMenu {
     // ----------------------- Utility Methods ----------------------- //
 
     /**
-     * @brief Displays the profile information of the current administrator.
+     * Displays the profile information of the current administrator.
      * @param admin The Administrator object whose profile is being displayed.
      */
     private void viewProfile(Administrator admin) {
@@ -617,7 +617,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Utility method to obtain an integer input from the user.
+     * Utility method to obtain an integer input from the user.
      * @param scanner The Scanner object for user input.
      * @return The integer value entered by the user.
      */
@@ -636,7 +636,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Utility method to obtain a positive integer input from the user.
+     * Utility method to obtain a positive integer input from the user.
      * @param scanner The Scanner object for user input.
      * @param prompt The message prompt displayed to the user.
      * @return The positive integer value entered by the user.
@@ -657,7 +657,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Utility method to obtain a non-empty string input from the user.
+     * Utility method to obtain a non-empty string input from the user.
      * @param scanner The Scanner object for user input.
      * @param prompt The message prompt displayed to the user.
      * @return The non-empty string entered by the user.
@@ -676,7 +676,7 @@ public class AdministratorMenu {
     }
 
     /**
-     * @brief Utility method to obtain a valid date input from the user.
+     * Utility method to obtain a valid date input from the user.
      * @param scanner The Scanner object for user input.
      * @param prompt The message prompt displayed to the user.
      * @return The LocalDate object representing the entered date.

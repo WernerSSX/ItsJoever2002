@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @class Schedule
- * @brief The Schedule class manages a doctor's availability across different dates.
+ * Schedule
+ * The Schedule class manages a doctor's availability across different dates.
  */
 public class Schedule {
     // Mapping from date to list of available TimeSlots

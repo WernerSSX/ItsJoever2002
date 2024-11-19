@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
- * @class Appointment
- * @brief Represents an appointment for a patient with a doctor.
+ * Appointment
+ * Represents an appointment for a patient with a doctor.
  *
  * The Appointment class stores information about a medical appointment, 
  * including the appointment ID, patient ID, doctor ID, time slot, status, 
@@ -24,7 +24,7 @@ public class Appointment {
      ****************/
 
     /**
-     * @brief Constructs an Appointment with the specified details.
+     * Constructs an Appointment with the specified details.
      * 
      * @param id Unique identifier for the appointment.
      * @param patientId Identifier for the patient.
@@ -47,7 +47,7 @@ public class Appointment {
      ***********************/
 
     /**
-     * @brief Gets the unique identifier of the appointment.
+     * Gets the unique identifier of the appointment.
      * @return The appointment ID.
      */
     public int getId() {
@@ -55,7 +55,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Gets the patient ID associated with the appointment.
+     * Gets the patient ID associated with the appointment.
      * @return The patient ID.
      */
     public String getPatientId() {
@@ -63,7 +63,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Gets the doctor ID associated with the appointment.
+     * Gets the doctor ID associated with the appointment.
      * @return The doctor ID.
      */
     public String getDoctorId() {
@@ -71,7 +71,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Sets the doctor ID for the appointment.
+     * Sets the doctor ID for the appointment.
      * @param doctorId The new doctor ID.
      */
     public void setDoctorId(String doctorId) {
@@ -79,7 +79,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Gets the time slot for the appointment.
+     * Gets the time slot for the appointment.
      * @return The time slot.
      */
     public TimeSlot getTimeSlot() {
@@ -87,7 +87,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Sets the time slot for the appointment.
+     * Sets the time slot for the appointment.
      * @param timeSlot The new time slot.
      */
     public void setTimeSlot(TimeSlot timeSlot) {
@@ -95,7 +95,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Gets the current status of the appointment.
+     * Gets the current status of the appointment.
      * @return The status of the appointment.
      */
     public String getStatus() {
@@ -103,7 +103,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Sets the status of the appointment.
+     * Sets the status of the appointment.
      * @param status The new status.
      */
     public void setStatus(String status) {
@@ -111,7 +111,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Gets the outcome record of the appointment.
+     * Gets the outcome record of the appointment.
      * @return The outcome record.
      */
     public String getOutcomeRecord() {
@@ -119,7 +119,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Sets the outcome record of the appointment.
+     * Sets the outcome record of the appointment.
      * @param outcomeRecord The new outcome record.
      */
     public void setOutcomeRecord(String outcomeRecord) {
@@ -127,7 +127,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Gets the date of the appointment.
+     * Gets the date of the appointment.
      * @return The date of the appointment as a LocalDate.
      */
     public LocalDate getDate() {
@@ -135,7 +135,7 @@ public class Appointment {
     }
 
     /**
-     * @brief Checks if the appointment is in the past.
+     * Checks if the appointment is in the past.
      * @return True if the appointment has ended, false otherwise.
      */
     public boolean isPast() {
@@ -147,7 +147,7 @@ public class Appointment {
      **********/
 
     /**
-     * @brief Prints the details of the appointment.
+     * Prints the details of the appointment.
      */
     public void print() {
         System.out.println("\nAppointment ID: " + id);

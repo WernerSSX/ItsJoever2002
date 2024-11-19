@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @class Treatment
- * @brief The Treatment class represents a treatment plan, including prescribed medications, service type,
+ * Treatment
+ * The Treatment class represents a treatment plan, including prescribed medications, service type,
  * date of appointment, and comments.
  */
 public class Treatment {
@@ -22,7 +22,7 @@ public class Treatment {
      ****************/
 
     /**
-     * @brief Default constructor initializes the list of prescribed medicines and sets comments to an empty string.
+     * Default constructor initializes the list of prescribed medicines and sets comments to an empty string.
      */
     public Treatment() {
         this.allPrescribedMedicine = new ArrayList<>();
@@ -30,7 +30,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Constructor with parameters.
+     * Constructor with parameters.
      *
      * @param serviceType        Type of service provided (e.g., consultation, X-ray)
      * @param dateOfAppointment  Date of the appointment
@@ -49,7 +49,7 @@ public class Treatment {
      * Getters and Setters *
      ***********************/
     /**
-     * @brief Gets the service type of the treatment
+     * Gets the service type of the treatment
      * @return Returns the service type of the treatment
      */
     public String getServiceType() {
@@ -57,7 +57,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Sets the service type of the treatment
+     * Sets the service type of the treatment
      * @param serviceType Service type of the treatment
      */
     public void setServiceType(String serviceType) {
@@ -65,7 +65,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Gets the date of appointment of treatment
+     * Gets the date of appointment of treatment
      * @return Returns the date of appointment of treatment
      */
     public LocalDate getDateOfAppointment() {
@@ -73,7 +73,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Sets the date of appointment of treatment
+     * Sets the date of appointment of treatment
      * @param dateOfAppointment Date of appointment of treatment
      */
     public void setDateOfAppointment(LocalDate dateOfAppointment) {
@@ -81,7 +81,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Gets a list of all prescribed medicine. Look at Prescription class
+     * Gets a list of all prescribed medicine. Look at Prescription class
      * @return Returns a list of prescribed medicine
      */
     public List<Prescription> getAllPrescribedMedicine() {
@@ -89,7 +89,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Adds a prescription to the list of prescribed medicines.
+     * Adds a prescription to the list of prescribed medicines.
      * @param prescription The Prescription object to be added
      */
     public void addPrescription(Prescription prescription) {
@@ -97,7 +97,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Gets the comments of the treatment
+     * Gets the comments of the treatment
      * @return Returns the comments of the treatment
      */
     public String getTreatmentComments() {
@@ -105,7 +105,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Sets the comments of the treatment
+     * Sets the comments of the treatment
      * @param treatmentComments Comments of the treatment
      */
     public void setTreatmentComments(String treatmentComments) {
@@ -113,7 +113,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Gets the id of the doctor doing the treatment
+     * Gets the id of the doctor doing the treatment
      * @return Returns the id of the doctor doing the treatment
      */
     public String getDoctorId() {
@@ -121,7 +121,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Sets the id of the doctor doing the treatment
+     * Sets the id of the doctor doing the treatment
      * @param doctorId id of the doctor doing the treatment
      */
     public void setDoctorId(String doctorId) {
@@ -133,7 +133,7 @@ public class Treatment {
      **********/
 
     /**
-     * @brief Prints all prescribed medicines with their details.
+     * Prints all prescribed medicines with their details.
      */
     public void printAllPrescribedMedicine() {
         if (allPrescribedMedicine.isEmpty()) {
@@ -148,7 +148,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Prints the treatment comments.
+     * Prints the treatment comments.
      */
     public void printTreatmentComments() {
         if (treatmentComments == null || treatmentComments.trim().isEmpty()) {
@@ -160,7 +160,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Serializes the Treatment object into a string.
+     * Serializes the Treatment object into a string.
      *
      * Format:
      * serviceType;dateOfAppointment;med1:status1,med2:status2;treatmentComments;doctorId
@@ -194,7 +194,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Deserializes a Treatment object from a string.
+     * Deserializes a Treatment object from a string.
      *
      * Expected Format:
      * serviceType;dateOfAppointment;med1:status1,med2:status2;treatmentComments;doctorId
@@ -236,7 +236,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Displays the Treatment details including Doctor ID.
+     * Displays the Treatment details including Doctor ID.
      */
     public void display() {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -263,7 +263,7 @@ public class Treatment {
     }
 
     /**
-     * @brief Returns the string representation of the Treatment object
+     * Returns the string representation of the Treatment object
      * @return Returns the string representation of the Treatment object
      */
     @Override

@@ -9,8 +9,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @class AppointmentsLoader
- * @brief Handles loading, saving, and managing appointment data from a file.
+ * AppointmentsLoader
+ * Handles loading, saving, and managing appointment data from a file.
  * 
  * This class extends DataLoader and provides functionality to load and save Appointment
  * objects from and to a specified file. It includes methods to serialize and deserialize
@@ -22,7 +22,7 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");      /**< Formatter for time */
 
     /**
-     * @brief Constructs an AppointmentsLoader with a specified file path.
+     * Constructs an AppointmentsLoader with a specified file path.
      *
      * @param filePath Path to the file containing appointment data.
      */
@@ -32,7 +32,7 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
     }
 
     /**
-     * @brief Loads appointment data from the specified file.
+     * Loads appointment data from the specified file.
      * 
      * @throws IOException if an error occurs while reading from the file.
      */
@@ -46,7 +46,7 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
     }
 
     /**
-     * @brief Saves the current list of appointments to the specified file.
+     * Saves the current list of appointments to the specified file.
      * 
      * @throws IOException if an error occurs while writing to the file.
      */
@@ -60,7 +60,7 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
     }
 
     /**
-     * @brief Deserializes an Appointment object from a string.
+     * Deserializes an Appointment object from a string.
      * 
      * Expected Format:
      * id|patientId|doctorId|timeSlot|status|outcomeRecord
@@ -88,7 +88,7 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
     }
 
     /**
-     * @brief Retrieves an unmodifiable list of loaded appointments.
+     * Retrieves an unmodifiable list of loaded appointments.
      * 
      * @return List of Appointment objects.
      */
@@ -97,7 +97,7 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
     }
     
     /**
-     * @brief Serializes an Appointment object into a string for storage.
+     * Serializes an Appointment object into a string for storage.
      *
      * @param appointment Appointment object to serialize.
      * @return Serialized string representation of the Appointment.
@@ -113,7 +113,7 @@ public class AppointmentsLoader extends DataLoader<Appointment> {
     }
 
     /**
-     * @brief Serializes a TimeSlot object into a formatted string.
+     * Serializes a TimeSlot object into a formatted string.
      * 
      * @param timeSlot TimeSlot object to serialize.
      * @return Serialized string representation of the TimeSlot.

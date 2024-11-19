@@ -3,8 +3,8 @@ package items;
 import java.time.LocalDate;
 
 /**
- * @class Diagnosis
- * @brief Represents a medical diagnosis with a description, date, and additional comments.
+ * Diagnosis
+ * Represents a medical diagnosis with a description, date, and additional comments.
  *
  * The Diagnosis class stores information about a medical diagnosis, including a description
  * of the diagnosed illness, the date of diagnosis, and optional comments.
@@ -19,7 +19,7 @@ public class Diagnosis {
      ****************/
 
     /**
-     * @brief Constructs a Diagnosis with the specified description, date, and comments.
+     * Constructs a Diagnosis with the specified description, date, and comments.
      *
      * @param description Description of the diagnosed illness.
      * @param date        Date of diagnosis.
@@ -32,7 +32,7 @@ public class Diagnosis {
     }
 
     /**
-     * @brief Constructs a Diagnosis with the specified description and date.
+     * Constructs a Diagnosis with the specified description and date.
      *
      * This constructor is provided for cases where comments are not needed.
      *
@@ -48,7 +48,7 @@ public class Diagnosis {
      ***********************/
 
     /**
-     * @brief Gets the description of the diagnosed illness.
+     * Gets the description of the diagnosed illness.
      * @return The description of the illness.
      */
     public String getDescription() {
@@ -56,7 +56,7 @@ public class Diagnosis {
     }
 
     /**
-     * @brief Sets the description of the diagnosed illness.
+     * Sets the description of the diagnosed illness.
      * @param description The new description of the illness.
      */
     public void setDescription(String description) { 
@@ -64,7 +64,7 @@ public class Diagnosis {
     }
 
     /**
-     * @brief Gets the date of the diagnosis.
+     * Gets the date of the diagnosis.
      * @return The date of diagnosis.
      */
     public LocalDate getDate() {
@@ -72,7 +72,7 @@ public class Diagnosis {
     }
 
     /**
-     * @brief Sets the date of the diagnosis.
+     * Sets the date of the diagnosis.
      * @param date The new date of diagnosis.
      */
     public void setDate(LocalDate date) { 
@@ -80,7 +80,7 @@ public class Diagnosis {
     }
 
     /**
-     * @brief Gets additional comments about the diagnosis.
+     * Gets additional comments about the diagnosis.
      * @return Comments regarding the diagnosis.
      */
     public String getComments() {
@@ -88,7 +88,7 @@ public class Diagnosis {
     }
 
     /**
-     * @brief Sets additional comments about the diagnosis.
+     * Sets additional comments about the diagnosis.
      * @param comments The new comments.
      */
     public void setComments(String comments) { 
@@ -96,7 +96,7 @@ public class Diagnosis {
     }
 
     /**
-     * @brief Prints the diagnosed illness details along with any associated comments.
+     * Prints the diagnosed illness details along with any associated comments.
      *
      * This method outputs the description, date, and comments (if any) related to the diagnosis.
      */
@@ -114,7 +114,7 @@ public class Diagnosis {
      **********/
 
     /**
-     * @brief Returns a string representation of the diagnosis.
+     * Returns a string representation of the diagnosis.
      * @return A string containing the description, date, and comments.
      */
     @Override

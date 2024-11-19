@@ -6,8 +6,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * @class HNSTelegramBot
- * @brief Abstract base class for sending messages to a Telegram bot.
+ * HNSTelegramBot
+ * Abstract base class for sending messages to a Telegram bot.
  * 
  * This class provides functionality to send notifications to a Telegram bot 
  * using the Telegram Bot API. Subclasses should implement the `getChatId` 
@@ -16,7 +16,7 @@ import java.net.URL;
 public abstract class HNSTelegramBot {
     
     /** 
-     * @brief File path for storing Telegram bot details.
+     * File path for storing Telegram bot details.
      * 
      * The file containing the Telegram bot token and chat ID. This can be 
      * updated when changing laptops or configurations.
@@ -24,7 +24,7 @@ public abstract class HNSTelegramBot {
     protected String filePath = "C:/Users/Werner Soon Shi Xu/Downloads/telegramDetails.txt";
     
     /**
-     * @brief Abstract method to retrieve the chat ID.
+     * Abstract method to retrieve the chat ID.
      * 
      * Subclasses should implement this method to provide the specific chat ID 
      * from the stored file or other configuration.
@@ -34,7 +34,7 @@ public abstract class HNSTelegramBot {
     public abstract void getChatId() throws IOException;
 
     /**
-     * @brief Sends a message to a Telegram bot.
+     * Sends a message to a Telegram bot.
      * 
      * This method sends a message to a specific chat in Telegram using the 
      * Telegram Bot API. The message, chat ID, and bot token are used to 

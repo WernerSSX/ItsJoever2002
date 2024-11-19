@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @class Doctor
- * @brief Represents a doctor in the hospital management system.
+ * Doctor
+ * Represents a doctor in the hospital management system.
  * 
  * This class extends the User class and adds attributes and methods
  * specific to doctors, such as managing patient lists, schedules, and availability.
@@ -19,7 +19,7 @@ public class Doctor extends User {
     private Schedule schedule;       ///< Doctor's schedule for managing availability
 
     /**
-     * @brief Constructs a Doctor object with the specified attributes.
+     * Constructs a Doctor object with the specified attributes.
      *
      * @param hospitalID Unique identifier for the doctor within the hospital
      * @param password   Password for authentication
@@ -37,7 +37,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Constructs a Doctor object with known patient IDs.
+     * Constructs a Doctor object with known patient IDs.
      *
      * This constructor is used during deserialization when the patient IDs
      * are already known.
@@ -58,7 +58,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Gets the list of patient hospital IDs assigned to the doctor.
+     * Gets the list of patient hospital IDs assigned to the doctor.
      * @return List of patient IDs
      */
     public List<String> getPatients() {
@@ -66,7 +66,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Adds a patient to the doctor's list of assigned patients.
+     * Adds a patient to the doctor's list of assigned patients.
      * @param patientId Hospital ID of the patient to add
      */
     public void addPatient(String patientId) {
@@ -76,7 +76,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Removes a patient from the doctor's list of assigned patients.
+     * Removes a patient from the doctor's list of assigned patients.
      * @param patientId Hospital ID of the patient to remove
      */
     public void removePatient(String patientId) {
@@ -84,7 +84,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Gets the doctor's schedule.
+     * Gets the doctor's schedule.
      * @return Schedule object representing the doctor's availability
      */
     public Schedule getSchedule() {
@@ -92,7 +92,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Sets the doctor's schedule.
+     * Sets the doctor's schedule.
      * @param schedule Schedule object to set
      */
     public void setSchedule(Schedule schedule) {
@@ -100,7 +100,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Retrieves the MedicalRecord of a specific patient assigned to the doctor.
+     * Retrieves the MedicalRecord of a specific patient assigned to the doctor.
      *
      * @param patientId Hospital ID of the patient
      * @return MedicalRecord object if found, otherwise null
@@ -113,7 +113,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Updates the MedicalRecord of a specific patient.
+     * Updates the MedicalRecord of a specific patient.
      *
      * @param patientId     Hospital ID of the patient
      * @param updatedRecord The updated MedicalRecord object
@@ -127,7 +127,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Sets the doctor's availability for a specific date.
+     * Sets the doctor's availability for a specific date.
      *
      * @param date        The date for which to set availability
      * @param availability List of TimeSlot objects representing available times
@@ -140,7 +140,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Retrieves the doctor's available TimeSlots for a specific date.
+     * Retrieves the doctor's available TimeSlots for a specific date.
      *
      * @param date The date for which to retrieve availability
      * @return List of available TimeSlot objects
@@ -150,7 +150,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Provides a string representation of the Doctor object.
+     * Provides a string representation of the Doctor object.
      * @return String representation of the Doctor
      */
     @Override
@@ -165,7 +165,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Logs the doctor into the system.
+     * Logs the doctor into the system.
      */
     @Override
     public void login() {
@@ -173,7 +173,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Allows the doctor to change their password.
+     * Allows the doctor to change their password.
      */
     @Override
     public void changePassword() {
@@ -181,7 +181,7 @@ public class Doctor extends User {
     }
 
     /**
-     * @brief Logs the doctor out of the system.
+     * Logs the doctor out of the system.
      */
     @Override
     public void logout() {

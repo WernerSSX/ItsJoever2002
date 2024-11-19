@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 import user_classes.Patient;
 
 /**
- * @class AppointmentService
- * @brief Manages appointment-related operations for patients.
+ * AppointmentService
+ * Manages appointment-related operations for patients.
  *
  * This service provides methods for retrieving past and current appointments
  * from the database, based on the patient's hospital ID and the date of the appointment.
@@ -18,7 +18,7 @@ public class AppointmentService {
     private static TextDB textDB;
 
     /**
-     * @brief Constructor for AppointmentService.
+     * Constructor for AppointmentService.
      * @param textDB The instance of the TextDB database used for accessing appointments.
      *
      * Initializes the AppointmentService and sets up the connection to the
@@ -29,7 +29,7 @@ public class AppointmentService {
     }
 
     /**
-     * @brief Retrieves past appointments for a given patient.
+     * Retrieves past appointments for a given patient.
      * @param patient The patient whose past appointments are to be retrieved.
      * @return A list of past appointments for the specified patient.
      *
@@ -43,7 +43,7 @@ public class AppointmentService {
     }
 
     /**
-     * @brief Retrieves current and upcoming appointments.
+     * Retrieves current and upcoming appointments.
      * @return A list of appointments scheduled for today or future dates.
      *
      * This method filters appointments to include only those that occur on or

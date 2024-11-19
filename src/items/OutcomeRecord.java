@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * @class OutcomeRecord
- * @brief Represents the outcome details of a medical appointment, including date, type of service, prescribed medications, and consultation notes.
+ * OutcomeRecord
+ * Represents the outcome details of a medical appointment, including date, type of service, prescribed medications, and consultation notes.
  */
 public class OutcomeRecord {
     private LocalDate dateOfAppointment; /**< Date when the appointment took place */
@@ -18,7 +18,7 @@ public class OutcomeRecord {
      ****************/
 
     /**
-     * @brief Constructs an OutcomeRecord with specified details.
+     * Constructs an OutcomeRecord with specified details.
      *
      * @param dateOfAppointment    Date when the appointment took place.
      * @param serviceType          Type of service provided, such as consultation or procedure.
@@ -38,7 +38,7 @@ public class OutcomeRecord {
      ***********************/
 
     /**
-     * @brief Gets the date of the appointment.
+     * Gets the date of the appointment.
      * @return Date when the appointment took place.
      */
     public LocalDate getDateOfAppointment() {
@@ -46,7 +46,7 @@ public class OutcomeRecord {
     }
 
     /**
-     * @brief Sets the date of the appointment.
+     * Sets the date of the appointment.
      * @param dateOfAppointment The new date of the appointment.
      */
     public void setDateOfAppointment(LocalDate dateOfAppointment) { 
@@ -54,7 +54,7 @@ public class OutcomeRecord {
     }
 
     /**
-     * @brief Gets the type of service provided during the appointment.
+     * Gets the type of service provided during the appointment.
      * @return Type of service, e.g., Consultation, X-ray.
      */
     public String getServiceType() {
@@ -62,7 +62,7 @@ public class OutcomeRecord {
     }
 
     /**
-     * @brief Sets the type of service provided.
+     * Sets the type of service provided.
      * @param serviceType New type of service provided during the appointment.
      */
     public void setServiceType(String serviceType) { 
@@ -70,7 +70,7 @@ public class OutcomeRecord {
     }
 
     /**
-     * @brief Gets the list of prescribed medications.
+     * Gets the list of prescribed medications.
      * @return List of medications prescribed during the appointment.
      */
     public List<Prescription> getPrescribedMedications() {
@@ -78,7 +78,7 @@ public class OutcomeRecord {
     }
 
     /**
-     * @brief Sets the list of prescribed medications.
+     * Sets the list of prescribed medications.
      * @param prescribedMedications New list of medications prescribed.
      */
     public void setPrescribedMedications(List<Prescription> prescribedMedications) { 
@@ -86,7 +86,7 @@ public class OutcomeRecord {
     }
 
     /**
-     * @brief Gets the consultation notes.
+     * Gets the consultation notes.
      * @return Notes from the consultation.
      */
     public String getConsultationNotes() {
@@ -94,7 +94,7 @@ public class OutcomeRecord {
     }
 
     /**
-     * @brief Sets the consultation notes.
+     * Sets the consultation notes.
      * @param consultationNotes New notes from the consultation.
      */
     public void setConsultationNotes(String consultationNotes) { 
@@ -106,7 +106,7 @@ public class OutcomeRecord {
      **********/
 
     /**
-     * @brief Provides a string representation of the outcome record.
+     * Provides a string representation of the outcome record.
      * @return A string containing the date, service type, prescribed medications, and consultation notes.
      */
     @Override

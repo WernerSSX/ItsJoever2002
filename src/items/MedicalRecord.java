@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @class MedicalRecord
- * @brief Holds comprehensive medical information about a patient.
+ * MedicalRecord
+ * Holds comprehensive medical information about a patient.
  *
  * The MedicalRecord class stores details about a patient's personal and medical information,
  * including diagnoses, treatments, and contact information.
@@ -27,7 +27,7 @@ public class MedicalRecord {
      ****************/
 
     /**
-     * @brief Constructs a MedicalRecord with specified basic details.
+     * Constructs a MedicalRecord with specified basic details.
      *
      * @param patientID          Unique identifier for the patient.
      * @param name               Full name of the patient.
@@ -48,7 +48,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Constructs a MedicalRecord with additional fields.
+     * Constructs a MedicalRecord with additional fields.
      *
      * @param patientID          Unique identifier for the patient.
      * @param name               Full name of the patient.
@@ -77,7 +77,7 @@ public class MedicalRecord {
      ***********************/
 
     /**
-     * @brief Gets the patient's unique identifier.
+     * Gets the patient's unique identifier.
      * @return The patient's unique identifier.
      */
     public String getPatientID() {
@@ -85,7 +85,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Sets the patient's unique identifier.
+     * Sets the patient's unique identifier.
      * @param patientID The new unique identifier for the patient.
      */
     public void setPatientID(String patientID) { 
@@ -93,7 +93,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Gets the patient's full name.
+     * Gets the patient's full name.
      * @return The patient's full name.
      */
     public String getName() {
@@ -101,7 +101,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Sets the patient's full name.
+     * Sets the patient's full name.
      * @param name The new full name of the patient.
      */
     public void setName(String name) { 
@@ -109,7 +109,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Gets the patient's date of birth.
+     * Gets the patient's date of birth.
      * @return The date of birth.
      */
     public LocalDate getDateOfBirth() {
@@ -117,7 +117,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Sets the patient's date of birth.
+     * Sets the patient's date of birth.
      * @param dateOfBirth The new date of birth.
      */
     public void setDateOfBirth(LocalDate dateOfBirth) { 
@@ -125,7 +125,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Gets the patient's gender.
+     * Gets the patient's gender.
      * @return The gender of the patient.
      */
     public String getGender() {
@@ -133,7 +133,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Sets the patient's gender.
+     * Sets the patient's gender.
      * @param gender The new gender of the patient.
      */
     public void setGender(String gender) { 
@@ -141,7 +141,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Gets the patient's contact information.
+     * Gets the patient's contact information.
      * @return The contact information.
      */
     public ContactInformation getContactInformation() {
@@ -149,7 +149,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Sets the patient's contact information.
+     * Sets the patient's contact information.
      * @param contactInformation The new contact information.
      */
     public void setContactInformation(ContactInformation contactInformation) { 
@@ -157,7 +157,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Gets the patient's blood type.
+     * Gets the patient's blood type.
      * @return The blood type.
      */
     public String getBloodType() {
@@ -165,7 +165,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Sets the patient's blood type.
+     * Sets the patient's blood type.
      * @param bloodType The new blood type.
      */
     public void setBloodType(String bloodType) { 
@@ -173,7 +173,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Gets the list of past diagnoses.
+     * Gets the list of past diagnoses.
      * @return List of past diagnoses.
      */
     public List<Diagnosis> getPastDiagnoses() {
@@ -181,7 +181,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Adds a diagnosis to the patient's medical record.
+     * Adds a diagnosis to the patient's medical record.
      * @param diagnosis Diagnosis object to add.
      */
     public void addDiagnosis(Diagnosis diagnosis) {
@@ -189,7 +189,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Gets the list of past treatments.
+     * Gets the list of past treatments.
      * @return List of past treatments.
      */
     public List<Treatment> getPastTreatments() {
@@ -197,7 +197,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Adds a treatment to the medical record.
+     * Adds a treatment to the medical record.
      * @param treatment The Treatment object to add.
      */
     public void addTreatment(Treatment treatment) {
@@ -208,7 +208,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Adds a prescription to the patient's medical record.
+     * Adds a prescription to the patient's medical record.
      *
      * This method assumes each prescription is part of a treatment.
      * If no treatments exist, a new treatment is created.
@@ -230,7 +230,7 @@ public class MedicalRecord {
      **********/
 
     /**
-     * @brief Displays the complete medical record details.
+     * Displays the complete medical record details.
      *
      * This method prints out all patient information, past diagnoses, and treatments.
      */
@@ -271,7 +271,7 @@ public class MedicalRecord {
     }
 
     /**
-     * @brief Returns a string representation of the medical record.
+     * Returns a string representation of the medical record.
      * @return A string containing the patient's information, diagnoses, and treatments.
      */
     @Override

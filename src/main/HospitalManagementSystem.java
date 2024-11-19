@@ -1,17 +1,17 @@
 package main;
 
 import db.TextDB;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import menus.*;
 import user_classes.*;
 
 /**
- * @brief Entry point for the Hospital Management System application.
+ * Entry point for the Hospital Management System application.
  */
 public class HospitalManagementSystem {
 	private static final String DEFAULT_PASSWORD = "password";
@@ -115,7 +115,7 @@ public class HospitalManagementSystem {
         System.out.println("Password updated successfully!");
     }
     /**
-     * @brief Handles the login process for a specific role.
+     * Handles the login process for a specific role.
      * 
      * @param scanner   Scanner instance for input.
      * @param textDB    Database instance.
@@ -159,7 +159,7 @@ public class HospitalManagementSystem {
     }
 
     /**
-     * @brief Retrieves a user by role and hospital ID.
+     * Retrieves a user by role and hospital ID.
      * 
      * @param userList    List of all users in the system.
      * @param role        Role of the user to find.
@@ -177,7 +177,7 @@ public class HospitalManagementSystem {
     }
 
     /**
-     * @brief Navigates to the appropriate menu based on the user's role.
+     * Navigates to the appropriate menu based on the user's role.
      * 
      * @param scanner Scanner instance for input.
      * @param user    User who has logged in.

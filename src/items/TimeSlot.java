@@ -5,8 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 /**
- * @class TimeSlot
- * @brief The TimeSlot class represents a specific time interval, such as an appointment slot.
+ * TimeSlot
+ * The TimeSlot class represents a specific time interval, such as an appointment slot.
  */
 public class TimeSlot {
     private LocalDateTime startTime; /**< Start time of the time slot */
@@ -35,7 +35,7 @@ public class TimeSlot {
      ***********************/
 
     /**
-     * @brief Gets the start time of the timeslot
+     * Gets the start time of the timeslot
      * @return Returns the start time of the timeslot
      */
     public LocalDateTime getStartTime() {
@@ -43,7 +43,7 @@ public class TimeSlot {
     }
 
     /**
-     * @brief Sets the start time of the timeslot
+     * Sets the start time of the timeslot
      * @param startTime Start time of the timeslot
      */
     public void setStartTime(LocalDateTime startTime) { 
@@ -51,7 +51,7 @@ public class TimeSlot {
     }
 
     /**
-     * @brief Gets the end time of the timeslot
+     * Gets the end time of the timeslot
      * @return Returns the end time of the timeslot
      */
     public LocalDateTime getEndTime() {
@@ -59,7 +59,7 @@ public class TimeSlot {
     }
 
     /**
-     * @brief Sets the end time of the timeslot
+     * Sets the end time of the timeslot
      * @param endTime End time of the timeslot
      */
     public void setEndTime(LocalDateTime endTime) { 
@@ -67,7 +67,7 @@ public class TimeSlot {
     }
 
     /**
-     * @brief Checks if the timeslot is available
+     * Checks if the timeslot is available
      * @return availability of the timeslot
      */
     public boolean isAvailable() {
@@ -75,7 +75,7 @@ public class TimeSlot {
     }
 
     /**
-     * @brief Sets availability of the timeslot
+     * Sets availability of the timeslot
      * @param available Availability
      */
     public void setAvailable(boolean available) { 
@@ -153,7 +153,7 @@ public class TimeSlot {
     }
 
     /**
-     * @brief Checks if two timeslots are the same
+     * Checks if two timeslots are the same
      * @param o Object that is checked to be a Timeslot
      * @return True if the two timeslots are the same
      */
@@ -170,7 +170,7 @@ public class TimeSlot {
     }
 
     /**
-     * @brief Gets HashCode of Timeslot
+     * Gets HashCode of Timeslot
      * @return Returns HashCode based on startTime and endTime of TimeSlot
      */
     @Override

@@ -9,8 +9,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @class ReplenishmentRequestsLoader
- * @brief Manages the loading and saving of replenishment requests data from/to a file.
+ * ReplenishmentRequestsLoader
+ * Manages the loading and saving of replenishment requests data from/to a file.
  *
  * This class extends DataLoader to handle ReplenishmentRequest objects, providing methods
  * for reading from and writing to a file in a specified format.
@@ -21,7 +21,7 @@ public class ReplenishmentRequestsLoader extends DataLoader<ReplenishmentRequest
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm"); /**< Time formatter for serialization. */
 
     /**
-     * @brief Constructs a ReplenishmentRequestsLoader with the specified file path.
+     * Constructs a ReplenishmentRequestsLoader with the specified file path.
      *
      * @param filePath Path to the file associated with this ReplenishmentRequestsLoader.
      */
@@ -31,7 +31,7 @@ public class ReplenishmentRequestsLoader extends DataLoader<ReplenishmentRequest
     }
 
     /**
-     * @brief Loads replenishment requests from the specified file.
+     * Loads replenishment requests from the specified file.
      *
      * Reads each line from the file, deserializing each line to a ReplenishmentRequest object.
      *
@@ -47,7 +47,7 @@ public class ReplenishmentRequestsLoader extends DataLoader<ReplenishmentRequest
     }
 
     /**
-     * @brief Saves all loaded replenishment requests to the associated file.
+     * Saves all loaded replenishment requests to the associated file.
      *
      * Serializes each ReplenishmentRequest object and writes it as a line in the file.
      *
@@ -63,7 +63,7 @@ public class ReplenishmentRequestsLoader extends DataLoader<ReplenishmentRequest
     }
 
     /**
-     * @brief Deserializes a ReplenishmentRequest object from a string representation.
+     * Deserializes a ReplenishmentRequest object from a string representation.
      *
      * Expected Format: medicationName;quantity;requestedBy;requestDate
      *
@@ -87,7 +87,7 @@ public class ReplenishmentRequestsLoader extends DataLoader<ReplenishmentRequest
     }
 
     /**
-     * @brief Retrieves the list of loaded ReplenishmentRequests.
+     * Retrieves the list of loaded ReplenishmentRequests.
      *
      * @return Unmodifiable list of ReplenishmentRequest objects.
      */
@@ -96,7 +96,7 @@ public class ReplenishmentRequestsLoader extends DataLoader<ReplenishmentRequest
     }
 
     /**
-     * @brief Serializes a ReplenishmentRequest object into a string representation.
+     * Serializes a ReplenishmentRequest object into a string representation.
      *
      * The format is medicationName;quantity;requestedBy;requestDate, where fields can be "NULL" if not provided.
      *

@@ -5,8 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * @class NotifyAdministrator
- * @brief Singleton class for notifying an administrator via Telegram.
+ * NotifyAdministrator
+ * Singleton class for notifying an administrator via Telegram.
  * 
  * This class allows sending notifications to the administrator through 
  * Telegram using the Telegram Bot API. It uses a singleton pattern to 
@@ -25,7 +25,7 @@ public class NotifyAdministrator extends HNSTelegramBot {
     private String botToken;
 
     /**
-     * @brief Private constructor to prevent direct instantiation.
+     * Private constructor to prevent direct instantiation.
      * 
      * This constructor ensures that the class can only be instantiated 
      * through the `getInstance()` method to enforce the Singleton pattern.
@@ -33,7 +33,7 @@ public class NotifyAdministrator extends HNSTelegramBot {
     private NotifyAdministrator() {}
 
     /**
-     * @brief Retrieves the singleton instance of the NotifyAdministrator class.
+     * Retrieves the singleton instance of the NotifyAdministrator class.
      * 
      * If the instance does not exist, it will create a new one. This method 
      * ensures that only one instance of the class is used throughout the 
@@ -49,7 +49,7 @@ public class NotifyAdministrator extends HNSTelegramBot {
     }
 
     /**
-     * @brief Retrieves the chat ID and bot token from a configuration file.
+     * Retrieves the chat ID and bot token from a configuration file.
      * 
      * This method reads the configuration file specified by `filePath` to 
      * retrieve the bot token and chat ID. The file should contain the bot 
@@ -69,7 +69,7 @@ public class NotifyAdministrator extends HNSTelegramBot {
     }
 
     /**
-     * @brief Sends a notification message to the administrator via Telegram.
+     * Sends a notification message to the administrator via Telegram.
      * 
      * This method sends a message to the administrator's Telegram chat using 
      * the bot token and chat ID. It first retrieves the bot token and chat 
