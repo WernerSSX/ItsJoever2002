@@ -5,4 +5,3 @@ Ibuprofen|50|AstraZeneca
 Metformin|100|GSK
 Sildenafil|200|Moderna
 Laughing Gas|100|Pfizer
-Laughing Gas|100|Moderna
