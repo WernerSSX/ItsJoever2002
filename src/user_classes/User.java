@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * such as hospital ID, password, name, date of birth, and gender. Specific user roles
  * (e.g., Patient, Doctor) should extend this class and implement role-specific behavior.
  */
-public abstract class User {
+public abstract class User implements userInterface{
     protected String hospitalID;       /**< Unique identifier for the user in the hospital system */
     protected String password;         /**< User's password for authentication */
     protected String name;             /**< User's full name */
