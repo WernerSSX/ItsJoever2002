@@ -82,9 +82,24 @@ public class HospitalManagementSystem {
 
         scanner.close();
     }
+    /**
+     * Checks if the provided password hash matches the default password for a given hospital ID.
+     *
+     * @param hospitalID   The hospital ID associated with the user.
+     * @param passwordHash The hashed password to verify.
+     * @return True if the password hash matches the default password, false otherwise.
+     */
     private static boolean isDefaultPassword(String hospitalID, String passwordHash) {
         return passwordHash.equals(hashPassword(hospitalID, DEFAULT_PASSWORD));
     }
+    /**
+     * Generates a SHA-256 hash for the combination of hospital ID and password.
+     *
+     * @param hospitalID The hospital ID associated with the user.
+     * @param password   The plain text password to be hashed.
+     * @return The base64-encoded hash of the combined hospital ID and password.
+     * @throws RuntimeException If the hashing algorithm is not found.
+     */
     private static String hashPassword(String hospitalID, String password) {
         String combined = hospitalID + password;
         try {
@@ -95,6 +110,15 @@ public class HospitalManagementSystem {
             throw new RuntimeException("Hashing algorithm not found", e);
         }
     }
+    /**
+     * Prompts the user to update their password and saves the new hashed password.
+     *
+     * The method continuously prompts the user until they enter matching passwords.
+     *
+     * @param scanner A Scanner object to read input from the user.
+     * @param user    The user whose password is to be updated.
+     * @throws IOException If an error occurs during user input or saving the password.
+     */
     private static void updatePassword(Scanner scanner, User user) throws IOException {
         String newPassword;
         while (true) {

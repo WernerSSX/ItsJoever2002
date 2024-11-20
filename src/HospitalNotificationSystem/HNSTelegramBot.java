@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * HNSTelegramBot
@@ -14,7 +16,7 @@ import java.net.URL;
  * using the Telegram Bot API. Subclasses should implement the `getChatId` 
  * method to retrieve the specific chat ID where the messages will be sent.
  */
-public abstract class HNSTelegramBot implements TeleBotInterface{
+public class HNSTelegramBot implements TeleBotInterface{
     
     /** 
      * File path for storing Telegram bot details.
@@ -25,14 +27,20 @@ public abstract class HNSTelegramBot implements TeleBotInterface{
     protected String filePath = "C:/Users/Werner Soon Shi Xu/Downloads/telegramDetails.txt";
     
     /**
-     * Abstract method to retrieve the chat ID.
+     * Method to retrieve the chat ID.
      * 
      * Subclasses should implement this method to provide the specific chat ID 
      * from the stored file or other configuration.
      * 
      * @throws IOException If an error occurs while reading the chat ID from the file.
      */
-    public abstract void getChatId() throws IOException;
+    public void getChatId() throws IOException{
+        String content = new String(Files.readAllBytes(Paths.get(filePath))).trim();
+
+        // Split the content using the "|" separator
+        String[] parts = content.split("\\|");
+        System.out.printf("BotToken : %s, chatId: %s\n", parts[0].trim(), parts[1].trim());
+    }
 
     /**
      * Sends a message to a Telegram bot.
