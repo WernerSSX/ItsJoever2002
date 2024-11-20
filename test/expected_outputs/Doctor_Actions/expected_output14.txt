@@ -1,0 +1,60 @@
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice:
+You have no upcoming appointments.
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice:
+
+Appointment Requests:
+1. Appointment ID: 20, Patient ID: P002, Date: 2024-12-25, Time: 12:30 - 13:00
+Enter the number of the appointment you want to review (or 0 to cancel):
+
+Appointment ID: 20
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 12:30 - 13:00
+Status: Requested
+Outcome Record: Pending
+Do you want to accept this appointment? (y/n):
+Appointment ID 20 has been accepted and scheduled.
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice:
+
+Upcoming Appointments:
+1. Appointment ID: 20, Patient ID: P002, Date: 2024-12-25, Time: 12:30 - 13:00
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice:

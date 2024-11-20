@@ -13,7 +13,7 @@ import java.nio.file.Paths;
  * ensure only one instance of the notification system exists. The bot token 
  * and chat ID are read from a configuration file.
  */
-public class NotifyAdministrator extends HNSTelegramBot {
+public final class NotifyAdministrator extends HNSTelegramBot {
     
     /** Singleton instance of the NotifyAdministrator class. */
     private static NotifyAdministrator instance_admin;

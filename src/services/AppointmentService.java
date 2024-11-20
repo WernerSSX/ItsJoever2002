@@ -1,7 +1,7 @@
 package services;
 
 import db.TextDB;
-import items.Appointment;
+import items.appointments.Appointment;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;

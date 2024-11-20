@@ -1,0 +1,157 @@
+Administrator Menu:
+1. View and Manage Hospital Staff
+2. View Appointments Details
+3. View and Manage Medication Inventory
+4. Approve Replenishment Requests
+5. Logout
+Enter your choice:
+
+View Appointments Details:
+1. View All Appointments
+2. View Appointment by ID
+3. Back
+Enter your choice:
+
+All Appointments:
+
+Appointment ID: 1
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 09:00 - 09:30
+Status: Completed
+Outcome Record: blood test;2024-10-20;NULL;none;NULL
+-------------------------
+
+Appointment ID: 2
+Patient ID: P003
+Doctor ID: D002
+Time Slot: 10:00 - 10:30
+Status: Completed
+Outcome Record: Prescribed medication
+-------------------------
+
+Appointment ID: 3
+Patient ID: P001
+Doctor ID: D001
+Time Slot: 11:00 - 11:30
+Status: Cancelled
+Outcome Record: NULL
+-------------------------
+
+Appointment ID: 5
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 15:30 - 16:00
+Status: Scheduled
+Outcome Record: NULL
+-------------------------
+
+Appointment ID: 7
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 09:00 - 09:30
+Status: Rescheduled
+Outcome Record: Pending
+-------------------------
+
+Appointment ID: 10
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 09:30 - 10:30
+Status: Declined
+Outcome Record: NULL
+-------------------------
+
+Appointment ID: 11
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 09:00 - 09:30
+Status: Scheduled
+Outcome Record: NULL
+-------------------------
+
+Appointment ID: 12
+Patient ID: P003
+Doctor ID: D001
+Time Slot: 09:30 - 10:00
+Status: Cancelled
+Outcome Record: NULL
+-------------------------
+
+Appointment ID: 13
+Patient ID: P003
+Doctor ID: D001
+Time Slot: 10:30 - 12:30
+Status: Completed
+Outcome Record: consultation;2024-11-11;sildenafil:pending;used for leg cramps;D001       
+-------------------------
+
+Appointment ID: 14
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 09:30 - 10:00
+Status: Completed
+Outcome Record: blood test;2024-10-28;NULL;blood is ok;D001
+-------------------------
+
+Appointment ID: 15
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 09:30 - 10:00
+Status: Confirmed
+Outcome Record: NULL
+-------------------------
+
+Appointment ID: 16
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 09:30 - 10:00
+Status: Confirmed
+Outcome Record: NULL
+-------------------------
+
+Appointment ID: 17
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 10:00 - 10:30
+Status: Confirmed
+Outcome Record: NULL
+-------------------------
+
+Appointment ID: 18
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 12:30 - 13:00
+Status: Rescheduled
+Outcome Record: Pending
+-------------------------
+
+Appointment ID: 19
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 09:30 - 10:00
+Status: Confirmed
+Outcome Record: NULL
+-------------------------
+
+View Appointments Details:
+1. View All Appointments
+2. View Appointment by ID
+3. Back
+Enter your choice:
+Enter Appointment ID to view details: 
+
+Appointment Details:
+
+Appointment ID: 19
+Patient ID: P002
+Doctor ID: D001
+Time Slot: 09:30 - 10:00
+Status: Confirmed
+Outcome Record: NULL
+
+View Appointments Details:
+1. View All Appointments
+2. View Appointment by ID
+3. Back
+Enter your choice:

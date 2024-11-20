@@ -1,6 +1,11 @@
 package db;
 
 import items.*;
+import items.appointments.Appointment;
+import items.appointments.Schedule;
+import items.appointments.TimeSlot;
+import items.medical_records.MedicalRecord;
+import items.medical_records.Treatment;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -253,11 +258,10 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Returns user information
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param hospitalID
+     * @return user
      */
     public User getUserByHospitalID(String hospitalID) {
         for (User user : users) {
@@ -271,18 +275,17 @@ public class TextDB {
     /**
      * Calculates the result.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * 
+     * @return Unmodifiable List of Users
      */
     public List<User> getUsers() {
         return Collections.unmodifiableList(users);
     }
 
     /**
-     * Sets the object's name.
+     * Updates User Password
      *
-     * @param name The new name.
+     * @param user Can be Administrator
      */
     public static void updateUserPassword(User user) {
         for (int i = 0; i < users.size(); i++) {
@@ -299,9 +302,9 @@ public class TextDB {
     }
 
     /**
-     * Sets the object's name.
+     * Saves to file
      *
-     * @param name The new name.
+     * @param filename
      */
     public static void saveToFile(String filename) throws IOException {
         List<String> stringList = new ArrayList<>();
@@ -311,6 +314,11 @@ public class TextDB {
         write(filename, stringList);
     }
 
+    /**
+     * Serializes User
+     *
+     * @param user
+     */
     private static String serializeUser(User user) {
         return String.join(SEPARATOR,
                 user.getHospitalID(),
@@ -321,7 +329,12 @@ public class TextDB {
                 user.getRole());
     }
     
-    
+    /**
+     * Writes data to file
+     *
+     * @param filename Name of file
+     * @param data Data to write to file
+     */
     public static void write(String fileName, List<String> data) throws IOException {
         PrintWriter out = new PrintWriter(new FileWriter(fileName));
         try {
@@ -334,11 +347,11 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Reads file
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param fileName Name of file
+     * @return Data of file
+     * @throws IOException
      */
     public static List<String> read(String fileName) throws IOException {
         List<String> data = new ArrayList<>();
@@ -364,11 +377,11 @@ public class TextDB {
     // ====================== Appointment Management ========================= //
 
     /**
-     * Calculates the result.
+     * Cancels an Appointment
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param patient
+     * @param appointmentId
+     * @return boolean of success
      */
     public boolean cancelAppointment(Patient patient, int appointmentId) {
         boolean removed = appointments.removeIf(appointment -> 
@@ -388,11 +401,9 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Generates new Appointment ID
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @return New AppointmentID
      */
     private int generateNewAppointmentId() {
         return appointments.stream()
@@ -402,11 +413,8 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
-     *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * Returns list of Doctors
+     * @return List of Doctors
      */
     public List<Doctor> getAllDoctors() {
         return users.stream()
@@ -416,11 +424,11 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Gets available Appointment Slots
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param date Date of Appointment
+     * @param doctor Doctor in charge
+     * @return AppointmentSlots that are available
      */
     public List<TimeSlot> getAvailableAppointmentSlots(LocalDate date, Doctor doctor) {
         // Retrieve the doctor's available slots for the date
@@ -452,11 +460,10 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Generates all time slots for date
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param date Date for timeslots
+     * @return timeslots
      */
     private List<TimeSlot> generateAllTimeSlotsForDate(LocalDate date) {
         List<TimeSlot> timeSlots = new ArrayList<>();
@@ -475,11 +482,10 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Loads Appointments for Date
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param date Date of Appointment
+     * @return Appointments at specified Date
      */
     private List<Appointment> loadAppointmentsForDate(LocalDate date) {
         List<Appointment> appointmentsForDate = new ArrayList<>();
@@ -498,11 +504,11 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Loads Appointments for Date and Doctor
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param date Date of Appointment
+     * @param doctor Doctor for Appointment
+     * @return List of Appointments
      */
     private List<Appointment> loadAppointmentsForDateAndDoctor(LocalDate date, Doctor doctor) {
         List<Appointment> appointmentsForDateAndDoctor = new ArrayList<>();
@@ -522,11 +528,13 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Adds an appointment for a patient with a doctor at a specific date and time slot.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param patient    The patient for whom the appointment is being made.
+     * @param doctor     The doctor for the appointment.
+     * @param date       The date of the appointment.
+     * @param timeSlot   The time slot for the appointment.
+     * @return True if the appointment is successfully added, false otherwise.
      */
     // Appointment management methods
     public boolean addAppointment(Patient patient, Doctor doctor, LocalDate date, TimeSlot timeSlot) {
@@ -569,11 +577,10 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Retrieves a list of all requested appointments for a specific doctor.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param doctorId The hospital ID of the doctor.
+     * @return A list of requested appointments for the given doctor.
      */
     public List<Appointment> getRequestedAppointmentsByDoctor(String doctorId) {
         return appointments.stream()
@@ -582,11 +589,10 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Retrieves an appointment by its unique ID.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param appointmentId The unique ID of the appointment.
+     * @return The appointment with the specified ID, or null if not found.
      */
     public Appointment getAppointmentById(int appointmentId) {
         for (Appointment appt : appointments) {
@@ -598,11 +604,11 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Updates the status of an appointment and performs necessary actions based on the new status.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param appointmentId The unique ID of the appointment to update.
+     * @param newStatus     The new status to assign to the appointment.
+     * @throws IOException If an error occurs while saving the updated appointment or schedule.
      */
     public void updateAppointmentStatus(int appointmentId, String newStatus) throws IOException {
         Appointment appointment = getAppointmentById(appointmentId);
@@ -637,27 +643,29 @@ public class TextDB {
     }
     
     /**
-     * Calculates the result.
+     * Removes an appointment from the list.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param appointment The appointment to be removed.
      */
     public void removeAppointment(Appointment appointment) {
         appointments.remove(appointment);
     }
 
     /**
-     * Calculates the result.
+     * Retrieves the list of all appointments.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @return A list of all appointments.
      */
     public List<Appointment> getAppointments() {
         return appointments;
     }
 
+    /**
+     * Saves the current list of appointments to a file.
+     *
+     * @param filename The name of the file to save the appointments.
+     * @throws IOException If an error occurs while saving the file.
+     */
     public static void saveAppointmentsToFile(String filename) throws IOException {
         List<String> stringList = new ArrayList<>();
         for (Appointment appointment : appointments) {
@@ -667,11 +675,10 @@ public class TextDB {
     }
 
     /**
-     * Calculates the result.
+     * Serializes an appointment object into a string format for file storage.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param appointment The appointment to serialize.
+     * @return The serialized string representation of the appointment.
      */
     private static String serializeAppointment(Appointment appointment) {
         return String.join(SEPARATOR,
@@ -684,11 +691,10 @@ public class TextDB {
     }
     
     /**
-     * Calculates the result.
+     * Serializes a TimeSlot object into a string format.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param timeSlot The time slot to serialize.
+     * @return The serialized string representation of the time slot.
      */
     private static String serializeTimeSlot(TimeSlot timeSlot) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
@@ -696,11 +702,11 @@ public class TextDB {
     }
     
     /**
-     * Calculates the result.
+     * Deserializes a string representation of an appointment into an Appointment object.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param appointmentData The serialized string data of an appointment.
+     * @return The deserialized Appointment object.
+     * @throws IllegalArgumentException If the input data is invalid or incomplete.
      */
     private Appointment deserializeAppointment(String appointmentData) {
         String[] fields = appointmentData.split("\\" + SEPARATOR);
@@ -725,17 +731,22 @@ public class TextDB {
     // ====================== Doctor Assignment and Medical Records ========================= //
 
     /**
-     * Calculates the result.
+     * Adds a medical record to the system and saves it to a file.
      *
-     * @param a First parameter for calculation.
-     * @param b Second parameter for calculation.
-     * @return The calculated result.
+     * @param record The medical record to add.
+     * @throws IOException If an error occurs while saving the medical record to the file.
      */
     public void addMedicalRecord(MedicalRecord record) throws IOException {
         medicalRecords.add(record);
         saveMedicalRecordsToFile("med_records.txt");
     }
     
+    /**
+     * Saves the list of medical records to a file.
+     *
+     * @param filename The name of the file to save the medical records.
+     * @throws IOException If an error occurs while saving the file.
+     */
     private void saveMedicalRecordsToFile(String filename) throws IOException {
         List<String> stringList = new ArrayList<>();
         for (MedicalRecord record : medicalRecords) {

@@ -3,6 +3,8 @@ package menus;
 import HospitalNotificationSystem.NotifyAdministrator;
 import db.TextDB;
 import items.*;
+import items.medical_records.MedicalRecord;
+import items.medical_records.Treatment;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -13,7 +15,7 @@ import user_classes.Pharmacist;
  * PharmacistMenu
  * Displays a menu for pharmacists to do pharmacist tasks
  */
-public class PharmacistMenu {
+public final class PharmacistMenu {
     private TextDB textDB;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 

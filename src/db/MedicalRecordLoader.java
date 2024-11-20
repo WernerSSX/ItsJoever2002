@@ -1,9 +1,9 @@
 package db;
 
-import items.ContactInformation;
-import items.Diagnosis;
-import items.MedicalRecord;
-import items.Treatment;
+import items.medical_records.ContactInformation;
+import items.medical_records.Diagnosis;
+import items.medical_records.MedicalRecord;
+import items.medical_records.Treatment;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

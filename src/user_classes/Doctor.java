@@ -1,7 +1,9 @@
 package user_classes;
 
 import db.TextDB;
-import items.*;
+import items.appointments.Schedule;
+import items.appointments.TimeSlot;
+import items.medical_records.MedicalRecord;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;

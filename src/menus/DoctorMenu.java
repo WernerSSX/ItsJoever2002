@@ -2,6 +2,11 @@ package menus;
 
 import db.TextDB;
 import items.*;
+import items.appointments.Appointment;
+import items.appointments.Schedule;
+import items.appointments.TimeSlot;
+import items.medical_records.MedicalRecord;
+import items.medical_records.Treatment;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,7 +21,7 @@ import user_classes.Doctor;
  * DoctorMenu
  * Provides an interactive menu for doctors to manage patient records, appointments, schedules, and other related tasks.
  */
-public class DoctorMenu {
+public final class DoctorMenu {
     /** Reference to the database handling text-based storage operations. */
     private TextDB textDB;
     /** Date format used for user interaction. */

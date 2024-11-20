@@ -1,0 +1,45 @@
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice:
+
+Available Doctors:
+1. Dr. John Smith (ID: D001)
+2. Dr. Emily Clarke (ID: D002)
+Enter the number corresponding to the doctor you want to view available slots for:
+You have selected Dr. John Smith
+Enter the date (yyyy-MM-dd) for which you want to see available slots:
+
+Available Appointment Slots with Dr. John Smith on 2024-10-28:
+1. 11:00 - 11:30
+2. 11:30 - 12:00
+3. 12:00 - 12:30
+4. 12:30 - 13:00
+5. 13:00 - 13:30
+6. 13:30 - 14:00
+7. 14:00 - 14:30
+8. 14:30 - 15:00
+9. 15:00 - 15:30
+10. 16:00 - 16:30
+11. 16:30 - 17:00
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice:

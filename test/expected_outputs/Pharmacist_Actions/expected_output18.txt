@@ -1,0 +1,26 @@
+Pharmacist Menu:
+1. View Appointment Outcome Records
+2. Update Prescription Status
+3. View Medication Inventory
+4. Submit Replenishment Request
+5. Back
+Enter your choice:
+
+Medication Inventory:
+Medication Name      Quantity   Supplier
+-------------------------------------------------------------
+Paracetamol          260        Moderna
+COVID Vaccine        50         AstraZeneca
+Amoxicillin          75         GSK
+Ibuprofen            50         AstraZeneca
+Metformin            100        GSK
+Sildenafil           200        Moderna
+Laughing Gas         100        Pfizer
+
+Pharmacist Menu:
+1. View Appointment Outcome Records
+2. Update Prescription Status
+3. View Medication Inventory
+4. Submit Replenishment Request
+5. Back
+Enter your choice:

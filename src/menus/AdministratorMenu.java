@@ -3,6 +3,8 @@ package menus;
 import HospitalNotificationSystem.NotifyPharmacist;
 import db.TextDB;
 import items.*;
+import items.appointments.Appointment;
+import items.appointments.Schedule;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -19,7 +21,7 @@ import user_classes.*;
  * This class provides the interface for administrators to manage hospital staff, view appointments, 
  *        manage medication inventory, and approve replenishment requests.
  */
-public class AdministratorMenu {
+public final class AdministratorMenu {
 
     private TextDB textDB;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");

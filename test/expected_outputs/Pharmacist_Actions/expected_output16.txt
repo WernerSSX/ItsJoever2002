@@ -1,0 +1,136 @@
+=== Welcome to the Hospital Management System ===
+1. Administrator Login
+2. Doctor Login
+3. Pharmacist Login
+4. Patient Login
+5. Save Changes
+6. Exit
+Please select your role (1-6):
+Enter Hospital ID:
+Enter Password:
+Pharmacist logged in successfully!
+
+Pharmacist Menu:
+1. View Appointment Outcome Records
+2. Update Prescription Status
+3. View Medication Inventory
+4. Submit Replenishment Request
+5. Back
+Enter your choice:
+Enter Patient ID to view medical records:
+
+--------------------------------------------------
+               Medical Record
+--------------------------------------------------
+Patient ID       : P002
+Name             : Werner Tan
+Date of Birth    : 2002-10-16
+Gender           : Male
+Contact Information:
+  Phone Number   : 98232324
+  Email Address  : wernersoon@gmail.com
+Blood Type       : O+
+
+Past Diagnoses:
+  - Hypertension (Date: 2022-01-10)
+  - Diabetes (Date: 2023-03-15)
+
+Past Treatments:
+  ------------------------------------------------
+    Service Type        : Consultation
+    Date of Appointment  : 2024-10-15
+    Prescribed Medications:
+      - Metformin | Status: Approved
+      - Insulin | Status: approved
+    Consultation Notes   : Patient advised to monitor blood sugar levels
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : blood test
+    Date of Appointment  : 2024-10-28
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : cholestrol high
+    Doctor ID            : D002
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : X-ray
+    Date of Appointment  : 2024-10-29
+    Prescribed Medications:
+      - panadol | Status: Approved
+    Consultation Notes   : Broken bone
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : checkup
+    Date of Appointment  : 2024-10-30
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : all normal
+    Doctor ID            : N/A
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : checkup
+    Date of Appointment  : 2024-10-30
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : all normal
+    Doctor ID            : N/A
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : blood test
+    Date of Appointment  : 2024-10-20
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : none
+    Doctor ID            : N/A
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : consultation
+    Date of Appointment  : 2024-12-20
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : die hard
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : consultation
+    Date of Appointment  : 2024-12-12
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : hello
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : consultation
+    Date of Appointment  : 2024-12-12
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : broken nose
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : blood test
+    Date of Appointment  : 2024-10-28
+    Prescribed Medications:
+      - Sildenafil | Status: done
+    Consultation Notes   : blood looking red
+    Doctor ID            : D001
+  ------------------------------------------------
+  ------------------------------------------------
+    Service Type        : blood test
+    Date of Appointment  : 2024-10-28
+    Prescribed Medications:
+      - NULL
+    Consultation Notes   : blood is ok
+    Doctor ID            : D001
+  ------------------------------------------------
+
+
+Pharmacist Menu:
+1. View Appointment Outcome Records
+2. Update Prescription Status
+3. View Medication Inventory
+4. Submit Replenishment Request
+5. Back
+Enter your choice:

@@ -1,4 +1,3 @@
-Paracetamol;50;Pharmacist: F001;2024-11-17
-Paracetamol;30;Pharmacist: F001;2024-11-18
 Paracetamol;10;Pharmacist: F001;2024-11-18
 Paracetamol;10;Pharmacist: F001;2024-11-18
+Paracetamol;10;Pharmacist: F001;2024-11-20

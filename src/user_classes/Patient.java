@@ -1,7 +1,7 @@
 package user_classes;
 import db.TextDB;
-import items.ContactInformation;
-import items.MedicalRecord;
+import items.medical_records.ContactInformation;
+import items.medical_records.MedicalRecord;
 import java.io.IOException;
 import java.time.LocalDate;
 
