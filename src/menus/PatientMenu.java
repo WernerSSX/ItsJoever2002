@@ -1,10 +1,10 @@
 package menus;
 import HospitalNotificationSystem.NotifyDoctor;
 import db.TextDB;
-import items.Appointment;
-import items.MedicalRecord;
-import items.TimeSlot;
-import items.Treatment;
+import items.appointments.Appointment;
+import items.appointments.TimeSlot;
+import items.medical_records.MedicalRecord;
+import items.medical_records.Treatment;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

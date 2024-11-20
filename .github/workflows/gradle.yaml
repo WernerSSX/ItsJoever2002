@@ -38,3 +38,4 @@ jobs:
         # Compare the output with the expected output
         echo "Comparing output with expected output"
         diff test/output1.txt test/expected_output1.txt
+

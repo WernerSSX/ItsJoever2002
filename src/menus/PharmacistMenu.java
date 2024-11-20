@@ -3,6 +3,8 @@ package menus;
 import HospitalNotificationSystem.NotifyAdministrator;
 import db.TextDB;
 import items.*;
+import items.medical_records.MedicalRecord;
+import items.medical_records.Treatment;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;

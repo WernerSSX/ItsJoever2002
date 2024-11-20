@@ -1,6 +1,11 @@
 package db;
 
 import items.*;
+import items.appointments.Appointment;
+import items.appointments.Schedule;
+import items.appointments.TimeSlot;
+import items.medical_records.MedicalRecord;
+import items.medical_records.Treatment;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;

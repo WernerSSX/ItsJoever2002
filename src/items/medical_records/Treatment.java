@@ -1,9 +1,11 @@
-package items;
+package items.medical_records;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
+import items.Prescription;
 
 /**
  * Treatment

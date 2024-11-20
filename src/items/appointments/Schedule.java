@@ -1,17 +1,17 @@
-package items;
+package items.appointments;
 
+import items.appointments.schedule_interface.mainScheduleInterface;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 /**
  * Schedule
  * The Schedule class manages a doctor's availability across different dates.
  */
-public class Schedule {
+public class Schedule implements mainScheduleInterface {
     // Mapping from date to list of available TimeSlots
     private Map<LocalDate, List<TimeSlot>> availability; /**< Map to store availability of time slots keyed by date */
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd"); /**< Formatter for date */

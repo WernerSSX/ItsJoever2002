@@ -1,5 +1,6 @@
-package items;
+package items.appointments;
 
+import items.appointments.appointments_interface.mainAppointmentsInterface;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
  * including the appointment ID, patient ID, doctor ID, time slot, status, 
  * and outcome record.
  */
-public class Appointment {
+public class Appointment implements mainAppointmentsInterface {
     private int id;               /**< Unique identifier for the appointment */ 
     private String patientId;     /**< Identifier for the patient */ 
     private String doctorId;      /**< Identifier for the doctor */ 

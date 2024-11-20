@@ -1,5 +1,6 @@
-package items;
+package items.medical_records;
 
+import items.Prescription;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

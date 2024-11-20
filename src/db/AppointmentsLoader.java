@@ -1,7 +1,7 @@
 package db;
 
-import items.Appointment;
-import items.TimeSlot;
+import items.appointments.Appointment;
+import items.appointments.TimeSlot;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

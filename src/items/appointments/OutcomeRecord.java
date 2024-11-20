@@ -1,5 +1,7 @@
-package items;
+package items.appointments;
 
+import items.Prescription;
+import items.appointments.outcome_record_interface.mainOutcomeRecordInterface;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
  * OutcomeRecord
  * Represents the outcome details of a medical appointment, including date, type of service, prescribed medications, and consultation notes.
  */
-public class OutcomeRecord {
+public class OutcomeRecord implements mainOutcomeRecordInterface {
     private LocalDate dateOfAppointment; /**< Date when the appointment took place */
     private String serviceType; /**< Type of service provided, e.g., Consultation, X-ray */
     private List<Prescription> prescribedMedications; /**< List of prescribed medications during the appointment */

@@ -2,6 +2,11 @@ package menus;
 
 import db.TextDB;
 import items.*;
+import items.appointments.Appointment;
+import items.appointments.Schedule;
+import items.appointments.TimeSlot;
+import items.medical_records.MedicalRecord;
+import items.medical_records.Treatment;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

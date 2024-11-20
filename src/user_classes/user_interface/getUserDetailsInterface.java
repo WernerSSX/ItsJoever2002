@@ -1,8 +1,13 @@
-package user_classes;
+package user_classes.user_interface;
 
 import java.time.LocalDate;
 
-public interface getInterface {
+/*
+ * getInterface
+ * 
+ * Getters for User interface
+ */
+public interface getUserDetailsInterface {
     public String getRole();
     public String getAge();
     public String getHospitalID();

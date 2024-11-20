@@ -1,4 +1,4 @@
-package items;
+package items.medical_records;
 
 /**
  * ContactInformation

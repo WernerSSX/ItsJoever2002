@@ -3,6 +3,8 @@ package menus;
 import HospitalNotificationSystem.NotifyPharmacist;
 import db.TextDB;
 import items.*;
+import items.appointments.Appointment;
+import items.appointments.Schedule;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

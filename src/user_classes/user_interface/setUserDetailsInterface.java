@@ -1,9 +1,14 @@
-package user_classes;
+package user_classes.user_interface;
 
 import java.io.IOException;
 import java.time.LocalDate;
 
-public interface setInterface {
+/*
+ * setInterface
+ * 
+ * Setters for User interface
+ */
+public interface setUserDetailsInterface {
     public void setHospitalID(String hospitalID);
     public void setPassword(String password) throws IOException;
     public void setName(String name);
