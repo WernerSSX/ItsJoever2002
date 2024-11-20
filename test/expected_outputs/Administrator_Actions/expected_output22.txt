@@ -1,0 +1,86 @@
+Administrator Menu:
+1. View and Manage Hospital Staff
+2. View Appointments Details
+3. View and Manage Medication Inventory
+4. Approve Replenishment Requests
+5. Logout
+Enter your choice: 3
+
+Manage Medication Inventory:
+1. View Inventory
+2. Add Medication
+3. Update Medication
+4. Remove Medication
+5. Back
+Enter your choice: 1
+
+Medication Inventory:
+Medication Name      Quantity   Supplier
+-------------------------------------------------------------
+Paracetamol          260        Moderna
+COVID Vaccine        50         AstraZeneca
+Amoxicillin          75         GSK
+Ibuprofen            50         AstraZeneca
+Metformin            100        GSK
+Sildenafil           200        Moderna
+Laughing Gas         100        Pfizer
+
+Manage Medication Inventory:
+1. View Inventory
+2. Add Medication
+3. Update Medication
+4. Remove Medication
+5. Back
+Enter your choice: 2
+
+Add New Medication:
+Enter Medication Name: Monkeypox Cure
+Enter Quantity: 
+100
+Enter Supplier Name: Pfizer
+Medication added successfully.
+Message sent successfully!
+Pharmacist Telegram Notification Success
+
+Manage Medication Inventory:
+1. View Inventory
+2. Add Medication
+3. Update Medication
+4. Remove Medication
+5. Back
+Enter your choice: 3
+Enter Medication Name to update: Sildenafil
+Current Quantity: 200
+Enter new Quantity:
+100
+Current Supplier: Moderna
+Enter new Supplier Name: Moderna
+Medication updated successfully.
+
+Manage Medication Inventory:
+1. View Inventory
+2. Add Medication
+3. Update Medication
+4. Remove Medication
+5. Back
+Enter your choice: 1
+
+Medication Inventory:
+Medication Name      Quantity   Supplier
+-------------------------------------------------------------
+Paracetamol          260        Moderna
+COVID Vaccine        50         AstraZeneca
+Amoxicillin          75         GSK
+Ibuprofen            50         AstraZeneca
+Metformin            100        GSK
+Sildenafil           100        Moderna
+Laughing Gas         100        Pfizer
+Monkeypox Cure       100        Pfizer
+
+Manage Medication Inventory:
+1. View Inventory
+2. Add Medication
+3. Update Medication
+4. Remove Medication
+5. Back
+Enter your choice:

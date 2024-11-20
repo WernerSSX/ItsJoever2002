@@ -1,0 +1,85 @@
+Pharmacist Menu:
+1. View Appointment Outcome Records
+2. Update Prescription Status
+3. View Medication Inventory
+4. Submit Replenishment Request
+5. Back
+Enter your choice: 2
+Enter Patient ID: P002
+
+Past Treatments:
+1. Consultation on 2024-10-15
+   1. Metformin | Status: Approved
+   2. Insulin | Status: approved
+2. blood test on 2024-10-28
+   No prescriptions found for this treatment.
+3. X-ray on 2024-10-29
+   1. panadol | Status: Approved
+4. checkup on 2024-10-30
+   No prescriptions found for this treatment.
+5. checkup on 2024-10-30
+   No prescriptions found for this treatment.
+6. blood test on 2024-10-20
+   No prescriptions found for this treatment.
+7. consultation on 2024-12-20
+   No prescriptions found for this treatment.
+8. consultation on 2024-12-12
+   No prescriptions found for this treatment.
+9. consultation on 2024-12-12
+   No prescriptions found for this treatment.
+10. blood test on 2024-10-28
+   1. Sildenafil | Status: done
+11. blood test on 2024-10-28
+   No prescriptions found for this treatment.
+Enter the number of the treatment to update prescriptions (or 0 to cancel): 11
+No prescriptions to update for this treatment.
+
+Pharmacist Menu:
+1. View Appointment Outcome Records
+2. Update Prescription Status
+3. View Medication Inventory
+4. Submit Replenishment Request
+5. Back
+Enter your choice: 2
+Enter Patient ID: P002
+
+Past Treatments:
+1. Consultation on 2024-10-15
+   1. Metformin | Status: Approved
+   2. Insulin | Status: approved
+2. blood test on 2024-10-28
+   No prescriptions found for this treatment.
+3. X-ray on 2024-10-29
+   1. panadol | Status: Approved
+4. checkup on 2024-10-30
+   No prescriptions found for this treatment.
+5. checkup on 2024-10-30
+   No prescriptions found for this treatment.
+6. blood test on 2024-10-20
+   No prescriptions found for this treatment.
+7. consultation on 2024-12-20
+   No prescriptions found for this treatment.
+8. consultation on 2024-12-12
+   No prescriptions found for this treatment.
+9. consultation on 2024-12-12
+   No prescriptions found for this treatment.
+10. blood test on 2024-10-28
+   1. Sildenafil | Status: done
+11. blood test on 2024-10-28
+   No prescriptions found for this treatment.
+Enter the number of the treatment to update prescriptions (or 0 to cancel): 10
+
+Prescriptions:
+1. Sildenafil | Status: done
+Enter the number of the prescription to update (or 0 to cancel): 1
+Current Status: done
+Enter new status (e.g., Approved, Rejected, Dispensed): Dispensed
+Prescription status updated successfully.
+
+Pharmacist Menu:
+1. View Appointment Outcome Records
+2. Update Prescription Status
+3. View Medication Inventory
+4. Submit Replenishment Request
+5. Back
+Enter your choice:

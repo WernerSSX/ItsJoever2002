@@ -21,7 +21,7 @@ import user_classes.Patient;
  * PatientMenu
  * Displays a menu for patients to view and manage their appointments, medical records, and contact information.
  */
-public class PatientMenu {
+public final class PatientMenu {
     private TextDB textDB;
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");

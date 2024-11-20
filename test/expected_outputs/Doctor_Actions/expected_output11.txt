@@ -1,15 +1,3 @@
-=== Welcome to the Hospital Management System ===     
-1. Administrator Login
-2. Doctor Login
-3. Pharmacist Login
-4. Patient Login
-5. Save Changes
-6. Exit
-Please select your role (1-6): 2
-Enter Hospital ID: D001
-Enter Password: password
-Doctor logged in successfully!
-
 Doctor Menu:
 1. View Patient Medical Records
 2. Update Patient Medical Records
@@ -46,6 +34,8 @@ Date: 2024-11-11
   11:00 - 11:30
   11:30 - 12:00
   12:00 - 12:30
+Date: 2024-12-25
+  12:30 - 13:00
 
 You have no upcoming appointments.
 
@@ -58,14 +48,4 @@ Doctor Menu:
 6. View Upcoming Appointments
 7. Record Appointment Outcome
 0. Logout
-Enter your choice: 0
-Logging out...
-
-=== Welcome to the Hospital Management System ===     
-1. Administrator Login
-2. Doctor Login
-3. Pharmacist Login
-4. Patient Login
-5. Save Changes
-6. Exit
-Please select your role (1-6):
+Enter your choice:

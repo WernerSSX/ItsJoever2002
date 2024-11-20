@@ -1,0 +1,51 @@
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice: 5
+
+Your Appointments:
+Appointment ID: 1, Doctor: John Smith, Date: 2024-10-20, Time: 09:00 - 09:30, Status: Completed
+Appointment ID: 5, Doctor: John Smith, Date: 2024-10-28, Time: 15:30 - 16:00, Status: Scheduled
+Appointment ID: 7, Doctor: John Smith, Date: 2024-10-28, Time: 09:00 - 09:30, Status: Rescheduled
+Appointment ID: 10, Doctor: John Smith, Date: 2024-05-11, Time: 09:30 - 10:30, Status: Declined
+Appointment ID: 11, Doctor: John Smith, Date: 2024-10-28, Time: 09:00 - 09:30, Status: Scheduled
+Appointment ID: 14, Doctor: John Smith, Date: 2024-10-28, Time: 09:30 - 10:00, Status: Confirmed
+Appointment ID: 15, Doctor: John Smith, Date: 2024-10-28, Time: 09:30 - 10:00, Status: Confirmed
+Appointment ID: 16, Doctor: John Smith, Date: 2024-10-28, Time: 09:30 - 10:00, Status: Requested
+Appointment ID: 17, Doctor: John Smith, Date: 2024-10-28, Time: 10:00 - 10:30, Status: Requested
+Appointment ID: 18, Doctor: John Smith, Date: 2024-10-28, Time: 10:30 - 11:00, Status: Requested
+
+Enter the ID of the appointment you want to reschedule: 18
+Enter the new date for the appointment (yyyy-MM-dd): 2024-12-25
+Do you want to keep the same doctor? (yes/no): yes
+You have chosen to keep Dr. John Smith
+
+Available Appointment Slots with Dr. John Smith on 2024-12-25:
+1. 12:30 - 13:00
+Enter the number corresponding to the new time slot you want to book: 1
+You have selected 12:30 - 13:00
+Are you sure you want to reschedule this appointment? (yes/no): yes
+Appointment rescheduled successfully to 2024-12-25 at 12:30 - 13:00.
+Message sent successfully!
+Doctor Telegram Notification Success
+
+Patient Menu:
+1. View Medical Record
+2. Update Contact Information
+3. View Available Appointment Slots
+4. Schedule Appointment
+5. Reschedule Appointment
+6. Cancel Appointment
+7. View Appointment Status
+8. View Appointment Outcome Records
+9. Change Password
+0. Log out
+Enter your choice:

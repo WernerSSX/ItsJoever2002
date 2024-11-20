@@ -21,7 +21,7 @@ import user_classes.*;
  * This class provides the interface for administrators to manage hospital staff, view appointments, 
  *        manage medication inventory, and approve replenishment requests.
  */
-public class AdministratorMenu {
+public final class AdministratorMenu {
 
     private TextDB textDB;
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");

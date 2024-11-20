@@ -1,0 +1,36 @@
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice: 7
+
+Completed Appointments:
+1. Appointment ID: 14, Patient ID: P002, Date: 2024-10-28, Time: 09:30 - 10:00
+2. Appointment ID: 15, Patient ID: P002, Date: 2024-10-28, Time: 09:30 - 10:00
+3. Appointment ID: 16, Patient ID: P002, Date: 2024-10-28, Time: 09:30 - 10:00
+4. Appointment ID: 19, Patient ID: P002, Date: 2024-10-28, Time: 09:30 - 10:00
+5. Appointment ID: 17, Patient ID: P002, Date: 2024-10-28, Time: 10:00 - 10:30
+Enter the number of the appointment to record outcome (or 0 to cancel): 1
+
+Recording outcome for Appointment ID: 14
+Enter the type of service provided (e.g., consultation, X-ray, blood test): blood test
+Enter prescribed medications (enter 'done' when finished):
+Medication Name (or 'done'): done
+Enter consultation notes: blood is ok
+Appointment outcome recorded successfully.
+
+Doctor Menu:
+1. View Patient Medical Records
+2. Update Patient Medical Records
+3. View Personal Schedule
+4. Set Availability for Appointments
+5. Accept or Decline Appointment Requests
+6. View Upcoming Appointments
+7. Record Appointment Outcome
+0. Logout
+Enter your choice:

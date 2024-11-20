@@ -6,5 +6,5 @@ P002|ZwR1VXmqCM1etYHFXdJbVJ5Cd+JRdN0nEntEec9lPew=|Werner Tan|2002-10-16|Male|Pat
 P003|password|Wern|2002-01-01|Male|Patient
 P004|password|Viet|2004-09-01|Male|Patient
 P005|password|viet2004|2004-01-09|Male|Patient
-P006|vg6tmuIo6kXQiB8yoblC/riXNXbGp+2eVg1ycynEB0w=|Test|2000-01-01|Female|Patient
 F001|mKplM2JcGjTPHKcUUL/L0WQRLFo4nZxzJXwuve0+V5M=|Werner Soon|2010-10-23|Male|Pharmacist
+P007|z7MoOXl3O2PppUm+sAy4l8diTwy1qmFqldPv3+2NYDg=|Desilva|2002-10-23|Male|Patient

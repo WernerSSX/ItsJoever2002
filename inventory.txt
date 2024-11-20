@@ -1,7 +1,8 @@
-Paracetamol|260|Moderna
+Paracetamol|310|Moderna
 COVID Vaccine|50|AstraZeneca
 Amoxicillin|75|GSK
 Ibuprofen|50|AstraZeneca
 Metformin|100|GSK
-Sildenafil|200|Moderna
+Sildenafil|100|Moderna
 Laughing Gas|100|Pfizer
+Monkeypox Cure|100|Pfizer

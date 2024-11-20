@@ -13,7 +13,7 @@ import java.nio.file.Paths;
  * of the notification system exists. The bot token and chat ID are read from 
  * a configuration file.
  */
-public class NotifyDoctor extends HNSTelegramBot {
+public final class NotifyDoctor extends HNSTelegramBot {
     
     /** Singleton instance of the NotifyDoctor class. */
     private static NotifyDoctor instance_doctor;

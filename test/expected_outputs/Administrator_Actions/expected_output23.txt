@@ -1,0 +1,65 @@
+Approve Replenishment Requests:
+1. View All Requests
+2. Approve a Request
+3. Reject a Request
+4. Back
+Enter your choice: 1
+
+Replenishment Requests:
+1. Medication: Paracetamol, Quantity: 50, Requested By: Pharmacist: F001, Request Date: 2024-11-17
+2. Medication: Paracetamol, Quantity: 30, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+3. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+4. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+5. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-20
+
+Approve Replenishment Requests:
+1. View All Requests
+2. Approve a Request
+3. Reject a Request
+4. Back
+Enter your choice: 2
+
+Replenishment Requests:
+1. Medication: Paracetamol, Quantity: 50, Requested By: Pharmacist: F001, Request Date: 2024-11-17
+2. Medication: Paracetamol, Quantity: 30, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+3. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+4. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+5. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-20
+Enter the number of the request to approve (or 0 to cancel): 1
+Replenishment request approved. Inventory updated.
+Message sent successfully!
+Pharmacist Telegram Notification Success
+
+Approve Replenishment Requests:
+1. View All Requests
+2. Approve a Request
+3. Reject a Request
+4. Back
+Enter your choice: 3
+
+Replenishment Requests:
+1. Medication: Paracetamol, Quantity: 30, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+2. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+3. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+4. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-20
+Enter the number of the request to reject (or 0 to cancel): 1
+Replenishment request rejected.
+
+Approve Replenishment Requests:
+1. View All Requests
+2. Approve a Request
+3. Reject a Request
+4. Back
+Enter your choice: 1
+
+Replenishment Requests:
+1. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+2. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-18
+3. Medication: Paracetamol, Quantity: 10, Requested By: Pharmacist: F001, Request Date: 2024-11-20
+
+Approve Replenishment Requests:
+1. View All Requests
+2. Approve a Request
+3. Reject a Request
+4. Back
+Enter your choice:

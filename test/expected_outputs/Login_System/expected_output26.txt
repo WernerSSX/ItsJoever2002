@@ -1,4 +1,4 @@
-=== Welcome to the Hospital Management System ===     
+=== Welcome to the Hospital Management System ===
 1. Administrator Login
 2. Doctor Login
 3. Pharmacist Login
@@ -6,11 +6,11 @@
 5. Save Changes
 6. Exit
 Please select your role (1-6): 4
-Enter Hospital ID: P002
-Enter Password: hello
+Enter Hospital ID: P007
+Enter Password: you
 Invalid Hospital ID or Password!
 
-=== Welcome to the Hospital Management System ===     
+=== Welcome to the Hospital Management System ===
 1. Administrator Login
 2. Doctor Login
 3. Pharmacist Login

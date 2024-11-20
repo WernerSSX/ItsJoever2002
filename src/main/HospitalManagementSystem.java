@@ -13,7 +13,7 @@ import user_classes.*;
 /**
  * Entry point for the Hospital Management System application.
  */
-public class HospitalManagementSystem {
+public final class HospitalManagementSystem {
 	private static final String DEFAULT_PASSWORD = "password";
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
