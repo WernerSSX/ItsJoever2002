@@ -9,14 +9,14 @@ Patient Menu:
 8. View Appointment Outcome Records
 9. Change Password
 0. Log out
-Enter your choice: 4
-Enter the date (yyyy-MM-dd) for which you want to schedule an appointment: 2024-
-10-28
+Enter your choice:
+Enter the date (yyyy-MM-dd) for which you want to schedule an appointment: 
+
 
 Available Doctors:
 1. Dr. John Smith (ID: D001)
 2. Dr. Emily Clarke (ID: D002)
-Enter the number corresponding to the doctor you want to book an appointment with: 1
+Enter the number corresponding to the doctor you want to book an appointment with:
 You have selected Dr. John Smith
 
 Available Appointment Slots with Dr. John Smith on 2024-10-28:
@@ -31,7 +31,7 @@ Available Appointment Slots with Dr. John Smith on 2024-10-28:
 9. 15:00 - 15:30
 10. 16:00 - 16:30
 11. 16:30 - 17:00
-Enter the number corresponding to the time slot you want to book: 1
+Enter the number corresponding to the time slot you want to book:
 You have selected 11:00 - 11:30
 Appointment request successfully submitted with Dr. John Smith on 2024-10-28 at 11:00 - 11:30.
 Please await doctor's approval.

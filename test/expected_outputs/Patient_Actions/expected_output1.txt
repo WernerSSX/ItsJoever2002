@@ -5,9 +5,9 @@
 4. Patient Login
 5. Save Changes
 6. Exit
-Please select your role (1-6): 4
-Enter Hospital ID: P002
-Enter Password: hello
+Please select your role (1-6):
+Enter Hospital ID:
+Enter Password:
 Patient logged in successfully!
 
 Patient Menu:
@@ -21,7 +21,7 @@ Patient Menu:
 8. View Appointment Outcome Records
 9. Change Password
 0. Log out
-Enter your choice: 1
+Enter your choice:
 
 --------------------------------------------------
                Medical Record

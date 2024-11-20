@@ -9,9 +9,9 @@ Patient Menu:
 8. View Appointment Outcome Records
 9. Change Password
 0. Log out
-Enter your choice: 2
-Enter new email address: wernersoon@gmail.com
-Enter new phone number: 98232324
+Enter your choice:
+Enter new email address:
+Enter new phone number:
 Contact information updated successfully.
 
 Patient Menu:
@@ -25,7 +25,7 @@ Patient Menu:
 8. View Appointment Outcome Records
 9. Change Password
 0. Log out
-Enter your choice: 1
+Enter your choice:
 
 --------------------------------------------------
                Medical Record

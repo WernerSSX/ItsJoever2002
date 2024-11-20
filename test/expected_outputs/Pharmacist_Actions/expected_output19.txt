@@ -4,9 +4,9 @@ Pharmacist Menu:
 3. View Medication Inventory
 4. Submit Replenishment Request
 5. Back
-Enter your choice: 4
-Enter Medication Name to replenish: Paracetamol
-Enter quantity to replenish: 10
+Enter your choice:
+Enter Medication Name to replenish:
+Enter quantity to replenish:
 Replenishment request submitted successfully.
 Message sent successfully!
 Administrator Telegram Notification Success

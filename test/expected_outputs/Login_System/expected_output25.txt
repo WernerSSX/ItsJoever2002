@@ -5,13 +5,13 @@
 4. Patient Login
 5. Save Changes
 6. Exit
-Please select your role (1-6): 4
-Enter Hospital ID: P007
-Enter Password: password
+Please select your role (1-6):
+Enter Hospital ID:
+Enter Password:
 Patient logged in successfully!
 Your password is the default. Please change your password.
-Enter new password: hello
-Confirm new password: hello
+Enter new password: 
+Confirm new password: 
 Password updated successfully!
 
 Patient Menu:
@@ -25,7 +25,7 @@ Patient Menu:
 8. View Appointment Outcome Records
 9. Change Password
 0. Log out
-Enter your choice: 0
+Enter your choice: 
 
 === Welcome to the Hospital Management System ===
 1. Administrator Login
@@ -34,9 +34,9 @@ Enter your choice: 0
 4. Patient Login
 5. Save Changes
 6. Exit
-Please select your role (1-6): 4
-Enter Hospital ID: P007
-Enter Password: hello
+Please select your role (1-6): 
+Enter Hospital ID: 
+Enter Password: 
 Patient logged in successfully!
 
 Patient Menu:

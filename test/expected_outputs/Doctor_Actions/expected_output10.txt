@@ -7,8 +7,8 @@ Doctor Menu:
 6. View Upcoming Appointments
 7. Record Appointment Outcome
 0. Logout
-Enter your choice: 2
-Enter Patient ID to update medical records: P002
+Enter your choice:
+Enter Patient ID to update medical records:
 Existing Medical Record:
 --------------------------------------------------
                Medical Record
@@ -101,14 +101,13 @@ Past Treatments:
     Doctor ID            : D001
   ------------------------------------------------
 
-Enter the type of service provided (e.g., consultation, X-ray, blood test): bloo
-d test
-Enter date of appointment (yyyy-MM-dd): 2024-10-28
-Enter treatment comments: blood looking red
+Enter the type of service provided (e.g., consultation, X-ray, blood test):
+Enter date of appointment (yyyy-MM-dd): 
+Enter treatment comments: 
 Enter prescribed medications (enter 'done' when finished):
-Medication Name (or 'done'): Sildenafil
-Status for Sildenafil (default is 'pending'): done
-Medication Name (or 'done'): done
+Medication Name (or 'done'): 
+Status for Sildenafil (default is 'pending'): 
+Medication Name (or 'done'): 
 Medical record updated successfully.
 
 Doctor Menu:
@@ -120,8 +119,8 @@ Doctor Menu:
 6. View Upcoming Appointments
 7. Record Appointment Outcome
 0. Logout
-Enter your choice: 1
-Enter Patient ID to view medical records: P002
+Enter your choice:
+Enter Patient ID to view medical records:
 
 --------------------------------------------------
                Medical Record

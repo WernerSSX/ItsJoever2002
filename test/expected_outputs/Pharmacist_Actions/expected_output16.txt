@@ -5,9 +5,9 @@
 4. Patient Login
 5. Save Changes
 6. Exit
-Please select your role (1-6): 3
-Enter Hospital ID: F001
-Enter Password: hello
+Please select your role (1-6):
+Enter Hospital ID:
+Enter Password:
 Pharmacist logged in successfully!
 
 Pharmacist Menu:
@@ -16,8 +16,8 @@ Pharmacist Menu:
 3. View Medication Inventory
 4. Submit Replenishment Request
 5. Back
-Enter your choice: 1
-Enter Patient ID to view medical records: P002
+Enter your choice:
+Enter Patient ID to view medical records:
 
 --------------------------------------------------
                Medical Record

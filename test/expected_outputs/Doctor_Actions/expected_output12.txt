@@ -7,11 +7,11 @@ Doctor Menu:
 6. View Upcoming Appointments
 7. Record Appointment Outcome
 0. Logout
-Enter your choice: 4
-Enter date to set availability (yyyy-MM-dd): 2024-11-20
-Enter start time for available slot (HH:mm) or 'done' to finish: 08:00
-Enter end time for available slot (HH:mm): 08:30
-Enter start time for available slot (HH:mm) or 'done' to finish: done
+Enter your choice:
+Enter date to set availability (yyyy-MM-dd):
+Enter start time for available slot (HH:mm) or 'done' to finish:
+Enter end time for available slot (HH:mm):
+Enter start time for available slot (HH:mm) or 'done' to finish:
 Availability updated successfully.
 
 Doctor Menu:
@@ -23,7 +23,7 @@ Doctor Menu:
 6. View Upcoming Appointments
 7. Record Appointment Outcome
 0. Logout
-Enter your choice: 3
+Enter your choice:
 Availability slots:
 Date: 2024-10-28
   09:00 - 09:30

@@ -9,7 +9,7 @@ Patient Menu:
 8. View Appointment Outcome Records
 9. Change Password
 0. Log out
-Enter your choice: 5
+Enter your choice:
 
 Your Appointments:
 Appointment ID: 1, Doctor: John Smith, Date: 2024-10-20, Time: 09:00 - 09:30, Status: Completed
@@ -23,16 +23,16 @@ Appointment ID: 16, Doctor: John Smith, Date: 2024-10-28, Time: 09:30 - 10:00, S
 Appointment ID: 17, Doctor: John Smith, Date: 2024-10-28, Time: 10:00 - 10:30, Status: Requested
 Appointment ID: 18, Doctor: John Smith, Date: 2024-10-28, Time: 10:30 - 11:00, Status: Requested
 
-Enter the ID of the appointment you want to reschedule: 18
-Enter the new date for the appointment (yyyy-MM-dd): 2024-12-25
-Do you want to keep the same doctor? (yes/no): yes
+Enter the ID of the appointment you want to reschedule:
+Enter the new date for the appointment (yyyy-MM-dd):
+Do you want to keep the same doctor? (yes/no):
 You have chosen to keep Dr. John Smith
 
 Available Appointment Slots with Dr. John Smith on 2024-12-25:
 1. 12:30 - 13:00
-Enter the number corresponding to the new time slot you want to book: 1
+Enter the number corresponding to the new time slot you want to book:
 You have selected 12:30 - 13:00
-Are you sure you want to reschedule this appointment? (yes/no): yes
+Are you sure you want to reschedule this appointment? (yes/no):
 Appointment rescheduled successfully to 2024-12-25 at 12:30 - 13:00.
 Message sent successfully!
 Doctor Telegram Notification Success

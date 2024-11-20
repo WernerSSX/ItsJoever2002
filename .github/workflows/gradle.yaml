@@ -33,9 +33,201 @@ jobs:
       run: |
         # Test Case 1
         echo "Running Test Case 1"
-        java -cp out main.HospitalManagementSystem < test/input1.txt > test/output1.txt
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Patient_Actions/testcase1input.txt > test/testcase_outputs/Patient_Actions/expected_output1.txt
         
         # Compare the output with the expected output
         echo "Comparing output with expected output"
-        diff test/output1.txt test/expected_output1.txt
+        diff test/testcase_outputs/Patient_Actions/testcase1input.txt test/expected_outputs/Patient_Actions/expected_output1.txt
+
+        # Test Case 2
+        echo "Running Test Case 2"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Patient_Actions/testcase2input.txt > test/testcase_outputs/Patient_Actions/expected_output2.txt
+        
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Patient_Actions/testcase2input.txt test/expected_outputs/Patient_Actions/expected_output2.txt
+
+        # Test Case 3
+        echo "Running Test Case 3"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Patient_Actions/testcase3input.txt > test/testcase_outputs/Patient_Actions/expected_output3.txt
+        
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Patient_Actions/testcase3input.txt test/expected_outputs/Patient_Actions/expected_output3.txt
+
+        # Test Case 4
+        echo "Running Test Case 4"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Patient_Actions/testcase4input.txt > test/testcase_outputs/Patient_Actions/expected_output4.txt
+        
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Patient_Actions/testcase4input.txt test/expected_outputs/Patient_Actions/expected_output4.txt
+
+        # Test Case 5
+        echo "Running Test Case 5"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Patient_Actions/testcase5input.txt > test/testcase_outputs/Patient_Actions/expected_output5.txt
+        
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Patient_Actions/testcase5input.txt test/expected_outputs/Patient_Actions/expected_output5.txt
+
+        # Test Case 6
+        echo "Running Test Case 6"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Patient_Actions/testcase6input.txt > test/testcase_outputs/Patient_Actions/expected_output6.txt
+        
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Patient_Actions/testcase6input.txt test/expected_outputs/Patient_Actions/expected_output6.txt
+
+        # Test Case 7
+        echo "Running Test Case 7"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Patient_Actions/testcase7input.txt > test/testcase_outputs/Patient_Actions/expected_output7.txt
+        
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Patient_Actions/testcase7input.txt test/expected_outputs/Patient_Actions/expected_output7.txt
+
+        # Test Case 8
+        echo "Running Test Case 8"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Patient_Actions/testcase8input.txt > test/testcase_outputs/Patient_Actions/expected_output8.txt
+        
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Patient_Actions/testcase8input.txt test/expected_outputs/Patient_Actions/expected_output8.txt
+
+        # Test Case 9
+        echo "Running Test Case 9"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Doctor_Actions/testcase9input.txt > test/testcase_outputs/Doctor_Actions/expected_output9.txt
+        
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Doctor_Actions/testcase9input.txt test/expected_outputs/Doctor_Actions/expected_output9.txt
+        
+        # Test Case 10
+        echo "Running Test Case 10"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Doctor_Actions/testcase10input.txt > test/testcase_outputs/Doctor_Actions/expected_output10.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Doctor_Actions/testcase10input.txt test/expected_outputs/Doctor_Actions/expected_output10.txt
+
+        # Test Case 11
+        echo "Running Test Case 11"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Doctor_Actions/testcase11input.txt > test/testcase_outputs/Doctor_Actions/expected_output11.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Doctor_Actions/testcase11input.txt test/expected_outputs/Doctor_Actions/expected_output11.txt
+
+        # Test Case 12
+        echo "Running Test Case 12"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Doctor_Actions/testcase12input.txt > test/testcase_outputs/Doctor_Actions/expected_output12.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Doctor_Actions/testcase12input.txt test/expected_outputs/Doctor_Actions/expected_output12.txt
+
+        # Test Case 13
+        echo "Running Test Case 13"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Doctor_Actions/testcase13input.txt > test/testcase_outputs/Doctor_Actions/expected_output13.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Doctor_Actions/testcase13input.txt test/expected_outputs/Doctor_Actions/expected_output13.txt
+
+        # Test Case 14
+        echo "Running Test Case 14"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Doctor_Actions/testcase14input.txt > test/testcase_outputs/Doctor_Actions/expected_output14.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Doctor_Actions/testcase14input.txt test/expected_outputs/Doctor_Actions/expected_output14.txt
+
+        # Test Case 15
+        echo "Running Test Case 15"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Doctor_Actions/testcase15input.txt > test/testcase_outputs/Doctor_Actions/expected_output15.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Doctor_Actions/testcase15input.txt test/expected_outputs/Doctor_Actions/expected_output15.txt
+
+        # Test Case 16
+        echo "Running Test Case 16"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Pharmacist_Actions/testcase16input.txt > test/testcase_outputs/Pharmacist_Actions/expected_output16.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Pharmacist_Actions/testcase16input.txt test/expected_outputs/Pharmacist_Actions/expected_output16.txt
+
+        # Test Case 17
+        echo "Running Test Case 17"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Pharmacist_Actions/testcase17input.txt > test/testcase_outputs/Pharmacist_Actions/expected_output17.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Pharmacist_Actions/testcase17input.txt test/expected_outputs/Pharmacist_Actions/expected_output17.txt
+
+        # Test Case 18
+        echo "Running Test Case 18"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Pharmacist_Actions/testcase18input.txt > test/testcase_outputs/Pharmacist_Actions/expected_output18.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Pharmacist_Actions/testcase18input.txt test/expected_outputs/Pharmacist_Actions/expected_output18.txt
+
+        # Test Case 19
+        echo "Running Test Case 19"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Pharmacist_Actions/testcase19input.txt > test/testcase_outputs/Pharmacist_Actions/expected_output19.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Pharmacist_Actions/testcase19input.txt test/expected_outputs/Pharmacist_Actions/expected_output19.txt
+
+        # Test Case 20
+        echo "Running Test Case 20"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Administrator_Actions/testcase20input.txt > test/testcase_outputs/Administrator_Actions/expected_output20.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Administrator_Actions/testcase20input.txt test/expected_outputs/Administrator_Actions/expected_output20.txt
+
+        # Test Case 21
+        echo "Running Test Case 21"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Administrator_Actions/testcase21input.txt > test/testcase_outputs/Administrator_Actions/expected_output21.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Administrator_Actions/testcase21input.txt test/expected_outputs/Administrator_Actions/expected_output21.txt
+
+        # Test Case 22
+        echo "Running Test Case 22"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Administrator_Actions/testcase22input.txt > test/testcase_outputs/Administrator_Actions/expected_output22.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Administrator_Actions/testcase22input.txt test/expected_outputs/Administrator_Actions/expected_output22.txt
+
+        # Test Case 23
+        echo "Running Test Case 23"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Administrator_Actions/testcase23input.txt > test/testcase_outputs/Administrator_Actions/expected_output23.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Administrator_Actions/testcase23input.txt test/expected_outputs/Administrator_Actions/expected_output23.txt
+
+        # Test Case 25
+        echo "Running Test Case 25"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Login_System/testcase25input.txt > test/testcase_outputs/Login_System/expected_output25.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Login_System/testcase25input.txt test/expected_outputs/Login_System/expected_output25.txt
+
+        # Test Case 26
+        echo "Running Test Case 26"
+        java -cp out main.HospitalManagementSystem < test/testcase_inputs/Login_System/testcase26input.txt > test/testcase_outputs/Login_System/expected_output26.txt
+
+        # Compare the output with the expected output
+        echo "Comparing output with expected output"
+        diff test/testcase_outputs/Login_System/testcase25input.txt test/expected_outputs/Login_System/expected_output26.txt
 

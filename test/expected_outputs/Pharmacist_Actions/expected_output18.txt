@@ -4,7 +4,7 @@ Pharmacist Menu:
 3. View Medication Inventory
 4. Submit Replenishment Request
 5. Back
-Enter your choice: 3
+Enter your choice:
 
 Medication Inventory:
 Medication Name      Quantity   Supplier

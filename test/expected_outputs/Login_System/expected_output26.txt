@@ -5,9 +5,9 @@
 4. Patient Login
 5. Save Changes
 6. Exit
-Please select your role (1-6): 4
-Enter Hospital ID: P007
-Enter Password: you
+Please select your role (1-6):
+Enter Hospital ID: 
+Enter Password: 
 Invalid Hospital ID or Password!
 
 === Welcome to the Hospital Management System ===

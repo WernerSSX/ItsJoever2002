@@ -4,7 +4,7 @@ Administrator Menu:
 3. View and Manage Medication Inventory
 4. Approve Replenishment Requests
 5. Logout
-Enter your choice: 3
+Enter your choice:
 
 Manage Medication Inventory:
 1. View Inventory
@@ -12,7 +12,7 @@ Manage Medication Inventory:
 3. Update Medication
 4. Remove Medication
 5. Back
-Enter your choice: 1
+Enter your choice:
 
 Medication Inventory:
 Medication Name      Quantity   Supplier
@@ -31,13 +31,13 @@ Manage Medication Inventory:
 3. Update Medication
 4. Remove Medication
 5. Back
-Enter your choice: 2
+Enter your choice:
 
 Add New Medication:
-Enter Medication Name: Monkeypox Cure
+Enter Medication Name:
 Enter Quantity: 
-100
-Enter Supplier Name: Pfizer
+
+Enter Supplier Name: 
 Medication added successfully.
 Message sent successfully!
 Pharmacist Telegram Notification Success
@@ -48,13 +48,13 @@ Manage Medication Inventory:
 3. Update Medication
 4. Remove Medication
 5. Back
-Enter your choice: 3
-Enter Medication Name to update: Sildenafil
-Current Quantity: 200
+Enter your choice:
+Enter Medication Name to update: 
+Current Quantity: 
 Enter new Quantity:
-100
-Current Supplier: Moderna
-Enter new Supplier Name: Moderna
+
+Current Supplier: 
+Enter new Supplier Name: 
 Medication updated successfully.
 
 Manage Medication Inventory:
@@ -63,7 +63,7 @@ Manage Medication Inventory:
 3. Update Medication
 4. Remove Medication
 5. Back
-Enter your choice: 1
+Enter your choice: 
 
 Medication Inventory:
 Medication Name      Quantity   Supplier

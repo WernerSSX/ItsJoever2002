@@ -1,10 +1,5 @@
-2
-D001
-password
 7
 1
-consultation
-sildenafil
-pending
+blood test
 done
-0
+blood is ok

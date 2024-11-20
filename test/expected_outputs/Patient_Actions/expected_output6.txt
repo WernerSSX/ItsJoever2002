@@ -9,7 +9,7 @@ Patient Menu:
 8. View Appointment Outcome Records
 9. Change Password
 0. Log out
-Enter your choice: 6
+Enter your choice:
 
 Your Appointments:
 Appointment ID: 1, Doctor: John Smith, Date: 2024-10-20, Time: 09:00 - 09:30, Status: Completed
@@ -24,8 +24,8 @@ Appointment ID: 17, Doctor: John Smith, Date: 2024-10-28, Time: 10:00 - 10:30, S
 Appointment ID: 18, Doctor: John Smith, Date: 2024-10-28, Time: 10:30 - 11:00, Status: Requested
 Appointment ID: 19, Doctor: John Smith, Date: 2024-10-28, Time: 11:00 - 11:30, Status: Requested
 
-Enter the ID of the appointment you want to cancel: 19
-Are you sure you want to cancel this appointment? (yes/no): yes
+Enter the ID of the appointment you want to cancel:
+Are you sure you want to cancel this appointment? (yes/no):
 Appointment canceled successfully.
 Message sent successfully!
 Doctor Telegram Notification Success

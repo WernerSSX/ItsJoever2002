@@ -7,7 +7,7 @@ Doctor Menu:
 6. View Upcoming Appointments
 7. Record Appointment Outcome
 0. Logout
-Enter your choice: 3
+Enter your choice:
 Availability slots:
 Date: 2024-10-28
   09:00 - 09:30

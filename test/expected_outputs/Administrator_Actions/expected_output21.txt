@@ -4,13 +4,13 @@ Administrator Menu:
 3. View and Manage Medication Inventory
 4. Approve Replenishment Requests
 5. Logout
-Enter your choice: 2
+Enter your choice:
 
 View Appointments Details:
 1. View All Appointments
 2. View Appointment by ID
 3. Back
-Enter your choice: 1
+Enter your choice:
 
 All Appointments:
 
@@ -138,8 +138,8 @@ View Appointments Details:
 1. View All Appointments
 2. View Appointment by ID
 3. Back
-Enter your choice: 2
-Enter Appointment ID to view details: 19
+Enter your choice:
+Enter Appointment ID to view details: 
 
 Appointment Details:
 

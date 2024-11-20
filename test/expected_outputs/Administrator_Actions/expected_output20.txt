@@ -5,9 +5,9 @@
 4. Patient Login
 5. Save Changes
 6. Exit
-Please select your role (1-6): 1
-Enter Hospital ID: A001
-Enter Password: viet2004
+Please select your role (1-6):
+Enter Hospital ID:
+Enter Password: 
 Administrator logged in successfully!
 
 Administrator Menu:
@@ -16,7 +16,7 @@ Administrator Menu:
 3. View and Manage Medication Inventory
 4. Approve Replenishment Requests
 5. Logout
-Enter your choice: 1
+Enter your choice:
 
 Manage Hospital Staff:
 1. Add User
@@ -24,7 +24,7 @@ Manage Hospital Staff:
 3. View All Users
 4. Reset User Password
 5. Back
-Enter your choice: 3
+Enter your choice:
 
 List of All Users:
 Doctor: hospitalID='D001', name='John Smith', dateOfBirth=1979-01-01, gender='Male', patientIds=[], schedule=Schedule:
@@ -85,16 +85,16 @@ Manage Hospital Staff:
 3. View All Users
 4. Reset User Password
 5. Back
-Enter your choice: 1
+Enter your choice:
 
 Add New User:
-Enter role (Administrator/Doctor/Pharmacist/Patient): Patient
-Enter Hospital ID: P007  
-Enter Name: Desilva
-Enter Date of Birth (yyyy-MM-dd): 2002-10-23
-Enter Gender (Male/Female): Male
-Enter Email: desilva@gmail.com
-Enter Phone Number: 98231283
+Enter role (Administrator/Doctor/Pharmacist/Patient):
+Enter Hospital ID: 
+Enter Name: 
+Enter Date of Birth (yyyy-MM-dd): 
+Enter Gender (Male/Female): 
+Enter Email: 
+Enter Phone Number: 
 User added successfully!
 Changes saved to file.
 
@@ -104,10 +104,10 @@ Manage Hospital Staff:
 3. View All Users
 4. Reset User Password
 5. Back
-Enter your choice: 2
+Enter your choice:
 
 Remove User:
-Enter Hospital ID of user to remove: P006
+Enter Hospital ID of user to remove:
 User removed successfully!
 Changes saved to file.
 
@@ -117,7 +117,7 @@ Manage Hospital Staff:
 3. View All Users
 4. Reset User Password
 5. Back
-Enter your choice: 3
+Enter your choice:
 
 List of All Users:
 Doctor: hospitalID='D001', name='John Smith', dateOfBirth=1979-01-01, gender='Male', patientIds=[], schedule=Schedule:
